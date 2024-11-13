@@ -1,25 +1,50 @@
-👨‍💻 Derriko Herron Jr.
-Digital Craftsman (QA Analyst/Developer/Tester)
+🎮 Game Collection - Python Games
 
-I'm an enthusiastic QA Analyst and aspiring developer crafting my path in the tech world. I build my projects from the ground up—carefully planning, designing, and executing each step with attention to quality and detail. My passion for quality assurance goes hand-in-hand with my coding journey, as I solve complex problems and create smooth, user-friendly experiences in every project.
+This repository showcases three Python games. Two are Pygame shooters with unique themes, and the third is a terminal-based guessing game. Each game combines familiar mechanics with distinct visuals and gameplay styles.
 
+Files Overview
 
-🧰 Languages and Tools
-**Languages:** Python, HTML, CSS, JavaScript, MySQL, TypeScript
-**Frameworks and Libraries:** Selenium, Cypress, Pytest, React, Node.js, Angular
-**Testing & QA Tools:** LoadRunner, Jira, Postman, BrowserStack, Zephyr Scale
-**Dev Tools:** Git, Linux, GitLab CI/CD, VSCode
-**Operating Systems:** Windows, macOS, Linux
+1. 90s_rocket_game.py 🚀 A retro-styled space shooter where players control a spaceship to dodge and shoot down enemy rockets.
 
-🔍 About Me
-I’m currently transitioning from IT support to Quality Assurance with a focus on automation. With each project, I blend technical skill with user experience focus, whether it's automating tests on e-commerce platforms like Shopify or optimizing scripts for real-world applications like Weather.com.
+Graphics and Sound: 90s-inspired visuals and sound effects.
 
-📈 Current Projects
-**Weather** User Account Automation: Automating user account processes for Weather.com using Selenium and Python.
-**Galactic Shooter:** A 2D space game developed in Python, featuring power-ups, scoreboards, and exciting gameplay mechanics.
-**Shopify Automation:** Enhancing e-commerce efficiency through automated login and product management tasks.
+Score Tracking and Power-Ups: Tracks scores and includes power-ups.
 
-📝 Latest Blog Posts
-Transitioning to Quality Assurance from IT Support
-Breaking into QA Automation: Tips and Tools
-Best Practices for Functional and Regression Testing
+Leaderboard: High scores are stored and displayed.
+
+Customizable Controls: Rebind keys for personalized gameplay.
+
+How to Play: Run with Pygame installed. Start with the welcome screen and jump into the action.
+
+2. monkey_shoot.py 🐒 "Monkey Shoot" brings the same mechanics as 90s_rocket_game.py into a jungle-themed setting.
+
+Visuals and Sounds: Jungle graphics and sounds replace the retro space theme.
+
+Leaderboard: Player scores are tracked and displayed.
+
+How to Play: Launch the game, enter your name, and start shooting in the jungle!
+
+3. number_guessing_game.py 🔢 A terminal-based game where players guess a number between 1 and 100 in ten tries.
+
+Hints and Validation: Feedback for each guess.
+
+Attempt Limit: Guess within ten tries or get the answer revealed.
+
+How to Play: Run in a terminal and try your luck.
+
+Setups Install Pygame: pip install pygame
+
+Run each game:
+
+90s_rocket_game.py 🚀:
+
+python 90s_rocket_game.py
+monkey_shoot.py:
+
+python monkey_shoot.py
+number_guessing_game.py 🔢:
+
+python number_guessing_game.py
+Ensure JSON files are in the same directory for leaderboard functionality.
+
+Enjoy these games as a fun showcase of Python and Pygame!
