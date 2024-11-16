@@ -17,6 +17,11 @@ FRIENDLY_ROCKET_SIZE = 30
 ENEMY_ROCKET_SIZE = 30
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+POWER_UP_SIZE = 30
+POWER_UP_DROP_SPEED = 2
+POWER_UP_TYPES = ["health", "rapid_fire"]
+last_power_up_time = 0
+POWER_UP_DROP_INTERVAL = 5000
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Galactic Shooter !!!")
@@ -27,25 +32,29 @@ def load_image(path, size=None):
         image = pygame.transform.scale(image, size)
     return image
 
-explosion_image = load_image(r"c:/Users/Rvkko's computer/Pictures/623cdcca882db2d7efa8d32424a61d29_w200.gif", (50, 50))
-player_hit_sound = pygame.mixer.Sound(r"c:/Users/Rvkko's computer/Downloads/retro-explode-2-236688.mp3")
-enemy_hit_sound = pygame.mixer.Sound(r"c:/Users/Rvkko's computer/Downloads/retro-explode-1-236678.mp3")
-space_background = pygame.image.load(r"c:/Users/Rvkko's computer/Downloads/space-1164579_1920.png")
-space_background = pygame.transform.scale(space_background, (WIDTH, HEIGHT))
-player_image = load_image(r"c:/Users/Rvkko's computer/Pictures/BAOyZX.png", (PLAYER_SIZE, PLAYER_SIZE))
-enemy_image = load_image(r"c:/Users/Rvkko's computer/Pictures/mini1.png", (PLAYER_SIZE, PLAYER_SIZE))
-bullet_image = load_image(r"c:/Users/Rvkko's computer/Pictures/66cb7c87c36bc8152d8f80b5.png", (20, 20))
+health_power_up_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\health_power_up.png", (POWER_UP_SIZE, POWER_UP_SIZE))
+rapid_fire_power_up_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\rapid_fire_power_up.png", (POWER_UP_SIZE, POWER_UP_SIZE))
 
-pygame.mixer.music.load(r"c:/Users/Rvkko's computer/Downloads/Megaman 3 Theme.mp3")
+explosion_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\623cdcca882db2d7efa8d32424a61d29_w200.gif", (50, 50))
+player_hit_sound = pygame.mixer.Sound(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\retro-explode-2-236688.mp3")
+enemy_hit_sound = pygame.mixer.Sound(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\retro-explode-1-236678.mp3")
+space_background = pygame.image.load(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\space-1164579_1920.png")
+space_background = pygame.transform.scale(space_background, (WIDTH, HEIGHT))
+player_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\BAOyZX.png", (PLAYER_SIZE, PLAYER_SIZE))
+enemy_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\mini1.png", (PLAYER_SIZE, PLAYER_SIZE))
+bullet_image = load_image(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\66cb7c87c36bc8152d8f80b5.png", (20, 20))
+
+pygame.mixer.music.load(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\Megaman 3 Theme.mp3")
 pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.play(-1)
 
+power_ups = []
 bullets = []
 enemy_list = []
 score = 0
 leaderboard = []
 font = pygame.font.SysFont("monospace", 35)
-retro_font = pygame.font.Font(r"c:/Users/Rvkko's computer/Downloads/videotype.otf", 50)
+retro_font = pygame.font.Font(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\videotype.otf", 50)
 clock = pygame.time.Clock()
 
 high_scores = {}
@@ -67,6 +76,7 @@ def save_high_scores(filename="high_scores.json"):
         json.dump(high_scores, file)
 
 def update_score(player_name, current_score):
+    global high_scores
     if player_name in high_scores:
         if current_score > high_scores[player_name]:
             high_scores[player_name] = current_score
@@ -132,6 +142,37 @@ def update_positions(positions, speed, is_bullet=False):
             else:
                 positions.pop(idx)
 
+def drop_power_ups(power_ups):
+    global last_power_up_time
+    current_time = pygame.time.get_ticks()
+    if current_time - last_power_up_time > POWER_UP_DROP_INTERVAL:
+        power_up_type = random.choice(POWER_UP_TYPES)
+        power_up_x_pos = random.randint(0, WIDTH - POWER_UP_SIZE)
+        power_ups.append({"type": power_up_type, "pos": [power_up_x_pos, 0]})
+        last_power_up_time = current_time
+
+def update_power_up_positions(power_ups):
+    for power_up in power_ups:
+        power_up["pos"][1] += POWER_UP_DROP_SPEED
+        if power_up["pos"][1] > HEIGHT:
+            power_ups.remove(power_up)
+
+def check_power_up_collisions(player_pos, power_ups):
+    for power_up in power_ups:
+        power_up_rect = pygame.Rect(power_up["pos"][0], power_up["pos"][1], POWER_UP_SIZE, POWER_UP_SIZE)
+        player_rect = pygame.Rect(player_pos[0], player_pos[1], PLAYER_SIZE, PLAYER_SIZE)
+        if power_up_rect.colliderect(player_rect):
+            apply_power_up_effect(power_up["type"])
+            power_ups.remove(power_up)        
+
+def apply_power_up_effect(power_up_type):
+    global player_health, rapid_fire_active, rapid_fire_start_time
+    if power_up_type == "health":
+        player_health = min(player_health + 1, 3)
+    elif power_up_type == "rapid_fire":
+        rapid_fire_active = True
+        rapid_fire_start_time = pygame.time.get_ticks()
+
 def check_collision(list1, list2, size1, size2):
     for item1 in list1:
         rect1 = pygame.Rect(item1[0], item1[1], size1, size1)
@@ -179,7 +220,7 @@ def login_screen():
     neon_purple = pygame.Color('purple')
     
     title_font = pygame.font.SysFont("monospace", 50)
-    input_font = pygame.font.Font(r"c:/Users/Rvkko's computer/Downloads/videotype.otf", 35)
+    input_font = pygame.font.Font(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\videotype.otf", 35)
     
     input_box = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2, 300, 60)
     color = color_inactive
@@ -280,29 +321,25 @@ def rebindable_keys_screen():
                 if event.key == pygame.K_ESCAPE:
                     rebind_active = False
                 elif selected_action:
-                    # Check if the key is already bound to another action, excluding default keys
                     if event.key not in key_bindings.values() or event.key in default_keys:
                         key_bindings[selected_action] = event.key
-                        selected_action = None  # Reset after rebinding
-                        error_message = None  # Clear error message
-                        error_message_timer = 0  # Reset error message timer
+                        selected_action = None
+                        error_message = None
+                        error_message_timer = 0
                     else:
                         error_message = "Key already in use. Please choose another key."
-                        error_message_timer = pygame.time.get_ticks()  # Set error message timer
+                        error_message_timer = pygame.time.get_ticks()
 
         screen.fill(background_color)
         
-        # Title Text
         rebind_text = retro_font.render("Key Bindings", True, WHITE)
         screen.blit(rebind_text, (WIDTH // 2 - rebind_text.get_width() // 2, HEIGHT // 2 - 200))
 
         for i, (action, key) in enumerate(key_bindings.items()):
-            # Render the action text
             action_text = retro_font.render(f"{action}: {pygame.key.name(key)}", True, WHITE)
             action_position = (WIDTH // 2 - action_text.get_width() // 2, positions[i])
             screen.blit(action_text, action_position)
 
-            # Check if the rebind button is clicked
             if selected_action != action:
                 button_text = f"Rebind {action.capitalize()}"
                 button_position = (WIDTH // 2 - 125, positions[i] + 30)
@@ -313,14 +350,12 @@ def rebindable_keys_screen():
 
 
 
-        # Display error message if any
         if error_message:
             error_text = retro_font.render(error_message, True, (255, 0, 0))
             screen.blit(error_text, (WIDTH // 2 - error_text.get_width() // 2, HEIGHT // 2 + 200))
-            if pygame.time.get_ticks() - error_message_timer > 2000:  # Display error for 2 seconds
+            if pygame.time.get_ticks() - error_message_timer > 2000:
                 error_message = None
 
-        # Update the display and tick the clock
         pygame.display.flip()
         clock.tick(120)
 
@@ -370,16 +405,18 @@ def start_game():
 def pause_game():
     global IS_MUTED
     paused = True
-    pause_text = retro_font.render("Game Paused. Press 'R' to Restart.", True, WHITE)
+    pause_text = retro_font.render("Game Paused. Press 'p' to Resume or 'ESC' to Quit.", True, WHITE)
     while paused:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r:
-                    initialize_game()
+                if event.key == pygame.K_p:
                     paused = False
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
                 if event.key == pygame.K_m:
                     IS_MUTED = not IS_MUTED
                     if IS_MUTED:
@@ -389,7 +426,7 @@ def pause_game():
                         pygame.mixer.music.unpause()
                         pygame.mixer.unpause()
 
-        screen.fill((0, 0, 0))
+        screen.fill((20, 20, 30))
         screen.blit(pause_text, (WIDTH // 2 - pause_text.get_width() // 2, HEIGHT // 2 - pause_text.get_height() // 2))
         pygame.display.flip()
         clock.tick(120)
@@ -467,17 +504,22 @@ def draw_game(player_name, player_pos, power_up_bar, score, current_player):
     screen.blit(name_text, (WIDTH - name_text.get_width() - 10, 10))
     score_text = retro_font.render(f"Score: {score}", True, WHITE)
     screen.blit(score_text, (10, 10))
-    high_score_text = retro_font.render(f"High Score: {current_player.high_score}", True, WHITE)
+    high_score_text = retro_font.render(f"High Score: {high_scores.get(player_name, 0)}", True, WHITE)
     screen.blit(high_score_text, (10, 50))
     pygame.draw.rect(screen, (255, 215, 0), (10, 90, power_up_bar, 20))
     screen.blit(player_image, (player_pos[0], player_pos[1]))
     draw_entities(enemy_image, enemy_list)
     draw_entities(bullet_image, bullets)
+    for power_up in power_ups:
+        if power_up["type"] == "health":
+            screen.blit(health_power_up_image, (power_up["pos"][0], power_up["pos"][1]))
+        elif power_up["type"] == "rapid_fire":
+            screen.blit(rapid_fire_power_up_image, (power_up["pos"][0], power_up["pos"][1]))
     pygame.display.flip()
 
-def initialize_game():
+def initialize_game(player_name):
     global player, score, high_score, enemies, bullets, power_ups
-    player = Player()
+    player = Player(player_name)
     score = 0
     high_score = 0
     enemies = []
@@ -485,12 +527,13 @@ def initialize_game():
     power_ups = []
 
 def main_game(player_name):
-    global score, high_score, enemy_list, bullets, leaderboard, current_player
+    global score, high_score, enemy_list, bullets, leaderboard, current_player, power_ups, player_health, rapid_fire_active, rapid_fire_start_time, last_power_up_time
     score = 0
     game_over = False
     player_pos = [WIDTH // 2, HEIGHT - PLAYER_SIZE]
     bullets = []
     enemy_list = []
+    power_ups = []
     last_shot_time = 0
     power_up_active = False
     player_health = 1
@@ -499,6 +542,7 @@ def main_game(player_name):
     rapid_fire_active = False
     rapid_fire_start_time = 0
     bullet_count = 1
+    last_power_up_time = 0
 
     if current_player is None:
         current_player = Player(player_name)
@@ -532,6 +576,9 @@ def main_game(player_name):
         drop_enemies(enemy_list)
         update_positions(enemy_list, ENEMY_DROP_SPEED)
         update_positions(bullets, 15, is_bullet=True)
+        drop_power_ups(power_ups)
+        update_power_up_positions(power_ups)
+        check_power_up_collisions(player_pos, power_ups)
 
         if score > 0 and score % 10 == 0 and not power_up_active:
             power_up_active = True
@@ -563,6 +610,7 @@ def main_game(player_name):
             score += 1
             kills += 1
             enemy_hit_sound.play()
+            update_score(player_name, score)
 
         if kills >= 20 and not rapid_fire_active:
             rapid_fire_active = True
@@ -652,7 +700,7 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     retro_font = pygame.font.SysFont("monospace", 30)
 
-    pygame.mixer.music.load("c:/Users/Rvkko's computer/Downloads/Megaman 3 Theme.mp3")
+    pygame.mixer.music.load(r"c:\Users\Rvkko's computer\Documents\GitHub\Rvkko\Game-dev\90s game files\Megaman 3 Theme.mp3")
     pygame.mixer.music.play(-1)
 
     main()
