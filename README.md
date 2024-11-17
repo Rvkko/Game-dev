@@ -75,4 +75,4 @@ python number_guessing_game.py
 
 ---
 
-## 🎉 Enjoy These Games!
+## 🎉 Enjoy!
