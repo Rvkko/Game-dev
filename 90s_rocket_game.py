@@ -22,6 +22,9 @@ POWER_UP_DROP_SPEED = 2
 POWER_UP_TYPES = ["health", "rapid_fire"]
 last_power_up_time = 0
 POWER_UP_DROP_INTERVAL = 5000
+MAX_HEALTH = 3
+player_health = MAX_HEALTH
+player_shield = False
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Galactic Shooter !!!")
@@ -165,10 +168,19 @@ def check_power_up_collisions(player_pos, power_ups):
             apply_power_up_effect(power_up["type"])
             power_ups.remove(power_up)        
 
+def healthbar(current_health):
+    bar_length = 200
+    bar_height = 20
+    fill = (current_health / MAX_HEALTH) * bar_length
+    outline_rect = pygame.Rect(10, 90, bar_length, bar_height)  # Adjusted position
+    fill_rect = pygame.Rect(10, 90, fill, bar_height)  # Adjusted position
+    pygame.draw.rect(screen, (255, 0, 0), fill_rect)
+    pygame.draw.rect(screen, (255, 255, 255), outline_rect, 2)
+    
 def apply_power_up_effect(power_up_type):
-    global player_health, rapid_fire_active, rapid_fire_start_time
+    global player_health, player_shield, rapid_fire_active, rapid_fire_start_time
     if power_up_type == "health":
-        player_health = min(player_health + 1, 3)
+        player_shield = True  # Activate shield
     elif power_up_type == "rapid_fire":
         rapid_fire_active = True
         rapid_fire_start_time = pygame.time.get_ticks()
@@ -506,7 +518,8 @@ def draw_game(player_name, player_pos, power_up_bar, score, current_player):
     screen.blit(score_text, (10, 10))
     high_score_text = retro_font.render(f"High Score: {high_scores.get(player_name, 0)}", True, WHITE)
     screen.blit(high_score_text, (10, 50))
-    pygame.draw.rect(screen, (255, 215, 0), (10, 90, power_up_bar, 20))
+    healthbar(player_health)  # Draw the health bar below the high scores text
+    pygame.draw.rect(screen, (255, 215, 0), (10, 130, power_up_bar, 20))  # Adjusted position
     screen.blit(player_image, (player_pos[0], player_pos[1]))
     draw_entities(enemy_image, enemy_list)
     draw_entities(bullet_image, bullets)
@@ -527,7 +540,7 @@ def initialize_game(player_name):
     power_ups = []
 
 def main_game(player_name):
-    global score, high_score, enemy_list, bullets, leaderboard, current_player, power_ups, player_health, rapid_fire_active, rapid_fire_start_time, last_power_up_time
+    global score, high_score, enemy_list, bullets, leaderboard, current_player, power_ups, player_health, player_shield, rapid_fire_active, rapid_fire_start_time, last_power_up_time
     score = 0
     game_over = False
     player_pos = [WIDTH // 2, HEIGHT - PLAYER_SIZE]
@@ -536,7 +549,8 @@ def main_game(player_name):
     power_ups = []
     last_shot_time = 0
     power_up_active = False
-    player_health = 1
+    player_health = MAX_HEALTH
+    player_shield = False
     power_up_bar = 0
     kills = 0
     rapid_fire_active = False
@@ -592,16 +606,19 @@ def main_game(player_name):
                 player_health = 1
                 power_up_bar = 0
 
+        # Add collision detection and health/shield logic here
         collision = check_collision(enemy_list, [player_pos], ENEMY_SIZE, PLAYER_SIZE)
         if collision:
-            if player_health > 1:
-                player_health -= 1
-                power_up_active = False
-                del enemy_list[collision[0]]
+            if player_shield:
+                player_shield = False  # Shield absorbs the hit
             else:
-                player_hit_sound.play()
-                game_over = True
-                player_death()
+                player_health -= 1
+                if player_health <= 0:
+                    player_hit_sound.play()
+                    game_over = True
+                    player_death()
+                else:
+                    del enemy_list[collision[0]]
 
         if check_collision(bullets, enemy_list, BULLET_SIZE, ENEMY_SIZE):
             bullet_idx, enemy_idx = check_collision(bullets, enemy_list, BULLET_SIZE, ENEMY_SIZE)
