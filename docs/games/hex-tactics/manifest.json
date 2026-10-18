@@ -1,0 +1,147 @@
+{
+  "id": "hex-tactics",
+  "title": "Hex Tactics",
+  "category": "arcade",
+  "tags": [
+    "tactics",
+    "turn-based",
+    "hex",
+    "strategy",
+    "procedural",
+    "squad"
+  ],
+  "stack": "three.js + cannon-es + WebGL + WebAudio",
+  "entry": "games/hex-tactics/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Command a squad on a procedurally generated 3D hex battlefield. Use height, cover and abilities to wipe out AI squads across an escalating wave campaign, level your soldiers, and beat the daily seeded skirmish.",
+  "achievements": [
+    {
+      "id": "first-blood",
+      "title": "First Blood",
+      "desc": "Score your squad's first kill",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-victory",
+      "title": "Ground Secured",
+      "desc": "Win your first skirmish",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "high-ground",
+      "title": "High Ground",
+      "desc": "Kill an enemy while standing on elevated terrain",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "sniper-elite",
+      "title": "Sniper Elite",
+      "desc": "Snipe a kill at range 6 or more",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "medic-touch",
+      "title": "Combat Medic",
+      "desc": "Heal a squadmate mid-battle",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "clean-sweep",
+      "title": "Clean Sweep",
+      "desc": "Win a skirmish without losing a single unit",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "overwatch-kill",
+      "title": "I've Got You Covered",
+      "desc": "Kill an enemy with an Overwatch reaction shot",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "grenade-master",
+      "title": "Fire in the Hole",
+      "desc": "Kill 2+ enemies with a single grenade",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "clutch",
+      "title": "Clutch",
+      "desc": "Win a skirmish with a unit at 20% HP or less",
+      "rarity": "rare",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "veteran",
+      "title": "Veteran",
+      "desc": "Get a unit to level 5",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "wave-5",
+      "title": "Deep Insertion",
+      "desc": "Reach wave 5 in a single campaign run",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "nightmare-win",
+      "title": "Nightmare Fuel",
+      "desc": "Win a skirmish on Nightmare difficulty",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "daily-challenge",
+      "title": "Daily Grind",
+      "desc": "Complete a daily seeded challenge",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "century",
+      "title": "Century",
+      "desc": "Rack up 100 career kills",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    }
+  ]
+}

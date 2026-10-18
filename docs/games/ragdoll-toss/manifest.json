@@ -1,0 +1,49 @@
+{
+  "id": "ragdoll-toss",
+  "title": "Ragdoll Toss",
+  "category": "arcade",
+  "tags": [
+    "physics",
+    "launch",
+    "score-attack",
+    "upgrades"
+  ],
+  "stack": "canvas 2D",
+  "entry": "games/ragdoll-toss/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Charge the cannon, pick your angle and fling a crash dummy down a 1,000-metre course. Steer in flight, chain bounce pads, spend collected coins on permanent cannon upgrades, and clear the Moon Gate.",
+  "achievements": [
+    {
+      "id": "victory",
+      "title": "Launch Champion",
+      "desc": "Complete the Moon Gate challenge."
+    },
+    {
+      "id": "first-launch",
+      "title": "Cleared for Launch",
+      "desc": "Launch the dummy."
+    },
+    {
+      "id": "boost",
+      "title": "Afterburner",
+      "desc": "Use an air boost."
+    },
+    {
+      "id": "coin-collector",
+      "title": "Coin Collector",
+      "desc": "Collect ten course coins."
+    },
+    {
+      "id": "first-throw",
+      "title": "Flight Logged",
+      "desc": "Complete a throw."
+    },
+    {
+      "id": "moon-gate",
+      "title": "Moon Gate",
+      "desc": "Travel 1,000 meters."
+    }
+  ]
+}

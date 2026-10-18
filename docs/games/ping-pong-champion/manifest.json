@@ -1,0 +1,64 @@
+{
+  "id": "ping-pong-champion",
+  "title": "Ping Pong Champion",
+  "category": "sports",
+  "tags": [
+    "table-tennis",
+    "ping-pong",
+    "spin",
+    "tournament"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/ping-pong-champion/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A four-round table tennis tour with rallies, paddle positioning, timed smashes, topspin, backspin and increasingly capable opponents.",
+  "achievements": [
+    {
+      "id": "first_point",
+      "title": "On the Table",
+      "desc": "Win your first point.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "smash_winner",
+      "title": "Unreturnable",
+      "desc": "Score with a smash.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "rally_fifteen",
+      "title": "Endless Exchange",
+      "desc": "Reach a fifteen-hit rally.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "shutout",
+      "title": "Seven Love",
+      "desc": "Win a match without conceding a point.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "table_champ",
+      "title": "Table Champion",
+      "desc": "Win the full four-round tour.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

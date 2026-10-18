@@ -1,0 +1,111 @@
+{
+  "id": "minefield-classic",
+  "title": "Minefield Classic",
+  "category": "puzzle",
+  "tags": [
+    "minesweeper",
+    "logic",
+    "puzzle",
+    "classic",
+    "no-guess",
+    "speedrun"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/minefield-classic/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Full-fat Minesweeper: guaranteed-safe first click, flood reveal, chording, question marks, three classic presets plus custom boards, a real no-guess board generator driven by a constraint solver, a seeded Daily Board, 3BV/efficiency scoring and best-time records per preset.",
+  "achievements": [
+    {
+      "id": "first_clear",
+      "title": "Field Cleared",
+      "desc": "Clear your first minefield.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "beginner_ace",
+      "title": "Beginner Ace",
+      "desc": "Clear a Beginner board in under 10 seconds.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "intermediate_ace",
+      "title": "Intermediate Ace",
+      "desc": "Clear an Intermediate board in under 60 seconds.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "expert_ace",
+      "title": "Expert Ace",
+      "desc": "Clear an Expert board in under 250 seconds.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "flagless_win",
+      "title": "No Flags Needed",
+      "desc": "Clear an Intermediate or larger board without placing a single flag.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "chord_100",
+      "title": "Chord Progression",
+      "desc": "Perform 100 successful chord clicks.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "noguess_expert",
+      "title": "Pure Logic",
+      "desc": "Clear an Expert board in No-Guess mode.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "clear_25",
+      "title": "Veteran Sweeper",
+      "desc": "Clear 25 minefields.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "streak_5",
+      "title": "Steady Hands",
+      "desc": "Win 5 boards in a row without a loss.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "perfect_efficiency",
+      "title": "Not One Wasted Click",
+      "desc": "Clear an Intermediate or larger board at 100% efficiency.",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "mech-arena",
+  "title": "Mech Arena: Steel Reign",
+  "category": "action",
+  "tags": [
+    "mechs",
+    "arena",
+    "loadouts",
+    "upgrades"
+  ],
+  "stack": "canvas",
+  "entry": "games/mech-arena/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Pilot three distinct war machines through a six-contract arena campaign with modular loadouts, upgrade drafts, rival aces, and colossal bosses.",
+  "achievements": [
+    {
+      "id": "first-contract",
+      "title": "First Contract",
+      "desc": "Win your first arena contract."
+    },
+    {
+      "id": "ace-pilot",
+      "title": "Ace Pilot",
+      "desc": "Finish an arena above half armor."
+    },
+    {
+      "id": "fully-modded",
+      "title": "Fully Modded",
+      "desc": "Install five upgrades in one run."
+    },
+    {
+      "id": "titan-fallen",
+      "title": "Titan Fallen",
+      "desc": "Destroy the Atlas Titan."
+    }
+  ]
+}

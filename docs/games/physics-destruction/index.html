@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Physics Destruction Arena 3D</title>
+<style>
+:root{
+  --bg:#0b0e14; --panel:#141a26; --panel2:#1b2333; --line:#2a3550;
+  --txt:#e8eefc; --dim:#8fa0c0; --accent:#3ec6ff; --accent2:#ff9d3e;
+  --good:#5aff8f; --bad:#ff5a6e; --gold:#ffd24a;
+  --ts:1;
+}
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
+  font-family:"Segoe UI",system-ui,sans-serif;font-size:calc(15px*var(--ts))}
+#game{position:absolute;inset:0;display:block;background:#0b0e14}
+button{font:inherit;color:var(--txt);background:var(--panel2);border:1px solid var(--line);
+  border-radius:8px;padding:.55em 1.2em;cursor:pointer;transition:background .12s,border-color .12s,transform .06s}
+button:hover{background:#26314a;border-color:var(--accent)}
+button:active{transform:scale(.97)}
+button.primary{background:var(--accent);color:#04121c;border-color:var(--accent);font-weight:700}
+button.primary:hover{background:#6ad4ff}
+button:disabled{opacity:.45;cursor:default;border-color:var(--line)}
+button:disabled:hover{background:var(--panel2)}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(6,9,15,.82);backdrop-filter:blur(6px);z-index:20}
+.hidden{display:none!important}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;
+  min-width:340px;max-width:min(760px,92vw);max-height:88vh;overflow-y:auto;box-shadow:0 18px 60px rgba(0,0,0,.55)}
+h1{font-size:1.9em;letter-spacing:.04em}
+h2{font-size:1.25em;margin-bottom:.6em;color:var(--accent)}
+.sub{color:var(--dim);font-size:.85em}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.spread{justify-content:space-between}
+.col{display:flex;flex-direction:column;gap:10px}
+/* ------- HUD ------- */
+#hud{position:absolute;inset:0;pointer-events:none;z-index:10}
+#hudTop{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start}
+.hudBox{background:rgba(11,14,20,.7);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+#hpOuter{width:220px;height:14px;background:#0a0d13;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-top:4px}
+#hpBar{height:100%;width:100%;background:linear-gradient(90deg,#37e07a,#5aff8f);transition:width .15s}
+#hpBar.low{background:linear-gradient(90deg,#e03a4e,#ff5a6e)}
+#waveLabel{font-weight:700;font-size:1.1em;text-align:center}
+#waveSub{color:var(--dim);font-size:.8em;text-align:center}
+#scrapLabel{color:var(--gold);font-weight:700}
+#comboLabel{color:var(--accent2);font-weight:700;font-size:.9em;min-height:1.2em}
+#weaponBox{position:absolute;bottom:14px;left:14px;display:flex;gap:8px;align-items:flex-end}
+.wslot{background:rgba(11,14,20,.72);border:1px solid var(--line);border-radius:10px;padding:6px 10px;min-width:86px;text-align:center;opacity:.55}
+.wslot.active{opacity:1;border-color:var(--accent);box-shadow:0 0 12px rgba(62,198,255,.25)}
+.wslot .wname{font-size:.75em;color:var(--dim)}
+.wslot .wammo{font-weight:700;font-size:1.05em}
+.wslot .wkey{font-size:.7em;color:var(--accent)}
+#bossBar{position:absolute;top:56px;left:50%;transform:translateX(-50%);width:min(520px,70vw);display:none}
+#bossBar .name{text-align:center;font-weight:700;color:#d98cff;margin-bottom:3px;text-shadow:0 0 8px rgba(180,80,255,.6)}
+#bossHpOuter{height:14px;background:#0a0d13;border:1px solid #6b3a8f;border-radius:7px;overflow:hidden}
+#bossHp{height:100%;width:100%;background:linear-gradient(90deg,#8f2fd4,#d98cff)}
+#announcer{position:absolute;top:26%;width:100%;text-align:center;font-size:2.2em;font-weight:800;
+  letter-spacing:.08em;text-shadow:0 0 18px rgba(62,198,255,.5);opacity:0;transition:opacity .25s}
+#toast{position:absolute;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(11,14,20,.85);
+  border:1px solid var(--gold);color:var(--gold);padding:8px 18px;border-radius:10px;opacity:0;transition:opacity .3s;font-weight:600}
+#crosshair{position:absolute;left:50%;top:50%;width:22px;height:22px;transform:translate(-50%,-50%);z-index:11;pointer-events:none;display:none}
+#crosshair:before,#crosshair:after{content:"";position:absolute;background:rgba(232,238,252,.9)}
+#crosshair:before{left:50%;top:0;width:2px;height:100%;transform:translateX(-50%)}
+#crosshair:after{top:50%;left:0;height:2px;width:100%;transform:translateY(-50%)}
+#lockHint{position:absolute;bottom:44px;width:100%;text-align:center;color:var(--dim);font-size:.85em;z-index:11;pointer-events:none;display:none}
+/* ------- Menus ------- */
+.menuTitle{font-size:2.4em;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.03em}
+.diffBtn{flex:1;min-width:110px;text-align:center}
+.diffBtn.sel{border-color:var(--accent2);background:#2c2416;color:var(--accent2);font-weight:700}
+.shopGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:12px 0}
+.shopCard{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.shopCard .t{font-weight:700}
+.shopCard .d{color:var(--dim);font-size:.8em;flex:1}
+.shopCard button{margin-top:6px;padding:.35em .8em}
+.shopCard.owned{border-color:var(--good)}
+.price{color:var(--gold);font-weight:700}
+.statLine{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line);font-size:.92em}
+.statLine span:last-child{font-weight:700;color:var(--accent)}
+.kbd{display:inline-block;background:#0a0d13;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;
+  padding:0 .45em;font-size:.85em;font-family:Consolas,monospace;color:var(--accent)}
+.ctrlGrid{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:.9em;margin-top:8px}
+.ctrlGrid .a{color:var(--dim);text-align:right}
+#dmgVignette{position:absolute;inset:0;pointer-events:none;z-index:9;opacity:0;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(255,40,60,.45) 100%);transition:opacity .25s}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="dmgVignette"></div>
+<div id="crosshair"></div>
+<div id="lockHint">Click to capture the mouse</div>
+
+<div id="hud" class="hidden">
+  <div id="hudTop">
+    <div class="hudBox">
+      <div class="row spread"><span id="hpText">100 / 100</span><span id="comboLabel"></span></div>
+      <div id="hpOuter"><div id="hpBar"></div></div>
+    </div>
+    <div class="hudBox"><div id="waveLabel">WAVE 1</div><div id="waveSub">enemies left: 0</div></div>
+    <div class="hudBox"><div id="scrapLabel">⚙ 0</div><div class="sub" id="coreLabel">◆ 0 cores</div></div>
+  </div>
+  <div id="bossBar"><div class="name" id="bossName">DEMOLITION KING</div><div id="bossHpOuter"><div id="bossHp"></div></div></div>
+  <div id="weaponBox"></div>
+  <div id="announcer"></div>
+  <div id="toast"></div>
+</div>
+
+<!-- MAIN MENU -->
+<div id="menu" class="overlay">
+  <div class="panel col" style="text-align:center;min-width:420px">
+    <div class="menuTitle">PHYSICS DESTRUCTION ARENA</div>
+    <div class="sub">True-3D wave survival. Shatter everything. Ragdolls guaranteed.</div>
+    <div class="row" style="margin-top:14px">
+      <button class="diffBtn sel" data-diff="easy">EASY</button>
+      <button class="diffBtn" data-diff="normal">NORMAL</button>
+      <button class="diffBtn" data-diff="hard">HARD</button>
+    </div>
+    <button id="btnPlay" class="primary" style="font-size:1.15em;margin-top:6px">NEW RUN</button>
+    <button id="btnContinue" class="hidden">CONTINUE RUN</button>
+    <button id="btnDaily">DAILY CHALLENGE <span class="sub" id="dailyTag"></span></button>
+    <div class="row" style="justify-content:center">
+      <button id="btnUpgrades">◆ META UPGRADES</button>
+      <button id="btnHow">HOW TO PLAY</button>
+    </div>
+    <div class="sub" id="menuStats"></div>
+  </div>
+</div>
+
+<!-- META UPGRADES -->
+<div id="metaMenu" class="overlay hidden">
+  <div class="panel">
+    <h2>META UPGRADES <span class="sub">— permanent, bought with <span style="color:var(--accent)">◆ cores</span> earned each run</span></h2>
+    <div class="sub" style="margin-bottom:8px">Cores available: <b id="metaCores" style="color:var(--accent)">0</b></div>
+    <div class="shopGrid" id="metaGrid"></div>
+    <div class="row spread"><span></span><button id="metaBack">BACK</button></div>
+  </div>
+</div>
+
+<!-- HOW TO PLAY -->
+<div id="howMenu" class="overlay hidden">
+  <div class="panel">
+    <h2>HOW TO PLAY</h2>
+    <p class="sub">Survive 10 waves in a fully destructible 3D arena. Kill enemies for <span style="color:var(--gold)">⚙ scrap</span>, spend it in the shop between waves. Wave 10 is the boss. Dying ends the run but earns <span style="color:var(--accent)">◆ cores</span> for permanent upgrades.</p>
+    <div class="ctrlGrid">
+      <span class="a">Move</span><span><span class="kbd">W</span><span class="kbd">A</span><span class="kbd">S</span><span class="kbd">D</span> — W is forward</span>
+      <span class="a">Look</span><span>Mouse (non-inverted — mouse up looks up)</span>
+      <span class="a">Jump</span><span class="a2"><span class="kbd">Space</span></span>
+      <span class="a">Sprint</span><span><span class="kbd">Shift</span> (hold)</span>
+      <span class="a">Fire</span><span><span class="kbd">Left Click</span></span>
+      <span class="a">Aim / zoom</span><span><span class="kbd">Right Click</span> (hold)</span>
+      <span class="a">Weapons</span><span><span class="kbd">1</span>–<span class="kbd">4</span>, <span class="kbd">Q</span> or wheel to cycle</span>
+      <span class="a">Reload</span><span class="a2"><span class="kbd">R</span></span>
+      <span class="a">Interact / open shop</span><span class="a2"><span class="kbd">E</span> (after a wave is cleared)</span>
+      <span class="a">Camera toggle</span><span><span class="kbd">V</span> — 3rd / 1st person</span>
+      <span class="a">Loadout &amp; stats</span><span><span class="kbd">Tab</span> or <span class="kbd">I</span></span>
+      <span class="a">Pause</span><span><span class="kbd">Esc</span> or <span class="kbd">P</span></span>
+      <span class="a">Gamepad</span><span>LS move · RS look (non-inverted) · A jump · RT fire · LT aim · LB/RB weapon · X interact · Y reload · LS-click sprint · Start pause</span>
+    </div>
+    <div class="row spread" style="margin-top:14px"><span></span><button id="howBack">BACK</button></div>
+  </div>
+</div>
+
+<!-- SHOP (between waves) -->
+<div id="shop" class="overlay hidden">
+  <div class="panel">
+    <div class="row spread">
+      <h2 id="shopTitle">WAVE CLEARED</h2>
+      <div>Scrap: <span class="price" id="shopScrap">0</span></div>
+    </div>
+    <div class="shopGrid" id="shopGrid"></div>
+    <div class="row spread">
+      <span class="sub">Ammo refilled free. Next wave won't be gentle.</span>
+      <button id="btnNextWave" class="primary">START WAVE <span id="nextWaveNum"></span> ➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAUSE -->
+<div id="pause" class="overlay hidden">
+  <div class="panel col" style="text-align:center">
+    <h2>PAUSED</h2>
+    <button id="btnResume" class="primary">RESUME</button>
+    <div class="row" style="justify-content:center">
+      <button id="btnMusic">MUSIC: ON</button>
+      <button id="btnSfx">SFX: ON</button>
+    </div>
+    <button id="btnRestart">RESTART RUN</button>
+    <button id="btnQuit">SAVE &amp; QUIT TO MENU</button>
+    <div class="sub" id="pauseStats"></div>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div id="inv" class="overlay hidden">
+  <div class="panel" style="min-width:420px">
+    <h2>LOADOUT &amp; RUN STATS</h2>
+    <div id="invBody"></div>
+    <div class="row spread" style="margin-top:12px"><span class="sub">Tab / I / Esc to close</span><button id="invBack">CLOSE</button></div>
+  </div>
+</div>
+
+<!-- GAME OVER / VICTORY -->
+<div id="endScreen" class="overlay hidden">
+  <div class="panel col" style="text-align:center;min-width:420px">
+    <h1 id="endTitle">RUN OVER</h1>
+    <div id="endBody"></div>
+    <button id="btnEndMenu" class="primary">BACK TO MENU</button>
+    <button id="btnEndRetry">RUN IT BACK</button>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script type="module">
+  (async () => {
+    const THREE = await import('../../vendor/three.module.js');
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = '../../vendor/three-r128/GLTFLoader.js';
+      s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+    });
+    await import('./game.js');
+  })().catch((error) => { console.error('Physics Destruction bootstrap failed:', error); });
+</script>
+<noscript>This game requires JavaScript.</noscript>
+</body>
+</html>

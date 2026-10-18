@@ -1,0 +1,65 @@
+{
+  "id": "cafe-empire",
+  "title": "Cafe Empire",
+  "category": "simulation",
+  "tags": [
+    "restaurant",
+    "time-management",
+    "cooking",
+    "campaign",
+    "upgrades"
+  ],
+  "stack": "dom",
+  "entry": "games/cafe-empire/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Run an eight-day neighborhood cafe campaign: read tickets, perform recipe steps, manage customer patience, meet daily targets, and reinvest profits into lasting upgrades.",
+  "achievements": [
+    {
+      "id": "first-service",
+      "title": "First Service",
+      "desc": "Serve your first correct order.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "perfect-day",
+      "title": "Five-Star Shift",
+      "desc": "Finish a day without losing a customer.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "combo-five",
+      "title": "Kitchen Rhythm",
+      "desc": "Serve five orders in one combo.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "fully-upgraded",
+      "title": "Dream Kitchen",
+      "desc": "Buy every cafe upgrade.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "cafe-champion",
+      "title": "Neighborhood Icon",
+      "desc": "Complete the eight-day campaign.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "deckbound-rogue",
+  "title": "Deckbound Rogue",
+  "category": "strategy",
+  "tags": [
+    "cards",
+    "roguelike",
+    "deckbuilding",
+    "boss"
+  ],
+  "stack": "dom",
+  "entry": "games/deckbound-rogue/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Climb a branching five-room spire by drafting cards, reading enemy intents, collecting relics, and defeating the Ash Tyrant boss.",
+  "achievements": [
+    {
+      "id": "first-victory",
+      "title": "First Blood",
+      "desc": "Win your first combat."
+    },
+    {
+      "id": "perfect-guard",
+      "title": "Untouched",
+      "desc": "Win a combat without losing health."
+    },
+    {
+      "id": "decksmith",
+      "title": "Decksmith",
+      "desc": "Grow your deck to 14 cards."
+    },
+    {
+      "id": "spire-cleared",
+      "title": "Deckbound",
+      "desc": "Defeat the Ash Tyrant."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "emberfall-story",
+  "title": "Emberfall",
+  "category": "adventure",
+  "tags": [
+    "story",
+    "adventure",
+    "choices",
+    "exploration"
+  ],
+  "stack": "canvas",
+  "entry": "games/emberfall-story/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A branching fantasy journey across four hand-built regions, with exploration, moral choices, multiple endings, and persistent saves.",
+  "achievements": [
+    {
+      "id": "first-flame",
+      "title": "First Flame",
+      "desc": "Accept the sun spark."
+    },
+    {
+      "id": "kind-heart",
+      "title": "Kind Heart",
+      "desc": "Choose mercy twice."
+    },
+    {
+      "id": "seeker",
+      "title": "Seeker",
+      "desc": "Find every hidden memory."
+    },
+    {
+      "id": "new-dawn",
+      "title": "A New Dawn",
+      "desc": "Complete the story."
+    }
+  ]
+}

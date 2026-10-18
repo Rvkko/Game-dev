@@ -1,0 +1,44 @@
+{
+  "id": "home-run-derby",
+  "title": "Home Run Derby",
+  "category": "sports",
+  "tags": [
+    "baseball",
+    "timing",
+    "arcade",
+    "career"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/home-run-derby/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A pitch-reading baseball derby with timing, zone aiming, spray direction, flight distance, ten-out rounds and persistent career records.",
+  "achievements": [
+    {
+      "id": "first_homer",
+      "title": "Gone",
+      "desc": "Hit your first home run."
+    },
+    {
+      "id": "moonshot",
+      "title": "Moonshot",
+      "desc": "Hit a 450-foot home run."
+    },
+    {
+      "id": "three_straight",
+      "title": "On Fire",
+      "desc": "Hit three home runs in a row."
+    },
+    {
+      "id": "all_fields",
+      "title": "All Fields",
+      "desc": "Homer to left, center and right in one round."
+    },
+    {
+      "id": "derby_king",
+      "title": "Derby King",
+      "desc": "Win a derby round."
+    }
+  ]
+}

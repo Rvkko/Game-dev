@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ragdoll Toss</title>
+<style>
+:root{color-scheme:dark;--bg:#070b14;--line:#263755;--text:#edf4ff;--muted:#91a3c4;--accent:#62e6ff;--gold:#ffc857;--bad:#ff6478}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI",system-ui,sans-serif}
+button{font:inherit;color:var(--text);background:#18243a;border:1px solid var(--line);border-radius:9px;
+  padding:9px 13px;cursor:pointer}
+button:hover:not(:disabled){border-color:var(--accent)}
+button:disabled{opacity:.42;cursor:default}
+button.primary{background:linear-gradient(135deg,#24bad8,#6b72ff);border:0;font-weight:800}
+#game{display:block;width:100%;height:100%;outline:0;touch-action:none}
+#hud{position:fixed;top:12px;left:12px;right:12px;z-index:5;display:flex;gap:10px;align-items:flex-start;
+  justify-content:space-between;flex-wrap:wrap;pointer-events:none}
+#hud .box{pointer-events:auto;background:rgba(9,14,25,.88);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+#status{font-weight:700}
+#stats{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+#hudbtns{display:flex;gap:6px;flex-wrap:wrap;pointer-events:auto}
+#hudbtns button{padding:7px 11px;font-size:13px}
+#hint{position:fixed;left:12px;bottom:12px;z-index:5;color:var(--muted);font-size:12px;
+  background:rgba(9,14,25,.8);border:1px solid var(--line);border-radius:9px;padding:7px 11px}
+#hint b{color:var(--accent)}
+.overlay{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(3,6,12,.85);
+  backdrop-filter:blur(8px);overflow-y:auto;padding:18px}
+.hidden{display:none!important}
+.overlay section{width:min(620px,calc(100vw - 30px));padding:30px;border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(145deg,#14213a,#0d1525);box-shadow:0 25px 80px #000b;text-align:center}
+.overlay h1{margin:4px 0 6px;font-size:clamp(34px,7vw,62px);letter-spacing:-.05em}
+.overlay h2{font-size:26px;margin:0 0 8px}
+.overlay p{color:var(--muted);line-height:1.6;margin:8px 0}
+.overlay button{margin:5px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.18em}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;text-align:left;font-size:14px;margin:12px 0}
+.keys kbd{background:#0b2c44;border:1px solid var(--line);border-radius:5px;padding:2px 8px;font:inherit;font-size:12px;text-align:center}
+.keys div{color:var(--muted)}
+#shopList{display:grid;gap:8px;margin:14px 0;text-align:left}
+.shopRow{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#111c2f;
+  border:1px solid var(--line);border-radius:11px;padding:10px 13px}
+.shopRow b{display:block;font-size:14px}
+.shopRow span{color:var(--muted);font-size:12px}
+.coin{color:var(--gold);font-weight:800}
+</style>
+</head>
+<body>
+<canvas id="game" tabindex="0" aria-label="Ragdoll Toss course"></canvas>
+
+<div id="hud" class="hidden">
+  <div class="box"><b id="status">—</b><span id="stats"></span></div>
+  <div id="hudbtns">
+    <button id="fire">Charge</button>
+    <button id="boost">Boost</button>
+    <button id="pause">Pause</button>
+    <button id="restart">Restart</button>
+    <button id="quit">Menu</button>
+  </div>
+</div>
+<div id="hint" class="hidden">Hold <b>Space</b> or the Charge button to power up, release to fire ·
+  <b>W/S</b> aim · <b>WASD</b> steer in flight · <b>Shift</b> boost · <b>Esc/P</b> pause · <b>R</b> restart</div>
+
+<!-- MAIN MENU -->
+<div id="menu" class="overlay">
+  <section>
+    <span class="eyebrow">PHYSICS ARCADE</span>
+    <h1>Ragdoll Toss</h1>
+    <p>Three throws per run. Charge the cannon, pick your angle, then steer the crash dummy through
+       coins and bounce pads all the way to the Moon Gate at 1,000 metres.</p>
+    <button id="play" class="primary">Load Cannon</button>
+    <button id="shopBtn">Upgrades</button>
+    <button id="how">How to Play</button>
+    <p class="eyebrow" id="menuStats"></p>
+  </section>
+</div>
+
+<!-- UPGRADES -->
+<div id="shop" class="overlay hidden">
+  <section>
+    <h2>Cannon Upgrades</h2>
+    <p>Coins you collect on the course are permanent. Spend them here — you will need the extra
+       muscle to clear 1,000 metres.</p>
+    <p class="eyebrow">BANK: <span class="coin" id="shopCoins">0</span> COINS</p>
+    <div id="shopList"></div>
+    <button id="shopBack" class="primary">Back</button>
+  </section>
+</div>
+
+<!-- HELP -->
+<div id="help" class="overlay hidden">
+  <section>
+    <h2>How to Play</h2>
+    <div class="keys">
+      <kbd>W / S</kbd><div>Raise or lower the cannon angle (while aiming)</div>
+      <kbd>Space</kbd><div>Hold to charge, release to launch</div>
+      <kbd>Click / Hold</kbd><div>Same as Space — charge and release on the course</div>
+      <kbd>W A S D</kbd><div>Steer in flight (burns air control fuel)</div>
+      <kbd>Shift</kbd><div>Air boost — a hard kick forward and up</div>
+      <kbd>Esc</kbd><div>Pause / resume</div>
+      <kbd>P</kbd><div>Pause / resume</div>
+      <kbd>R</kbd><div>Restart the run</div>
+    </div>
+    <p>Land on an orange bounce pad and you get launched again instead of skidding to a stop.
+       Every throw ends when the dummy stops moving; a run is three throws. Reach 1,000 metres
+       in a single throw to clear the Moon Gate.</p>
+    <button id="helpClose" class="primary">Back</button>
+  </section>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="overlay hidden">
+  <section>
+    <h2 id="resultTitle">—</h2>
+    <p id="resultText"></p>
+    <p class="eyebrow" id="resultScore"></p>
+    <button id="again" class="primary">Throw Again</button>
+    <button id="resultShop">Upgrades</button>
+    <button id="home">Main Menu</button>
+  </section>
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

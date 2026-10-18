@@ -1,0 +1,2659 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "games/registry.json",
+  "totalGames": 91,
+  "note": "Defines required runtime behavior; contracts are not completion proof until each game is playtested.",
+  "entries": [
+    {
+      "id": "solitaire-suite",
+      "category": "cards",
+      "visualTrack": "2d",
+      "physicsProfile": "card-drag+snap",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "deal",
+        "select",
+        "play",
+        "win",
+        "lose"
+      ],
+      "audioCues": [
+        "deal",
+        "select",
+        "confirm",
+        "win",
+        "lose",
+        "ambient"
+      ],
+      "voiceProfile": "table-host",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "asteroid-drift",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "dungeon-rpg",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "civ-god-sim",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "deep-ocean-survival",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ecosystem-sandbox",
+      "category": "flagship",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "gravity-lander",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "hex-tactics",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "physics-destruction",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ragdoll-toss",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "spaceflight-explorer",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "physicsProfile": "rigid-body+character-controller",
+      "ragdollProfile": "humanoids-and-creatures",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "movement",
+        "interaction",
+        "impact",
+        "discovery",
+        "success",
+        "ambient"
+      ],
+      "voiceProfile": "diegetic-narrator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "sudoku-master",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-snap+constraint",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "solve",
+        "fail",
+        "complete"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "invalid",
+        "solve",
+        "fail",
+        "ambient"
+      ],
+      "voiceProfile": "calm-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "tunnel-runner",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "soccer-penalty-pro",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "street-hoops",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "gridiron-drive",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "tennis-rally",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "neon-breach-fps",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "emberfall-story",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "turbo-apex-racer",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "skybound-platformer",
+      "category": "platformer",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "home-run-derby",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ice-hockey-showdown",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "championship-bowling",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "skatepark-legends",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "shadow-protocol",
+      "category": "stealth",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "dead-signal",
+      "category": "horror",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+hazards",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "stalk",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "footstep",
+        "threat",
+        "impact",
+        "stinger",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "whispered-handler",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ironfront-arena",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "frontier-odyssey",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "world-cup-soccer",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "mini-golf-tour",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "beach-volleyball",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ping-pong-champion",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "orbital-command",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-or-hex-placement",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory",
+        "ambient"
+      ],
+      "voiceProfile": "commander",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "kingdom-chess",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-or-hex-placement",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory",
+        "ambient"
+      ],
+      "voiceProfile": "commander",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "circuit-forge",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-snap+constraint",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "solve",
+        "fail",
+        "complete"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "invalid",
+        "solve",
+        "fail",
+        "ambient"
+      ],
+      "voiceProfile": "calm-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "metro-tycoon",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "cafe-empire",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "farmstead-seasons",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "fishing-legends",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "pet-rescue-clinic",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "breachpoint-ops",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "crypt-raiders",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "mech-arena",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "samurai-odyssey",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "rally-legends",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "superbike-circuit",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ocean-regatta",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "sky-aces",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "midnight-detective",
+      "category": "story",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "talk",
+        "interact",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "dialogue",
+        "interaction",
+        "impact",
+        "reveal",
+        "choice",
+        "ambient"
+      ],
+      "voiceProfile": "character-cast",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "starship-echoes",
+      "category": "story",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "talk",
+        "interact",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "dialogue",
+        "interaction",
+        "impact",
+        "reveal",
+        "choice",
+        "ambient"
+      ],
+      "voiceProfile": "character-cast",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "pirate-chronicles",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "dragonbound-legacy",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "beat-forge",
+      "category": "rhythm",
+      "visualTrack": "2d",
+      "physicsProfile": "timing-window",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "beat",
+        "miss",
+        "combo",
+        "complete"
+      ],
+      "audioCues": [
+        "beat",
+        "hit",
+        "miss",
+        "combo",
+        "complete",
+        "ambient"
+      ],
+      "voiceProfile": "hype-coach",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "deckbound-rogue",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-or-hex-placement",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory",
+        "ambient"
+      ],
+      "voiceProfile": "commander",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "neon-pinball",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "blast-maze",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "street-drift-underground",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "motocross-mayhem",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "hover-league-zero",
+      "category": "racing",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "alpine-rush",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "knockout-club",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "pro-wrestling-empire",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "cricket-championship",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "billiards-master",
+      "category": "sports",
+      "visualTrack": "2d",
+      "physicsProfile": "rigid-body+ballistic",
+      "ragdollProfile": "athletes-on-contact",
+      "animationStates": [
+        "idle",
+        "run",
+        "aim",
+        "strike",
+        "hit",
+        "celebrate"
+      ],
+      "audioCues": [
+        "footstep",
+        "strike",
+        "crowd",
+        "score",
+        "foul",
+        "ambient"
+      ],
+      "voiceProfile": "sports-commentator",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "neon-shmup",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "shadow-metroid",
+      "category": "platformer",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "rune-match-quest",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-snap+constraint",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "solve",
+        "fail",
+        "complete"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "invalid",
+        "solve",
+        "fail",
+        "ambient"
+      ],
+      "voiceProfile": "calm-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "fortress-defense",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-or-hex-placement",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "attack",
+        "capture",
+        "victory",
+        "ambient"
+      ],
+      "voiceProfile": "commander",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "typing-overdrive",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "twin-stick-onslaught",
+      "category": "action",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+projectiles",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "attack",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "weapon",
+        "impact",
+        "reload",
+        "alarm",
+        "victory",
+        "defeat"
+      ],
+      "voiceProfile": "tactical-radio",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "rogue-mines",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "synth-rider",
+      "category": "rhythm",
+      "visualTrack": "2d",
+      "physicsProfile": "timing-window",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "beat",
+        "miss",
+        "combo",
+        "complete"
+      ],
+      "audioCues": [
+        "beat",
+        "hit",
+        "miss",
+        "combo",
+        "complete",
+        "ambient"
+      ],
+      "voiceProfile": "hype-coach",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "cyber-noir-2088",
+      "category": "story",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "talk",
+        "interact",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "dialogue",
+        "interaction",
+        "impact",
+        "reveal",
+        "choice",
+        "ambient"
+      ],
+      "voiceProfile": "character-cast",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "europa-survivor",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "tombs-of-atlantis",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "silent-embassy",
+      "category": "stealth",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "blackwood-manor",
+      "category": "horror",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+hazards",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "stalk",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "footstep",
+        "threat",
+        "impact",
+        "stinger",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "whispered-handler",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "timekeepers-paradox",
+      "category": "story",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "talk",
+        "interact",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "dialogue",
+        "interaction",
+        "impact",
+        "reveal",
+        "choice",
+        "ambient"
+      ],
+      "voiceProfile": "character-cast",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "wildlands-expedition",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "crown-and-dagger",
+      "category": "story",
+      "visualTrack": "2d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "talk",
+        "interact",
+        "hit",
+        "death",
+        "reveal"
+      ],
+      "audioCues": [
+        "dialogue",
+        "interaction",
+        "impact",
+        "reveal",
+        "choice",
+        "ambient"
+      ],
+      "voiceProfile": "character-cast",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "pilot-fuel-tanker-training",
+      "category": "simulation",
+      "visualTrack": "3d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "voxhaven",
+      "category": "adventure",
+      "visualTrack": "3d",
+      "physicsProfile": "character-controller+interactables",
+      "ragdollProfile": "combat-characters",
+      "animationStates": [
+        "idle",
+        "move",
+        "gather",
+        "craft",
+        "hit",
+        "death",
+        "victory"
+      ],
+      "audioCues": [
+        "footstep",
+        "gather",
+        "craft",
+        "discovery",
+        "hit",
+        "ambient"
+      ],
+      "voiceProfile": "field-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "word-weaver",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-snap+constraint",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "solve",
+        "fail",
+        "complete"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "invalid",
+        "solve",
+        "fail",
+        "ambient"
+      ],
+      "voiceProfile": "calm-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "minefield-classic",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "physicsProfile": "grid-snap+constraint",
+      "ragdollProfile": "none",
+      "animationStates": [
+        "idle",
+        "select",
+        "move",
+        "solve",
+        "fail",
+        "complete"
+      ],
+      "audioCues": [
+        "select",
+        "move",
+        "invalid",
+        "solve",
+        "fail",
+        "ambient"
+      ],
+      "voiceProfile": "calm-guide",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "snake-reactor",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "tetro-stack",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "flappy-ascent",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "neon-breakout",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "physicsProfile": "kinematic-collision+impulse",
+      "ragdollProfile": "none-or-hit-react",
+      "animationStates": [
+        "idle",
+        "move",
+        "action",
+        "hit",
+        "death",
+        "score"
+      ],
+      "audioCues": [
+        "action",
+        "impact",
+        "combo",
+        "score",
+        "miss",
+        "ambient"
+      ],
+      "voiceProfile": "arcade-announcer",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "boids-sanctuary",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    },
+    {
+      "id": "ant-colony",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "physicsProfile": "bounded-simulation+collisions",
+      "ragdollProfile": "none-or-agents",
+      "animationStates": [
+        "idle",
+        "work",
+        "interact",
+        "alert",
+        "complete"
+      ],
+      "audioCues": [
+        "ui",
+        "machine",
+        "alert",
+        "success",
+        "failure",
+        "ambient"
+      ],
+      "voiceProfile": "operations-controller",
+      "runtimeModules": [
+        "shared/audio-bank.js",
+        "vendor/cannon-es.js"
+      ],
+      "implementationStatus": "contract-defined-runtime-integration-pending"
+    }
+  ]
+}

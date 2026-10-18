@@ -1,0 +1,39 @@
+{
+  "id": "silent-embassy",
+  "title": "Silent Embassy",
+  "category": "stealth",
+  "tags": [
+    "espionage",
+    "stealth",
+    "choices",
+    "infiltration"
+  ],
+  "stack": "canvas",
+  "entry": "games/silent-embassy/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Infiltrate five diplomatic compounds, steal classified intel, maintain disguises, and prevent a war without ever being officially present.",
+  "achievements": [
+    {
+      "id": "first-intel",
+      "title": "Eyes Only",
+      "desc": "Secure the first intelligence file."
+    },
+    {
+      "id": "unseen",
+      "title": "Never There",
+      "desc": "Complete a mission without detection."
+    },
+    {
+      "id": "master-disguise",
+      "title": "Master of Disguise",
+      "desc": "Use every disguise type."
+    },
+    {
+      "id": "truth-extracted",
+      "title": "The Quiet Truth",
+      "desc": "Complete the operation."
+    }
+  ]
+}

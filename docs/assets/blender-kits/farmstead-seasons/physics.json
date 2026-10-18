@@ -1,0 +1,13 @@
+{
+  "gameId": "farmstead-seasons",
+  "archetype": "living-sandbox",
+  "physicsShape": "capsule",
+  "physicsProfile": "bounded-simulation+collisions",
+  "ragdollProfile": "none-or-agents",
+  "playerCollider": {
+    "radius": 0.699999988079071,
+    "height": 1.100000023841858,
+    "shape": "capsule"
+  },
+  "colliders": []
+}

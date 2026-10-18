@@ -1,0 +1,65 @@
+{
+  "id": "farmstead-seasons",
+  "title": "Farmstead Seasons",
+  "category": "simulation",
+  "tags": [
+    "farming",
+    "management",
+    "crops",
+    "seasons",
+    "upgrades"
+  ],
+  "stack": "dom",
+  "entry": "games/farmstead-seasons/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Build a neglected farm across twenty days and four seasons. Plant, water and harvest crops, follow the weather, complete market orders, and buy permanent farm upgrades.",
+  "achievements": [
+    {
+      "id": "first-harvest",
+      "title": "Homegrown",
+      "desc": "Harvest your first crop.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "green-thumb",
+      "title": "Green Thumb",
+      "desc": "Harvest twenty crops.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "seasoned-farmer",
+      "title": "Seasoned Farmer",
+      "desc": "Reach winter.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "market-master",
+      "title": "Market Master",
+      "desc": "Complete three market orders.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "farm-legacy",
+      "title": "Farm Legacy",
+      "desc": "Finish day twenty with a thriving farm.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

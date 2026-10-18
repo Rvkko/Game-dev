@@ -1,0 +1,13 @@
+{
+  "gameId": "skybound-platformer",
+  "archetype": "competitive-sport",
+  "physicsShape": "capsule",
+  "physicsProfile": "kinematic-collision+impulse",
+  "ragdollProfile": "none-or-hit-react",
+  "playerCollider": {
+    "radius": 0.550000011920929,
+    "height": 1.100000023841858,
+    "shape": "capsule"
+  },
+  "colliders": []
+}

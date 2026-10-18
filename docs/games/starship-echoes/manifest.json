@@ -1,0 +1,44 @@
+{
+  "id": "starship-echoes",
+  "title": "Starship Echoes",
+  "category": "story",
+  "tags": [
+    "sci-fi",
+    "survival",
+    "exploration",
+    "choices"
+  ],
+  "stack": "canvas",
+  "entry": "games/starship-echoes/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Explore a failing colony ship across five episodes, restore life-support systems, protect the crew, and decide what humanity carries into a new world.",
+  "achievements": [
+    {
+      "id": "wake",
+      "title": "Wake Signal",
+      "desc": "Restore the first ship system."
+    },
+    {
+      "id": "engineer",
+      "title": "Chief Engineer",
+      "desc": "Finish a deck with hull above 80%."
+    },
+    {
+      "id": "no-one-left",
+      "title": "No One Left Behind",
+      "desc": "Keep crew morale above 70 through the final jump."
+    },
+    {
+      "id": "echoes-end",
+      "title": "End of the Echo",
+      "desc": "Complete all five episodes."
+    },
+    {
+      "id": "humanity",
+      "title": "What Makes Us Human",
+      "desc": "Reach the compassionate ending."
+    }
+  ]
+}

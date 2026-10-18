@@ -1,0 +1,111 @@
+{
+  "id": "word-weaver",
+  "title": "Word Weaver",
+  "category": "puzzle",
+  "tags": [
+    "word",
+    "daily",
+    "deduction",
+    "vocabulary",
+    "puzzle",
+    "offline"
+  ],
+  "stack": "DOM",
+  "entry": "games/word-weaver/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A five-letter deduction word game with a seeded Daily puzzle, endless Unlimited play and an escalating eight-stage Gauntlet. Nearly 1,900 answers and a 3,700-word guess dictionary are embedded in the game — no network required. Hard mode, colour-blind palette, on-screen and physical keyboard, and a full share-free stats panel with streaks and guess distribution.",
+  "achievements": [
+    {
+      "id": "first_weave",
+      "title": "First Weave",
+      "desc": "Solve your first Word Weaver puzzle.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "daily_solved",
+      "title": "Thread of the Day",
+      "desc": "Solve a Daily puzzle.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "eagle_eye",
+      "title": "Eagle Eye",
+      "desc": "Solve a puzzle in two guesses or fewer.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hard_mode_win",
+      "title": "Tight Weave",
+      "desc": "Win a puzzle with Hard Mode enabled.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "streak_seven",
+      "title": "Seven Day Spool",
+      "desc": "Reach a seven-day Daily streak.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 7
+    },
+    {
+      "id": "no_hint_master",
+      "title": "Unaided Artisan",
+      "desc": "Win 25 puzzles without spending a hint.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "gauntlet_clear",
+      "title": "Gauntlet Woven",
+      "desc": "Clear all eight stages of a Gauntlet run.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "century_player",
+      "title": "Century of Words",
+      "desc": "Play 100 puzzles across all modes.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "last_thread",
+      "title": "Last Thread",
+      "desc": "Win ten puzzles on your final guess.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 10
+    },
+    {
+      "id": "perfect_open",
+      "title": "Impossible Opener",
+      "desc": "Solve a puzzle with your very first guess.",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "world-cup-soccer",
+  "title": "World Cup Soccer",
+  "category": "sports",
+  "tags": [
+    "soccer",
+    "football",
+    "team",
+    "tournament",
+    "ai"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/world-cup-soccer/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A complete top-down team soccer tournament with passing lanes, shooting, player switching, defensive pressure, goalkeepers and four-stage cup progression.",
+  "achievements": [
+    {
+      "id": "first_goal",
+      "desc": "Score your first tournament goal.",
+      "title": "International Goal"
+    },
+    {
+      "id": "clean_sheet",
+      "desc": "Win without conceding.",
+      "title": "Clean Sheet"
+    },
+    {
+      "id": "team_play",
+      "desc": "Complete five passes in one match.",
+      "title": "One-Touch Football"
+    },
+    {
+      "id": "golden_goal",
+      "desc": "Win during golden goal.",
+      "title": "Golden Moment"
+    },
+    {
+      "id": "world_champion",
+      "desc": "Lift the cup.",
+      "title": "World Champion"
+    }
+  ]
+}

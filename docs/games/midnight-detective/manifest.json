@@ -1,0 +1,44 @@
+{
+  "id": "midnight-detective",
+  "title": "Midnight Detective",
+  "category": "story",
+  "tags": [
+    "detective",
+    "mystery",
+    "choices",
+    "investigation"
+  ],
+  "stack": "canvas",
+  "entry": "games/midnight-detective/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Solve five connected noir cases by searching scenes, interviewing suspects, testing deductions, and deciding which truth the city deserves.",
+  "achievements": [
+    {
+      "id": "first-clue",
+      "title": "The First Thread",
+      "desc": "Collect your first piece of evidence."
+    },
+    {
+      "id": "silver-tongue",
+      "title": "Silver Tongue",
+      "desc": "Finish a case with every interview completed."
+    },
+    {
+      "id": "perfect-case",
+      "title": "Flawless Logic",
+      "desc": "Solve a case without a wrong deduction."
+    },
+    {
+      "id": "city-truth",
+      "title": "The City Knows",
+      "desc": "Complete all five cases."
+    },
+    {
+      "id": "incorruptible",
+      "title": "Incorruptible",
+      "desc": "Reach the honest ending."
+    }
+  ]
+}

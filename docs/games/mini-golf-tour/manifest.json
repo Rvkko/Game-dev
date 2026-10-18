@@ -1,0 +1,64 @@
+{
+  "id": "mini-golf-tour",
+  "title": "Mini Golf Tour",
+  "category": "sports",
+  "tags": [
+    "golf",
+    "mini-golf",
+    "physics",
+    "nine-holes"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/mini-golf-tour/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A complete nine-hole mini-golf tour with aim and power control, bank shots, walls, sand, water hazards, pars and persistent records.",
+  "achievements": [
+    {
+      "id": "first_cup",
+      "title": "In the Cup",
+      "desc": "Finish your first hole.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "birdie",
+      "title": "One Under",
+      "desc": "Make a birdie or better.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hole_in_one",
+      "title": "Ace",
+      "desc": "Make a hole in one.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "no_water",
+      "title": "Dry Round",
+      "desc": "Finish the tour without entering water.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "tour_champ",
+      "title": "Tour Champion",
+      "desc": "Finish the tour at +5 or better.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

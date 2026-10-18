@@ -1,0 +1,39 @@
+{
+  "id": "rogue-mines",
+  "title": "Rogue Mines",
+  "category": "adventure",
+  "tags": [
+    "roguelike",
+    "mining",
+    "exploration",
+    "turn-based"
+  ],
+  "stack": "canvas",
+  "entry": "games/rogue-mines/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Descend five procedural mine floors, reveal fog, mine ore, manage health, battle cave creatures, choose upgrades, and recover the legendary Sunstone.",
+  "achievements": [
+    {
+      "id": "ore-haul",
+      "title": "Prospector",
+      "desc": "Collect 20 ore in one run."
+    },
+    {
+      "id": "trapwise",
+      "title": "Trapwise",
+      "desc": "Disarm five traps."
+    },
+    {
+      "id": "deep-delver",
+      "title": "Deep Delver",
+      "desc": "Reach floor five."
+    },
+    {
+      "id": "sunstone",
+      "title": "Sunstone",
+      "desc": "Escape with the legendary Sunstone."
+    }
+  ]
+}

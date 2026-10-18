@@ -1,0 +1,44 @@
+{
+  "id": "tennis-rally",
+  "title": "Tennis Rally",
+  "category": "sports",
+  "tags": [
+    "tennis",
+    "rally",
+    "arcade",
+    "skill"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/tennis-rally/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A responsive center-court tennis match with directional shots, timing-based returns, bounce rules, full deuce scoring and a first-to-three-games format.",
+  "achievements": [
+    {
+      "id": "first_point",
+      "title": "Love Fifteen",
+      "desc": "Win your first point."
+    },
+    {
+      "id": "ace",
+      "title": "Untouchable",
+      "desc": "Serve an ace."
+    },
+    {
+      "id": "rally_ten",
+      "title": "Marathon Point",
+      "desc": "Reach a ten-shot rally."
+    },
+    {
+      "id": "break_point",
+      "title": "The Break",
+      "desc": "Win a game while the CPU serves."
+    },
+    {
+      "id": "match_winner",
+      "title": "Center Court Champion",
+      "desc": "Win a match."
+    }
+  ]
+}

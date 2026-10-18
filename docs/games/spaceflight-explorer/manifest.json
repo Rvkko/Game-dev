@@ -1,0 +1,109 @@
+{
+  "id": "spaceflight-explorer",
+  "title": "Spaceflight & Planet Exploration",
+  "category": "flagship",
+  "tags": [
+    "space",
+    "simulation",
+    "exploration",
+    "3d"
+  ],
+  "stack": "three.js + cannon-es",
+  "entry": "games/spaceflight-explorer/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Newtonian 3D spaceflight: mine asteroids, upgrade your ship, and jump through a procedurally generated, seed-based galaxy before your fuel runs out.",
+  "achievements": [
+    {
+      "id": "first_ignition",
+      "title": "First Ignition",
+      "desc": "Fire your main engines for the first time."
+    },
+    {
+      "id": "first_ore",
+      "title": "Prospector",
+      "desc": "Mine your first resource node."
+    },
+    {
+      "id": "first_upgrade",
+      "title": "Wrench Time",
+      "desc": "Purchase your first ship upgrade."
+    },
+    {
+      "id": "first_dock",
+      "title": "Safe Harbor",
+      "desc": "Dock at a trade station."
+    },
+    {
+      "id": "sector_3",
+      "title": "Deep Space",
+      "desc": "Reach sector depth 3."
+    },
+    {
+      "id": "sector_5",
+      "title": "Frontier Runner",
+      "desc": "Reach sector depth 5."
+    },
+    {
+      "id": "sector_10",
+      "title": "Void Walker",
+      "desc": "Reach sector depth 10."
+    },
+    {
+      "id": "hull_critical",
+      "title": "Hairline Fracture",
+      "desc": "Survive with hull below 10%."
+    },
+    {
+      "id": "fuel_empty",
+      "title": "Dead Stick",
+      "desc": "Run completely out of fuel."
+    },
+    {
+      "id": "cargo_full",
+      "title": "Fully Loaded",
+      "desc": "Fill your cargo hold to capacity."
+    },
+    {
+      "id": "anomaly_scan",
+      "title": "Xenoarchaeologist",
+      "desc": "Scan a spatial anomaly."
+    },
+    {
+      "id": "max_engine",
+      "title": "Full Throttle",
+      "desc": "Max out the engine upgrade."
+    },
+    {
+      "id": "max_tank",
+      "title": "Long Haul",
+      "desc": "Max out the fuel tank upgrade."
+    },
+    {
+      "id": "max_cargo",
+      "title": "Freighter",
+      "desc": "Max out the cargo hold upgrade."
+    },
+    {
+      "id": "max_weapon",
+      "title": "Armed and Ready",
+      "desc": "Max out the weapon upgrade."
+    },
+    {
+      "id": "resources_1000",
+      "title": "Trader Baron",
+      "desc": "Collect a lifetime total of 1000 resources."
+    },
+    {
+      "id": "challenge_clear",
+      "title": "Today's Gauntlet",
+      "desc": "Complete a seeded challenge run (reach sector 5, no refuel)."
+    },
+    {
+      "id": "destroy_drone",
+      "title": "Hostile Neutralized",
+      "desc": "Destroy a hazard drone with your weapon."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "beach-volleyball",
+  "title": "Beach Volleyball",
+  "category": "sports",
+  "tags": [
+    "volleyball",
+    "beach",
+    "2v2",
+    "sets",
+    "ai"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/beach-volleyball/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A two-on-two beach volleyball match with teammate switching, three-touch rallies, bumps, spikes, jumping AI and best-of-three set scoring.",
+  "achievements": [
+    {
+      "id": "first_point",
+      "title": "Side Out",
+      "desc": "Win your first point.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ace",
+      "title": "Service Ace",
+      "desc": "Score directly from serve.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "rally_ten",
+      "title": "Never Let It Drop",
+      "desc": "Reach a ten-touch rally.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "spike_winner",
+      "title": "Sand Hammer",
+      "desc": "Score with a spike.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "beach_champ",
+      "title": "Sunset Champion",
+      "desc": "Win the match.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

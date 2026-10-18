@@ -1,0 +1,85 @@
+{
+  "id": "asteroid-drift",
+  "title": "Asteroid Drift",
+  "category": "arcade",
+  "tags": [
+    "space",
+    "shooter",
+    "survival"
+  ],
+  "stack": "three.js",
+  "entry": "games/asteroid-drift/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Pilot a drift fighter through escalating asteroid waves, salvage upgrades, and defeat the final boss.",
+  "achievements": [
+    {
+      "id": "first-blood",
+      "title": "First Blood",
+      "desc": "Destroy your first hostile."
+    },
+    {
+      "id": "rock-buster",
+      "title": "Rock Buster",
+      "desc": "Destroy 100 asteroids.",
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "wave-5",
+      "title": "Deep Field",
+      "desc": "Reach wave 5."
+    },
+    {
+      "id": "wave-10",
+      "title": "Void Runner",
+      "desc": "Reach wave 10."
+    },
+    {
+      "id": "final-boss",
+      "title": "Voidmaw Slain",
+      "desc": "Defeat the wave 15 boss."
+    },
+    {
+      "id": "hard-victory",
+      "title": "No Mercy",
+      "desc": "Win on Hard difficulty."
+    },
+    {
+      "id": "pickup-collector",
+      "title": "Magpie",
+      "desc": "Collect 30 power-ups.",
+      "progressive": true,
+      "target": 30
+    },
+    {
+      "id": "flawless-wave",
+      "title": "Untouched",
+      "desc": "Clear a wave without hull damage."
+    },
+    {
+      "id": "daily-challenger",
+      "title": "Daily Grind",
+      "desc": "Complete a Daily Challenge run."
+    },
+    {
+      "id": "scrap-baron",
+      "title": "Scrap Baron",
+      "desc": "Hold 750 scrap in one run.",
+      "progressive": true,
+      "target": 750
+    },
+    {
+      "id": "combo-10",
+      "title": "Chain Reaction",
+      "desc": "Reach a 10x kill combo."
+    },
+    {
+      "id": "shipwright",
+      "title": "Master Shipwright",
+      "desc": "Max every Shipyard upgrade.",
+      "hidden": true
+    }
+  ]
+}

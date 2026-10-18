@@ -1,0 +1,39 @@
+{
+  "id": "sky-aces",
+  "title": "Sky Aces",
+  "category": "action",
+  "tags": [
+    "flight",
+    "combat",
+    "campaign",
+    "dogfight"
+  ],
+  "stack": "canvas",
+  "entry": "games/sky-aces/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A six-mission flight combat campaign with dogfights, bomber escorts, ground strikes, ace rivals, upgrades and a carrier boss.",
+  "achievements": [
+    {
+      "id": "first-kill",
+      "title": "First Victory",
+      "desc": "Shoot down an enemy aircraft."
+    },
+    {
+      "id": "ace",
+      "title": "Ace Pilot",
+      "desc": "Score five kills in one sortie."
+    },
+    {
+      "id": "untouchable",
+      "title": "Untouchable",
+      "desc": "Complete a mission above 80% health."
+    },
+    {
+      "id": "sky-legend",
+      "title": "Sky Legend",
+      "desc": "Complete the campaign."
+    }
+  ]
+}

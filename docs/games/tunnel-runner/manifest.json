@@ -1,0 +1,79 @@
+{
+  "id": "tunnel-runner",
+  "title": "Neon Tunnel Runner",
+  "category": "arcade",
+  "tags": [
+    "runner",
+    "racing",
+    "daily-challenge"
+  ],
+  "stack": "three.js",
+  "entry": "games/tunnel-runner/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Race a neon tunnel, dodge barriers, destroy crates, unlock skins, and chase daily seeded runs.",
+  "achievements": [
+    {
+      "id": "first-run",
+      "title": "First Contact",
+      "desc": "Finish your first run."
+    },
+    {
+      "id": "distance-500",
+      "title": "Half-K Club",
+      "desc": "Reach 500 meters."
+    },
+    {
+      "id": "distance-2000",
+      "title": "Long Hauler",
+      "desc": "Reach 2,000 meters."
+    },
+    {
+      "id": "distance-5000",
+      "title": "Tunnel Legend",
+      "desc": "Reach 5,000 meters."
+    },
+    {
+      "id": "coin-collector",
+      "title": "Coin Collector",
+      "desc": "Collect 100 coins lifetime."
+    },
+    {
+      "id": "coin-hoarder",
+      "title": "Coin Hoarder",
+      "desc": "Collect 500 coins lifetime."
+    },
+    {
+      "id": "crate-smasher",
+      "title": "Crate Smasher",
+      "desc": "Destroy 25 crates."
+    },
+    {
+      "id": "overdrive-master",
+      "title": "Overdrive Master",
+      "desc": "Trigger Overdrive 20 times."
+    },
+    {
+      "id": "daily-driver",
+      "title": "Daily Driver",
+      "desc": "Reach 300 meters in a daily challenge."
+    },
+    {
+      "id": "skin-collector",
+      "title": "Skin Collector",
+      "desc": "Unlock three ship skins."
+    },
+    {
+      "id": "close-call",
+      "title": "Close Call",
+      "desc": "Narrowly dodge 50 obstacles."
+    },
+    {
+      "id": "hardcore",
+      "title": "Hardcore",
+      "desc": "Reach 1,000 meters on Hard.",
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "ironfront-arena",
+  "title": "Ironfront Arena",
+  "category": "action",
+  "tags": [
+    "twin-stick",
+    "wave-shooter",
+    "upgrades",
+    "boss"
+  ],
+  "stack": "canvas",
+  "entry": "games/ironfront-arena/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A responsive twin-stick arena shooter with ten machine waves, five upgrade drafts, multiple enemy roles, pickups, dashing, and a multi-attack final boss.",
+  "achievements": [
+    {
+      "id": "scrap-metal",
+      "desc": "Destroy 25 machines.",
+      "title": "Scrap Metal"
+    },
+    {
+      "id": "untouchable-wave",
+      "desc": "Clear a wave without damage.",
+      "title": "Untouchable"
+    },
+    {
+      "id": "fully-loaded",
+      "desc": "Install five upgrades.",
+      "title": "Fully Loaded"
+    },
+    {
+      "id": "war-engine",
+      "desc": "Destroy the War Engine.",
+      "title": "Engine Breaker"
+    }
+  ]
+}

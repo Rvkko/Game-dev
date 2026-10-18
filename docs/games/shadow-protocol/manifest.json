@@ -1,0 +1,39 @@
+{
+  "id": "shadow-protocol",
+  "title": "Shadow Protocol",
+  "category": "stealth",
+  "tags": [
+    "stealth",
+    "infiltration",
+    "tactical",
+    "campaign"
+  ],
+  "stack": "canvas",
+  "entry": "games/shadow-protocol/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A three-mission tactical stealth campaign with guard vision, alarms, hacking, optional intel, decoys, takedowns, and multiple mission grades.",
+  "achievements": [
+    {
+      "id": "ghost-entry",
+      "desc": "Complete a mission without an alarm.",
+      "title": "Ghost Entry"
+    },
+    {
+      "id": "clean-sweep",
+      "desc": "Collect all intel in a mission.",
+      "title": "Clean Sweep"
+    },
+    {
+      "id": "operative",
+      "desc": "Complete the first mission.",
+      "title": "Field Operative"
+    },
+    {
+      "id": "blackglass-down",
+      "desc": "Complete the campaign.",
+      "title": "Blackglass Down"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "id": "deep-ocean-survival",
+  "title": "Deep Ocean Survival",
+  "category": "flagship",
+  "tags": [
+    "survival",
+    "crafting",
+    "underwater",
+    "procedural",
+    "physics"
+  ],
+  "stack": "three.js + cannon-es + WebGL + WebAudio",
+  "entry": "games/deep-ocean-survival/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 2,
+  "locked": false,
+  "description": "Survive the crushing deep. Manage oxygen and pressure, harvest a seeded procedural seabed, upgrade your suit and habitat, and repair the Ascension Pod 1,600 meters down to escape.",
+  "achievements": [
+    {
+      "id": "first-dive",
+      "title": "Getting Your Fins Wet",
+      "desc": "Dive below 50 m",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "twilight-zone",
+      "title": "Into the Twilight",
+      "desc": "Reach 200 m",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "midnight-zone",
+      "title": "Where Light Dies",
+      "desc": "Reach 500 m",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "abyssal",
+      "title": "Abyssal Diver",
+      "desc": "Reach 1,000 m",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "trench-floor",
+      "title": "Bottom of the World",
+      "desc": "Touch the trench floor",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-craft",
+      "title": "Field Engineer",
+      "desc": "Craft your first upgrade",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "fully-equipped",
+      "title": "Pressure Proof",
+      "desc": "Craft the Tier 4 Abyssal Suit",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-kill",
+      "title": "Apex Predator",
+      "desc": "Kill a hostile creature",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "collector",
+      "title": "Hoarder of the Deep",
+      "desc": "Gather 100 resources",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "home-sweet-home",
+      "title": "Home Sweet Habitat",
+      "desc": "Build 3 habitat modules",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "survivor",
+      "title": "Twenty Minute Lungs",
+      "desc": "Survive 20 minutes in one life",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "close-call",
+      "title": "Close Call",
+      "desc": "Refill oxygen with under 5% left",
+      "rarity": "rare",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ascension",
+      "title": "Ascension",
+      "desc": "Repair the pod and escape the trench",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "iron-lungs",
+      "title": "Iron Lungs",
+      "desc": "Escape in Hardcore mode",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

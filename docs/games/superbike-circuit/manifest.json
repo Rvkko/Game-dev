@@ -1,0 +1,39 @@
+{
+  "id": "superbike-circuit",
+  "title": "Superbike Circuit",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "motorcycle",
+    "career",
+    "circuit"
+  ],
+  "stack": "canvas",
+  "entry": "games/superbike-circuit/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A motorcycle racing career built around corner lean, precise braking, slipstream boost, rival riders, and bike development.",
+  "achievements": [
+    {
+      "id": "first-podium",
+      "title": "First Podium",
+      "desc": "Finish a race in the top three."
+    },
+    {
+      "id": "perfect-lean",
+      "title": "Perfect Lean",
+      "desc": "Hold a clean maximum lean through a bend."
+    },
+    {
+      "id": "speed-king",
+      "title": "Speed King",
+      "desc": "Reach 285 km/h."
+    },
+    {
+      "id": "superbike-champion",
+      "title": "Superbike Champion",
+      "desc": "Win every circuit."
+    }
+  ]
+}

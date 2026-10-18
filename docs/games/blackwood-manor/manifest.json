@@ -1,0 +1,39 @@
+{
+  "id": "blackwood-manor",
+  "title": "Blackwood Manor",
+  "category": "horror",
+  "tags": [
+    "horror",
+    "mystery",
+    "survival",
+    "story"
+  ],
+  "stack": "canvas",
+  "entry": "games/blackwood-manor/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Search five haunted wings of Blackwood Manor, keep your candle alive, uncover a buried family crime, and survive the thing walking between rooms.",
+  "achievements": [
+    {
+      "id": "candlelight",
+      "title": "A Light in Blackwood",
+      "desc": "Relight your candle for the first time."
+    },
+    {
+      "id": "family-secret",
+      "title": "The Blackwood Secret",
+      "desc": "Recover all family records."
+    },
+    {
+      "id": "fearless",
+      "title": "Fearless",
+      "desc": "Clear a wing above 70 sanity."
+    },
+    {
+      "id": "dawn-breaks",
+      "title": "Dawn Breaks",
+      "desc": "Escape Blackwood Manor."
+    }
+  ]
+}

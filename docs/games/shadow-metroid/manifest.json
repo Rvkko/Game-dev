@@ -1,0 +1,39 @@
+{
+  "id": "shadow-metroid",
+  "title": "Shadow Circuit",
+  "category": "platformer",
+  "tags": [
+    "metroidvania",
+    "platformer",
+    "exploration",
+    "combat"
+  ],
+  "stack": "canvas",
+  "entry": "games/shadow-metroid/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Explore four interconnected machine sectors, unlock double-jump and phase-dash abilities, defeat guardians, and restore the dying Shadow Circuit.",
+  "achievements": [
+    {
+      "id": "first-core",
+      "title": "Core Awakened",
+      "desc": "Restore the first circuit core."
+    },
+    {
+      "id": "airborne",
+      "title": "Airborne",
+      "desc": "Unlock double-jump."
+    },
+    {
+      "id": "phase-runner",
+      "title": "Phase Runner",
+      "desc": "Unlock phase-dash."
+    },
+    {
+      "id": "circuit-restored",
+      "title": "Circuit Restored",
+      "desc": "Defeat the Null Guardian."
+    }
+  ]
+}

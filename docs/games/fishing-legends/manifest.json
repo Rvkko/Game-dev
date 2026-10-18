@@ -1,0 +1,65 @@
+{
+  "id": "fishing-legends",
+  "title": "Fishing Legends",
+  "category": "sports",
+  "tags": [
+    "fishing",
+    "tournament",
+    "arcade",
+    "collection",
+    "upgrades"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/fishing-legends/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Cast across three tournament lakes, react to bites, counter each fish's runs, manage line tension, build a species collection, and upgrade your tackle between rounds.",
+  "achievements": [
+    {
+      "id": "first-catch",
+      "title": "Hooked",
+      "desc": "Land your first fish.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "rare-catch",
+      "title": "Shimmering Prize",
+      "desc": "Catch a rare fish.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ten-pounder",
+      "title": "Heavyweight",
+      "desc": "Land a fish over ten pounds.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "collector",
+      "title": "Field Guide",
+      "desc": "Catch six different species.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "lake-legend",
+      "title": "Lake Legend",
+      "desc": "Win all three tournament rounds.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

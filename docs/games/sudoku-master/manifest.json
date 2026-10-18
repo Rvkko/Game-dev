@@ -1,0 +1,111 @@
+{
+  "id": "sudoku-master",
+  "title": "Sudoku Master",
+  "category": "puzzle",
+  "tags": [
+    "sudoku",
+    "puzzle",
+    "logic",
+    "brain-training",
+    "daily",
+    "numbers"
+  ],
+  "stack": "canvas2d + dom",
+  "entry": "games/sudoku-master/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A full sudoku table with a uniqueness-guaranteed generator, four rated difficulties, a technique-aware hint engine that names the logic it used, pencil notes with auto-candidates, undo/redo, strict-mode error limits, a seeded daily puzzle and career streaks.",
+  "achievements": [
+    {
+      "id": "first_solve",
+      "title": "First Light",
+      "desc": "Complete your first sudoku grid.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "pencil_pusher",
+      "title": "Pencil Pusher",
+      "desc": "Place 100 pencil-note candidates across your career.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "easy_sprint",
+      "title": "Quick Study",
+      "desc": "Solve an Easy puzzle in under three minutes.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hard_liner",
+      "title": "Hard Liner",
+      "desc": "Clear a Hard puzzle.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hot_streak",
+      "title": "Hot Streak",
+      "desc": "Win five puzzles back to back without a loss.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "flawless_mind",
+      "title": "Flawless Mind",
+      "desc": "Solve a grid with zero mistakes and zero hints.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "expert_conqueror",
+      "title": "Expert Conqueror",
+      "desc": "Clear an Expert puzzle.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "daily_devotion",
+      "title": "Daily Devotion",
+      "desc": "Solve seven daily puzzles.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 7
+    },
+    {
+      "id": "centurion",
+      "title": "Grid Grinder",
+      "desc": "Solve 25 puzzles in total.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "iron_nerve",
+      "title": "Iron Nerve",
+      "desc": "Clear an Expert puzzle with no mistakes and no hints.",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

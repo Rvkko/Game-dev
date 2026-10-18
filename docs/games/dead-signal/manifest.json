@@ -1,0 +1,39 @@
+{
+  "id": "dead-signal",
+  "title": "Dead Signal",
+  "category": "horror",
+  "tags": [
+    "survival-horror",
+    "story",
+    "exploration",
+    "choices"
+  ],
+  "stack": "canvas",
+  "entry": "games/dead-signal/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A three-chapter survival-horror mystery with flashlight stealth, inventory puzzles, audio tapes, pursuit, and branching endings.",
+  "achievements": [
+    {
+      "id": "first-tape",
+      "desc": "Find the first tape.",
+      "title": "Voice in the Static"
+    },
+    {
+      "id": "archivist",
+      "desc": "Find every tape.",
+      "title": "Archivist"
+    },
+    {
+      "id": "lights-out",
+      "desc": "Complete a chapter without exhausting the battery.",
+      "title": "Lights Out"
+    },
+    {
+      "id": "signal-ended",
+      "desc": "Reach an ending.",
+      "title": "Signal Ended"
+    }
+  ]
+}

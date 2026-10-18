@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sudoku Master</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #080b16;
+    --panel: rgba(18,22,40,0.96);
+    --line: #2c3760;
+    --line2: #45538c;
+    --ink: #dbe6ff;
+    --dim: #8494bb;
+    --accent: #6fe3ff;
+    --accent2: #b184ff;
+    --good: #6ee7a8;
+    --bad: #ff6b7f;
+    --warn: #ffd27f;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: radial-gradient(ellipse at 50% -10%, #16203c 0%, #080b16 60%, #05070f 100%);
+    overflow: hidden; color: var(--ink);
+    font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    user-select: none;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; min-height: 0; }
+
+  /* ---------------- top HUD ---------------- */
+  #topbar {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px;
+    padding: 7px 12px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(22,28,52,0.9), rgba(10,13,26,0.9));
+    flex-wrap: wrap;
+  }
+  #brand { font-size: 15px; letter-spacing: 3px; color: var(--accent); text-shadow: 0 0 12px rgba(111,227,255,0.45); font-weight: 700; }
+  #brand span { color: var(--accent2); }
+  .hudchip {
+    display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 10px; border-radius: 20px;
+    background: rgba(10,14,28,0.75); border: 1px solid var(--line); font-size: 11px; color: var(--dim);
+    letter-spacing: 1px; white-space: nowrap;
+  }
+  .hudchip b { font-size: 14px; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+  .hudchip.warnState { border-color: #7a3040; }
+  .hudchip.warnState b { color: var(--bad); }
+  #spacer { flex: 1 1 auto; }
+  .iconbtn {
+    background: rgba(14,18,36,0.8); border: 1px solid var(--line2); color: var(--accent);
+    border-radius: 7px; padding: 5px 11px; font-size: 12px; cursor: pointer; font-family: inherit;
+    letter-spacing: 1px; transition: 0.12s;
+  }
+  .iconbtn:hover { background: #222c52; color: #fff; border-color: var(--accent); }
+
+  /* ---------------- layout ---------------- */
+  #main { flex: 1 1 auto; display: flex; gap: 12px; padding: 12px; min-height: 0; min-width: 0; }
+  #boardWrap {
+    flex: 1 1 auto; display: flex; align-items: center; justify-content: center;
+    min-width: 0; min-height: 0; position: relative;
+  }
+  canvas#board { display: block; border-radius: 10px; touch-action: manipulation; cursor: pointer; }
+  #side {
+    flex: 0 0 268px; width: 268px; display: flex; flex-direction: column; gap: 9px;
+    min-height: 0; overflow-y: auto; padding-right: 2px;
+  }
+  #side::-webkit-scrollbar { width: 7px; }
+  #side::-webkit-scrollbar-thumb { background: #26304f; border-radius: 4px; }
+
+  .card {
+    background: linear-gradient(180deg, rgba(20,25,46,0.9), rgba(11,14,27,0.9));
+    border: 1px solid var(--line); border-radius: 10px; padding: 9px;
+  }
+  .card h3 {
+    margin: 0 0 7px; font-size: 10px; letter-spacing: 2px; color: var(--dim);
+    text-transform: uppercase; font-weight: 600;
+  }
+  #numPad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .numbtn {
+    position: relative; padding: 10px 0 12px; font-size: 21px; font-weight: 600; font-family: inherit;
+    background: linear-gradient(180deg,#222c50,#141a33); border: 1px solid var(--line2);
+    color: var(--ink); border-radius: 8px; cursor: pointer; transition: 0.1s; line-height: 1;
+  }
+  .numbtn:hover { border-color: var(--accent); color: #fff; background: linear-gradient(180deg,#2d3a6b,#1b2342); }
+  .numbtn:active { transform: scale(0.95); }
+  .numbtn .cnt {
+    position: absolute; bottom: 2px; left: 0; right: 0; text-align: center;
+    font-size: 9px; color: var(--dim); letter-spacing: 0.5px; font-weight: 400;
+  }
+  .numbtn.done { opacity: 0.4; }
+  .numbtn.armed { border-color: var(--accent2); box-shadow: 0 0 0 1px var(--accent2), 0 0 14px rgba(177,132,255,0.35); color: #fff; }
+  .numbtn.noteMode { color: var(--warn); }
+
+  #actionGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .actbtn {
+    padding: 9px 6px; font-size: 11px; letter-spacing: 1px; font-family: inherit;
+    background: linear-gradient(180deg,#1c2442,#11162a); border: 1px solid var(--line2);
+    color: #c3d3f5; border-radius: 8px; cursor: pointer; transition: 0.1s; text-align: center;
+  }
+  .actbtn:hover { border-color: var(--accent); color: #fff; }
+  .actbtn:active { transform: scale(0.96); }
+  .actbtn small { display: block; font-size: 9px; color: var(--dim); letter-spacing: 0; margin-top: 2px; }
+  .actbtn.on { background: linear-gradient(180deg,#4a3a12,#2a2109); border-color: var(--warn); color: var(--warn); }
+  .actbtn.wide { grid-column: 1 / -1; }
+  .keyrow { font-size: 10.5px; color: var(--dim); line-height: 1.75; }
+  .keyrow b { color: #a9bde5; font-weight: 600; }
+  kbd {
+    display: inline-block; padding: 0 4px; border: 1px solid var(--line2); border-radius: 3px;
+    background: #151b32; color: #bcd0f5; font-size: 10px; font-family: Consolas, monospace; min-width: 15px; text-align: center;
+  }
+
+  /* ---------------- overlays ---------------- */
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(9,12,26,0.9) 0%, rgba(3,5,12,0.97) 100%);
+    z-index: 60; padding: 18px; overflow-y: auto;
+  }
+  .hidden { display: none !important; }
+  .panel {
+    position: relative; background: linear-gradient(180deg, rgba(20,25,48,0.97), rgba(8,10,20,0.98));
+    border: 1px solid var(--line2); border-radius: 12px; padding: 22px 26px; min-width: 340px; max-width: 96vw;
+    max-height: 92vh; overflow-y: auto;
+    box-shadow: 0 0 46px rgba(90,140,255,0.16), inset 0 0 34px rgba(60,90,180,0.07);
+  }
+  .title { font-size: 28px; letter-spacing: 5px; text-align: center; margin: 0 0 3px; color: var(--accent); text-shadow: 0 0 16px rgba(111,227,255,0.5); }
+  .title.sm { font-size: 20px; letter-spacing: 3px; }
+  .subtitle { text-align: center; color: var(--dim); font-size: 11px; letter-spacing: 2px; margin-bottom: 18px; }
+  .btn {
+    display: block; width: 100%; margin: 7px 0; padding: 11px 14px; font-family: inherit;
+    background: linear-gradient(180deg,#212b52,#121830); border: 1px solid var(--line2);
+    color: #cfe0ff; font-size: 13px; letter-spacing: 1.5px; border-radius: 7px; cursor: pointer;
+    text-align: left; transition: 0.12s;
+  }
+  .btn:hover { background: linear-gradient(180deg,#31406f,#1a2340); border-color: var(--accent); color: #fff; transform: translateX(2px); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+  .btn.primary { border-color: var(--accent); color: #dff6ff; }
+  .btn.primary:hover { background: linear-gradient(180deg,#123a4a,#0a2230); }
+  .btn.danger { border-color: #8c3a4a; color: #ffd0d8; }
+  .btn small { display: block; font-size: 10px; color: var(--dim); letter-spacing: 0.4px; margin-top: 3px; text-transform: none; }
+  .close-x { position: absolute; top: 8px; right: 14px; cursor: pointer; color: var(--accent); font-size: 22px; line-height: 1; }
+  .close-x:hover { color: #fff; }
+  h2.section { color: var(--accent2); font-size: 11px; letter-spacing: 2px; border-bottom: 1px solid var(--line); padding-bottom: 5px; margin: 16px 0 9px; text-transform: uppercase; }
+  .statline { display: flex; justify-content: space-between; font-size: 12px; color: #b9c9ea; padding: 3px 0; gap: 20px; }
+  .statline span:last-child { color: #fff; font-variant-numeric: tabular-nums; }
+  .small { font-size: 11px; color: var(--dim); line-height: 1.6; }
+  .field { margin: 10px 0; font-size: 12px; color: #a9c0e0; }
+  .field label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .field input[type=range] { width: 100%; accent-color: #6fe3ff; }
+  .field input[type=checkbox] { width: 15px; height: 15px; accent-color: #6fe3ff; cursor: pointer; }
+  .resicon { font-size: 46px; text-align: center; margin: 2px 0 4px; }
+  .row2 { display: flex; gap: 8px; }
+  .row2 .btn { flex: 1; }
+  .tag { display: inline-block; font-size: 9px; padding: 1px 7px; border-radius: 9px; margin-left: 6px; letter-spacing: 1px; vertical-align: middle; }
+  .tag.easy { background: #10331d; color: #85f0ac; }
+  .tag.medium { background: #123048; color: #82d4ff; }
+  .tag.hard { background: #3a2410; color: #ffc178; }
+  .tag.expert { background: #3d1424; color: #ff8ba8; }
+  .tag.daily { background: #2b1f4a; color: #c6a8ff; }
+  .tag.new { background: #10331d; color: #85f0ac; }
+
+  #toastWrap {
+    position: absolute; top: 56px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; gap: 6px; align-items: center; z-index: 70; pointer-events: none;
+  }
+  .toast {
+    background: rgba(16,21,40,0.94); border: 1px solid var(--accent); color: #dff3ff;
+    padding: 7px 16px; border-radius: 7px; font-size: 12px; letter-spacing: 0.6px; max-width: 74vw; text-align: center;
+    animation: tIn 0.25s ease both, tOut 0.5s ease 3.1s both;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.5);
+  }
+  .toast.bad { border-color: var(--bad); color: #ffd7dd; }
+  .toast.good { border-color: var(--good); color: #d6ffe9; }
+  @keyframes tIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+  @keyframes tOut { to { opacity: 0; transform: translateY(-6px); } }
+
+  #genOverlay { z-index: 80; }
+  .spinner {
+    width: 34px; height: 34px; margin: 0 auto 12px; border: 3px solid #223054;
+    border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toast { animation: none; }
+    .spinner { animation-duration: 2.4s; }
+    .btn:hover { transform: none; }
+  }
+  @media (max-width: 860px) {
+    #main { flex-direction: column; padding: 8px; gap: 8px; }
+    #side { flex: 0 0 auto; width: 100%; overflow-y: visible; }
+    #boardWrap { flex: 1 1 auto; min-height: 42vh; }
+    #sideCards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    #brand { font-size: 12px; letter-spacing: 2px; }
+  }
+  @media (max-height: 640px) {
+    .panel { padding: 16px 20px; }
+    .title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="topbar">
+    <div id="brand">SUDOKU<span>MASTER</span></div>
+    <div class="hudchip">MODE <b id="hudDiff">—</b></div>
+    <div class="hudchip">TIME <b id="hudTimer">00:00</b></div>
+    <div class="hudchip" id="hudMistakeChip">ERRORS <b id="hudMistakes">0</b></div>
+    <div class="hudchip">HINTS <b id="hudHints">0</b></div>
+    <div class="hudchip">STREAK <b id="hudStreak">0</b></div>
+    <div class="hudchip">FILLED <b id="hudFilled">0/81</b></div>
+    <div id="spacer"></div>
+    <button class="iconbtn" id="btnTopPause" title="Pause (Esc)">|| PAUSE</button>
+    <button class="iconbtn" id="btnTopMenu" title="Back to menu">MENU</button>
+  </div>
+
+  <div id="main">
+    <div id="boardWrap"><canvas id="board"></canvas></div>
+
+    <div id="side">
+      <div id="sideCards">
+        <div class="card">
+          <h3>Numbers</h3>
+          <div id="numPad"></div>
+        </div>
+
+        <div class="card">
+          <h3>Tools</h3>
+          <div id="actionGrid">
+            <button class="actbtn" id="btnNotes">NOTES: OFF<small>N key</small></button>
+            <button class="actbtn" id="btnErase">ERASE<small>Del / 0</small></button>
+            <button class="actbtn" id="btnUndo">UNDO<small>Ctrl+Z</small></button>
+            <button class="actbtn" id="btnRedo">REDO<small>Ctrl+Y</small></button>
+            <button class="actbtn" id="btnHint">HINT<small>H key</small></button>
+            <button class="actbtn" id="btnCheck">CHECK<small>C key · +30s</small></button>
+            <button class="actbtn wide" id="btnAutoNotes">FILL ALL PENCIL NOTES<small>Q key &middot; candidates for every empty cell</small></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>How to play</h3>
+          <div class="keyrow">
+            Fill every row, column and 3&times;3 box with the digits <b>1&ndash;9</b>, no repeats.
+            Click a cell then a number, or arm a number first and click cells.
+            <div style="height:6px"></div>
+            <b>Move</b> <kbd>&larr;</kbd><kbd>&darr;</kbd><kbd>&uarr;</kbd><kbd>&rarr;</kbd> or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><br>
+            <b>Place</b> <kbd>1</kbd>&ndash;<kbd>9</kbd> &middot; <b>Note</b> <kbd>Shift</kbd>+<kbd>1-9</kbd><br>
+            <b>Notes mode</b> <kbd>N</kbd> &middot; <b>Place armed digit</b> <kbd>Space</kbd><br>
+            <b>Erase</b> <kbd>0</kbd> <kbd>Del</kbd> &middot; <b>Hint</b> <kbd>H</kbd> &middot; <b>Check</b> <kbd>C</kbd><br>
+            <b>Auto notes</b> <kbd>Q</kbd> &middot; <b>Undo/Redo</b> <kbd>Ctrl+Z</kbd>/<kbd>Ctrl+Y</kbd><br>
+            <b>Restart</b> <kbd>R</kbd> &middot; <b>Pause</b> <kbd>Esc</kbd> or <kbd>P</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastWrap"></div>
+
+  <!-- ===================== MAIN MENU ===================== -->
+  <div class="overlay" id="mainMenu">
+    <div class="panel" style="width:400px;">
+      <div class="title">SUDOKU MASTER</div>
+      <div class="subtitle">LOGIC &middot; SPEED &middot; STREAKS</div>
+      <button class="btn primary" id="btnContinue">CONTINUE<small>Resume your saved puzzle</small></button>
+      <button class="btn primary" id="btnNewGame">NEW PUZZLE<small>Pick a difficulty &mdash; uniquely solvable, always</small></button>
+      <button class="btn" id="btnDaily">DAILY PUZZLE <span class="tag daily" id="dailyTag">TODAY</span><small id="dailyStatus">One seeded puzzle per day</small></button>
+      <button class="btn" id="btnStats">CAREER STATS<small>Times, streaks, completion</small></button>
+      <button class="btn" id="btnHowTo">HOW TO PLAY</button>
+      <button class="btn" id="btnSettings">SETTINGS</button>
+      <div class="small" style="text-align:center;margin-top:14px;">
+        <span id="menuPlayer">Player One</span> &middot; solved <b id="menuSolved">0</b> &middot; best streak <b id="menuStreak">0</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== DIFFICULTY ===================== -->
+  <div class="overlay hidden" id="diffMenu">
+    <div class="panel" style="width:400px;">
+      <span class="close-x" id="diffClose">&times;</span>
+      <div class="title sm">CHOOSE DIFFICULTY</div>
+      <div class="subtitle">EVERY PUZZLE HAS EXACTLY ONE SOLUTION</div>
+      <button class="btn" data-diff="easy">EASY <span class="tag easy">SINGLES</span><small>40-50 clues &middot; 5 hints &middot; solvable with basic scanning</small></button>
+      <button class="btn" data-diff="medium">MEDIUM <span class="tag medium">LOCKED SETS</span><small>32-40 clues &middot; 4 hints &middot; needs pointing pairs</small></button>
+      <button class="btn" data-diff="hard">HARD <span class="tag hard">PAIRS &amp; TRIPLES</span><small>26-32 clues &middot; 3 hints &middot; naked/hidden sets required</small></button>
+      <button class="btn" data-diff="expert">EXPERT <span class="tag expert">X-WING+</span><small>22-28 clues &middot; 2 hints &middot; deep chains, no mercy</small></button>
+      <div class="small" style="margin-top:12px;text-align:center;">Best times &mdash; E <b id="bestEasy">--:--</b> &middot; M <b id="bestMedium">--:--</b> &middot; H <b id="bestHard">--:--</b> &middot; X <b id="bestExpert">--:--</b></div>
+    </div>
+  </div>
+
+  <!-- ===================== PAUSE ===================== -->
+  <div class="overlay hidden" id="pauseMenu">
+    <div class="panel" style="width:340px;">
+      <div class="title sm">PAUSED</div>
+      <div class="subtitle" id="pauseSub">BOARD HIDDEN &mdash; TIMER STOPPED</div>
+      <button class="btn primary" id="btnResume">RESUME</button>
+      <button class="btn" id="btnRestart">RESTART PUZZLE<small>Clear your entries, keep the grid</small></button>
+      <button class="btn" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn" id="btnPauseHowTo">HOW TO PLAY</button>
+      <button class="btn danger" id="btnQuitMenu">QUIT TO MENU<small>Progress is saved</small></button>
+    </div>
+  </div>
+
+  <!-- ===================== RESULT ===================== -->
+  <div class="overlay hidden" id="resultMenu">
+    <div class="panel" style="width:380px;">
+      <div class="resicon" id="resIcon">🏆</div>
+      <div class="title sm" id="resTitle">PUZZLE SOLVED</div>
+      <div class="subtitle" id="resSub">EXPERT &middot; NEW BEST TIME</div>
+      <div class="statline"><span>Time</span><span id="resTime">00:00</span></div>
+      <div class="statline"><span>Mistakes</span><span id="resMistakes">0</span></div>
+      <div class="statline"><span>Hints used</span><span id="resHints">0</span></div>
+      <div class="statline"><span>Checks used</span><span id="resChecks">0</span></div>
+      <div class="statline"><span>Score</span><span id="resScore">0</span></div>
+      <div class="statline"><span>Win streak</span><span id="resStreak">0</span></div>
+      <div class="statline"><span>Best time (this difficulty)</span><span id="resBest">--:--</span></div>
+      <button class="btn primary" id="btnNextPuzzle">NEXT PUZZLE</button>
+      <button class="btn" id="btnRetryPuzzle">REPLAY THIS PUZZLE</button>
+      <button class="btn" id="btnResultMenu">MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- ===================== STATS ===================== -->
+  <div class="overlay hidden" id="statsMenu">
+    <div class="panel" style="width:390px;">
+      <span class="close-x" id="statsClose">&times;</span>
+      <div class="title sm">CAREER STATS</div>
+      <div class="subtitle">EVERY PUZZLE COUNTS</div>
+      <div id="statsBody"></div>
+      <button class="btn primary" id="statsDone" style="margin-top:14px;">BACK</button>
+    </div>
+  </div>
+
+  <!-- ===================== HOW TO ===================== -->
+  <div class="overlay hidden" id="howToMenu">
+    <div class="panel" style="width:440px;">
+      <span class="close-x" id="howToClose">&times;</span>
+      <div class="title sm">HOW TO PLAY</div>
+      <div class="subtitle">FILL THE GRID, BREAK YOUR RECORD</div>
+      <h2 class="section">The rules</h2>
+      <div class="small">
+        Every row, every column and every 3&times;3 box must contain the digits 1 through 9 exactly once.
+        The grey clue digits are fixed. Every generated puzzle is guaranteed to have exactly one solution,
+        so you never need to guess &mdash; there is always a logical next step.
+      </div>
+      <h2 class="section">Input</h2>
+      <div class="small">
+        <b>Cell first:</b> click (or arrow to) a cell, then press <kbd>1</kbd>&ndash;<kbd>9</kbd> or tap the number pad.<br>
+        <b>Number first:</b> tap a pad number to arm it (it glows), then click cells to stamp it in. <kbd>Space</kbd> stamps the armed digit into the selected cell.<br>
+        <b>Pencil notes:</b> press <kbd>N</kbd> to toggle notes mode, or hold <kbd>Shift</kbd> while typing a digit. <kbd>Q</kbd> fills candidate notes on every empty cell.
+      </div>
+      <h2 class="section">Tools</h2>
+      <div class="small">
+        <b>Hint</b> solves one cell for you and names the technique that proves it &mdash; a real lesson, not a reveal (limited per puzzle).<br>
+        <b>Check</b> highlights every wrong entry on the board, at a cost of 30 seconds on the clock.<br>
+        <b>Undo/Redo</b> walk the whole move history, including auto-notes and restarts.
+      </div>
+      <h2 class="section">Scoring</h2>
+      <div class="small">
+        Score scales with difficulty and how far under par you finish, minus penalties for mistakes,
+        hints and checks. Solve puzzles back to back to build a win streak &mdash; a mistake-limit loss or
+        quitting mid-puzzle does not break it, but losing does reset it.
+        In <b>strict mode</b> (default) a wrong digit is flagged instantly and three errors end the run.
+      </div>
+      <button class="btn primary" id="howToDone" style="margin-top:16px;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ===================== SETTINGS ===================== -->
+  <div class="overlay hidden" id="settingsMenu">
+    <div class="panel" style="width:380px;">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <div class="title sm">SETTINGS</div>
+      <div class="subtitle">TUNE THE TABLE</div>
+      <div class="field"><label><input type="checkbox" id="setStrict"> Strict mode &mdash; flag errors instantly, 3 errors ends the run</label></div>
+      <div class="field"><label><input type="checkbox" id="setHighlight"> Highlight row / column / box of the selected cell</label></div>
+      <div class="field"><label><input type="checkbox" id="setSameDigit"> Highlight every cell holding the same digit</label></div>
+      <div class="field"><label><input type="checkbox" id="setAutoClean"> Auto-remove pencil notes when a digit is placed</label></div>
+      <div class="field"><label><input type="checkbox" id="setReduceFx"> Reduce motion (no shake, no particles)</label></div>
+      <div class="field"><label><input type="checkbox" id="setSound"> Sound effects</label></div>
+      <div class="field"><label>Volume <span id="volVal">70%</span></label><input type="range" id="setVolume" min="0" max="1" step="0.05"></div>
+      <button class="btn primary" id="settingsDone">DONE</button>
+    </div>
+  </div>
+
+  <!-- ===================== GENERATING ===================== -->
+  <div class="overlay hidden" id="genOverlay">
+    <div class="panel" style="width:300px;text-align:center;">
+      <div class="spinner"></div>
+      <div class="title sm" style="font-size:16px;">BUILDING PUZZLE</div>
+      <div class="small" id="genText">Carving a grid with exactly one solution&hellip;</div>
+    </div>
+  </div>
+
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>

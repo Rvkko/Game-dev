@@ -1,0 +1,82 @@
+{
+    "status":  "prototype",
+    "schemaVersion":  1,
+    "totalAssets":  15,
+    "assets":  [
+                   {
+                       "game":  "alpine-rush",
+                       "asset":  "assets/catalog-kits/alpine-rush/rally-car.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "asset":  "assets/catalog-kits/alpine-rush/mountain.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "asset":  "assets/catalog-kits/alpine-rush/checkpoint.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "asset":  "assets/catalog-kits/neon-breach-fps/blaster.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "asset":  "assets/catalog-kits/neon-breach-fps/drone.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "asset":  "assets/catalog-kits/neon-breach-fps/neon-door.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "asset":  "assets/catalog-kits/pilot-fuel-tanker-training/tanker.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "asset":  "assets/catalog-kits/pilot-fuel-tanker-training/cockpit.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "asset":  "assets/catalog-kits/pilot-fuel-tanker-training/checklist.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "asset":  "assets/catalog-kits/voxhaven/grass-block.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "asset":  "assets/catalog-kits/voxhaven/pickaxe.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "asset":  "assets/catalog-kits/voxhaven/crystal-ore.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "asset":  "assets/catalog-kits/dungeon-rpg/sword.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "asset":  "assets/catalog-kits/dungeon-rpg/chest.svg",
+                       "kind":  "prototype-vector-asset"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "asset":  "assets/catalog-kits/dungeon-rpg/warden-mask.svg",
+                       "kind":  "prototype-vector-asset"
+                   }
+               ]
+}

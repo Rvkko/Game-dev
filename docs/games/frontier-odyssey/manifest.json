@@ -1,0 +1,39 @@
+{
+  "id": "frontier-odyssey",
+  "title": "Frontier Odyssey",
+  "category": "adventure",
+  "tags": [
+    "western",
+    "adventure",
+    "duels",
+    "quests"
+  ],
+  "stack": "canvas",
+  "entry": "games/frontier-odyssey/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A three-act western adventure with explorable frontier towns, character quests, honor choices, quick-draw duels, and multiple endings.",
+  "achievements": [
+    {
+      "id": "quick-draw",
+      "desc": "Win a duel in under half a second.",
+      "title": "Quick Draw"
+    },
+    {
+      "id": "high-honor",
+      "desc": "Reach 3 honor.",
+      "title": "White Hat"
+    },
+    {
+      "id": "sidewinder",
+      "desc": "Complete all local quests.",
+      "title": "Helping Hand"
+    },
+    {
+      "id": "railroad-end",
+      "desc": "Complete the story.",
+      "title": "End of the Line"
+    }
+  ]
+}

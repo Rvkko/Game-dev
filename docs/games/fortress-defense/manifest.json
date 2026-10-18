@@ -1,0 +1,39 @@
+{
+  "id": "fortress-defense",
+  "title": "Fortress Defense",
+  "category": "strategy",
+  "tags": [
+    "tower-defense",
+    "strategy",
+    "waves",
+    "upgrades"
+  ],
+  "stack": "canvas",
+  "entry": "games/fortress-defense/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Build, upgrade, and command three tower classes across eight escalating siege waves culminating in the armored Titan Ram.",
+  "achievements": [
+    {
+      "id": "first-tower",
+      "title": "Foundations",
+      "desc": "Build your first tower."
+    },
+    {
+      "id": "architect",
+      "title": "Master Architect",
+      "desc": "Field ten towers."
+    },
+    {
+      "id": "no-breach",
+      "title": "Unbroken Wall",
+      "desc": "Clear a wave without a breach."
+    },
+    {
+      "id": "siege-ended",
+      "title": "Siege Ended",
+      "desc": "Defeat the Titan Ram."
+    }
+  ]
+}

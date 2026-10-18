@@ -1,0 +1,47 @@
+{
+  "id": "pilot-fuel-tanker-training",
+  "title": "Pilot Fuel Tanker Training",
+  "category": "simulation",
+  "tags": [
+    "tanker",
+    "driving",
+    "training",
+    "3d",
+    "simulation"
+  ],
+  "stack": "Three.js",
+  "entry": "games/pilot-fuel-tanker-training/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Explore a 3D fuel tanker, complete pre-trip and unloading walkthroughs, and try the delivery driving mission.",
+  "achievements": [
+    {
+      "id": "first-tour",
+      "title": "First Tour",
+      "desc": "Open the interactive tanker training simulator.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "module-master",
+      "title": "Module Master",
+      "desc": "Complete all ten familiarization modules.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "assessment-passed",
+      "title": "Checked Out",
+      "desc": "Pass the final assessment.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

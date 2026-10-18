@@ -1,0 +1,39 @@
+{
+  "id": "hover-league-zero",
+  "title": "Hover League Zero",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "hovercraft",
+    "combat",
+    "future"
+  ],
+  "stack": "canvas",
+  "entry": "games/hover-league-zero/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A zero-friction hover racing league with vector thrust, energy gates, rival combat, shields and four orbital circuits.",
+  "achievements": [
+    {
+      "id": "first-win",
+      "title": "Zero Victory",
+      "desc": "Win a league race."
+    },
+    {
+      "id": "gate-master",
+      "title": "Gate Master",
+      "desc": "Hit every energy gate in a race."
+    },
+    {
+      "id": "rammer",
+      "title": "Shock Ram",
+      "desc": "Disable a rival with a charged ram."
+    },
+    {
+      "id": "zero-champion",
+      "title": "League Zero Champion",
+      "desc": "Win all circuits."
+    }
+  ]
+}

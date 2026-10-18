@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": "n7",
+      "date": "2026-07-28",
+      "title": "Every game now has real cover art",
+      "body": "Each title in the library is captured live from its own running build, so the cards show actual gameplay instead of placeholder icons. Ten new titles joined this round: Word Weaver, Minefield Classic, Snake Reactor, Tetro Stack, Flappy Ascent, Neon Breakout, Boids Sanctuary, Ant Colony, Sudoku Master and Solitaire Suite."
+    },
+    {
+      "id": "n6",
+      "date": "2026-07-27",
+      "title": "Library-wide repair pass",
+      "body": "Every registered game was read end to end and independently re-checked. Broken controls, unreachable win states, achievements that showed as blank, save/resume gaps and one game still loading code from the internet were all fixed. The library is fully offline again."
+    },
+    {
+      "id": "n5",
+      "date": "2026-07-17",
+      "title": "45 games and growing",
+      "body": "Twenty combat, sports, adventure and story games plus twelve strategy and simulation titles joined the original library. Sort by genre or newest, or use Surprise Me to jump directly into a game."
+    },
+    {
+      "id": "n4",
+      "date": "2026-07-17",
+      "title": "Quality gate online",
+      "body": "Every registered game now passes automated manifest, asset, entry, syntax and placeholder checks before it can ship inside RVKKO OS."
+    },
+    {
+      "id": "n3",
+      "date": "2026-07-12",
+      "title": "Hub foundation online",
+      "body": "The Empire hub is live: library, saves, achievements, profile, settings, full keyboard/mouse/gamepad navigation, and the Empire SDK for all future games."
+    },
+    {
+      "id": "n2",
+      "date": "2026-07-12",
+      "title": "Flagship #1 launched: Procedural Dungeon RPG",
+      "body": "The first flagship is live with procedural dungeons, loot, combat and floor bosses."
+    },
+    {
+      "id": "n1",
+      "date": "2026-07-12",
+      "title": "The road to 80+ games",
+      "body": "The catalog plan is now 80–100 complete offline titles with distinct gameplay loops. Nothing fake and nothing half-built appears in the live library."
+    }
+  ]
+}

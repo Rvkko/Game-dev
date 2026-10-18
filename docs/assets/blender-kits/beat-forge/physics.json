@@ -1,0 +1,13 @@
+{
+  "gameId": "beat-forge",
+  "archetype": "rhythm-stage",
+  "physicsShape": "capsule",
+  "physicsProfile": "timing-window",
+  "ragdollProfile": "none",
+  "playerCollider": {
+    "radius": 0.550000011920929,
+    "height": 1.100000023841858,
+    "shape": "capsule"
+  },
+  "colliders": []
+}

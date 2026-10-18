@@ -1,0 +1,39 @@
+{
+  "id": "crown-and-dagger",
+  "title": "Crown & Dagger",
+  "category": "story",
+  "tags": [
+    "political intrigue",
+    "choices",
+    "investigation",
+    "strategy"
+  ],
+  "stack": "canvas",
+  "entry": "games/crown-and-dagger/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Navigate five nights of royal intrigue, gather secrets, win allies, survive assassins, and determine who wears the crown at dawn.",
+  "achievements": [
+    {
+      "id": "first-secret",
+      "title": "Whisper Network",
+      "desc": "Collect the first court secret."
+    },
+    {
+      "id": "silver-tongue",
+      "title": "Silver Tongue",
+      "desc": "Win three allies through diplomacy."
+    },
+    {
+      "id": "bloodless-coup",
+      "title": "Bloodless Coup",
+      "desc": "Finish without choosing violence."
+    },
+    {
+      "id": "rightful-crown",
+      "title": "The Rightful Crown",
+      "desc": "Complete all five nights."
+    }
+  ]
+}

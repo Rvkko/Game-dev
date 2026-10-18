@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Civilization God Simulator</title>
+<style>
+  :root{
+    --ui-scale:1;
+    --bg:#0e1016; --panel:rgba(18,22,32,0.92); --panel2:rgba(26,32,46,0.95);
+    --line:rgba(255,255,255,0.10); --txt:#e7ecf4; --muted:#8792a6; --acc:#ffd24a; --acc2:#7fe0ff;
+    --common:#9aa6b8; --uncommon:#5fce7a; --rare:#4aa3ff; --epic:#c07bff; --legendary:#ffb03a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:calc(14px*var(--ui-scale));-webkit-user-select:none;user-select:none}
+  #app{position:fixed;inset:0}
+  #view{position:absolute;inset:0;display:block;background:#0a0d13;touch-action:none}
+  .hidden{display:none!important}
+  button{font-family:inherit;color:var(--txt);cursor:pointer;border:1px solid var(--line);
+    background:var(--panel2);border-radius:8px;padding:7px 11px;font-size:.92em;transition:.12s}
+  button:hover{border-color:var(--acc);background:#232b3d}
+  button.sel{border-color:var(--acc);background:#3a3316;color:#fff}
+  .muted{color:var(--muted)}
+
+  /* ---- HUD top bar ---- */
+  #hud{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:14px;
+    padding:8px 12px;background:linear-gradient(#0e1016ee,#0e101600);pointer-events:none;flex-wrap:wrap}
+  #hud>*{pointer-events:auto}
+  .stat-chip{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:5px 10px;
+    display:flex;flex-direction:column;line-height:1.15;min-width:64px}
+  .stat-chip .k{font-size:.68em;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .stat-chip .v{font-weight:700;font-size:1.02em}
+  #speedbox{display:flex;gap:4px;margin-left:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:4px}
+  #speedbox button{padding:5px 9px;min-width:34px;border-radius:7px}
+  #btn-menu{background:var(--panel)}
+
+  /* ---- god power bar ---- */
+  #powerbar{position:absolute;left:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}
+  #powerbar .pw{display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:7px 10px;width:150px;text-align:left}
+  #powerbar .pw .ic{font-size:1.15em;width:20px;text-align:center}
+  #disaster-picker{display:flex;flex-wrap:wrap;gap:4px;max-width:150px;margin-top:2px}
+  #disaster-picker button{padding:4px 6px;font-size:.78em}
+
+  /* ---- side panel ---- */
+  #side{position:absolute;right:0;top:52px;bottom:12px;width:330px;max-width:82vw;display:flex;flex-direction:column;
+    background:var(--panel);border-left:1px solid var(--line);border-top-left-radius:12px;border-bottom-left-radius:12px}
+  #side.collapsed{transform:translateX(calc(100% - 34px))}
+  #side-toggle{position:absolute;left:-1px;top:10px;transform:translateX(-100%);border-top-right-radius:0;border-bottom-right-radius:0;padding:6px 8px}
+  .tabs{display:flex;gap:2px;padding:8px 8px 0}
+  .tabbtn{flex:1;border-radius:8px 8px 0 0;padding:7px 4px;font-size:.82em;opacity:.7;background:transparent;border-bottom:none}
+  .tabbtn.active{opacity:1;background:var(--panel2);border-color:var(--line)}
+  .tabpane{display:none;flex:1;overflow-y:auto;padding:10px}
+  .tabpane.active{display:block}
+  #ach-count{float:right;color:var(--acc)}
+
+  .lg{padding:5px 8px;border-radius:7px;margin-bottom:4px;font-size:.86em;background:rgba(255,255,255,0.03);border-left:3px solid var(--muted)}
+  .lg .yr{color:var(--muted);font-size:.85em;margin-right:5px}
+  .lg.birth{border-color:#5fce7a}.lg.death{border-color:#ff6a6a}.lg.founding{border-color:var(--acc)}
+  .lg.tech{border-color:var(--acc2)}.lg.build{border-color:#c99a5a}.lg.disaster{border-color:#ff7a3a}
+  .lg.divine{border-color:#c07bff}.lg.union{border-color:#ff9bd0}.lg.collapse{border-color:#888}
+
+  .tl-year{margin-bottom:12px}
+  .tl-badge{display:inline-block;background:var(--acc);color:#221c05;font-weight:700;border-radius:6px;padding:2px 8px;font-size:.8em;margin-bottom:5px}
+  .tl-events{border-left:2px solid var(--line);padding-left:10px;margin-left:6px}
+  .tl-ev{font-size:.84em;padding:3px 0;color:#cdd6e6}
+  .tl-ev.disaster{color:#ff9a6a}.tl-ev.tech{color:var(--acc2)}.tl-ev.founding{color:var(--acc)}.tl-ev.divine{color:#d6a6ff}
+
+  .ach{display:flex;gap:10px;align-items:center;padding:8px;border-radius:9px;margin-bottom:6px;background:rgba(255,255,255,0.03);opacity:.55;border:1px solid transparent}
+  .ach.got{opacity:1;background:rgba(255,210,74,0.07);border-color:rgba(255,210,74,0.25)}
+  .ach-ic{font-size:1.4em;color:var(--muted)}
+  .ach.got .ach-ic{color:var(--acc)}
+  .ach-t{font-weight:600;font-size:.92em}
+  .ach-d{font-size:.8em;color:var(--muted)}
+  .ach.uncommon.got .ach-ic{color:var(--uncommon)}.ach.rare.got .ach-ic{color:var(--rare)}
+  .ach.epic.got .ach-ic{color:var(--epic)}.ach.legendary.got .ach-ic{color:var(--legendary)}
+
+  /* ---- inspector ---- */
+  #inspector{position:absolute;left:180px;bottom:16px;width:300px;max-width:80vw;background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;padding:12px;font-size:.88em;box-shadow:0 8px 30px #000a}
+  .insp-hd{display:flex;align-items:center;gap:8px;font-size:1.12em;margin-bottom:2px}
+  .insp-hd .x{margin-left:auto;padding:2px 8px;background:transparent;border:none}
+  .tier{font-size:.6em;background:var(--acc2);color:#062733;border-radius:5px;padding:2px 6px;font-weight:700}
+  .insp-sub{color:var(--muted);margin-bottom:8px;font-size:.9em}
+  .insp-row{margin:4px 0}.insp-row.res{font-size:1.05em}
+  .stat{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:.9em}
+  .minibar{flex:1;height:7px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;display:inline-block;min-width:80px}
+  .minibar>span{display:block;height:100%;background:linear-gradient(90deg,#5fce7a,#ffd24a)}
+  .insp-mem ul{margin:4px 0 0 16px}.insp-mem li{font-size:.85em;color:#c3ccdc;margin:2px 0}
+  .insp-act{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .insp-act button{padding:5px 10px;font-size:.85em}
+  .bless{color:var(--acc)}.curse{color:var(--epic)}
+
+  /* ---- start screen ---- */
+  #start-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    background:radial-gradient(1200px 700px at 50% 30%,#1a2740,#0a0d13 70%);text-align:center;padding:20px}
+  #start-screen h1{font-size:2.5em;letter-spacing:1px;text-shadow:0 3px 20px #000;
+    background:linear-gradient(#fff,#ffd24a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  #start-screen .sub{color:var(--muted);max-width:520px;line-height:1.5}
+  .panel-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:14px;min-width:320px}
+  .diffrow{display:flex;gap:8px;justify-content:center}
+  .diff-btn{flex:1;flex-direction:column;display:flex;gap:2px;align-items:center;padding:10px}
+  .diff-btn small{color:var(--muted);font-size:.75em;font-weight:400}
+  .diff-btn.sel small{color:#e7cf90}
+  .seedrow{display:flex;gap:8px}
+  .seedrow input{flex:1;background:#0c0f16;border:1px solid var(--line);border-radius:8px;color:var(--txt);padding:8px 10px;font-family:inherit}
+  .bigbtn{background:linear-gradient(#3a4a6a,#26314a);border-color:#4a5c80;font-weight:700;font-size:1.05em;padding:11px}
+  .bigbtn:hover{border-color:var(--acc)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:.8em;color:var(--muted);margin-top:4px}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  /* ---- pause menu ---- */
+  #menu{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0a0d13cc;z-index:20}
+  #menu .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:260px}
+  #menu h2{text-align:center;margin-bottom:6px}
+  #menu button{padding:11px}
+
+  /* ---- result (extinction / legacy) ---- */
+  #result{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0a0d13dd;z-index:26}
+  #result .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;
+    min-width:min(400px,92vw);max-width:min(520px,94vw);text-align:center}
+  #result h2{margin-bottom:6px;font-size:1.5em;letter-spacing:1px}
+  #result .rstats{display:grid;grid-template-columns:1fr auto;gap:3px 18px;text-align:left;font-size:.9em;margin:14px 0 4px}
+  #result .rstats b{color:var(--acc);font-variant-numeric:tabular-nums}
+  #result .rbtns{display:flex;gap:8px;margin-top:14px}
+  #result .rbtns button{flex:1;padding:10px}
+
+  /* ---- saves modal ---- */
+  #saves-modal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0a0d13cc;z-index:25}
+  #saves-modal .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;width:440px;max-width:92vw;max-height:86vh;overflow-y:auto}
+  #saves-modal h2{margin-bottom:12px;display:flex}#saves-close{margin-left:auto;padding:4px 10px}
+  .slotrow{display:flex;gap:10px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+  .slotthumb img,.slotthumb .noimg{width:78px;height:52px;object-fit:cover;border-radius:6px;background:#0c0f16;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .slotinfo{flex:1;font-size:.86em}.slotinfo b{text-transform:uppercase;font-size:.85em;color:var(--acc2)}
+  .slotact{display:flex;gap:6px}
+
+  /* ---- toasts + tooltip ---- */
+  #toasts{position:absolute;top:56px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:30;align-items:center}
+  .toast{background:var(--panel2);border:1px solid var(--acc);border-radius:12px;padding:10px 18px;text-align:center;
+    box-shadow:0 6px 24px #000a;animation:pop .4s;min-width:220px}
+  .toast.rm{animation:none}
+  .toast.out{opacity:0;transition:.5s}
+  .toast .tt{font-weight:700}.toast .ts{font-size:.82em;color:var(--muted)}
+  .toast.uncommon{border-color:var(--uncommon)}.toast.rare{border-color:var(--rare)}
+  .toast.epic{border-color:var(--epic)}.toast.legendary{border-color:var(--legendary);box-shadow:0 0 24px #ffb03a55}
+  @keyframes pop{0%{transform:translateY(-14px) scale(.9);opacity:0}100%{transform:none;opacity:1}}
+  #tooltip{position:fixed;background:#000d;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:.8em;pointer-events:none;z-index:40;white-space:nowrap}
+  @media (max-width:640px){
+    #side{top:auto;bottom:0;left:0;right:0;width:100%;height:44vh;border-radius:12px 12px 0 0;border-left:none;border-top:1px solid var(--line)}
+    #side.collapsed{transform:translateY(calc(100% - 34px))}
+    #side-toggle{left:10px;top:-1px;transform:translateY(-100%)}
+    #powerbar{top:auto;bottom:calc(44vh + 8px);transform:none;flex-direction:row;flex-wrap:wrap;max-width:calc(100vw - 24px)}
+    #powerbar .pw{width:auto}#powerbar .pw span:not(.ic){display:none}
+    #inspector{left:8px;right:8px;bottom:calc(44vh + 64px);width:auto}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="view"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="stat-chip"><span class="k">Time</span><span class="v" id="hud-time">Year 0</span></div>
+    <div class="stat-chip"><span class="k">People</span><span class="v" id="hud-pop">0</span></div>
+    <div class="stat-chip"><span class="k">Settlements</span><span class="v" id="hud-sett">0</span></div>
+    <div class="stat-chip"><span class="k">Food</span><span class="v" id="hud-food">0</span></div>
+    <div class="stat-chip"><span class="k">Tech</span><span class="v" id="hud-tech">Fire</span></div>
+    <div id="speedbox">
+      <button id="sp-pause" title="Pause (Space)">⏸</button>
+      <button class="sp sel" data-sp="1" title="1× (1)">1×</button>
+      <button class="sp" data-sp="2" title="2× (2)">2×</button>
+      <button class="sp" data-sp="4" title="4× (3)">4×</button>
+      <button class="sp" data-sp="8" title="8× (4)">8×</button>
+    </div>
+    <button id="btn-menu" title="Menu (Esc)">☰ Menu</button>
+  </div>
+
+  <!-- God powers -->
+  <div id="powerbar" class="hidden">
+    <button class="pw sel" data-tool="inspect"><span class="ic">🔍</span><span>Inspect</span></button>
+    <button class="pw" data-tool="bless"><span class="ic">✨</span><span>Bless</span></button>
+    <button class="pw" data-tool="curse"><span class="ic">💀</span><span>Curse</span></button>
+    <button class="pw" data-tool="food"><span class="ic">🌾</span><span>Spawn Food</span></button>
+    <button class="pw" data-tool="wood"><span class="ic">🪵</span><span>Spawn Wood</span></button>
+    <button class="pw" data-tool="stone"><span class="ic">⛏️</span><span>Spawn Stone</span></button>
+    <button class="pw" data-tool="disaster"><span class="ic">🌪️</span><span>Disaster</span></button>
+    <button class="pw" data-tool="smite"><span class="ic">⚡</span><span>Smite</span></button>
+    <div id="disaster-picker" class="hidden">
+      <button class="dk sel" data-kind="drought">Drought</button>
+      <button class="dk" data-kind="storm">Storm</button>
+      <button class="dk" data-kind="plague">Plague</button>
+      <button class="dk" data-kind="wildfire">Fire</button>
+      <button class="dk" data-kind="earthquake">Quake</button>
+    </div>
+  </div>
+
+  <!-- Side panel -->
+  <div id="side" class="hidden">
+    <button id="side-toggle" title="Toggle panel">≡</button>
+    <div class="tabs">
+      <button class="tabbtn active" data-tab="tab-log">Chronicle</button>
+      <button class="tabbtn" data-tab="tab-timeline">Timeline</button>
+      <button class="tabbtn" data-tab="tab-achievements">Awards</button>
+    </div>
+    <div id="tab-log" class="tabpane active"><div id="log-body"></div></div>
+    <div id="tab-timeline" class="tabpane"><div id="tl-body"></div></div>
+    <div id="tab-achievements" class="tabpane">
+      <div style="margin-bottom:8px;font-weight:600">Achievements <span id="ach-count">0/0</span></div>
+      <div id="ach-body"></div>
+    </div>
+  </div>
+
+  <!-- Inspector -->
+  <div id="inspector" class="hidden"></div>
+
+  <!-- Start screen -->
+  <div id="start-screen">
+    <h1>Civilization God Simulator</h1>
+    <div class="sub">A tiny tribe wakes in the wild. Watch them gather, build, raise families, discover, and endure — a world that lives on its own. You are their god: bless, curse, feed, and unleash the storm.<br><b>Goal:</b> shepherd your people to Year 200 for an Eternal Legacy. If the last soul dies, the world ends.</div>
+    <div class="panel-card">
+      <div style="font-weight:600">Choose your world</div>
+      <div class="diffrow">
+        <button class="diff-btn" data-diff="peaceful">Peaceful<small>plenty · calm</small></button>
+        <button class="diff-btn sel" data-diff="normal">Normal<small>balanced</small></button>
+        <button class="diff-btn" data-diff="harsh">Harsh<small>scarce · deadly</small></button>
+      </div>
+      <div class="seedrow"><input id="seed-input" placeholder="Seed (optional word or number)"><button id="btn-daily" title="Seeded daily challenge">Daily 🎲</button></div>
+      <button id="btn-new" class="bigbtn">Create World</button>
+      <button id="btn-continue" class="bigbtn" style="display:none">Continue ▶</button>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:#5a8c4a"></i>Grass</span>
+      <span><i class="dot" style="background:#2f5e34"></i>Forest</span>
+      <span><i class="dot" style="background:#8a7d5a"></i>Hills</span>
+      <span><i class="dot" style="background:#2d5a7a"></i>Water</span>
+      <span><i class="dot" style="background:#c9b477"></i>Desert</span>
+    </div>
+    <div class="sub" style="font-size:.82em">WASD pan · Right-drag or Q/E rotate · Middle-drag/arrows move · Wheel zoom · Space pause · Left-click to inspect / use power</div>
+  </div>
+
+  <!-- Pause menu -->
+  <div id="menu" class="hidden">
+    <div class="card">
+      <h2>Paused</h2>
+      <button id="m-resume">Resume</button>
+      <button id="m-save">Save World</button>
+      <button id="m-load">Load World</button>
+      <button id="m-new">New World</button>
+    </div>
+  </div>
+
+  <!-- Result: extinction (loss) or eternal legacy (win) -->
+  <div id="result" class="hidden">
+    <div class="card">
+      <h2 id="result-title"></h2>
+      <div id="result-body"></div>
+      <div class="rbtns">
+        <button id="r-continue">Keep Watching</button>
+        <button id="r-new">New World</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saves modal -->
+  <div id="saves-modal" class="hidden">
+    <div class="card">
+      <h2 id="saves-title">Save World <button id="saves-close">✕</button></h2>
+      <div id="saves-body"></div>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+  <div id="tooltip" class="hidden"></div>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script type="module">
+  import * as THREE from '../../vendor/three.module.js';
+  (async () => {
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '../../vendor/three-r128/GLTFLoader.js';
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    await import('./src/main.js');
+  })().catch((error) => console.error('Civ 3D bootstrap failed', error));
+</script>
+</body>
+</html>

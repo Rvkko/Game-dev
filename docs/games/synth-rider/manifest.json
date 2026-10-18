@@ -1,0 +1,39 @@
+{
+  "id": "synth-rider",
+  "title": "Synth Rider",
+  "category": "rhythm",
+  "tags": [
+    "rhythm",
+    "runner",
+    "music",
+    "campaign"
+  ],
+  "stack": "canvas",
+  "entry": "games/synth-rider/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Ride four reactive synth highways, switch lanes, jump barriers, duck gates, collect beat crystals, and maintain the groove to headline the Neon Summit.",
+  "achievements": [
+    {
+      "id": "groove-25",
+      "title": "In the Groove",
+      "desc": "Build a 25-beat combo."
+    },
+    {
+      "id": "perfect-run",
+      "title": "Perfect Ride",
+      "desc": "Finish a track without a collision."
+    },
+    {
+      "id": "crystal-hunter",
+      "title": "Crystal Hunter",
+      "desc": "Collect 100 beat crystals."
+    },
+    {
+      "id": "summit-headliner",
+      "title": "Headliner",
+      "desc": "Complete all four tracks."
+    }
+  ]
+}

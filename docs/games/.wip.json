@@ -1,0 +1,6 @@
+{
+  "comment": "Game folders that exist but are deliberately NOT registered yet. The hub only reads registry.json, so nothing here is ever advertised as playable. Move an id into registry.json once `npm run audit <id>` reports zero findings.",
+  "games": [
+    "astral-ascendancy"
+  ]
+}

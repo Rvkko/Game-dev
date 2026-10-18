@@ -1,0 +1,39 @@
+{
+  "id": "cyber-noir-2088",
+  "title": "Cyber Noir 2088",
+  "category": "story",
+  "tags": [
+    "cyberpunk",
+    "detective",
+    "stealth",
+    "branching"
+  ],
+  "stack": "canvas",
+  "entry": "games/cyber-noir-2088/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Infiltrate five neon districts, hack secured memories, evade corporate sentries, and expose a conspiracy whose ending changes with every alliance.",
+  "achievements": [
+    {
+      "id": "first-hack",
+      "title": "Back Door",
+      "desc": "Complete the first neural hack."
+    },
+    {
+      "id": "ghost-protocol",
+      "title": "Ghost Protocol",
+      "desc": "Finish a district without an alarm."
+    },
+    {
+      "id": "evidence-chain",
+      "title": "Chain of Proof",
+      "desc": "Recover every memory shard."
+    },
+    {
+      "id": "neon-justice",
+      "title": "Neon Justice",
+      "desc": "Complete the full case."
+    }
+  ]
+}

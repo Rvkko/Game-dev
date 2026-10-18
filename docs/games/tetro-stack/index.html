@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tetro Stack</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; width:100%; height:100%; background:#05060d; overflow:hidden;
+    font-family:'Segoe UI', Consolas, 'DejaVu Sans Mono', monospace; -webkit-user-select:none; user-select:none;
+    touch-action:none; }
+  #app { position:fixed; inset:0; }
+  canvas#gl { position:absolute; inset:0; display:block; width:100%; height:100%; }
+
+  .overlay {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at center, rgba(10,12,26,0.93) 0%, rgba(3,4,10,0.985) 100%);
+    color:#dce8ff; z-index:50; overflow-y:auto; padding:18px;
+  }
+  .hidden { display:none !important; }
+  .panel {
+    position:relative;
+    background:linear-gradient(180deg, rgba(18,20,38,0.96), rgba(7,8,17,0.97));
+    border:1px solid #4a5a8c; border-radius:12px; padding:24px 30px; min-width:340px; max-width:min(94vw, 560px);
+    box-shadow:0 0 46px rgba(120,150,255,0.16), inset 0 0 34px rgba(60,80,160,0.07);
+    max-height:92vh; overflow-y:auto;
+  }
+  .title { font-size:30px; letter-spacing:5px; text-align:center; color:#7ff0ff; text-shadow:0 0 14px #17b3d6; margin:0 0 4px; }
+  .subtitle { text-align:center; color:#8c9cb8; font-size:11px; margin-bottom:18px; letter-spacing:2px; }
+  h2.section { color:#7fd4ff; font-size:12px; letter-spacing:2px; border-bottom:1px solid #23324f; padding-bottom:5px; margin:16px 0 9px; }
+  .btn {
+    display:block; width:100%; margin:7px 0; padding:11px 14px; background:linear-gradient(180deg,#232e58,#131a30);
+    border:1px solid #4a6cbf; color:#cfe0ff; font-size:13px; letter-spacing:1.5px; border-radius:7px; cursor:pointer;
+    font-family:inherit; text-align:left; transition:transform .12s, background .12s, border-color .12s;
+  }
+  .btn:hover { background:linear-gradient(180deg,#33497a,#1b2749); border-color:#7ff0ff; color:#fff; transform:translateX(2px); }
+  .btn:active { transform:translateX(0) scale(0.99); }
+  .btn.primary { border-color:#7ff0ff; color:#e6fbff; box-shadow:0 0 14px rgba(60,200,240,0.16) inset; }
+  .btn.primary:hover { background:linear-gradient(180deg,#12455a,#0a2130); }
+  .btn.danger { border-color:#d65050; color:#ffd4d4; }
+  .btn small { display:block; color:#7f92b5; letter-spacing:.5px; font-size:10.5px; margin-top:3px; }
+  .row { display:flex; gap:8px; }
+  .row .btn { flex:1; }
+  select, input[type=range] { width:100%; background:#131a30; color:#cfe0ff; border:1px solid #4a6cbf; border-radius:5px; padding:6px; font-family:inherit; font-size:12px; }
+  input[type=checkbox] { accent-color:#7ff0ff; width:15px; height:15px; vertical-align:-2px; margin-right:6px; }
+  .field { margin:10px 0; font-size:12px; color:#a9c0e0; }
+  .field label { display:block; margin-bottom:4px; }
+  .field .val { color:#7ff0ff; float:right; }
+  .small { font-size:11px; color:#7f92b5; line-height:1.65; }
+  .close-x { position:absolute; top:6px; right:12px; cursor:pointer; color:#7fd4ff; font-size:22px; line-height:1; }
+  .close-x:hover { color:#fff; }
+  .statline { display:flex; justify-content:space-between; font-size:12.5px; color:#b8c8e8; padding:4px 2px; border-bottom:1px dashed rgba(90,120,190,0.18); }
+  .statline b { color:#fff; font-weight:600; }
+  .statline.hi b { color:#ffd27f; text-shadow:0 0 8px rgba(255,190,90,.5); }
+  .kbd { display:inline-block; min-width:20px; text-align:center; padding:1px 6px; margin:0 2px 3px 0; border:1px solid #4a6cbf;
+         border-radius:4px; background:#111a30; color:#cfe0ff; font-size:11px; }
+  .ctrlgrid { display:grid; grid-template-columns:auto 1fr; gap:5px 12px; font-size:12px; color:#a9c0e0; align-items:center; }
+  .ctrlgrid div:nth-child(even) { color:#8fa4c8; }
+  .badge { display:inline-block; font-size:10px; padding:1px 7px; border-radius:9px; margin-left:6px; letter-spacing:1px; }
+  .badge.new { background:#3a2c0e; color:#ffd27f; border:1px solid #7a5a1c; }
+  .resicon { font-size:44px; text-align:center; margin:2px 0 4px; }
+
+  #hudRoot { position:absolute; inset:0; pointer-events:none; z-index:10; }
+  #controlsHint { position:absolute; bottom:6px; left:50%; transform:translateX(-50%); color:#6d80a4; font-size:10.5px;
+    text-align:center; text-shadow:0 1px 2px #000; letter-spacing:.4px; white-space:nowrap; max-width:98vw; overflow:hidden; }
+  #pauseBtn { position:absolute; top:10px; right:12px; pointer-events:auto; cursor:pointer; color:#9fdcff; font-size:15px;
+    background:rgba(10,14,28,0.72); border:1px solid #40538a; border-radius:7px; padding:4px 11px; }
+  #pauseBtn:hover { color:#fff; border-color:#7ff0ff; }
+
+  #touchControls { position:absolute; left:0; right:0; bottom:22px; display:flex; justify-content:center; gap:8px; pointer-events:none; flex-wrap:wrap; padding:0 8px; }
+  #touchControls button { pointer-events:auto; width:58px; height:52px; font-size:19px; color:#cfe0ff; background:rgba(18,24,46,0.86);
+    border:1px solid #4a6cbf; border-radius:10px; font-family:inherit; cursor:pointer; }
+  #touchControls button:active { background:#2a3c6e; color:#fff; }
+
+  #toastWrap { position:absolute; top:12px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; gap:6px;
+    align-items:center; z-index:60; pointer-events:none; }
+  .toast { background:rgba(14,20,38,0.94); border:1px solid #ffd27f; color:#ffe9c8; padding:7px 16px; border-radius:8px;
+    font-size:12.5px; letter-spacing:1px; box-shadow:0 0 20px rgba(255,190,90,0.2); animation:toastIn .32s ease both, toastOut .6s ease 2.9s both; }
+  .toast b { color:#fff; }
+  @keyframes toastIn { from{opacity:0; transform:translateY(-10px) scale(.96);} to{opacity:1; transform:none;} }
+  @keyframes toastOut { from{opacity:1;} to{opacity:0; transform:translateY(-6px);} }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .toast { transition:none !important; animation-duration:.01s !important; }
+  }
+  @media (max-width: 520px) {
+    .panel { padding:18px 16px; min-width:0; width:100%; }
+    .title { font-size:23px; letter-spacing:3px; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="gl"></canvas>
+
+  <div id="hudRoot" class="hidden">
+    <div id="pauseBtn">❚❚ ESC</div>
+    <div id="controlsHint">← → move · ↓ soft drop · SPACE hard drop · ↑ / X rotate CW · Z rotate CCW · C hold · ESC/P pause · R restart</div>
+    <div id="touchControls" class="hidden">
+      <button id="tcCCW" title="Rotate counter-clockwise">↺</button>
+      <button id="tcLeft" title="Move left">◀</button>
+      <button id="tcDown" title="Soft drop">▼</button>
+      <button id="tcRight" title="Move right">▶</button>
+      <button id="tcCW" title="Rotate clockwise">↻</button>
+      <button id="tcHold" title="Hold">HLD</button>
+      <button id="tcDrop" title="Hard drop">⤓</button>
+    </div>
+  </div>
+
+  <div id="toastWrap"></div>
+
+  <!-- MAIN MENU -->
+  <div class="overlay" id="mainMenu">
+    <div class="panel">
+      <div class="title">TETRO STACK</div>
+      <div class="subtitle">SRS · 7-BAG · HOLD · T-SPINS</div>
+      <button class="btn primary" id="btnMarathon">MARATHON<small>150 lines, rising gravity. Best: <span id="menuMarathon">—</span></small></button>
+      <button class="btn primary" id="btnSprint">SPRINT 40L<small>Clear 40 lines as fast as you can. Best: <span id="menuSprint">—</span></small></button>
+      <button class="btn primary" id="btnUltra">ULTRA 2:00<small>Maximum score in two minutes. Best: <span id="menuUltra">—</span></small></button>
+      <div class="field" style="margin-top:14px;">
+        <label>Starting level <span class="val" id="startLvlVal">1</span></label>
+        <input type="range" id="selStart" min="1" max="15" step="1" value="1">
+      </div>
+      <div class="row">
+        <button class="btn" id="btnRecords">RECORDS</button>
+        <button class="btn" id="btnSettings">SETTINGS</button>
+      </div>
+      <button class="btn" id="btnHowTo">HOW TO PLAY</button>
+      <div class="small" style="text-align:center;margin-top:12px;">
+        Lines cleared all-time: <span id="menuTotalLines">0</span> · Games: <span id="menuGames">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO PLAY -->
+  <div class="overlay hidden" id="howToMenu">
+    <div class="panel">
+      <span class="close-x" id="howToClose">&times;</span>
+      <div class="title" style="font-size:21px;">HOW TO PLAY</div>
+      <div class="subtitle">STACK · CLEAR · SURVIVE</div>
+      <div class="small">
+        Pieces fall from the top of the well. Fill a complete horizontal row and it clears, awarding points and keeping
+        your stack alive. Top out — a new piece has nowhere to spawn — and the run ends.
+      </div>
+      <h2 class="section">CONTROLS</h2>
+      <div class="ctrlgrid">
+        <div><span class="kbd">←</span><span class="kbd">→</span> / <span class="kbd">A</span><span class="kbd">D</span></div><div>Move left / right (hold to auto-shift)</div>
+        <div><span class="kbd">↓</span> / <span class="kbd">S</span></div><div>Soft drop (+1 point per cell)</div>
+        <div><span class="kbd">SPACE</span></div><div>Hard drop &amp; lock (+2 points per cell)</div>
+        <div><span class="kbd">↑</span> / <span class="kbd">X</span></div><div>Rotate clockwise</div>
+        <div><span class="kbd">Z</span> / <span class="kbd">CTRL</span></div><div>Rotate counter-clockwise</div>
+        <div><span class="kbd">C</span> / <span class="kbd">SHIFT</span></div><div>Hold piece (once per piece)</div>
+        <div><span class="kbd">ESC</span> / <span class="kbd">P</span></div><div>Pause</div>
+        <div><span class="kbd">R</span></div><div>Restart run</div>
+      </div>
+      <h2 class="section">SCORING</h2>
+      <div class="small">
+        Single 100 · Double 300 · Triple 500 · <b>Quad 800</b> — all multiplied by level.<br>
+        <b>T-Spin</b>: rotate a T-piece into a slot where 3 of its 4 corners are blocked. T-Spin Single 800,
+        Double 1200, Triple 1600.<br>
+        <b>Back-to-Back</b>: chain Quads and T-Spins with no plain clears between them for a 1.5&times; bonus.<br>
+        <b>Combo</b>: clear lines with consecutive pieces — 50 &times; combo &times; level each time.<br>
+        <b>Perfect Clear</b>: empty the whole board for a huge bonus.
+      </div>
+      <h2 class="section">SYSTEMS</h2>
+      <div class="small">
+        The <b>7-bag randomiser</b> deals every piece once before repeating, so droughts never last.
+        <b>SRS wall kicks</b> let pieces twist into tight gaps against walls and overhangs.
+        The faded <b>ghost</b> shows where the piece lands. <b>Lock delay</b> gives you half a second of
+        sliding before a grounded piece sets — but only 15 resets, so don't stall forever.
+      </div>
+      <h2 class="section">MODES</h2>
+      <div class="small">
+        <b>Marathon</b> — 150 lines. Gravity rises every 10 lines up to level 20. Clear it to win.<br>
+        <b>Sprint 40L</b> — clear 40 lines against the clock at your chosen (fixed) level.<br>
+        <b>Ultra 2:00</b> — score as much as possible in two minutes; levels still rise.
+      </div>
+      <button class="btn primary" id="howToDone" style="margin-top:16px;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="overlay hidden" id="settingsMenu">
+    <div class="panel">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <div class="title" style="font-size:21px;">SETTINGS</div>
+      <div class="subtitle">HANDLING &amp; PRESENTATION</div>
+      <h2 class="section">HANDLING</h2>
+      <div class="field"><label>DAS — delayed auto shift <span class="val" id="dasVal">133 ms</span></label>
+        <input type="range" id="setDAS" min="40" max="300" step="1" value="133"></div>
+      <div class="field"><label>ARR — auto repeat rate <span class="val" id="arrVal">33 ms</span></label>
+        <input type="range" id="setARR" min="0" max="120" step="1" value="33"></div>
+      <div class="field"><label>Soft drop speed <span class="val" id="sdfVal">20&times;</span></label>
+        <input type="range" id="setSDF" min="5" max="40" step="1" value="20"></div>
+      <h2 class="section">DISPLAY &amp; AUDIO</h2>
+      <div class="field"><label><input type="checkbox" id="setGhost" checked>Ghost piece</label></div>
+      <div class="field"><label><input type="checkbox" id="setGrid" checked>Well grid lines</label></div>
+      <div class="field"><label><input type="checkbox" id="setShake" checked>Screen shake &amp; particles</label></div>
+      <div class="field"><label><input type="checkbox" id="setTouch">Always show touch buttons</label></div>
+      <div class="field"><label><input type="checkbox" id="setMusic" checked>Music</label></div>
+      <div class="field"><label>Master volume <span class="val" id="volVal">70%</span></label>
+        <input type="range" id="setVol" min="0" max="1" step="0.05" value="0.7"></div>
+      <button class="btn primary" id="settingsDone" style="margin-top:14px;">DONE</button>
+    </div>
+  </div>
+
+  <!-- RECORDS -->
+  <div class="overlay hidden" id="recordsMenu">
+    <div class="panel">
+      <span class="close-x" id="recordsClose">&times;</span>
+      <div class="title" style="font-size:21px;">RECORDS</div>
+      <div class="subtitle">PERSONAL BESTS</div>
+      <div id="recordsBody"></div>
+      <button class="btn primary" id="recordsDone" style="margin-top:14px;">BACK</button>
+      <button class="btn danger" id="btnResetRecords">RESET ALL RECORDS</button>
+    </div>
+  </div>
+
+  <!-- PAUSE -->
+  <div class="overlay hidden" id="pauseMenu">
+    <div class="panel">
+      <div class="title" style="font-size:21px;">PAUSED</div>
+      <div class="subtitle" id="pauseSub">MARATHON</div>
+      <button class="btn primary" id="btnResume">RESUME</button>
+      <button class="btn" id="btnRestart">RESTART RUN</button>
+      <button class="btn" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn" id="btnPauseHowTo">HOW TO PLAY</button>
+      <button class="btn danger" id="btnQuit">QUIT TO MENU</button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="overlay hidden" id="resultMenu">
+    <div class="panel">
+      <div class="resicon" id="resultIcon">🏆</div>
+      <div class="title" id="resultTitle" style="font-size:23px;">RUN COMPLETE</div>
+      <div class="subtitle" id="resultSub">MARATHON</div>
+      <div id="resultStats"></div>
+      <button class="btn primary" id="btnAgain" style="margin-top:14px;">PLAY AGAIN</button>
+      <button class="btn" id="btnResultMode">CHANGE MODE</button>
+      <button class="btn" id="btnResultMenu">MAIN MENU</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

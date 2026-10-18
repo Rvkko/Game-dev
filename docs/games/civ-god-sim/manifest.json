@@ -1,0 +1,182 @@
+{
+  "id": "civ-god-sim",
+  "title": "Civilization God Simulator",
+  "category": "flagship",
+  "tags": [
+    "simulation",
+    "god-game",
+    "emergent",
+    "sandbox",
+    "strategy"
+  ],
+  "stack": "three.js (WebGL) + cannon-es 3D physics + seedable agent simulation",
+  "entry": "games/civ-god-sim/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A true-3D autonomous civilization sim rendered with a low-poly WebGL world and an orbit/RTS god-cam. A tribe wakes in the wild and lives on its own — gathering, building, raising families, aging, discovering tech, and enduring disasters, with 3D ragdoll physics on death. You are their god: bless, curse, feed, and unleash the storm. Full history log and timeline.",
+  "achievements": [
+    {
+      "id": "dawn-of-life",
+      "title": "Dawn of Life",
+      "desc": "Guide a tribe to its 5th year.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-spark",
+      "title": "First Spark",
+      "desc": "Witness the first child born.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hamlet",
+      "title": "Hamlet",
+      "desc": "A settlement reaches 5 people.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "village",
+      "title": "Village Life",
+      "desc": "A settlement reaches 10 people.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "town",
+      "title": "Rise of the Town",
+      "desc": "A settlement reaches 25 people.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "toolmakers",
+      "title": "Toolmakers",
+      "desc": "A civilization learns Stone Tools.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "harvest",
+      "title": "The Harvest",
+      "desc": "A civilization learns Agriculture.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "masons",
+      "title": "Age of Stone",
+      "desc": "A civilization learns Construction.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "age-of-writing",
+      "title": "The Written Word",
+      "desc": "A civilization learns Writing.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "elder",
+      "title": "Wisdom of Elders",
+      "desc": "An individual lives to age 60.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "dynasty",
+      "title": "Dynasty",
+      "desc": "A family line reaches 3 generations.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "expansion",
+      "title": "Expansion",
+      "desc": "Have 3 settlements thriving at once.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "multitude",
+      "title": "Multitude",
+      "desc": "World population reaches 100 souls.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "survivors",
+      "title": "Survivors",
+      "desc": "A settlement lives through a disaster.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "benevolent",
+      "title": "Benevolent God",
+      "desc": "Bestow 10 blessings.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 10
+    },
+    {
+      "id": "wrathful",
+      "title": "Wrathful God",
+      "desc": "Unleash divine destruction.",
+      "rarity": "uncommon",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "century",
+      "title": "A Century Passes",
+      "desc": "Reach the year 100.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "eternal",
+      "title": "Eternal Legacy",
+      "desc": "Reach year 200 with a living people.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

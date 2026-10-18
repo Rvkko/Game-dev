@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Ocean Survival</title>
+<style>
+:root{ --ts:1; --acc:#39d7ff; }
+*{box-sizing:border-box; margin:0; padding:0; user-select:none;}
+html,body{width:100%;height:100%;overflow:hidden;background:#02060e;font-family:'Segoe UI',system-ui,sans-serif;color:#cfe9f5;}
+#game{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair;}
+.hidden{display:none !important;}
+/* ---------- HUD ---------- */
+#hud{position:absolute;inset:0;pointer-events:none;font-size:calc(14px * var(--ts));}
+.bars{position:absolute;left:18px;top:16px;width:min(300px,34vw);}
+.bar{height:16px;background:rgba(4,16,28,.75);border:1px solid rgba(120,200,255,.35);border-radius:8px;overflow:hidden;margin-bottom:7px;position:relative;}
+.bar>i{display:block;height:100%;width:100%;transition:width .15s linear;border-radius:7px;}
+.bar>b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:calc(10px*var(--ts));font-weight:600;letter-spacing:.5px;text-shadow:0 1px 2px #000;}
+#o2fill{background:linear-gradient(90deg,#1e9fd8,#59e0ff);}
+#hpfill{background:linear-gradient(90deg,#c8384a,#ff7a6b);}
+#o2bar.alarm{animation:alarm .6s infinite;}
+@keyframes alarm{0%,100%{border-color:rgba(120,200,255,.35)}50%{border-color:#ff4b4b;box-shadow:0 0 12px #ff4b4b88}}
+#depthbox{position:absolute;top:16px;right:18px;text-align:right;background:rgba(4,16,28,.65);border:1px solid rgba(120,200,255,.25);border-radius:10px;padding:8px 14px;}
+#depthbox .d{font-size:calc(22px*var(--ts));font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums;}
+#depthbox .z{font-size:calc(11px*var(--ts));opacity:.8;}
+#depthbox .warn{color:#ff6b5b;font-size:calc(11px*var(--ts));font-weight:700;display:none;}
+#depthbox.over .warn{display:block;animation:alarm .5s infinite;}
+#resmini{position:absolute;left:18px;bottom:16px;display:flex;gap:10px;flex-wrap:wrap;background:rgba(4,16,28,.6);border-radius:10px;padding:6px 10px;font-size:calc(12px*var(--ts));font-variant-numeric:tabular-nums;}
+#resmini span{display:flex;align-items:center;gap:4px;}
+#toolbox{position:absolute;right:18px;bottom:16px;text-align:right;background:rgba(4,16,28,.6);border-radius:10px;padding:6px 12px;font-size:calc(12px*var(--ts));}
+#prompt{position:absolute;left:50%;bottom:19%;transform:translateX(-50%);background:rgba(6,22,38,.85);border:1px solid var(--acc);border-radius:10px;padding:8px 18px;font-size:calc(14px*var(--ts));white-space:pre-line;text-align:center;}
+#toasts{position:absolute;top:70px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:6px;align-items:center;}
+.toast{background:rgba(6,26,44,.92);border:1px solid var(--acc);border-radius:10px;padding:8px 20px;font-size:calc(13px*var(--ts));animation:toastin .3s ease-out;box-shadow:0 4px 18px rgba(0,0,0,.5);}
+.toast.ach{border-color:#ffd76b;color:#ffe9ad;}
+@keyframes toastin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+#fps{position:absolute;top:4px;left:50%;transform:translateX(-50%);font-size:11px;opacity:.7;}
+#basedir{position:absolute;top:110px;right:24px;font-size:calc(12px*var(--ts));color:#8fe8b0;text-align:right;display:none;}
+/* ---------- Panels / menus ---------- */
+.panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(1,5,12,.78);backdrop-filter:blur(3px);z-index:10;}
+.card{background:linear-gradient(180deg,#07182a,#04101d);border:1px solid rgba(90,190,255,.35);border-radius:16px;padding:26px 34px;max-width:min(680px,92vw);max-height:88vh;overflow-y:auto;box-shadow:0 10px 50px rgba(0,0,0,.7);}
+.card h1{font-size:calc(30px*var(--ts));letter-spacing:2px;color:var(--acc);text-shadow:0 0 18px rgba(57,215,255,.4);}
+.card h2{font-size:calc(20px*var(--ts));color:var(--acc);margin-bottom:12px;}
+.card .sub{opacity:.75;margin:6px 0 18px;font-size:calc(13px*var(--ts));}
+button{pointer-events:auto;cursor:pointer;font:inherit;font-size:calc(15px*var(--ts));color:#dff4ff;background:linear-gradient(180deg,#0d3a57,#082537);border:1px solid rgba(90,190,255,.5);border-radius:10px;padding:10px 20px;margin:4px 0;display:block;width:100%;transition:.12s;}
+button:hover:not(:disabled){background:linear-gradient(180deg,#14507a,#0b3450);border-color:var(--acc);}
+button:disabled{opacity:.4;cursor:default;}
+button.small{width:auto;display:inline-block;padding:6px 14px;font-size:calc(13px*var(--ts));}
+button.sel{border-color:#ffd76b;color:#ffe9ad;box-shadow:0 0 10px rgba(255,215,107,.25) inset;}
+.row{display:flex;gap:8px;}.row>button{flex:1;}
+input[type=text]{pointer-events:auto;font:inherit;background:#04121f;border:1px solid rgba(90,190,255,.4);border-radius:8px;color:#dff4ff;padding:8px 12px;width:100%;margin:4px 0;}
+label.chk{display:flex;align-items:center;gap:8px;margin:10px 0;cursor:pointer;pointer-events:auto;font-size:calc(14px*var(--ts));}
+.recipe{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(90,190,255,.12);padding:9px 2px;}
+.recipe .nm{font-weight:600;font-size:calc(14px*var(--ts));}
+.recipe .ds{font-size:calc(11px*var(--ts));opacity:.7;}
+.recipe .cost{font-size:calc(11px*var(--ts));}
+.cost .ok{color:#8fe8b0;}.cost .no{color:#ff8a7a;}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px 22px;font-size:calc(13px*var(--ts));margin:10px 0;}
+.statgrid b{color:var(--acc);font-variant-numeric:tabular-nums;}
+.helpgrid{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:calc(13px*var(--ts));}
+.helpgrid kbd{background:#0b2c44;border:1px solid rgba(90,190,255,.4);border-radius:5px;padding:1px 8px;font-family:inherit;font-size:calc(12px*var(--ts));text-align:center;}
+#mapCanvas{background:#020a14;border:1px solid rgba(90,190,255,.3);border-radius:10px;display:block;max-width:82vw;max-height:70vh;}
+.tabs{display:flex;gap:6px;margin-bottom:12px;}
+.tabs button{width:auto;flex:1;padding:7px 8px;font-size:calc(13px*var(--ts));}
+#loadList .recipe{cursor:default;}
+.zonebar{display:flex;gap:0;margin:8px 0 2px;border-radius:6px;overflow:hidden;font-size:calc(10px*var(--ts));text-align:center;}
+.zonebar div{flex:1;padding:3px 0;}
+.mm{opacity:.55;font-size:calc(11px*var(--ts));margin-top:14px;}
+#err{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#02060e;z-index:99;text-align:center;padding:20px;}
+#xh{position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);}
+#xh::before,#xh::after{content:'';position:absolute;background:rgba(180,235,255,.85);}
+#xh::before{left:9px;top:2px;width:2px;height:16px;}
+#xh::after{left:2px;top:9px;width:16px;height:2px;}
+#xh.aim::before,#xh.aim::after{background:#ffd76b;}
+#vig{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at center, transparent 55%, rgba(255,30,20,.55) 100%);transition:opacity .1s;}
+#harv{position:absolute;left:50%;top:56%;transform:translateX(-50%);width:160px;height:8px;background:rgba(4,16,28,.8);border:1px solid var(--acc);border-radius:5px;overflow:hidden;}
+#harv>i{display:block;height:100%;background:var(--acc);width:0;}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="vig"></div>
+  <div id="xh"></div>
+  <div id="harv" class="hidden"><i></i></div>
+  <div class="bars">
+    <div class="bar" id="o2bar"><i id="o2fill"></i><b id="o2txt">O2</b></div>
+    <div class="bar" id="hpbar"><i id="hpfill"></i><b id="hptxt">HP</b></div>
+  </div>
+  <div id="depthbox"><div class="d" id="depthTxt">0 m</div><div class="z" id="zoneTxt">Surface</div><div class="warn">! CRUSH DEPTH !</div></div>
+  <div id="basedir">⌂ Base ↑</div>
+  <div id="resmini"></div>
+  <div id="toolbox"></div>
+  <div id="prompt" class="hidden"></div>
+  <div id="fps" class="hidden"></div>
+</div>
+<div id="toasts"></div>
+
+<!-- MAIN MENU -->
+<div id="menuMain" class="panel">
+  <div class="card" style="text-align:center;min-width:min(420px,92vw)">
+    <h1>DEEP OCEAN<br>SURVIVAL</h1>
+    <div class="sub">Pressure. Darkness. Descent.</div>
+    <button id="btnContinue" class="hidden">Continue</button>
+    <button id="btnNew">New Expedition</button>
+    <button id="btnDaily">Daily Challenge</button>
+    <button id="btnLoad">Load Game</button>
+    <button id="btnHelp">How to Play</button>
+    <div class="mm" id="menuFoot"></div>
+  </div>
+</div>
+
+<!-- NEW GAME -->
+<div id="menuNew" class="panel hidden">
+  <div class="card" style="min-width:min(440px,92vw)">
+    <h2>New Expedition</h2>
+    <div class="sub">Difficulty</div>
+    <div class="row">
+      <button data-diff="relaxed">Relaxed</button>
+      <button data-diff="standard" class="sel">Standard</button>
+      <button data-diff="brutal">Brutal</button>
+    </div>
+    <div class="sub" id="diffDesc">Standard — the intended experience.</div>
+    <label class="chk"><input type="checkbox" id="chkHardcore"> Hardcore — death ends the run permanently</label>
+    <div class="sub">Seed (blank = random)</div>
+    <input type="text" id="seedInput" placeholder="e.g. mariana" maxlength="24">
+    <div class="row" style="margin-top:14px">
+      <button id="btnStart">Dive</button>
+      <button id="btnNewBack">Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOAD -->
+<div id="menuLoad" class="panel hidden">
+  <div class="card" style="min-width:min(480px,92vw)">
+    <h2>Load Game</h2>
+    <div id="loadList"></div>
+    <button id="btnLoadBack" style="margin-top:12px">Back</button>
+  </div>
+</div>
+
+<!-- HELP -->
+<div id="menuHelp" class="panel hidden">
+  <div class="card">
+    <h2>How to Play</h2>
+    <div class="sub">Descend for better resources — deeper water is darker, colder, and crushes weak suits. Upgrade at your habitat, then repair the Ascension Pod at the trench floor to escape.</div>
+    <div class="helpgrid">
+      <kbd>Mouse</kbd><span>Look (click canvas to capture; mouse-up = look up)</span>
+      <kbd>W A S D</kbd><span>Swim — W follows your view, so look down + W dives</span>
+      <kbd>Space</kbd><span>Swim up / jump at surface</span>
+      <kbd>C</kbd><span>Swim down</span>
+      <kbd>L-Shift</kbd><span>Sprint (uses more O2)</span>
+      <kbd>L-Click</kbd><span>Fire harpoon</span>
+      <kbd>R-Click</kbd><span>Aim (zoom)</span>
+      <kbd>R</kbd><span>Reload harpoon</span>
+      <kbd>E</kbd><span>Interact / harvest / habitat / pod</span>
+      <kbd>F</kbd><span>Drop glow flare</span>
+      <kbd>V</kbd><span>Toggle 1st / 3rd person camera</span>
+      <kbd>I / Tab</kbd><span>Inventory & gear</span>
+      <kbd>M</kbd><span>Sonar map</span>
+      <kbd>Esc</kbd><span>Pause</span>
+      <kbd>Gamepad</kbd><span>LS swim · RS look (non-inverted) · RT fire · LT aim · A up · B down · X interact · LB sprint · Y camera · Start pause</span>
+    </div>
+    <div class="sub" style="margin-top:12px">Your habitat refills oxygen and repairs you. Surface air (0 m) also refills O2. Watch the crush-depth warning — exceed your suit rating and the pressure will kill you.</div>
+    <button id="btnHelpBack">Back</button>
+  </div>
+</div>
+
+<!-- PAUSE -->
+<div id="menuPause" class="panel hidden">
+  <div class="card" style="text-align:center;min-width:min(380px,92vw)">
+    <h2>Paused</h2>
+    <div class="statgrid" id="pauseStats" style="text-align:left"></div>
+    <button id="btnResume">Resume</button>
+    <button id="btnSave1">Save to Slot 1</button>
+    <button id="btnSave2">Save to Slot 2</button>
+    <button id="btnPauseHelp">How to Play</button>
+    <button id="btnQuit">Save & Quit to Menu</button>
+  </div>
+</div>
+
+<!-- BASE / FABRICATOR -->
+<div id="menuBase" class="panel hidden">
+  <div class="card" style="min-width:min(560px,94vw)">
+    <h2>⌂ Habitat — Fabricator</h2>
+    <div class="tabs">
+      <button id="tabGear" class="sel">Gear</button>
+      <button id="tabModules">Habitat Modules</button>
+      <button id="tabSpecial">Expedition</button>
+    </div>
+    <div id="baseList"></div>
+    <button id="btnBaseClose" style="margin-top:12px">Close (Esc)</button>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div id="menuInv" class="panel hidden">
+  <div class="card" style="min-width:min(500px,92vw)">
+    <h2>Inventory & Gear</h2>
+    <div id="invBody"></div>
+    <button id="btnInvClose" style="margin-top:12px">Close (Esc)</button>
+  </div>
+</div>
+
+<!-- MAP -->
+<div id="menuMap" class="panel hidden">
+  <div class="card" style="text-align:center">
+    <h2>Sonar Map</h2>
+    <canvas id="mapCanvas" width="420" height="760"></canvas>
+    <button id="btnMapClose" style="margin-top:12px">Close (Esc)</button>
+  </div>
+</div>
+
+<!-- DEATH -->
+<div id="menuDeath" class="panel hidden">
+  <div class="card" style="text-align:center;min-width:min(420px,92vw)">
+    <h2 style="color:#ff7a6b" id="deathTitle">You Died</h2>
+    <div class="sub" id="deathDesc"></div>
+    <div class="statgrid" id="deathStats" style="text-align:left"></div>
+    <button id="btnRespawn">Respawn at Habitat</button>
+    <button id="btnDeathMenu">Main Menu</button>
+  </div>
+</div>
+
+<!-- WIN -->
+<div id="menuWin" class="panel hidden">
+  <div class="card" style="text-align:center;min-width:min(440px,92vw)">
+    <h2 style="color:#ffd76b">ASCENSION</h2>
+    <div class="sub">The pod's engines roar. You rise through 1,600 meters of black water into daylight. You made it out.</div>
+    <div class="statgrid" id="winStats" style="text-align:left"></div>
+    <button id="btnFreeplay">Keep Exploring</button>
+    <button id="btnWinMenu">Main Menu</button>
+  </div>
+</div>
+
+<div id="err" class="hidden"><div class="card"><h2>Engine failed to load</h2><div class="sub">Deep Ocean Survival could not load its local Three.js / cannon-es engine files. Reload to try again.</div></div></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script>window.addEventListener('error', e => { if (/three|cannon/.test(String(e.message)) || /vendor/.test(String(e.filename||''))) document.getElementById('err').classList.remove('hidden'); }, true);</script>
+<script type="module">
+  import * as THREE from '../../vendor/three.module.js';
+  (async () => {
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '../../vendor/three-r128/GLTFLoader.js';
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    await import('./game.js');
+  })().catch((error) => console.error('Ocean 3D bootstrap failed', error));
+</script>
+</body>
+</html>

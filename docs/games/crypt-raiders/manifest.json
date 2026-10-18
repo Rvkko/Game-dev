@@ -1,0 +1,39 @@
+{
+  "id": "crypt-raiders",
+  "title": "Crypt Raiders",
+  "category": "adventure",
+  "tags": [
+    "action-rpg",
+    "dungeon",
+    "campaign",
+    "bosses"
+  ],
+  "stack": "canvas",
+  "entry": "games/crypt-raiders/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Raid four hand-built crypts in a complete action-adventure campaign with sword combat, relic puzzles, loot, upgrades, potions, and ancient bosses.",
+  "achievements": [
+    {
+      "id": "crypt-opened",
+      "title": "Crypt Opened",
+      "desc": "Complete the forgotten catacomb."
+    },
+    {
+      "id": "treasure-hunter",
+      "title": "Treasure Hunter",
+      "desc": "Open six treasure chests."
+    },
+    {
+      "id": "flawless-guardian",
+      "title": "Flawless Guardian",
+      "desc": "Defeat a guardian without taking damage."
+    },
+    {
+      "id": "sun-restored",
+      "title": "Sun Restored",
+      "desc": "Return all four sun shards."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "winter-outpost",
+  "title": "Winter Outpost",
+  "category": "survival",
+  "tags": ["survival", "management", "roguelite", "wolves", "weather", "2d", "resource"],
+  "stack": "canvas2d",
+  "entry": "games/winter-outpost/index.html",
+  "thumbnail": null,
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Thirty days alone in the deep cold. Ration fuel, food, warmth and medicine through a hand-authored blizzard calendar, push out on real-time scavenging runs across six hand-built locations, fight off wolves with flare and spear, and rebuild the outpost upgrade by upgrade — or freeze in the dark before the rescue plane comes.",
+  "achievements": [
+    { "id": "first_night", "title": "First Frost", "desc": "Survive your first night at the outpost.", "rarity": "common", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "week_one", "title": "One Week In", "desc": "Survive seven days of winter.", "rarity": "common", "hidden": false, "progressive": true, "target": 7 },
+    { "id": "wolf_slayer", "title": "Fang And Flame", "desc": "Drive off or kill 10 wolves.", "rarity": "rare", "hidden": false, "progressive": true, "target": 10 },
+    { "id": "master_scavenger", "title": "Master Scavenger", "desc": "Haul 300 units of supplies home from expeditions.", "rarity": "rare", "hidden": false, "progressive": true, "target": 300 },
+    { "id": "fortified", "title": "Fortified", "desc": "Complete 5 outpost upgrades in a single run.", "rarity": "rare", "hidden": false, "progressive": true, "target": 5 },
+    { "id": "deep_larder", "title": "Deep Larder", "desc": "Hold 60 food and 60 fuel at the same time.", "rarity": "rare", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "warm_hearth", "title": "Never Cold", "desc": "End 10 nights in a row above 70% warmth.", "rarity": "epic", "hidden": false, "progressive": true, "target": 10 },
+    { "id": "unscarred", "title": "Unscarred", "desc": "Reach day 15 without taking a single injury.", "rarity": "epic", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "rescued", "title": "Rescue Dawn", "desc": "Survive all 30 days and make the extraction.", "rarity": "legendary", "hidden": false, "progressive": true, "target": 30 },
+    { "id": "bare_bones", "title": "Bare Bones", "desc": "Survive all 30 days with two or fewer outpost upgrades.", "rarity": "legendary", "hidden": true, "progressive": false, "target": 1 }
+  ]
+}

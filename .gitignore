@@ -3,3 +3,15 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+.venv/
+venv/
+.idea/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+work/
+
+docs/games/pilot-fuel-tanker-training/source/TankerTraining.html

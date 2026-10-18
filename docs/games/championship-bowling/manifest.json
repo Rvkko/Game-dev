@@ -1,0 +1,44 @@
+{
+  "id": "championship-bowling",
+  "title": "Championship Bowling",
+  "category": "sports",
+  "tags": [
+    "bowling",
+    "physics",
+    "precision",
+    "career"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/championship-bowling/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Ten-frame bowling with true strike/spare scoring, aim, hook control, power timing, animated pin action and persistent career records.",
+  "achievements": [
+    {
+      "id": "first_strike",
+      "title": "X Marks the Spot",
+      "desc": "Roll your first strike."
+    },
+    {
+      "id": "first_spare",
+      "title": "Clean Up",
+      "desc": "Convert your first spare."
+    },
+    {
+      "id": "turkey",
+      "title": "Turkey",
+      "desc": "Roll three strikes in a row."
+    },
+    {
+      "id": "two_hundred",
+      "title": "Club 200",
+      "desc": "Score at least 200."
+    },
+    {
+      "id": "lane_champ",
+      "title": "Lane Champion",
+      "desc": "Win with at least 140."
+    }
+  ]
+}

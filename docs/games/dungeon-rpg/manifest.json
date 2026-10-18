@@ -1,0 +1,131 @@
+{
+  "id": "dungeon-rpg",
+  "title": "Depths of the Warden",
+  "category": "flagship",
+  "tags": [
+    "rpg",
+    "action",
+    "roguelike",
+    "3d",
+    "physics",
+    "ragdoll",
+    "loot",
+    "procedural"
+  ],
+  "stack": "three.js + cannon-es (true 3D)",
+  "entry": "games/dungeon-rpg/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Descend 10 procedurally generated 3D dungeon floors in third person. Real-time melee and ranged combat with cannon-es physics ragdolls, loot, level-ups, two bosses, roguelite soul upgrades, and a daily seeded challenge.",
+  "achievements": [
+    {
+      "id": "first-blood",
+      "title": "First Blood",
+      "desc": "Defeat your first enemy.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "floor-5",
+      "title": "Going Down",
+      "desc": "Reach dungeon floor 5.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "loot-hoarder",
+      "title": "Loot Hoarder",
+      "desc": "Collect 50 items across all runs.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 50
+    },
+    {
+      "id": "boss-slayer",
+      "title": "Boss Slayer",
+      "desc": "Defeat a floor boss.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "untouchable",
+      "title": "Untouchable",
+      "desc": "Clear a hostile floor without taking damage.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ragdoll-artist",
+      "title": "???",
+      "desc": "Hidden achievement.",
+      "rarity": "rare",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "century-slayer",
+      "title": "Century Slayer",
+      "desc": "Defeat 100 enemies across all runs.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "daily-grind",
+      "title": "Daily Devotee",
+      "desc": "Complete a Daily Challenge gauntlet.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "dressed-to-kill",
+      "title": "Dressed to Kill",
+      "desc": "Equip a legendary item.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "deep-delver",
+      "title": "Deep Delver",
+      "desc": "Reach dungeon floor 10 and defeat the Warden.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "wardens-bane",
+      "title": "Warden's Bane",
+      "desc": "Defeat the Warden on Hard difficulty.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ascended",
+      "title": "Ascended",
+      "desc": "Purchase every Soul Forge upgrade.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

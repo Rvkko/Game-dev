@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Snake Reactor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #04070d;
+    --panel: rgba(10, 16, 28, 0.94);
+    --edge: #1d3a55;
+    --edge-hot: #27e0ff;
+    --ink: #cfe9ff;
+    --dim: #6d88a6;
+    --accent: #27e0ff;
+    --accent2: #ff3fb4;
+    --gold: #ffcf5c;
+    --danger: #ff5b6e;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Segoe UI', 'Trebuchet MS', Consolas, monospace;
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  #stage { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+  canvas#game { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+  /* ---------------- HUD ---------------- */
+  #hud { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+  .hud-top {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; align-items: stretch; gap: 10px; padding: 10px 14px;
+    background: linear-gradient(180deg, rgba(4,8,16,0.88) 0%, rgba(4,8,16,0.0) 100%);
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: rgba(8,14,26,0.6); border: 1px solid var(--edge); border-radius: 7px;
+    padding: 4px 11px; min-width: 78px; line-height: 1.15;
+  }
+  .stat .k { font-size: 9px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; }
+  .stat .v { font-size: 19px; font-weight: 700; color: #eaf6ff; font-variant-numeric: tabular-nums; }
+  .stat.score .v { color: var(--accent); text-shadow: 0 0 12px rgba(39,224,255,0.45); }
+  .stat.best .v { color: var(--gold); font-size: 15px; }
+  .stat.mode .v { font-size: 13px; color: var(--accent2); letter-spacing: 1px; }
+  .stat.grow { flex: 1; min-width: 150px; }
+  .spacer { flex: 1; }
+
+  #comboWrap { margin-top: 4px; }
+  #comboTrack { height: 7px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; border: 1px solid rgba(39,224,255,0.25); }
+  #comboFill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.08s linear; }
+  #comboLine { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 1px; color: var(--dim); margin-bottom: 3px; }
+  #comboMult { color: var(--gold); font-weight: 700; }
+
+  #chipRow { position: absolute; left: 14px; bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap; max-width: 60%; }
+  .chip {
+    background: rgba(8,14,26,0.82); border: 1px solid var(--edge-hot); border-radius: 20px;
+    padding: 4px 12px 5px; font-size: 12px; letter-spacing: 1px; color: #eaf6ff; position: relative; overflow: hidden;
+    box-shadow: 0 0 14px rgba(39,224,255,0.22);
+  }
+  .chip .cbar { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 100%; }
+  .chip.slowmo { border-color: #7bd0ff; } .chip.slowmo .cbar { background: #7bd0ff; }
+  .chip.magnet { border-color: #ff9b3f; } .chip.magnet .cbar { background: #ff9b3f; }
+
+  #hintBar {
+    position: absolute; right: 14px; bottom: 14px; font-size: 10px; color: var(--dim);
+    text-align: right; line-height: 1.6; text-shadow: 0 1px 2px #000; max-width: 46%;
+  }
+  #pauseBtn {
+    position: absolute; right: 14px; top: 12px; pointer-events: auto; cursor: pointer;
+    border: 1px solid var(--edge); background: rgba(8,14,26,0.75); color: var(--accent);
+    border-radius: 7px; padding: 5px 12px; font-size: 13px; letter-spacing: 1px; font-family: inherit;
+  }
+  #pauseBtn:hover { border-color: var(--edge-hot); color: #fff; }
+
+  #toastWrap {
+    position: absolute; top: 96px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; gap: 6px; align-items: center; width: max-content; max-width: 90%;
+  }
+  .toast {
+    background: rgba(10,16,28,0.92); border: 1px solid var(--accent); color: #eaf6ff;
+    padding: 6px 16px; border-radius: 18px; font-size: 13px; letter-spacing: 1px; white-space: nowrap;
+    animation: toastIn 0.28s ease both, toastOut 0.4s ease 1.5s both;
+  }
+  .toast.good { border-color: var(--gold); color: var(--gold); }
+  .toast.bad { border-color: var(--danger); color: #ffd0d6; }
+  @keyframes toastIn { from { opacity: 0; transform: translateY(-10px) scale(0.95); } to { opacity: 1; transform: none; } }
+  @keyframes toastOut { to { opacity: 0; transform: translateY(-6px); } }
+
+  #shiftBanner {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 20; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(4,10,20,0.55), rgba(2,4,10,0.85));
+  }
+  #shiftText { font-size: 34px; letter-spacing: 6px; color: var(--accent); text-shadow: 0 0 26px rgba(39,224,255,0.6); }
+  #shiftSub { font-size: 14px; letter-spacing: 3px; color: var(--gold); margin-top: 10px; }
+  #shiftHint { font-size: 11px; letter-spacing: 2px; color: var(--dim); margin-top: 18px; }
+
+  /* touch d-pad */
+  #touchPad {
+    position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
+    display: none; grid-template-columns: repeat(3, 58px); grid-template-rows: repeat(3, 46px);
+    gap: 6px; pointer-events: auto; z-index: 12;
+  }
+  #touchPad.on { display: grid; }
+  #touchPad button {
+    background: rgba(10,18,32,0.7); border: 1px solid var(--edge); color: var(--accent);
+    border-radius: 9px; font-size: 18px; font-family: inherit; cursor: pointer; touch-action: none;
+  }
+  #touchPad button:active { background: rgba(39,224,255,0.2); }
+  #padUp { grid-area: 1 / 2; } #padLeft { grid-area: 2 / 1; }
+  #padRight { grid-area: 2 / 3; } #padDown { grid-area: 3 / 2; }
+
+  /* ---------------- Overlays ---------------- */
+  .overlay {
+    position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center;
+    padding: 18px; overflow-y: auto;
+    background: radial-gradient(ellipse at 50% 40%, rgba(8,16,30,0.93), rgba(2,4,9,0.985));
+  }
+  .hidden { display: none !important; }
+  .panel {
+    background: linear-gradient(180deg, rgba(12,20,34,0.97), rgba(5,9,17,0.98));
+    border: 1px solid var(--edge); border-radius: 14px; padding: 22px 26px;
+    width: min(680px, 96vw); max-height: 94vh; overflow-y: auto; position: relative;
+    box-shadow: 0 0 60px rgba(39,224,255,0.10), inset 0 0 40px rgba(20,60,110,0.10);
+  }
+  .panel.narrow { width: min(430px, 96vw); }
+  .logo { text-align: center; margin-bottom: 4px; }
+  .logo .l1 {
+    font-size: clamp(28px, 6vw, 46px); letter-spacing: 10px; font-weight: 800; color: #eaf6ff;
+    text-shadow: 0 0 18px rgba(39,224,255,0.55), 0 0 42px rgba(255,63,180,0.25);
+  }
+  .logo .l2 { font-size: 11px; letter-spacing: 6px; color: var(--accent2); margin-top: 4px; }
+  h2.section {
+    font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase;
+    border-bottom: 1px solid var(--edge); padding-bottom: 6px; margin: 18px 0 12px;
+  }
+  .modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .mode-card {
+    text-align: left; background: linear-gradient(180deg, rgba(20,32,54,0.9), rgba(8,13,24,0.9));
+    border: 1px solid var(--edge); border-radius: 11px; padding: 13px 14px; cursor: pointer;
+    color: var(--ink); font-family: inherit; transition: transform 0.12s ease, border-color 0.12s, box-shadow 0.12s;
+  }
+  .mode-card:hover, .mode-card:focus-visible {
+    border-color: var(--edge-hot); transform: translateY(-3px); outline: none;
+    box-shadow: 0 8px 24px rgba(39,224,255,0.16);
+  }
+  .mode-card .mc-icon { font-size: 22px; }
+  .mode-card .mc-name { font-size: 15px; letter-spacing: 2px; color: #eaf6ff; margin: 5px 0 4px; font-weight: 700; }
+  .mode-card .mc-desc { font-size: 11px; color: var(--dim); line-height: 1.5; min-height: 46px; }
+  .mode-card .mc-best { font-size: 11px; color: var(--gold); margin-top: 8px; letter-spacing: 1px; }
+  .btn {
+    display: block; width: 100%; margin: 8px 0; padding: 11px 14px; border-radius: 8px; cursor: pointer;
+    background: linear-gradient(180deg, #16243d, #0b1120); border: 1px solid #2a4b73; color: #cfe9ff;
+    font-family: inherit; font-size: 13px; letter-spacing: 2px; text-align: center; transition: 0.12s;
+  }
+  .btn:hover { border-color: var(--edge-hot); color: #fff; background: linear-gradient(180deg, #1d3557, #101c31); }
+  .btn.primary { border-color: var(--accent); color: #dff8ff; box-shadow: 0 0 18px rgba(39,224,255,0.16) inset; }
+  .btn.danger { border-color: #7d2b36; color: #ffd0d6; }
+  .btn.danger:hover { border-color: var(--danger); }
+  .btn.small { display: inline-block; width: auto; padding: 7px 14px; font-size: 11px; margin: 4px 6px 4px 0; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .row > .btn { flex: 1; min-width: 130px; }
+  .close-x {
+    position: absolute; top: 10px; right: 16px; cursor: pointer; color: var(--dim);
+    font-size: 22px; line-height: 1; background: none; border: none; font-family: inherit;
+  }
+  .close-x:hover { color: var(--accent); }
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .how-block { font-size: 12px; line-height: 1.65; color: #a9c4de; }
+  .how-block b { color: #eaf6ff; }
+  .keycap {
+    display: inline-block; min-width: 20px; text-align: center; padding: 1px 6px; margin: 0 2px;
+    border: 1px solid #37648f; border-radius: 4px; background: #0d1728; color: var(--accent); font-size: 11px;
+  }
+  .pu-list { list-style: none; padding: 0; margin: 6px 0 0; font-size: 12px; color: #a9c4de; line-height: 1.9; }
+  .pu-list .dot { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
+  .field { margin: 12px 0; font-size: 12px; color: #a9c4de; }
+  .field label { display: block; margin-bottom: 5px; letter-spacing: 1px; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  input[type=checkbox] { accent-color: var(--accent); width: 15px; height: 15px; vertical-align: -2px; margin-right: 7px; }
+  .statline {
+    display: flex; justify-content: space-between; font-size: 13px; padding: 6px 2px;
+    border-bottom: 1px dashed rgba(45,80,120,0.35); color: #b6d2ea;
+  }
+  .statline b { color: #eaf6ff; font-variant-numeric: tabular-nums; }
+  .res-title { font-size: 30px; letter-spacing: 5px; text-align: center; color: var(--danger); text-shadow: 0 0 22px rgba(255,91,110,0.4); }
+  .res-title.win { color: var(--gold); text-shadow: 0 0 22px rgba(255,207,92,0.45); }
+  .res-sub { text-align: center; font-size: 12px; color: var(--dim); letter-spacing: 2px; margin: 6px 0 14px; }
+  .newbest {
+    text-align: center; color: #04121a; background: linear-gradient(90deg, var(--gold), #fff0b8);
+    border-radius: 20px; padding: 4px 0; font-size: 12px; letter-spacing: 3px; font-weight: 800; margin-bottom: 12px;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+  .foot { text-align: center; font-size: 10px; color: #4d6684; letter-spacing: 2px; margin-top: 14px; }
+  @media (max-width: 620px) { .grid2 { grid-template-columns: 1fr; } .stat { min-width: 62px; } .stat .v { font-size: 16px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .toast { animation-duration: 0.01ms, 0.01ms; }
+    .mode-card:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="stat score"><div class="k">Score</div><div class="v" id="hudScore">0</div></div>
+        <div class="stat best"><div class="k">Best</div><div class="v" id="hudBest">0</div></div>
+        <div class="stat"><div class="k">Level</div><div class="v" id="hudLevel">1</div></div>
+        <div class="stat"><div class="k">Length</div><div class="v" id="hudLen">4</div></div>
+        <div class="stat mode grow">
+          <div class="k">Sector</div>
+          <div class="v" id="hudMode">CLASSIC</div>
+          <div id="comboWrap">
+            <div id="comboLine"><span>COMBO</span><span id="comboMult">x1.0</span></div>
+            <div id="comboTrack"><div id="comboFill"></div></div>
+          </div>
+        </div>
+      </div>
+      <button id="pauseBtn" type="button">❚❚ ESC</button>
+      <div id="chipRow"></div>
+      <div id="hintBar">WASD / Arrows steer · Space boost · P or Esc pause · R restart</div>
+      <div id="toastWrap"></div>
+      <div id="touchPad">
+        <button id="padUp" type="button">▲</button>
+        <button id="padLeft" type="button">◀</button>
+        <button id="padRight" type="button">▶</button>
+        <button id="padDown" type="button">▼</button>
+      </div>
+    </div>
+
+    <div id="shiftBanner" class="hidden">
+      <div id="shiftText">REACTOR SHIFT</div>
+      <div id="shiftSub">SECTOR 2 — QUAD PILLARS</div>
+      <div id="shiftHint">HOLD YOUR LINE</div>
+    </div>
+
+    <!-- ============ MAIN MENU ============ -->
+    <div class="overlay" id="menuScreen">
+      <div class="panel">
+        <div class="logo"><div class="l1">SNAKE REACTOR</div><div class="l2">CONTAIN THE CHAIN</div></div>
+        <h2 class="section">Select Reactor Mode</h2>
+        <div class="modes">
+          <button class="mode-card" type="button" data-mode="classic">
+            <div class="mc-icon">🟩</div>
+            <div class="mc-name">CLASSIC</div>
+            <div class="mc-desc">Open core, solid bulkheads. Pure speed curve and clean lines — the highest ceiling for combo chaining.</div>
+            <div class="mc-best">BEST <span id="bestClassic">0</span></div>
+          </button>
+          <button class="mode-card" type="button" data-mode="maze">
+            <div class="mc-icon">🧱</div>
+            <div class="mc-name">MAZE</div>
+            <div class="mc-desc">Eight hand-built bulkhead layouts. Clear a sector and the whole core reconfigures around you.</div>
+            <div class="mc-best">BEST <span id="bestMaze">0</span></div>
+          </button>
+          <button class="mode-card" type="button" data-mode="portal">
+            <div class="mc-icon">🌀</div>
+            <div class="mc-name">PORTAL</div>
+            <div class="mc-desc">Outer walls wrap and linked pads fold space. No edges to fear — only yourself.</div>
+            <div class="mc-best">BEST <span id="bestPortal">0</span></div>
+          </button>
+        </div>
+        <div class="row" style="margin-top:16px;">
+          <button class="btn primary" id="btnPlayLast" type="button">▶ PLAY CLASSIC</button>
+          <button class="btn" id="btnHowTo" type="button">HOW TO PLAY</button>
+          <button class="btn" id="btnSettings" type="button">SETTINGS</button>
+        </div>
+        <div class="foot">CELLS COLLECTED <span id="menuTotalFood">0</span> · RUNS <span id="menuRuns">0</span> · <span id="menuLink">STANDALONE</span></div>
+      </div>
+    </div>
+
+    <!-- ============ HOW TO PLAY ============ -->
+    <div class="overlay hidden" id="howtoScreen">
+      <div class="panel">
+        <button class="close-x" id="howtoClose" type="button">&times;</button>
+        <div class="logo"><div class="l1" style="font-size:26px;letter-spacing:6px;">HOW TO PLAY</div></div>
+        <h2 class="section">Controls</h2>
+        <div class="how-grid">
+          <div class="how-block">
+            <b>Steer</b><br>
+            <span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span>
+            or <span class="keycap">↑</span><span class="keycap">←</span><span class="keycap">↓</span><span class="keycap">→</span><br>
+            Inputs are buffered — you can queue two turns and they fire on the next two ticks.<br><br>
+            <b>Boost</b> <span class="keycap">Space</span> — burn forward at double tick rate while held. Nothing to charge, just nerve.<br><br>
+            <b>Pause</b> <span class="keycap">Esc</span> / <span class="keycap">P</span> &nbsp;·&nbsp; <b>Restart</b> <span class="keycap">R</span><br><br>
+            <b>Pointer</b> — swipe or drag anywhere on the core to steer. A touch D-pad can be switched on in Settings.
+          </div>
+          <div class="how-block">
+            <b>Score</b><br>
+            Each fuel cell is worth 10 × level × your combo multiplier. Eat again before the combo bar drains and the
+            multiplier climbs to x5. Let it lapse and you drop back to x1.<br><br>
+            <b>Speed curve</b><br>
+            Every 6 cells raises the reactor level and shortens the tick. Level 15 is roughly twice the starting speed.<br><br>
+            <b>Sectors</b><br>
+            In Maze and Portal, every 8 cells triggers a Reactor Shift: the layout swaps, your snake is re-seated safely,
+            and you bank a sector bonus.
+          </div>
+        </div>
+        <h2 class="section">Power-ups</h2>
+        <ul class="pu-list">
+          <li><span class="dot" style="background:#7bd0ff"></span><b>SLOW-MO</b> — stretches the tick by 75% for 7 seconds. Best used to untangle a long coil.</li>
+          <li><span class="dot" style="background:#7dffa8"></span><b>SHRINK</b> — vents a third of your tail instantly and pays out points for what you burn.</li>
+          <li><span class="dot" style="background:#ff9b3f"></span><b>MAGNET</b> — the fuel cell walks toward your head for 9 seconds and snaps in from one tile away.</li>
+          <li><span class="dot" style="background:#ffcf5c"></span><b>SURGE</b> — rare gold cell: 4× points and +2 combo, but it decays fast.</li>
+        </ul>
+        <h2 class="section">Death</h2>
+        <div class="how-block">
+          You die by hitting a bulkhead, the outer wall (Classic and Maze only — Portal wraps), or your own body.
+          Turning into the tile your tail is about to vacate is legal, so tight coils are survivable if your timing is exact.
+        </div>
+        <button class="btn primary" id="howtoDone" type="button" style="margin-top:18px;">GOT IT</button>
+      </div>
+    </div>
+
+    <!-- ============ SETTINGS ============ -->
+    <div class="overlay hidden" id="settingsScreen">
+      <div class="panel narrow">
+        <button class="close-x" id="settingsClose" type="button">&times;</button>
+        <div class="logo"><div class="l1" style="font-size:24px;letter-spacing:6px;">SETTINGS</div></div>
+        <div class="field">
+          <label>Master volume — <span id="volVal">65%</span></label>
+          <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.65">
+        </div>
+        <div class="field"><label><input type="checkbox" id="muteChk"> Mute all audio</label></div>
+        <div class="field"><label><input type="checkbox" id="humChk" checked> Reactor ambience hum</label></div>
+        <div class="field"><label><input type="checkbox" id="reduceChk"> Reduced motion (no shake, fewer particles)</label></div>
+        <div class="field"><label><input type="checkbox" id="gridChk" checked> Draw core grid</label></div>
+        <div class="field"><label><input type="checkbox" id="dpadChk"> Show touch D-pad</label></div>
+        <h2 class="section">Saved data</h2>
+        <div class="how-block" style="font-size:11px;">High scores and lifetime totals are stored through the Empire save system.</div>
+        <button class="btn danger small" id="btnWipe" type="button">RESET HIGH SCORES</button>
+        <button class="btn primary" id="settingsDone" type="button" style="margin-top:14px;">DONE</button>
+      </div>
+    </div>
+
+    <!-- ============ PAUSE ============ -->
+    <div class="overlay hidden" id="pauseScreen">
+      <div class="panel narrow">
+        <div class="logo"><div class="l1" style="font-size:26px;letter-spacing:8px;">PAUSED</div>
+        <div class="l2" id="pauseSub">CLASSIC — SECTOR 1</div></div>
+        <button class="btn primary" id="btnResume" type="button">RESUME</button>
+        <button class="btn" id="btnRestart" type="button">RESTART RUN</button>
+        <button class="btn" id="btnPauseHow" type="button">HOW TO PLAY</button>
+        <button class="btn" id="btnPauseSettings" type="button">SETTINGS</button>
+        <button class="btn danger" id="btnQuit" type="button">QUIT TO MENU</button>
+      </div>
+    </div>
+
+    <!-- ============ RESULT ============ -->
+    <div class="overlay hidden" id="resultScreen">
+      <div class="panel narrow">
+        <div class="res-title" id="resTitle">CORE BREACH</div>
+        <div class="res-sub" id="resSub">You hit a bulkhead</div>
+        <div class="newbest hidden" id="resNewBest">NEW MODE RECORD</div>
+        <div class="grid2">
+          <div>
+            <div class="statline"><span>Score</span><b id="resScore">0</b></div>
+            <div class="statline"><span>Mode best</span><b id="resBest">0</b></div>
+            <div class="statline"><span>Fuel cells</span><b id="resFood">0</b></div>
+            <div class="statline"><span>Final length</span><b id="resLen">0</b></div>
+          </div>
+          <div>
+            <div class="statline"><span>Best combo</span><b id="resCombo">x1.0</b></div>
+            <div class="statline"><span>Speed level</span><b id="resLevel">1</b></div>
+            <div class="statline"><span>Sectors cleared</span><b id="resSectors">0</b></div>
+            <div class="statline"><span>Run time</span><b id="resTime">0:00</b></div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:16px;">
+          <button class="btn primary" id="btnRetry" type="button">RETRY</button>
+          <button class="btn" id="btnResultMenu" type="button">MAIN MENU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./game.js"></script>
+</body>
+</html>

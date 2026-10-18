@@ -1,0 +1,109 @@
+{
+  "id": "tower-siege",
+  "title": "Tower Siege",
+  "category": "strategy",
+  "tags": [
+    "tower-defense",
+    "strategy",
+    "waves",
+    "offline"
+  ],
+  "stack": "canvas",
+  "entry": "games/tower-siege/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Build bolt, frost, cannon, tesla and sniper towers along the siege road and hold the gate through ten escalating waves.",
+  "achievements": [
+    {
+      "id": "first-tower",
+      "title": "Foundation",
+      "desc": "Build your first tower.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-kill",
+      "title": "First Defense",
+      "desc": "Destroy your first attacker.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "wave-five",
+      "title": "Holding Strong",
+      "desc": "Clear wave 5 of a siege run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "boss-slayer",
+      "title": "Warlord Down",
+      "desc": "Destroy a siege boss.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "tower-max",
+      "title": "Fully Forged",
+      "desc": "Upgrade a tower to level 3.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "war-chest",
+      "title": "War Chest",
+      "desc": "Hold 500 gold at once.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 500
+    },
+    {
+      "id": "full-arsenal",
+      "title": "Full Arsenal",
+      "desc": "Build all five tower types in one run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "hundred-fallen",
+      "title": "Hundred Fallen",
+      "desc": "Destroy 100 attackers in one run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "victory",
+      "title": "Fortress Unbroken",
+      "desc": "Survive all ten siege waves.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "siege-master",
+      "title": "Siege Master",
+      "desc": "Win a siege run without losing a single life.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

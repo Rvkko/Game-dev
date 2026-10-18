@@ -1,0 +1,43 @@
+{
+  "scanDate": "2026-10-18",
+  "sources": [
+    {
+      "path": "C:/Users/Young/repos/gaming-empire",
+      "registered": 91,
+      "unregistered": [
+        "astral-ascendancy"
+      ]
+    },
+    {
+      "path": "C:\\Users\\Young\\Documents\\Codex\\2026-07-22\\game-studio-plugin-game-studio-openai",
+      "project": "Heartwood Caravan"
+    },
+    {
+      "path": "C:\\Users\\Young\\Voxhaven-codex",
+      "project": "Voxhaven original edition"
+    },
+    {
+      "repository": "Rvkko/Game-dev",
+      "project": "Four Python classics"
+    },
+    {
+      "repository": "Rvkko/pilot-fuel-tanker-training",
+      "project": "Tanker sources replace embedded import"
+    },
+    {
+      "path": "C:/Users/Young/repos/gaming-empire/.removed-games",
+      "retiredProjects": 6
+    }
+  ],
+  "excluded": [
+    "Minecraft Classic Edition and WeeklyCraft folders labeled inspiration, not established as authored projects",
+    "Stellarblock prompts/screenshots contain no runnable game",
+    "Duplicate Game-dev and tanker folders on Desktop",
+    "Installed commercial games, personal data, backups and generated packages"
+  ],
+  "limitations": [
+    "Development locations scanned, not every filesystem byte or archive",
+    "Existing save data stays in its original application/origin; export/import through Empire backup for transfer"
+  ],
+  "catalogEntries": 104
+}

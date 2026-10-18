@@ -1,0 +1,65 @@
+{
+  "id": "metro-tycoon",
+  "title": "Metro Tycoon",
+  "category": "simulation",
+  "tags": [
+    "tycoon",
+    "transport",
+    "economy",
+    "strategy",
+    "campaign"
+  ],
+  "stack": "Canvas 2D + WebAudio",
+  "entry": "games/metro-tycoon/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Build profitable transit networks through a six-city career with dynamic demand, station capacity, trains, upgrades, contracts and operating costs.",
+  "achievements": [
+    {
+      "id": "first-line",
+      "title": "Ribbon Cutting",
+      "desc": "Build your first line",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "commuter-500",
+      "title": "City in Motion",
+      "desc": "Carry 500 commuters",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 500
+    },
+    {
+      "id": "profitable",
+      "title": "In the Black",
+      "desc": "Finish with $500",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "no-overcrowding",
+      "title": "Smooth Operator",
+      "desc": "Win without overcrowding",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "metro-mogul",
+      "title": "Metro Mogul",
+      "desc": "Complete all cities",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

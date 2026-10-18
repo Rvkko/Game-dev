@@ -1,0 +1,44 @@
+{
+  "id": "dragonbound-legacy",
+  "title": "Dragonbound Legacy",
+  "category": "adventure",
+  "tags": [
+    "fantasy",
+    "action RPG",
+    "story",
+    "bosses"
+  ],
+  "stack": "canvas",
+  "entry": "games/dragonbound-legacy/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Fight through five fantasy realms, master sword and dragonfire, speak with allies, defeat evolving bosses, and shape the legacy of the last dragon bond.",
+  "achievements": [
+    {
+      "id": "first-flame",
+      "title": "First Flame",
+      "desc": "Defeat your first corrupted foe."
+    },
+    {
+      "id": "rune-keeper",
+      "title": "Rune Keeper",
+      "desc": "Recover all ten realm runes."
+    },
+    {
+      "id": "dragon-friend",
+      "title": "Dragon Friend",
+      "desc": "Make three compassionate choices."
+    },
+    {
+      "id": "boss-breaker",
+      "title": "Boss Breaker",
+      "desc": "Defeat all five realm guardians."
+    },
+    {
+      "id": "legacy",
+      "title": "A Living Legacy",
+      "desc": "Complete the Dragonbound saga."
+    }
+  ]
+}

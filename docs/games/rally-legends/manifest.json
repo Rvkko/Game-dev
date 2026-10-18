@@ -1,0 +1,39 @@
+{
+  "id": "rally-legends",
+  "title": "Rally Legends",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "rally",
+    "career",
+    "cars"
+  ],
+  "stack": "canvas",
+  "entry": "games/rally-legends/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A four-stage rally championship with changing surfaces, car damage, pace notes, repairs, and permanent performance upgrades.",
+  "achievements": [
+    {
+      "id": "stage-winner",
+      "title": "Stage Winner",
+      "desc": "Win a rally stage."
+    },
+    {
+      "id": "clean-run",
+      "title": "Clean Run",
+      "desc": "Finish a stage with less than 15% damage."
+    },
+    {
+      "id": "fully-tuned",
+      "title": "Fully Tuned",
+      "desc": "Buy every car upgrade."
+    },
+    {
+      "id": "rally-champion",
+      "title": "Rally Champion",
+      "desc": "Win the championship."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "tetro-stack",
+  "title": "Tetro Stack",
+  "category": "arcade",
+  "tags": [
+    "puzzle",
+    "blocks",
+    "arcade",
+    "score-attack",
+    "2d",
+    "classic"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/tetro-stack/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Falling-block stacker done properly: 7-bag randomiser, SRS rotation with wall kicks, hold and ghost pieces, lock delay, soft/hard drop, T-spins, combo and back-to-back scoring across Marathon, Sprint 40L and Ultra 2-minute modes with persistent records.",
+  "achievements": [
+    {
+      "id": "first_lines",
+      "title": "Break The Ice",
+      "desc": "Clear your first line.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "quad_master",
+      "title": "Quad Damage",
+      "desc": "Clear four rows at once with an I-piece.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "spin_doctor",
+      "title": "Spin Doctor",
+      "desc": "Score a T-Spin Double.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "b2b_streak",
+      "title": "Chain Reaction",
+      "desc": "Keep a back-to-back streak of 5 difficult clears.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "combo_carnival",
+      "title": "Combo Carnival",
+      "desc": "Reach an 8-clear combo without breaking the chain.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 8
+    },
+    {
+      "id": "sprint_ace",
+      "title": "Sprint Ace",
+      "desc": "Finish Sprint 40L in under 60 seconds.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "ultra_titan",
+      "title": "Ultra Titan",
+      "desc": "Score 20,000 points in a single Ultra run.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 20000
+    },
+    {
+      "id": "perfect_clear",
+      "title": "Spotless",
+      "desc": "Wipe the entire board with a Perfect Clear.",
+      "rarity": "epic",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "marathon_champion",
+      "title": "Marathon Champion",
+      "desc": "Survive all 150 lines of Marathon.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": true,
+      "target": 150
+    },
+    {
+      "id": "line_veteran",
+      "title": "Line Veteran",
+      "desc": "Clear 1,000 lines across all your runs.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": true,
+      "target": 1000
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "circuit-forge",
+  "title": "Circuit Forge",
+  "category": "puzzle",
+  "tags": [
+    "puzzle",
+    "logic",
+    "circuits",
+    "levels",
+    "strategy"
+  ],
+  "stack": "HTML + CSS + JavaScript",
+  "entry": "games/circuit-forge/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Rotate and energize components across ten handcrafted circuit puzzles with safe-routing rules, hints, par scores and star mastery.",
+  "achievements": [
+    {
+      "id": "first-light",
+      "title": "First Light",
+      "desc": "Complete a board",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "no-hints",
+      "title": "Independent Engineer",
+      "desc": "Solve without hints",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "three-stars",
+      "title": "Precision Wiring",
+      "desc": "Earn three stars",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "master-engineer",
+      "title": "Master Engineer",
+      "desc": "Complete all ten boards",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

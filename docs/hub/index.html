@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMPIRE — Game Hub</title>
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+<div id="app">
+  <!-- ============ SIDEBAR ============ -->
+  <nav id="sidebar" aria-label="Main navigation">
+    <div class="brand">
+      <div class="brand-mark">◆</div>
+      <div class="brand-name">EMPIRE</div>
+    </div>
+    <div class="nav-items" id="navItems">
+      <button class="nav-btn active" data-view="home"><span class="nav-ico">⌂</span><span>Home</span></button>
+      <button class="nav-btn" data-view="library"><span class="nav-ico">▦</span><span>Library</span></button>
+      <button class="nav-btn" data-view="achievements"><span class="nav-ico">★</span><span>Achievements</span></button>
+      <button class="nav-btn" data-view="profile"><span class="nav-ico">☻</span><span>Profile</span></button>
+      <button class="nav-btn" data-view="settings"><span class="nav-ico">⚙</span><span>Settings</span></button>
+      <button class="nav-btn" data-view="news"><span class="nav-ico">✉</span><span>News</span></button>
+    </div>
+    <div class="sidebar-foot">
+      <div id="miniProfile" class="mini-profile" title="Open profile">
+        <span id="miniAvatar" class="mini-avatar">🎮</span>
+        <div class="mini-lines">
+          <span id="miniName">Player One</span>
+          <span id="miniPlaytime" class="dim">0m played</span>
+        </div>
+      </div>
+      <div id="padStatus" class="pad-status dim" title="Gamepad status">🎮 no gamepad</div>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main id="main">
+    <!-- HOME -->
+    <section id="view-home" class="view active">
+      <div class="hero" id="heroCard">
+        <div class="hero-text">
+          <div class="hero-kicker">FEATURED FLAGSHIP</div>
+          <h1 id="heroTitle">Procedural Dungeon RPG</h1>
+          <p id="heroDesc"></p>
+          <div class="hero-actions">
+            <button id="heroPlay" class="btn primary big">▶ Play</button>
+            <button id="heroDetails" class="btn ghost big">Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="home-grid">
+        <div class="home-col">
+          <h2>Continue</h2>
+          <div id="continueRow" class="card-row"></div>
+          <h2>Recently Played</h2>
+          <div id="recentRow" class="card-row"></div>
+        </div>
+        <aside class="home-col side">
+          <h2>News &amp; Updates</h2>
+          <div id="homeNews" class="news-list compact"></div>
+          <h2>Your Stats</h2>
+          <div id="homeStats" class="stats-grid"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section id="view-library" class="view">
+      <div class="view-head">
+        <div><h1>Library</h1><div id="librarySummary" class="dim"></div></div>
+        <div class="lib-tools">
+          <button id="randomPlay" class="btn primary">🎲 Surprise Me</button>
+          <select id="sortGames" aria-label="Sort games">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest added</option>
+            <option value="title">Title A–Z</option>
+            <option value="genre">Genre</option>
+          </select>
+          <input id="searchBox" type="search" placeholder="Search games…  ( / )" aria-label="Search games">
+          <div id="catFilters" class="chip-row" role="tablist"></div>
+          <label class="fav-toggle"><input type="checkbox" id="favOnly"> ♥ Favorites</label>
+        </div>
+      </div>
+      <div id="libraryGrid" class="library-grid"></div>
+      <div id="libraryEmpty" class="empty hidden">No games match. Clear the search or filters.</div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="view-achievements" class="view">
+      <div class="view-head"><h1>Achievements</h1><div id="achSummary" class="dim"></div></div>
+      <div id="achList"></div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="view-profile" class="view">
+      <div class="view-head"><h1>Player Profile</h1></div>
+      <div class="profile-wrap">
+        <div class="panel">
+          <div class="profile-id">
+            <button id="avatarBtn" class="avatar-big" title="Change avatar">🎮</button>
+            <div>
+              <input id="nameInput" class="name-input" maxlength="24" aria-label="Player name">
+              <div class="dim">Joined <span id="joinedAt">—</span></div>
+            </div>
+          </div>
+          <div id="avatarPicker" class="avatar-picker hidden"></div>
+        </div>
+        <div class="panel">
+          <h2>Stats</h2>
+          <div id="profileStats" class="stats-grid"></div>
+        </div>
+        <div class="panel">
+          <h2>Playtime by Game</h2>
+          <div id="playtimeList"></div>
+        </div>
+        <div class="panel">
+          <h2>Save Data</h2>
+          <div class="row-gap">
+            <button id="backupBtn" class="btn">⬇ Export Backup</button>
+            <button id="restoreBtn" class="btn">⬆ Import Backup</button>
+            <input type="file" id="restoreFile" accept="application/json" class="hidden">
+          </div>
+          <p class="dim small">Backups are a local JSON file containing every save slot for every game. Everything stays on this machine.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="view">
+      <div class="view-head"><h1>Settings</h1></div>
+      <div class="settings-tabs" id="settingsTabs" role="tablist">
+        <button class="tab active" data-tab="audio">Audio</button>
+        <button class="tab" data-tab="video">Video</button>
+        <button class="tab" data-tab="controls">Controls</button>
+        <button class="tab" data-tab="accessibility">Accessibility</button>
+      </div>
+      <div id="settingsPanels"></div>
+      <div class="row-gap" style="margin-top:16px">
+        <button id="resetSettingsBtn" class="btn danger">Reset All Settings</button>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="view-news" class="view">
+      <div class="view-head"><h1>News &amp; Updates</h1></div>
+      <div id="newsList" class="news-list"></div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ GAME OVERLAY ============ -->
+<div id="gameOverlay" class="hidden">
+  <div id="gameTopbar">
+    <button id="backToHub" class="btn ghost">◀ Back to Hub</button>
+    <span id="gameTitle" class="game-title"></span>
+    <div class="topbar-right">
+      <span id="sessionTime" class="dim">0:00</span>
+      <button id="pauseGameBtn" class="btn ghost">⏸ Pause</button>
+    </div>
+  </div>
+  <div id="gameFrameWrap"></div>
+</div>
+
+<!-- ============ GAME DETAILS MODAL ============ -->
+<div id="modalBackdrop" class="hidden">
+  <div id="detailsModal" role="dialog" aria-modal="true">
+    <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div id="toasts" aria-live="polite"></div>
+
+<script type="module" src="hub.js"></script>
+</body>
+</html>

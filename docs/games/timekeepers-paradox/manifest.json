@@ -1,0 +1,39 @@
+{
+  "id": "timekeepers-paradox",
+  "title": "Timekeeper's Paradox",
+  "category": "story",
+  "tags": [
+    "time travel",
+    "puzzle",
+    "choices",
+    "science fiction"
+  ],
+  "stack": "canvas",
+  "entry": "games/timekeepers-paradox/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Repair five broken eras by anchoring events in the right order, outrun paradox storms, and decide which version of history deserves to survive.",
+  "achievements": [
+    {
+      "id": "first-anchor",
+      "title": "Fixed Point",
+      "desc": "Stabilize the first temporal anchor."
+    },
+    {
+      "id": "no-paradox",
+      "title": "Clean Timeline",
+      "desc": "Repair an era without a wrong anchor."
+    },
+    {
+      "id": "timeline-savior",
+      "title": "Timeline Savior",
+      "desc": "Stabilize all five eras."
+    },
+    {
+      "id": "true-present",
+      "title": "The True Present",
+      "desc": "Reach the reconciled ending."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gridiron-drive",
+  "title": "Gridiron Drive",
+  "category": "sports",
+  "tags": [
+    "football",
+    "arcade",
+    "strategy",
+    "action"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/gridiron-drive/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Call runs and passes, evade reactive defenders, manage four downs and score two touchdowns in a fast top-down football drive.",
+  "achievements": [
+    {
+      "id": "first_down",
+      "title": "Move the Chains",
+      "desc": "Earn a first down."
+    },
+    {
+      "id": "touchdown",
+      "title": "Six Points",
+      "desc": "Score a touchdown."
+    },
+    {
+      "id": "deep_complete",
+      "title": "Going Long",
+      "desc": "Complete a deep pass."
+    },
+    {
+      "id": "broken_tackle",
+      "title": "Not Today",
+      "desc": "Escape a tackle using burst."
+    },
+    {
+      "id": "drive_champion",
+      "title": "Prime Time",
+      "desc": "Win by scoring two touchdowns."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tower Siege</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="c" tabindex="0" aria-label="Tower Siege battlefield"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <span class="hud-stat gold"><span class="ico">◆</span><span id="s-gold">0</span></span>
+      <span class="hud-stat lives"><span class="ico">♥</span><span id="s-lives">20</span></span>
+      <span class="hud-stat"><span id="s-wave">Wave 0/10</span></span>
+      <button id="btn-start" class="hud-btn hot">Start Wave<span class="key">ENTER</span></button>
+      <button id="btn-speed" class="hud-btn">1x<span class="key">F</span></button>
+      <button id="btn-pause" class="hud-btn">Pause<span class="key">ESC</span></button>
+      <button id="btn-restart" class="hud-btn">Restart<span class="key">R</span></button>
+    </div>
+
+    <div id="bossbar-wrap" class="hidden">
+      <div id="bossname">SIEGE WARLORD</div>
+      <div class="bb-outer"><div id="bossbar"></div></div>
+    </div>
+
+    <div id="hint">Pick a tower, click open ground to build, then start the wave.</div>
+
+    <div id="build-bar"></div>
+
+    <div id="tower-panel" class="hidden">
+      <div id="tp-name">Tower</div>
+      <div id="tp-stats"></div>
+      <div class="tp-btns">
+        <button id="tp-upgrade" class="ui-btn small">Upgrade</button>
+        <button id="tp-sell" class="ui-btn small danger">Sell</button>
+        <button id="tp-close" class="ui-btn small">Close</button>
+      </div>
+    </div>
+
+    <div id="toasts"></div>
+    <div id="ach-popups"></div>
+  </div>
+
+  <div id="menu-overlay" class="overlay">
+    <div class="panel">
+      <div class="title">TOWER<span>SIEGE</span></div>
+      <div class="subtitle">HOLD THE GATE · TEN WAVES</div>
+      <div id="diff-row">
+        <button class="ui-btn diff" data-diff="cadet">Cadet</button>
+        <button class="ui-btn diff sel" data-diff="veteran">Veteran</button>
+        <button class="ui-btn diff" data-diff="warlord">Warlord</button>
+      </div>
+      <div class="menu-btns">
+        <button id="btn-play" class="ui-btn big">Start Campaign</button>
+        <button id="btn-continue" class="ui-btn hidden">Continue Run</button>
+        <button id="btn-howto" class="ui-btn">How to Play</button>
+        <button id="btn-settings" class="ui-btn">Settings</button>
+      </div>
+      <div class="fineprint" id="best-line">No siege recorded yet.</div>
+    </div>
+  </div>
+
+  <div id="howto-overlay" class="overlay hidden">
+    <div class="panel wide">
+      <h2>HOW TO PLAY</h2>
+      <div id="howto-body">
+        <p>Attackers march the lit road from the west gate to the east gate. Every leak costs a life &mdash; lose all 20 and the fortress falls. Survive all <b>ten waves</b> to win.</p>
+        <ul>
+          <li><b>Build</b> &mdash; pick a tower on the bottom bar, then click open ground away from the road.</li>
+          <li><b>Upgrade</b> &mdash; click one of your towers to open its panel: upgrade to level 3 or sell it for 60% back.</li>
+          <li><b>Earn</b> &mdash; gold comes from kills and a bonus for every wave cleared.</li>
+        </ul>
+        <p><b>Towers:</b> Bolt is cheap and fast · Frost chills attackers · Cannon deals splash damage · Tesla arcs to three foes · Sniper reaches across the map.</p>
+        <p><b>Controls</b></p>
+        <ul>
+          <li><b>Mouse</b> &mdash; click to build or to select a tower.</li>
+          <li><b>WASD / Arrow keys</b> &mdash; move the build cursor.</li>
+          <li><b>Space</b> &mdash; build at the cursor (or start the wave when no tower type is selected).</li>
+          <li><b>1&ndash;5</b> &mdash; pick tower type · <b>Q</b> deselect · <b>U</b> upgrade · <b>X</b> sell.</li>
+          <li><b>Enter / N</b> &mdash; start the next wave · <b>F</b> &mdash; toggle 1x/2x speed.</li>
+          <li><b>Esc</b> or <b>P</b> &mdash; pause · <b>R</b> &mdash; restart the campaign.</li>
+        </ul>
+      </div>
+      <button id="btn-howto-back" class="ui-btn back">Back</button>
+    </div>
+  </div>
+
+  <div id="settings-overlay" class="overlay hidden">
+    <div class="panel">
+      <h2>SETTINGS</h2>
+      <label class="setting">Music<input id="set-music" type="range" min="0" max="100" value="60"></label>
+      <label class="setting">Effects<input id="set-sfx" type="range" min="0" max="100" value="80"></label>
+      <label class="setting">Reduced effects<input id="set-motion" type="checkbox"></label>
+      <button id="btn-set-back" class="ui-btn back">Back</button>
+    </div>
+  </div>
+
+  <div id="pause-overlay" class="overlay hidden">
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <div class="menu-btns">
+        <button id="btn-resume" class="ui-btn big">Resume</button>
+        <button id="btn-pause-restart" class="ui-btn">Restart Campaign</button>
+        <button id="btn-pause-howto" class="ui-btn">How to Play</button>
+        <button id="btn-pause-menu" class="ui-btn danger">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="end-overlay" class="overlay hidden">
+    <div class="panel">
+      <h2 id="end-title">SIEGE BROKEN</h2>
+      <div id="end-stars"></div>
+      <div id="end-stats"></div>
+      <div class="menu-btns">
+        <button id="btn-again" class="ui-btn big">Play Again</button>
+        <button id="btn-end-menu" class="ui-btn">Main Menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="js/game.js"></script>
+</body>
+</html>

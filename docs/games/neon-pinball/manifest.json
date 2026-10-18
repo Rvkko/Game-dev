@@ -1,0 +1,39 @@
+{
+  "id": "neon-pinball",
+  "title": "Neon Pinball Circuit",
+  "category": "arcade",
+  "tags": [
+    "pinball",
+    "physics",
+    "missions",
+    "high-score"
+  ],
+  "stack": "canvas",
+  "entry": "games/neon-pinball/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Conquer three reactive neon tables with missions, skill shots, jackpots, multiball, realistic flippers, tilt control, and persistent high scores.",
+  "achievements": [
+    {
+      "id": "skill-shot",
+      "title": "Sharpshooter",
+      "desc": "Hit a lit skill-shot lane."
+    },
+    {
+      "id": "multiball",
+      "title": "Neon Storm",
+      "desc": "Activate multiball."
+    },
+    {
+      "id": "jackpot",
+      "title": "Jackpot",
+      "desc": "Score a mission jackpot."
+    },
+    {
+      "id": "circuit-complete",
+      "title": "Circuit Champion",
+      "desc": "Clear all three tables."
+    }
+  ]
+}

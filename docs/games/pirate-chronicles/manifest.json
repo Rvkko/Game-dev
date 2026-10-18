@@ -1,0 +1,44 @@
+{
+  "id": "pirate-chronicles",
+  "title": "Pirate Chronicles",
+  "category": "adventure",
+  "tags": [
+    "pirates",
+    "naval combat",
+    "quests",
+    "treasure"
+  ],
+  "stack": "canvas",
+  "entry": "games/pirate-chronicles/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Sail five handcrafted voyages, battle rival captains, recover legendary charts, make crew-defining choices, and claim one of several pirate endings.",
+  "achievements": [
+    {
+      "id": "first-broadside",
+      "title": "First Broadside",
+      "desc": "Sink your first enemy ship."
+    },
+    {
+      "id": "treasure-hunter",
+      "title": "Treasure Hunter",
+      "desc": "Recover three voyage treasures."
+    },
+    {
+      "id": "sea-wolf",
+      "title": "Sea Wolf",
+      "desc": "Finish a voyage without taking hull damage."
+    },
+    {
+      "id": "captains-code",
+      "title": "Captain’s Code",
+      "desc": "Share treasure with the crew three times."
+    },
+    {
+      "id": "pirate-legend",
+      "title": "Pirate Legend",
+      "desc": "Complete all five voyages."
+    }
+  ]
+}

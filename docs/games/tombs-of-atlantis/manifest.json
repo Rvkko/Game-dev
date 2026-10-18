@@ -1,0 +1,39 @@
+{
+  "id": "tombs-of-atlantis",
+  "title": "Tombs of Atlantis",
+  "category": "adventure",
+  "tags": [
+    "archaeology",
+    "puzzles",
+    "action",
+    "mythology"
+  ],
+  "stack": "canvas",
+  "entry": "games/tombs-of-atlantis/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Decode five drowned tombs, recover royal seals, battle ancient guardians, and choose whether Atlantis rises or remains a legend.",
+  "achievements": [
+    {
+      "id": "rune-reader",
+      "title": "Rune Reader",
+      "desc": "Solve the first seal puzzle."
+    },
+    {
+      "id": "guardian-fallen",
+      "title": "Guardian Fallen",
+      "desc": "Defeat an Atlantean guardian."
+    },
+    {
+      "id": "perfect-vault",
+      "title": "Perfect Vault",
+      "desc": "Clear a tomb without triggering a trap."
+    },
+    {
+      "id": "atlantis-risen",
+      "title": "Atlantis Risen",
+      "desc": "Complete all five tombs."
+    }
+  ]
+}

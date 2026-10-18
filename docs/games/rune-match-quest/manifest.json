@@ -1,0 +1,39 @@
+{
+  "id": "rune-match-quest",
+  "title": "Rune Match Quest",
+  "category": "puzzle",
+  "tags": [
+    "match-3",
+    "rpg",
+    "puzzle",
+    "campaign"
+  ],
+  "stack": "canvas",
+  "entry": "games/rune-match-quest/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Battle four mythic foes through tactical match-three boards where swords attack, shields defend, hearts heal, and mana fuels devastating spells.",
+  "achievements": [
+    {
+      "id": "cascade",
+      "title": "Rune Cascade",
+      "desc": "Trigger a three-step cascade."
+    },
+    {
+      "id": "big-match",
+      "title": "Runic Mastery",
+      "desc": "Match five runes at once."
+    },
+    {
+      "id": "spellbound",
+      "title": "Spellbound",
+      "desc": "Cast an Arcane Burst."
+    },
+    {
+      "id": "dragon-felled",
+      "title": "Dragon Feller",
+      "desc": "Complete the quest."
+    }
+  ]
+}

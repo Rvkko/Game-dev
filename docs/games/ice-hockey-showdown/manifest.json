@@ -1,0 +1,44 @@
+{
+  "id": "ice-hockey-showdown",
+  "title": "Ice Hockey Showdown",
+  "category": "sports",
+  "tags": [
+    "hockey",
+    "shootout",
+    "goalie",
+    "skill"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/ice-hockey-showdown/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A best-of-five ice hockey shootout with charge timing, targeted wrist shots, reactive goaltending and sudden death.",
+  "achievements": [
+    {
+      "id": "first_goal",
+      "title": "Light the Lamp",
+      "desc": "Score your first shootout goal."
+    },
+    {
+      "id": "first_save",
+      "title": "Stonewalled",
+      "desc": "Make your first goalie save."
+    },
+    {
+      "id": "bar_down",
+      "title": "Bar Down",
+      "desc": "Score with perfect power."
+    },
+    {
+      "id": "shutout",
+      "title": "The Wall",
+      "desc": "Win without conceding."
+    },
+    {
+      "id": "showdown_champ",
+      "title": "Showdown Champion",
+      "desc": "Win a shootout."
+    }
+  ]
+}

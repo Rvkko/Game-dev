@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101a30"/><stop offset="1" stop-color="#0b0e14"/>
+    </linearGradient>
+    <radialGradient id="boom" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe28a"/><stop offset="0.4" stop-color="#ff8b3e"/>
+      <stop offset="1" stop-color="#ff8b3e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="270" fill="url(#sky)"/>
+  <rect x="30" y="60" width="70" height="150" fill="#1e2842"/>
+  <rect x="380" y="80" width="60" height="130" fill="#1e2842"/>
+  <rect y="210" width="480" height="60" fill="#1a2030"/>
+  <line x1="0" y1="210" x2="480" y2="210" stroke="#2e3a58" stroke-width="3"/>
+  <circle cx="330" cy="150" r="70" fill="url(#boom)"/>
+  <g fill="#a9743f" stroke="#00000055" stroke-width="2">
+    <rect x="270" y="174" width="34" height="34" transform="rotate(-14 287 191)"/>
+    <rect x="360" y="120" width="34" height="34" transform="rotate(28 377 137)"/>
+    <rect x="340" y="185" width="34" height="34" transform="rotate(8 357 202)"/>
+  </g>
+  <g fill="#7c8598" stroke="#00000055" stroke-width="2">
+    <rect x="308" y="90" width="34" height="34" transform="rotate(-30 325 107)"/>
+    <rect x="398" y="176" width="34" height="34" transform="rotate(-9 415 193)"/>
+  </g>
+  <!-- ragdoll flying -->
+  <g transform="translate(310 60) rotate(140)" fill="#5fd460">
+    <circle cx="0" cy="-18" r="8"/>
+    <rect x="-7" y="-12" width="14" height="26" rx="4"/>
+    <rect x="-22" y="-10" width="16" height="6" rx="3" transform="rotate(40 -14 -7)"/>
+    <rect x="6" y="-10" width="16" height="6" rx="3" transform="rotate(-25 14 -7)"/>
+    <rect x="-10" y="14" width="7" height="18" rx="3" transform="rotate(18 -6 23)"/>
+    <rect x="3" y="14" width="7" height="18" rx="3" transform="rotate(-30 6 23)"/>
+  </g>
+  <!-- player -->
+  <g transform="translate(130 166)">
+    <rect x="-14" y="-22" width="28" height="44" rx="8" fill="#3ec6ff"/>
+    <rect x="-10" y="-18" width="20" height="12" rx="4" fill="#0b2536"/>
+    <rect x="0" y="-15" width="8" height="5" fill="#9fe8ff"/>
+    <rect x="10" y="-8" width="30" height="8" fill="#26425c" transform="rotate(-12 10 -4)"/>
+  </g>
+  <g fill="#ffd24a">
+    <rect x="180" y="196" width="8" height="8" transform="rotate(20 184 200)"/>
+    <rect x="252" y="130" width="6" height="6" transform="rotate(45 255 133)"/>
+    <rect x="300" y="230" width="7" height="7"/>
+  </g>
+  <text x="240" y="42" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="800" fill="#3ec6ff" letter-spacing="2">PHYSICS DESTRUCTION</text>
+  <text x="240" y="62" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#ff9d3e" letter-spacing="6">ARENA</text>
+</svg>

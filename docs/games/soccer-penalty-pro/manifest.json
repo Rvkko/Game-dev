@@ -1,0 +1,44 @@
+{
+  "id": "soccer-penalty-pro",
+  "title": "Penalty Pro",
+  "category": "sports",
+  "tags": [
+    "soccer",
+    "penalty",
+    "skill",
+    "shootout"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/soccer-penalty-pro/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A tense five-round soccer shootout with precision aiming, goalkeeper reads, diving saves, sudden death and persistent career stats.",
+  "achievements": [
+    {
+      "id": "first_goal",
+      "title": "Back of the Net",
+      "desc": "Score your first penalty."
+    },
+    {
+      "id": "first_save",
+      "title": "Safe Hands",
+      "desc": "Save your first penalty."
+    },
+    {
+      "id": "clean_sheet",
+      "title": "Brick Wall",
+      "desc": "Win without conceding."
+    },
+    {
+      "id": "hat_trick",
+      "title": "Clinical",
+      "desc": "Score three penalties in one match."
+    },
+    {
+      "id": "champion",
+      "title": "Shootout Champion",
+      "desc": "Win a match."
+    }
+  ]
+}

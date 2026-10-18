@@ -1,0 +1,39 @@
+{
+  "id": "wildlands-expedition",
+  "title": "Wildlands Expedition",
+  "category": "adventure",
+  "tags": [
+    "exploration",
+    "wildlife",
+    "rescue",
+    "survival"
+  ],
+  "stack": "canvas",
+  "entry": "games/wildlands-expedition/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Lead five wilderness expeditions, document rare wildlife, rescue stranded researchers, survive changing weather, and protect a threatened ecosystem.",
+  "achievements": [
+    {
+      "id": "first-rescue",
+      "title": "First Responder",
+      "desc": "Rescue a stranded researcher."
+    },
+    {
+      "id": "field-scholar",
+      "title": "Field Scholar",
+      "desc": "Document fifteen wildlife signs."
+    },
+    {
+      "id": "leave-no-trace",
+      "title": "Leave No Trace",
+      "desc": "Clear a region without disturbing wildlife."
+    },
+    {
+      "id": "expedition-complete",
+      "title": "Wildlands Guardian",
+      "desc": "Complete all five expeditions."
+    }
+  ]
+}

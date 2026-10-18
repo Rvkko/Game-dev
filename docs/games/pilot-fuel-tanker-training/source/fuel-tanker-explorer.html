@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#b3121b">
+<title>Pilot Fuel Tanker Explorer — Made for Dad</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛢️</text></svg>">
+<link rel="stylesheet" href="fuelTankerExplorer.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="scene"></canvas>
+
+  <header id="hud-top">
+    <div id="titleBlock">
+      <h1>🛢️ Pilot Fuel Tanker Explorer</h1>
+      <p id="madeFor">Made for Dad ❤️ &nbsp;•&nbsp; Interactive gasoline tanker learning garage</p>
+    </div>
+    <div id="statusChips">
+      <span class="chip" id="stEngine">Engine: OFF</span>
+      <span class="chip" id="stLights">Lights: off</span>
+      <span class="chip" id="stDoors">Doors: closed</span>
+      <span class="chip" id="stGear">Landing gear: UP</span>
+      <span class="chip" id="stHose">Hose: stored</span>
+      <span class="chip" id="stValve">Valve: closed</span>
+      <span class="chip" id="stCargo">Cargo: GASOLINE (UN 1203)</span>
+      <span class="chip" id="stMode">Mode: Explore</span>
+    </div>
+  </header>
+
+  <aside id="infoPanel" class="hidden">
+    <div id="infoHead">
+      <h2 id="infoTitle">Part</h2>
+      <button id="infoClose" aria-label="Close">✕</button>
+    </div>
+    <div id="infoBody"></div>
+    <div id="infoActions">
+      <button id="infoFocus">🎯 Focus camera</button>
+    </div>
+  </aside>
+
+  <section id="stepPanel" class="hidden">
+    <div id="stepHead">
+      <h2 id="stepTitle">Step</h2>
+      <span id="stepProgress">1/1</span>
+    </div>
+    <div id="stepBody"></div>
+    <div id="stepButtons">
+      <button id="stepPrev">◀ Back</button>
+      <button id="stepNext">Next ▶</button>
+      <button id="stepExit">Exit</button>
+    </div>
+  </section>
+
+  <div id="drivePad" class="hidden">
+    <button data-k="left">◀</button>
+    <div class="dp-col">
+      <button data-k="fwd">▲</button>
+      <button data-k="back">▼</button>
+    </div>
+    <button data-k="right">▶</button>
+  </div>
+
+  <button id="menuToggle">☰ Controls</button>
+  <nav id="controls"></nav>
+
+  <div id="manualModal" class="hidden">
+    <div id="manualCard">
+      <div id="manualHead">
+        <h2>📘 Tanker Field Manual</h2>
+        <button id="manualClose" aria-label="Close">✕</button>
+      </div>
+      <div id="manualBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="hidden"></div>
+
+  <footer id="disclaimer">
+    Educational model only — not a replacement for company/DOT training. Real fuel delivery must
+    follow company, DOT, site, and hazmat procedures.
+  </footer>
+
+  <div id="tapHint">Drag to orbit • pinch/scroll to zoom • tap any part to learn about it</div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="fuelTankerExplorer.js"></script>
+</body>
+</html>

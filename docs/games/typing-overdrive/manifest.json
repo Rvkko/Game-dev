@@ -1,0 +1,39 @@
+{
+  "id": "typing-overdrive",
+  "title": "Typing Overdrive",
+  "category": "arcade",
+  "tags": [
+    "typing",
+    "words",
+    "speed",
+    "campaign"
+  ],
+  "stack": "canvas-dom",
+  "entry": "games/typing-overdrive/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Type incoming cyber threats across five speed stages, chain flawless words, activate Overdrive, and defeat the Firewall command phrase.",
+  "achievements": [
+    {
+      "id": "perfect-word",
+      "title": "Clean Input",
+      "desc": "Type a word without an error."
+    },
+    {
+      "id": "combo-20",
+      "title": "Hot Keys",
+      "desc": "Reach a 20-word combo."
+    },
+    {
+      "id": "overdrive",
+      "title": "Overdrive",
+      "desc": "Fill the Overdrive meter."
+    },
+    {
+      "id": "firewall-breached",
+      "title": "Firewall Breached",
+      "desc": "Finish the typing campaign."
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Minefield Classic</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --chrome-1: #1b2030;
+    --chrome-2: #10131e;
+    --edge: #3b4664;
+    --edge-hot: #6fd0ff;
+    --ink: #d9e4f7;
+    --ink-dim: #8b9bba;
+    --accent: #ffd27f;
+    --danger: #ff6b5e;
+    --good: #6ee7a0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #05070d; overflow: hidden; color: var(--ink);
+    font-family: 'Segoe UI', 'Trebuchet MS', Verdana, sans-serif;
+    -webkit-user-select: none; user-select: none; touch-action: none;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column;
+         background: radial-gradient(ellipse at 50% -20%, #16203a 0%, #05070d 70%); }
+
+  /* ---------- top bar ---------- */
+  #topbar {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+    background: linear-gradient(180deg, var(--chrome-1), var(--chrome-2));
+    border-bottom: 1px solid var(--edge); box-shadow: 0 2px 14px rgba(0,0,0,0.6); flex-wrap: wrap;
+  }
+  .brand { font-size: 15px; letter-spacing: 2px; color: var(--accent); text-shadow: 0 0 10px rgba(255,140,42,0.5); white-space: nowrap; }
+  .brand small { display: block; font-size: 9px; letter-spacing: 2px; color: var(--ink-dim); text-shadow: none; }
+  .led {
+    font-family: Consolas, 'Courier New', monospace; font-weight: bold; font-size: 20px; line-height: 1;
+    color: #ff3b30; background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 4px;
+    padding: 5px 9px; min-width: 74px; text-align: center; text-shadow: 0 0 8px rgba(255,59,48,0.7);
+    box-shadow: inset 0 0 10px rgba(255,0,0,0.12);
+  }
+  .led.small { font-size: 14px; min-width: 62px; color: #ffd27f; text-shadow: 0 0 8px rgba(255,180,60,0.6); }
+  #face {
+    width: 44px; height: 44px; font-size: 24px; line-height: 1; cursor: pointer; border-radius: 8px;
+    background: linear-gradient(180deg, #dfe4ee, #a9b2c6); border: 2px solid #79839b; color: #111;
+    display: flex; align-items: center; justify-content: center; padding: 0; flex: 0 0 auto;
+  }
+  #face:active { background: linear-gradient(180deg, #a9b2c6, #dfe4ee); }
+  .spacer { flex: 1 1 auto; }
+  .tbtn {
+    background: linear-gradient(180deg, #25305a, #131a30); border: 1px solid #4a6cbf; color: #cfe0ff;
+    border-radius: 6px; padding: 8px 12px; font-size: 12px; letter-spacing: 1px; cursor: pointer;
+    font-family: inherit; white-space: nowrap; transition: 0.12s;
+  }
+  .tbtn:hover { border-color: var(--edge-hot); color: #fff; background: linear-gradient(180deg, #334a78, #1b2749); }
+  .tbtn.on { border-color: var(--accent); color: #ffe9c8; background: linear-gradient(180deg, #4a3212, #2a1c0b); }
+  .tbtn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .chip { font-size: 11px; color: var(--ink-dim); border: 1px solid #2c3550; border-radius: 20px; padding: 4px 10px; white-space: nowrap; }
+  .chip b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- stage ---------- */
+  #stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  canvas#board { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+  #progressWrap { flex: 0 0 auto; height: 4px; background: #0b0f1a; }
+  #progressBar { height: 100%; width: 0%; background: linear-gradient(90deg, #3f7fd6, #6ee7a0); transition: width 0.15s linear; }
+
+  #bottombar {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 14px; padding: 6px 12px;
+    background: linear-gradient(180deg, var(--chrome-2), #080b13); border-top: 1px solid #212a42;
+    font-size: 11px; color: var(--ink-dim); flex-wrap: wrap;
+  }
+  #bottombar kbd {
+    background: #1a2137; border: 1px solid #3b4664; border-bottom-width: 2px; border-radius: 4px;
+    padding: 1px 5px; font-family: Consolas, monospace; color: #cfe0ff; font-size: 10px;
+  }
+
+  /* ---------- overlays ---------- */
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(8,10,20,0.90) 0%, rgba(2,3,8,0.97) 100%);
+    z-index: 50; overflow-y: auto; padding: 18px;
+  }
+  .hidden { display: none !important; }
+  .panel {
+    position: relative;
+    background: linear-gradient(180deg, rgba(18,22,38,0.97), rgba(6,8,16,0.98));
+    border: 1px solid var(--edge); border-radius: 12px; padding: 22px 26px; width: 460px; max-width: 94vw;
+    box-shadow: 0 0 44px rgba(80,120,255,0.16), inset 0 0 34px rgba(60,80,160,0.07);
+    max-height: 92vh; overflow-y: auto;
+  }
+  .panel.wide { width: 620px; }
+  .title { font-size: 28px; letter-spacing: 4px; text-align: center; color: var(--accent);
+           text-shadow: 0 0 14px rgba(255,140,42,0.55); margin: 0 0 2px; }
+  .subtitle { text-align: center; color: var(--ink-dim); font-size: 11px; margin: 0 0 16px; letter-spacing: 2px; }
+  h2.section { color: var(--edge-hot); font-size: 12px; letter-spacing: 2px; border-bottom: 1px solid #223; padding-bottom: 5px; margin: 16px 0 9px; }
+  .btn {
+    display: block; width: 100%; margin: 6px 0; padding: 11px 14px;
+    background: linear-gradient(180deg, #25305a, #131a30); border: 1px solid #4a6cbf; color: #cfe0ff;
+    font-size: 13px; letter-spacing: 1px; border-radius: 7px; cursor: pointer; font-family: inherit; text-align: left;
+    transition: 0.12s;
+  }
+  .btn:hover { background: linear-gradient(180deg, #334a78, #1b2749); border-color: var(--edge-hot); color: #fff; transform: translateX(2px); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+  .btn .k { float: right; color: var(--ink-dim); font-size: 11px; }
+  .btn.primary { border-color: #ffb84f; color: #ffe9c8; }
+  .btn.primary:hover { border-color: var(--accent); background: linear-gradient(180deg, #4a3212, #2a1c0b); }
+  .btn.danger { border-color: #d65050; color: #ffd4d4; }
+  .btn.danger:hover { background: linear-gradient(180deg, #4a1616, #2a0b0b); border-color: #ff8a7a; }
+  .row { display: flex; gap: 8px; }
+  .row .btn { flex: 1; }
+  .field { margin: 9px 0; font-size: 12px; color: #a9c0e0; }
+  .field label { display: block; margin-bottom: 4px; letter-spacing: 1px; }
+  .field input[type=number] {
+    width: 100%; background: #101728; color: #cfe0ff; border: 1px solid #4a6cbf; border-radius: 5px;
+    padding: 8px; font-family: inherit; font-size: 13px;
+  }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .toggle {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; margin: 6px 0;
+    border: 1px solid #2c3550; border-radius: 7px; cursor: pointer; font-size: 12px; color: #b6c8e6; transition: 0.12s;
+  }
+  .toggle:hover { border-color: #4a6cbf; background: rgba(70,100,200,0.08); }
+  .toggle .sw { width: 40px; height: 20px; border-radius: 12px; background: #222b44; border: 1px solid #3b4664; position: relative; flex: 0 0 auto; }
+  .toggle .sw::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+                       background: #6b7794; transition: 0.15s; }
+  .toggle.on .sw { background: #1d4a35; border-color: #3fa876; }
+  .toggle.on .sw::after { left: 22px; background: var(--good); }
+  .toggle .sub { display: block; font-size: 10px; color: #6d7d9c; margin-top: 2px; }
+  .small { font-size: 11px; color: #7d8daa; line-height: 1.5; }
+  .statline { display: flex; justify-content: space-between; font-size: 12px; color: #b8c8e8; padding: 3px 0; border-bottom: 1px dotted #1e2740; }
+  .statline b { color: #fff; font-weight: 600; }
+  .bigicon { font-size: 52px; text-align: center; margin: 4px 0 6px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; letter-spacing: 1px; margin-left: 6px; }
+  .badge.rec { background: #4a3212; color: var(--accent); border: 1px solid #ffb84f; }
+  .badge.ng { background: #10331f; color: var(--good); border: 1px solid #2f7a52; }
+  table.rec { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  table.rec th { text-align: left; color: var(--edge-hot); font-weight: 600; padding: 6px 4px; border-bottom: 1px solid #263153; letter-spacing: 1px; }
+  table.rec td { padding: 6px 4px; border-bottom: 1px dotted #1a2238; color: #c4d3ee; }
+  table.rec td.n { text-align: right; font-family: Consolas, monospace; }
+  .helprow { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; margin: 8px 0; color: #b6c8e6; line-height: 1.45; }
+  .helprow .ic { flex: 0 0 30px; text-align: center; font-size: 18px; }
+  .helprow kbd { background: #1a2137; border: 1px solid #3b4664; border-bottom-width: 2px; border-radius: 4px;
+                 padding: 1px 5px; font-family: Consolas, monospace; color: #cfe0ff; font-size: 11px; }
+
+  #genOverlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+                background: rgba(4,6,12,0.72); z-index: 40; }
+  #genOverlay .box { text-align: center; font-size: 13px; letter-spacing: 2px; color: var(--edge-hot); }
+  .spinner { width: 34px; height: 34px; margin: 0 auto 12px; border: 3px solid #223; border-top-color: var(--edge-hot);
+             border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #toast {
+    position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+    background: rgba(10,14,26,0.95); border: 1px solid #4a6cbf; border-radius: 8px; padding: 9px 16px;
+    font-size: 12px; color: #cfe0ff; z-index: 45; pointer-events: none; max-width: 86%; text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  }
+  #achToast {
+    position: absolute; right: 16px; top: 16px; z-index: 46; pointer-events: none;
+    background: linear-gradient(180deg, rgba(40,32,12,0.97), rgba(18,14,6,0.97));
+    border: 1px solid #ffb84f; border-radius: 9px; padding: 10px 14px; min-width: 200px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.6);
+  }
+  #achToast .t { font-size: 12px; color: var(--accent); letter-spacing: 1px; }
+  #achToast .d { font-size: 10.5px; color: #cbb28c; margin-top: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn:hover { transform: none; }
+    .spinner { animation-duration: 2.4s; }
+  }
+  @media (max-width: 820px) {
+    .brand small { display: none; }
+    .chip { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header id="topbar">
+    <div class="brand">MINEFIELD<small>CLASSIC</small></div>
+    <div class="led" id="mineCount" title="Mines remaining (mines minus flags)">010</div>
+    <button id="face" title="New game (R)">🙂</button>
+    <div class="led" id="timer" title="Elapsed time">000</div>
+    <div class="led small" id="bbbvRate" title="3BV per second — speed rating">0.00/s</div>
+    <div class="spacer"></div>
+    <span class="chip" id="chipDiff">Beginner</span>
+    <span class="chip" id="chipBest">Best —</span>
+    <button class="tbtn" id="btnFlagMode" title="Toggle flag mode for touch/single-button mice (T)">🚩 Flag Mode</button>
+    <button class="tbtn" id="btnHint" title="Reveal one logically-safe square (H)">💡 Hint</button>
+    <button class="tbtn" id="btnPause" title="Pause (Esc / P)">⏸ Pause</button>
+    <button class="tbtn" id="btnMenu" title="Back to menu">☰ Menu</button>
+  </header>
+
+  <div id="progressWrap"><div id="progressBar"></div></div>
+
+  <main id="stage">
+    <canvas id="board"></canvas>
+
+    <div id="genOverlay" class="hidden">
+      <div class="box">
+        <div class="spinner"></div>
+        <div id="genText">BUILDING A NO-GUESS FIELD…</div>
+      </div>
+    </div>
+
+    <div id="toast" class="hidden"></div>
+    <div id="achToast" class="hidden"><div class="t"></div><div class="d"></div></div>
+
+    <!-- ===== MENU ===== -->
+    <div id="menuScreen" class="overlay">
+      <div class="panel">
+        <h1 class="title">MINEFIELD</h1>
+        <p class="subtitle">C L A S S I C &nbsp;·&nbsp; S W E E P E R</p>
+        <button class="btn primary" id="btnResume">▶ Resume Saved Game<span class="k">saved</span></button>
+        <h2 class="section">CHOOSE A FIELD</h2>
+        <button class="btn" id="btnBeginner">Beginner &nbsp;·&nbsp; 9 × 9 · 10 mines<span class="k">1</span></button>
+        <button class="btn" id="btnIntermediate">Intermediate &nbsp;·&nbsp; 16 × 16 · 40 mines<span class="k">2</span></button>
+        <button class="btn" id="btnExpert">Expert &nbsp;·&nbsp; 30 × 16 · 99 mines<span class="k">3</span></button>
+        <button class="btn" id="btnCustom">Custom Field…<span class="k">4</span></button>
+        <button class="btn" id="btnDaily">📅 Daily Board<span class="k" id="dailyTag">today</span></button>
+        <h2 class="section">OPTIONS</h2>
+        <div class="toggle" id="tglNoGuess"><span>No-Guess Generator<span class="sub">Every board solvable by pure logic — never a coin flip.</span></span><span class="sw"></span></div>
+        <div class="toggle" id="tglQMark"><span>Question Marks<span class="sub">Right-click cycles flag → ? → clear.</span></span><span class="sw"></span></div>
+        <div class="toggle" id="tglSound"><span>Sound Effects<span class="sub">Synthesised clicks, blasts and fanfares.</span></span><span class="sw"></span></div>
+        <div class="row">
+          <button class="btn" id="btnHowto">📖 How To Play</button>
+          <button class="btn" id="btnRecords">🏆 Records</button>
+        </div>
+        <p class="small" id="menuRecordLine">No records yet — clear a board to set one.</p>
+      </div>
+    </div>
+
+    <!-- ===== CUSTOM ===== -->
+    <div id="customScreen" class="overlay hidden">
+      <div class="panel">
+        <h1 class="title">CUSTOM</h1>
+        <p class="subtitle">B U I L D &nbsp; Y O U R &nbsp; F I E L D</p>
+        <div class="grid3">
+          <div class="field"><label>WIDTH (5–60)</label><input type="number" id="cCols" min="5" max="60" value="20"></div>
+          <div class="field"><label>HEIGHT (5–40)</label><input type="number" id="cRows" min="5" max="40" value="14"></div>
+          <div class="field"><label>MINES</label><input type="number" id="cMines" min="1" max="2000" value="55"></div>
+        </div>
+        <p class="small" id="cWarn">Density 19.6% — comparable to Expert.</p>
+        <button class="btn primary" id="cStart">▶ Start Custom Field</button>
+        <button class="btn" id="cBack">← Back</button>
+      </div>
+    </div>
+
+    <!-- ===== HOW TO PLAY ===== -->
+    <div id="howtoScreen" class="overlay hidden">
+      <div class="panel wide">
+        <h1 class="title">HOW TO PLAY</h1>
+        <p class="subtitle">C L E A R &nbsp; E V E R Y &nbsp; S A F E &nbsp; S Q U A R E</p>
+        <h2 class="section">THE RULES</h2>
+        <div class="helprow"><span class="ic">🔢</span><span>A revealed number is how many mines touch that square, counting all eight neighbours. Use the numbers to prove which hidden squares are mines.</span></div>
+        <div class="helprow"><span class="ic">🛡️</span><span>Your <b>first click is always safe</b> — the mines are laid <i>after</i> it, never under it or the ring around it.</span></div>
+        <div class="helprow"><span class="ic">🏁</span><span>You win when every square without a mine is uncovered. Flags are optional bookkeeping; they never win the game for you.</span></div>
+        <h2 class="section">MOUSE</h2>
+        <div class="helprow"><span class="ic">🖱️</span><span><b>Left click</b> — uncover a square. Uncovering a blank cascades outward automatically.</span></div>
+        <div class="helprow"><span class="ic">🚩</span><span><b>Right click</b> — plant / remove a flag (and a <b>?</b> in between if question marks are on).</span></div>
+        <div class="helprow"><span class="ic">🎹</span><span><b>Chord</b> — press <i>both buttons</i> (or the middle button) on a number whose flags already match it, and every remaining neighbour opens at once. The fastest way to sweep — and the fastest way to die if a flag is wrong.</span></div>
+        <div class="helprow"><span class="ic">🔍</span><span><b>Wheel</b> zooms, <b>Shift + drag</b> pans a big field. Press <kbd>0</kbd> to refit the board.</span></div>
+        <h2 class="section">KEYBOARD</h2>
+        <div class="helprow"><span class="ic">⌨️</span><span><kbd>W A S D</kbd> / <kbd>arrows</kbd> move the cursor · <kbd>Space</kbd> uncover (or chord on a satisfied number) · <kbd>F</kbd> flag · <kbd>H</kbd> hint · <kbd>R</kbd> restart · <kbd>T</kbd> flag mode · <kbd>M</kbd> mute · <kbd>Esc</kbd>/<kbd>P</kbd> pause</span></div>
+        <h2 class="section">SCORING</h2>
+        <div class="helprow"><span class="ic">📈</span><span><b>3BV</b> is the minimum number of clicks a board can be solved in. <b>3BV/s</b> is your speed rating, and <b>efficiency</b> is 3BV divided by the clicks you actually spent — chording is how you push it above 50%.</span></div>
+        <div class="helprow"><span class="ic">🧠</span><span><b>No-Guess</b> mode runs a constraint solver while generating and only hands you fields that logic alone can finish. Turn it on if you hate 50/50s.</span></div>
+        <div class="helprow"><span class="ic">💡</span><span>A <b>hint</b> proves one safe square for you — but any board where you use a hint is not eligible for a record.</span></div>
+        <button class="btn primary" id="howBack">← Back</button>
+      </div>
+    </div>
+
+    <!-- ===== RECORDS ===== -->
+    <div id="recordsScreen" class="overlay hidden">
+      <div class="panel wide">
+        <h1 class="title">RECORDS</h1>
+        <p class="subtitle">B E S T &nbsp; T I M E S &nbsp; P E R &nbsp; F I E L D</p>
+        <div id="recTable"></div>
+        <h2 class="section">CAREER</h2>
+        <div id="careerStats"></div>
+        <button class="btn primary" id="recBack">← Back</button>
+        <button class="btn danger" id="recReset">Erase All Records</button>
+      </div>
+    </div>
+
+    <!-- ===== PAUSE ===== -->
+    <div id="pauseScreen" class="overlay hidden">
+      <div class="panel">
+        <h1 class="title">PAUSED</h1>
+        <p class="subtitle">T H E &nbsp; F I E L D &nbsp; I S &nbsp; H I D D E N</p>
+        <div id="pauseStats"></div>
+        <button class="btn primary" id="pResume">▶ Resume<span class="k">Esc</span></button>
+        <button class="btn" id="pRestart">↻ Restart Field<span class="k">R</span></button>
+        <button class="btn" id="pHowto">📖 How To Play</button>
+        <button class="btn danger" id="pMenu">← Quit To Menu</button>
+      </div>
+    </div>
+
+    <!-- ===== RESULT ===== -->
+    <div id="resultScreen" class="overlay hidden">
+      <div class="panel">
+        <div class="bigicon" id="resIcon">🏆</div>
+        <h1 class="title" id="resTitle">FIELD CLEARED</h1>
+        <p class="subtitle" id="resSub">B E G I N N E R</p>
+        <div id="resStats"></div>
+        <button class="btn primary" id="resAgain">↻ Play Again<span class="k">Space</span></button>
+        <button class="btn" id="resSame">🎲 New Field, Same Settings<span class="k">R</span></button>
+        <button class="btn" id="resMenu">← Menu<span class="k">Esc</span></button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="bottombar">
+    <span><kbd>L-Click</kbd> dig</span>
+    <span><kbd>R-Click</kbd> flag</span>
+    <span><kbd>Both</kbd> / <kbd>Middle</kbd> chord</span>
+    <span><kbd>Space</kbd> dig/chord</span>
+    <span><kbd>F</kbd> flag</span>
+    <span><kbd>H</kbd> hint</span>
+    <span><kbd>R</kbd> restart</span>
+    <span><kbd>Esc</kbd> pause</span>
+    <span class="spacer"></span>
+    <span id="statusLine">Ready.</span>
+  </footer>
+
+</div>
+<script type="module" src="game.js"></script>
+</body>
+</html>

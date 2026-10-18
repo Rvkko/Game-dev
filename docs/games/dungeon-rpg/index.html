@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depths of the Warden — 3D Dungeon RPG</title>
+<link rel="stylesheet" href="game.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+  <div id="vignette" class="hidden"></div>
+  <div id="hurt-overlay"></div>
+  <div id="lowhp-overlay"></div>
+  <div id="dmg-layer"></div>
+  <div id="crosshair" class="hidden"></div>
+  <canvas id="map-overlay" class="hidden"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-topleft">
+      <div class="bar-wrap"><div id="hpbar" class="bar hp"></div><span id="hptext" class="bar-text"></span></div>
+      <div class="bar-wrap slim"><div id="manabar" class="bar mana"></div></div>
+      <div id="hud-stats">
+        <span id="hud-gold">0</span>
+        <span id="hud-souls">0</span>
+        <span id="hud-potions">0</span>
+      </div>
+    </div>
+    <div id="hud-topright">
+      <div id="hud-floor"></div>
+      <canvas id="minimap" width="152" height="112"></canvas>
+    </div>
+    <div id="hud-bottom">
+      <div class="bar-wrap xp"><div id="xpbar" class="bar xpfill"></div><span id="xptext" class="bar-text"></span></div>
+    </div>
+    <div id="bossbar-wrap" class="hidden">
+      <div id="bossname"></div>
+      <div class="bar-wrap boss"><div id="bossbar" class="bar bossfill"></div></div>
+    </div>
+    <div id="hint"></div>
+  </div>
+
+  <div id="floor-banner" class="hidden"></div>
+  <div id="toasts"></div>
+
+  <!-- MAIN MENU -->
+  <div id="menu-main" class="overlay hidden">
+    <div class="menu-panel">
+      <h1 class="game-title">DEPTHS OF THE<br><span>WARDEN</span></h1>
+      <p class="subtitle">A Procedural Dungeon RPG</p>
+      <div class="menu-btns" id="main-btns"></div>
+      <div id="menu-meta-line"></div>
+    </div>
+  </div>
+
+  <!-- DIFFICULTY SELECT -->
+  <div id="menu-difficulty" class="overlay hidden">
+    <div class="menu-panel">
+      <h2>Choose Difficulty</h2>
+      <div class="menu-btns" id="diff-btns"></div>
+    </div>
+  </div>
+
+  <!-- META SHOP -->
+  <div id="menu-shop" class="overlay hidden">
+    <div class="menu-panel wide">
+      <h2>Soul Forge <span id="shop-souls" class="souls-count"></span></h2>
+      <p class="subtitle">Permanent upgrades. Souls persist across runs.</p>
+      <div id="shop-grid"></div>
+      <div class="menu-btns"><button class="menu-btn" id="shop-back">Back</button></div>
+    </div>
+  </div>
+
+  <!-- HELP -->
+  <div id="menu-help" class="overlay hidden">
+    <div class="menu-panel wide">
+      <h2>How to Play</h2>
+      <div id="help-body"></div>
+      <div class="menu-btns"><button class="menu-btn" id="help-back">Back</button></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="menu-settings" class="overlay hidden">
+    <div class="menu-panel">
+      <h2>Settings</h2>
+      <div id="settings-body"></div>
+      <div class="menu-btns"><button class="menu-btn" id="settings-back">Back</button></div>
+    </div>
+  </div>
+
+  <!-- PAUSE -->
+  <div id="menu-pause" class="overlay hidden">
+    <div class="menu-panel">
+      <h2>Paused</h2>
+      <div id="pause-info"></div>
+      <div class="menu-btns" id="pause-btns"></div>
+    </div>
+  </div>
+
+  <!-- SAVE SLOTS -->
+  <div id="menu-save" class="overlay hidden">
+    <div class="menu-panel">
+      <h2>Save Run</h2>
+      <p class="subtitle">Saves a checkpoint at the current floor's entrance.</p>
+      <div class="menu-btns" id="save-btns"></div>
+    </div>
+  </div>
+
+  <!-- LEVEL UP -->
+  <div id="menu-levelup" class="overlay hidden">
+    <div class="menu-panel wide">
+      <h2 class="gold-text">LEVEL UP!</h2>
+      <p class="subtitle">Choose one upgrade</p>
+      <div id="levelup-cards"></div>
+    </div>
+  </div>
+
+  <!-- INVENTORY -->
+  <div id="menu-inventory" class="overlay hidden">
+    <div class="menu-panel wide">
+      <h2>Inventory <span class="subtitle-inline">(I / Tab to close)</span></h2>
+      <div id="inv-layout">
+        <div id="inv-equipped"></div>
+        <div id="inv-grid"></div>
+        <div id="inv-stats"></div>
+      </div>
+      <div id="inv-detail" class="hidden"></div>
+      <div class="menu-btns"><button class="menu-btn" id="inv-close">Close</button></div>
+    </div>
+  </div>
+
+  <!-- DEATH -->
+  <div id="menu-death" class="overlay hidden">
+    <div class="menu-panel">
+      <h2 class="death-text">YOU DIED</h2>
+      <div id="death-info"></div>
+      <div class="menu-btns" id="death-btns"></div>
+    </div>
+  </div>
+
+  <!-- WIN -->
+  <div id="menu-win" class="overlay hidden">
+    <div class="menu-panel">
+      <h2 class="gold-text">THE WARDEN HAS FALLEN</h2>
+      <div id="win-info"></div>
+      <div class="menu-btns" id="win-btns"></div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import * as THREE from '../../vendor/three.module.js';
+  (async () => {
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '../../vendor/three-r128/GLTFLoader.js';
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    await import('./js/game.js');
+  })().catch((error) => console.error('Dungeon 3D bootstrap failed', error));
+</script>
+</body>
+</html>

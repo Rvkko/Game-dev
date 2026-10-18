@@ -1,0 +1,111 @@
+{
+  "id": "boids-sanctuary",
+  "title": "Boids Sanctuary",
+  "category": "simulation",
+  "tags": [
+    "flocking",
+    "boids",
+    "sandbox",
+    "emergence",
+    "puzzle",
+    "canvas2d"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/boids-sanctuary/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A living flocking sandbox: tune separation, alignment and cohesion in real time, then shepherd 800+ boids past hawks, storms and stone canyons through 8 hand-built sanctuary challenges.",
+  "achievements": [
+    {
+      "id": "first_flock",
+      "title": "First Flight",
+      "desc": "Complete your first sanctuary challenge.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "canyon_runner",
+      "title": "Canyon Runner",
+      "desc": "Guide the flock through Canyon Run.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "pulse_master",
+      "title": "Shockwave",
+      "desc": "Fire 100 scatter pulses across all runs.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "flawless_hawk",
+      "title": "Not One Feather",
+      "desc": "Finish Hawk Country without losing a single boid.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "pacifist_run",
+      "title": "Gentle Hand",
+      "desc": "Clear any challenge without firing a single pulse.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "swarm_lord",
+      "title": "Swarm Lord",
+      "desc": "Hold 800 living boids at once in the Sandbox.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "cartographer",
+      "title": "Every Sanctuary",
+      "desc": "Complete all 8 challenges.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 8
+    },
+    {
+      "id": "gold_rush",
+      "title": "Gold Rush",
+      "desc": "Earn 5 gold medals.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "murmuration",
+      "title": "Murmuration",
+      "desc": "Hold 200+ boids in one tight cluster for 10 seconds.",
+      "rarity": "epic",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "sanctuary_keeper",
+      "title": "Sanctuary Keeper",
+      "desc": "Complete The Long Migration.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

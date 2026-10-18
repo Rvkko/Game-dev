@@ -1,0 +1,111 @@
+{
+  "id": "ant-colony",
+  "title": "Ant Colony",
+  "category": "simulation",
+  "tags": [
+    "simulation",
+    "strategy",
+    "pheromones",
+    "colony",
+    "survival",
+    "emergent"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/ant-colony/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Grow an ant colony on a living pheromone grid: ants lay and follow home and food trails, the queen turns food into brood, and tunnels, scouts and soldiers decide whether you outlast beetles, rain and a rival colony for 20 days.",
+  "achievements": [
+    {
+      "id": "first_harvest",
+      "title": "First Harvest",
+      "desc": "Bring the first crumb of food home to the nest.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "trail_blazer",
+      "title": "Trail Blazer",
+      "desc": "Deliver 400 food to the nest in a single colony.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 400
+    },
+    {
+      "id": "scout_squad",
+      "title": "Eyes On The Meadow",
+      "desc": "Unlock the Scout Corps and raise your first scout.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "standing_army",
+      "title": "Standing Army",
+      "desc": "Field 15 living soldiers at the same time.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 15
+    },
+    {
+      "id": "week_one",
+      "title": "Week One",
+      "desc": "Keep the queen alive through 7 days.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 7
+    },
+    {
+      "id": "granary",
+      "title": "Full Granary",
+      "desc": "Hold 1500 food in the nest store at once.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 1500
+    },
+    {
+      "id": "deep_delve",
+      "title": "Deep Delve",
+      "desc": "Excavate Tunnels to level 5.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "rival_routed",
+      "title": "Rival Routed",
+      "desc": "Raze the rival colony's nest to the ground.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "long_haul",
+      "title": "Twenty Days",
+      "desc": "Survive the full 20 day objective.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 20
+    },
+    {
+      "id": "untouched",
+      "title": "Untouched Queen",
+      "desc": "Complete 20 days without the queen taking a single wound.",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

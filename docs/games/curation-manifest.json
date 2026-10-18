@@ -1,0 +1,4012 @@
+{
+  "entries": [
+    {
+      "id": "civ-god-sim",
+      "title": "Civilization God Simulator",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/civ-god-sim",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 1,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "deep-ocean-survival",
+      "title": "Deep Ocean Survival",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/deep-ocean-survival",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 2,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "dungeon-rpg",
+      "title": "Depths of the Warden",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/dungeon-rpg",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 3,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "dungeon-crawl",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ecosystem-sandbox",
+      "title": "Gaia: Ecosystem Sandbox",
+      "category": "flagship",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ecosystem-sandbox",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 4,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "living-sandbox",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "physics-destruction",
+      "title": "Physics Destruction Arena",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/physics-destruction",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 5,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "flagship-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "pilot-fuel-tanker-training",
+      "title": "Pilot Fuel Tanker Training",
+      "category": "simulation",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/pilot-fuel-tanker-training",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 6,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "aviation-training",
+      "cameraMode": "cockpit",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "flight-instructor",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "spaceflight-explorer",
+      "title": "Spaceflight & Planet Exploration",
+      "category": "flagship",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/spaceflight-explorer",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "onboarding",
+        "core-loop",
+        "progression"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 7,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "voxhaven",
+      "title": "Voxhaven â€” A Survival Sandbox",
+      "category": "adventure",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/voxhaven",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "high",
+      "priorityScore": 100,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 8,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "asteroid-drift",
+      "title": "Asteroid Drift",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/asteroid-drift",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 9,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "orbital",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "blast-maze",
+      "title": "Blast Maze",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/blast-maze",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 10,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "breachpoint-ops",
+      "title": "Breachpoint Ops",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/breachpoint-ops",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 11,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "crypt-raiders",
+      "title": "Crypt Raiders",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/crypt-raiders",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 12,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "dungeon-crawl",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "dragonbound-legacy",
+      "title": "Dragonbound Legacy",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/dragonbound-legacy",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 13,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "dungeon-crawl",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "emberfall-story",
+      "title": "Emberfall",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/emberfall-story",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 14,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "platform-adventure",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "europa-survivor",
+      "title": "Europa Survivor",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/europa-survivor",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 15,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "flappy-ascent",
+      "title": "Flappy Ascent",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/flappy-ascent",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 16,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "arcade-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "frontier-odyssey",
+      "title": "Frontier Odyssey",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/frontier-odyssey",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 17,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "platform-adventure",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "gravity-lander",
+      "title": "Gravity Lander",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/gravity-lander",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 18,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "orbital",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "hex-tactics",
+      "title": "Hex Tactics",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/hex-tactics",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "decision-loop",
+        "telemetry",
+        "long-term-progression"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Verify decision loop, telemetry, and long-term progression.",
+      "authoredModelGap": true,
+      "rank": 19,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ironfront-arena",
+      "title": "Ironfront Arena",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ironfront-arena",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 20,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "mech-arena",
+      "title": "Mech Arena: Steel Reign",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/mech-arena",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 21,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "action-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "neon-breach-fps",
+      "title": "Neon Breach",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/neon-breach-fps",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "renderingNote": "Canvas raycaster / 2.5D; keep the 2D asset track until runtime conversion is explicitly approved.",
+      "rank": 22,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "neon-breakout",
+      "title": "Neon Breakout",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/neon-breakout",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 23,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "neon-pinball",
+      "title": "Neon Pinball Circuit",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/neon-pinball",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 24,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "neon-shmup",
+      "title": "Neon Starfighter",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/neon-shmup",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 25,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "orbital",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "tunnel-runner",
+      "title": "Neon Tunnel Runner",
+      "category": "arcade",
+      "visualTrack": "3d",
+      "assetKitPath": "assets/gameplay-kits/tunnel-runner",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": true,
+      "rank": 26,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "pirate-chronicles",
+      "title": "Pirate Chronicles",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/pirate-chronicles",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 27,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ragdoll-toss",
+      "title": "Ragdoll Toss",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ragdoll-toss",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 28,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "arcade-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "rogue-mines",
+      "title": "Rogue Mines",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/rogue-mines",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 29,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "adventure-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "samurai-odyssey",
+      "title": "Samurai Odyssey",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/samurai-odyssey",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 30,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "adventure-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "sky-aces",
+      "title": "Sky Aces",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/sky-aces",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 31,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "aviation-training",
+      "cameraMode": "cockpit",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "flight-instructor",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "snake-reactor",
+      "title": "Snake Reactor",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/snake-reactor",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 32,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "tetro-stack",
+      "title": "Tetro Stack",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/tetro-stack",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 33,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "tombs-of-atlantis",
+      "title": "Tombs of Atlantis",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/tombs-of-atlantis",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 34,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "twin-stick-onslaught",
+      "title": "Twin-Stick Onslaught",
+      "category": "action",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/twin-stick-onslaught",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "combat-feedback",
+        "enemy-readability"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 35,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "typing-overdrive",
+      "title": "Typing Overdrive",
+      "category": "arcade",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/typing-overdrive",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "moment-to-moment",
+        "score-loop",
+        "restart-speed"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 36,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "wildlands-expedition",
+      "title": "Wildlands Expedition",
+      "category": "adventure",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/wildlands-expedition",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "exploration",
+        "inventory",
+        "discoveries"
+      ],
+      "priority": "medium",
+      "priorityScore": 70,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 37,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "living-sandbox",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "alpine-rush",
+      "title": "Alpine Rush",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/alpine-rush",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 38,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ant-colony",
+      "title": "Ant Colony",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ant-colony",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 39,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "beach-volleyball",
+      "title": "Beach Volleyball",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/beach-volleyball",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 40,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "beat-forge",
+      "title": "Beat Forge",
+      "category": "rhythm",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/beat-forge",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "timing",
+        "audio-feedback",
+        "difficulty-curve"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 41,
+      "gameplayVerb": "time-and-chain",
+      "assetArchetype": "rhythm-stage",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "billiards-master",
+      "title": "Billiards Master",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/billiards-master",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 42,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "blackwood-manor",
+      "title": "Blackwood Manor",
+      "category": "horror",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/blackwood-manor",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "threat-feedback",
+        "atmosphere"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 43,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "survival-horror",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "whispered-survivor",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "boids-sanctuary",
+      "title": "Boids Sanctuary",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/boids-sanctuary",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 44,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "cafe-empire",
+      "title": "Cafe Empire",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/cafe-empire",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 45,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "championship-bowling",
+      "title": "Championship Bowling",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/championship-bowling",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 46,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "sports-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "circuit-forge",
+      "title": "Circuit Forge",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/circuit-forge",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "readability",
+        "reset-flow",
+        "hint-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 47,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "cricket-championship",
+      "title": "Cricket Championship",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/cricket-championship",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 48,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "crown-and-dagger",
+      "title": "Crown & Dagger",
+      "category": "story",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/crown-and-dagger",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "dialogue-readability",
+        "choice-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 49,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "cyber-noir-2088",
+      "title": "Cyber Noir 2088",
+      "category": "story",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/cyber-noir-2088",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "dialogue-readability",
+        "choice-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 50,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "story-scene",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "dead-signal",
+      "title": "Dead Signal",
+      "category": "horror",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/dead-signal",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "threat-feedback",
+        "atmosphere"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 51,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "survival-horror",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "whispered-survivor",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "deckbound-rogue",
+      "title": "Deckbound Rogue",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/deckbound-rogue",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "decision-loop",
+        "telemetry",
+        "long-term-progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 52,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "farmstead-seasons",
+      "title": "Farmstead Seasons",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/farmstead-seasons",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 53,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "living-sandbox",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "fishing-legends",
+      "title": "Fishing Legends",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/fishing-legends",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 54,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "deep-ocean",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "fortress-defense",
+      "title": "Fortress Defense",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/fortress-defense",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "decision-loop",
+        "telemetry",
+        "long-term-progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 55,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "gridiron-drive",
+      "title": "Gridiron Drive",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/gridiron-drive",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 56,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "home-run-derby",
+      "title": "Home Run Derby",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/home-run-derby",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 57,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "sports-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "hover-league-zero",
+      "title": "Hover League Zero",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/hover-league-zero",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 58,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "voxel-expedition",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ice-hockey-showdown",
+      "title": "Ice Hockey Showdown",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ice-hockey-showdown",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 59,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "kingdom-chess",
+      "title": "Kingdom Chess",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/kingdom-chess",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "decision-loop",
+        "telemetry",
+        "long-term-progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 60,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "knockout-club",
+      "title": "Knockout Club",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/knockout-club",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 61,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "metro-tycoon",
+      "title": "Metro Tycoon",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/metro-tycoon",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 62,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "midnight-detective",
+      "title": "Midnight Detective",
+      "category": "story",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/midnight-detective",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "dialogue-readability",
+        "choice-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 63,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "story-scene",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "minefield-classic",
+      "title": "Minefield Classic",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/minefield-classic",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "readability",
+        "reset-flow",
+        "hint-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 64,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "mini-golf-tour",
+      "title": "Mini Golf Tour",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/mini-golf-tour",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 65,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "motocross-mayhem",
+      "title": "Motocross Mayhem",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/motocross-mayhem",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 66,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ocean-regatta",
+      "title": "Ocean Regatta",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ocean-regatta",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 67,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "deep-ocean",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "orbital-command",
+      "title": "Orbital Command",
+      "category": "strategy",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/orbital-command",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "decision-loop",
+        "telemetry",
+        "long-term-progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 68,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "orbital",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "soccer-penalty-pro",
+      "title": "Penalty Pro",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/soccer-penalty-pro",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 69,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "pet-rescue-clinic",
+      "title": "Pet Rescue Clinic",
+      "category": "simulation",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/pet-rescue-clinic",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "clarity",
+        "resource-loop",
+        "progression"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 70,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "simulation-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "ping-pong-champion",
+      "title": "Ping Pong Champion",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/ping-pong-champion",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 71,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "pro-wrestling-empire",
+      "title": "Pro Wrestling Empire",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/pro-wrestling-empire",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 72,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "rally-legends",
+      "title": "Rally Legends",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/rally-legends",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 73,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "rune-match-quest",
+      "title": "Rune Match Quest",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/rune-match-quest",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "readability",
+        "reset-flow",
+        "hint-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 74,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "dungeon-crawl",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "shadow-metroid",
+      "title": "Shadow Circuit",
+      "category": "platformer",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/shadow-metroid",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 75,
+      "gameplayVerb": "aim-and-clear",
+      "assetArchetype": "tactical-combat",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "shadow-protocol",
+      "title": "Shadow Protocol",
+      "category": "stealth",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/shadow-protocol",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 76,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "silent-embassy",
+      "title": "Silent Embassy",
+      "category": "stealth",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/silent-embassy",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 77,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "stealth-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "skatepark-legends",
+      "title": "Skatepark Legends",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/skatepark-legends",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 78,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "sports-showcase",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "skybound-platformer",
+      "title": "Skybound",
+      "category": "platformer",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/skybound-platformer",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 79,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "solitaire-suite",
+      "title": "Solitaire Suite",
+      "category": "cards",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/solitaire-suite",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 80,
+      "gameplayVerb": "place-and-plan",
+      "assetArchetype": "tactical-board",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "starship-echoes",
+      "title": "Starship Echoes",
+      "category": "story",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/starship-echoes",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "dialogue-readability",
+        "choice-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 81,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "orbital",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "street-drift-underground",
+      "title": "Street Drift Underground",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/street-drift-underground",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 82,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "street-hoops",
+      "title": "Street Hoops",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/street-hoops",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 83,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "sudoku-master",
+      "title": "Sudoku Master",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/sudoku-master",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "readability",
+        "reset-flow",
+        "hint-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 84,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "superbike-circuit",
+      "title": "Superbike Circuit",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/superbike-circuit",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 85,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "synth-rider",
+      "title": "Synth Rider",
+      "category": "rhythm",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/synth-rider",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "timing",
+        "audio-feedback",
+        "difficulty-curve"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 86,
+      "gameplayVerb": "time-and-chain",
+      "assetArchetype": "rhythm-stage",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "tennis-rally",
+      "title": "Tennis Rally",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/tennis-rally",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 87,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "timekeepers-paradox",
+      "title": "Timekeeper's Paradox",
+      "category": "story",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/timekeepers-paradox",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "pacing",
+        "dialogue-readability",
+        "choice-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 88,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "turbo-apex-racer",
+      "title": "Turbo Apex",
+      "category": "racing",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/turbo-apex-racer",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "core-loop",
+        "feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 89,
+      "gameplayVerb": "steer-and-drift",
+      "assetArchetype": "vehicle-racing",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "word-weaver",
+      "title": "Word Weaver",
+      "category": "puzzle",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/word-weaver",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "readability",
+        "reset-flow",
+        "hint-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 90,
+      "gameplayVerb": "read-and-solve",
+      "assetArchetype": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    },
+    {
+      "id": "world-cup-soccer",
+      "title": "World Cup Soccer",
+      "category": "sports",
+      "visualTrack": "2d",
+      "assetKitPath": "assets/gameplay-kits/world-cup-soccer",
+      "assetKinds": [
+        "player",
+        "obstacle",
+        "environment",
+        "effect",
+        "ui"
+      ],
+      "focusAreas": [
+        "controls",
+        "camera",
+        "score-feedback"
+      ],
+      "priority": "standard",
+      "priorityScore": 40,
+      "nextAction": "Playtest the integrated 3D runtime, then tune combat, camera, and progression from evidence.",
+      "authoredModelGap": false,
+      "rank": 91,
+      "gameplayVerb": "move-and-interact",
+      "assetArchetype": "competitive-sport",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide",
+      "runtime3dStatus": "integrated-3d-runtime"
+    }
+  ],
+  "schemaVersion": 1,
+  "totalGames": 91,
+  "generatedFrom": "games/registry.json"
+}

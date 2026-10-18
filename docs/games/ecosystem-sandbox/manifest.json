@@ -1,0 +1,147 @@
+{
+  "id": "ecosystem-sandbox",
+  "title": "Gaia: Ecosystem Sandbox",
+  "category": "flagship",
+  "tags": [
+    "simulation",
+    "sandbox",
+    "evolution",
+    "ecology",
+    "emergent",
+    "god-game"
+  ],
+  "stack": "canvas 2D",
+  "entry": "games/ecosystem-sandbox/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Seed a living world with plants, prey and predators. Every creature carries a heritable genome (speed, size, sense, metabolism) that mutates each generation, so predation pressure really does breed faster herds. Paint life onto the field and watch a real food web self-balance through shifting climate seasons across five scenarios, including a daily seeded challenge.",
+  "achievements": [
+    {
+      "id": "victory",
+      "title": "World in Balance",
+      "desc": "Complete an ecosystem run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-life",
+      "title": "Let There Be Life",
+      "desc": "Seed your first creatures into the world.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "gardener",
+      "title": "Gardener",
+      "desc": "Have 300 plants alive at once.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 300
+    },
+    {
+      "id": "swarm",
+      "title": "The Swarm",
+      "desc": "Have 250 herbivores alive at once.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 250
+    },
+    {
+      "id": "apex",
+      "title": "Apex Predators",
+      "desc": "Have 60 carnivores alive at once.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 60
+    },
+    {
+      "id": "generations",
+      "title": "Deep Lineage",
+      "desc": "Witness 500 births across the world.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 500
+    },
+    {
+      "id": "evolver",
+      "title": "Runaway Evolution",
+      "desc": "See average herbivore speed evolve past 2.4.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "climate-master",
+      "title": "Weathered",
+      "desc": "Survive 3 full climate cycles without total extinction.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 3
+    },
+    {
+      "id": "stabilize",
+      "title": "Keeper of Balance",
+      "desc": "Complete the Stabilize scenario.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "dominance",
+      "title": "Selective Pressure",
+      "desc": "Complete the Trait Dominance scenario.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "no-extinction",
+      "title": "Against All Odds",
+      "desc": "Complete the Avoid Extinction scenario.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "daily",
+      "title": "Daily Naturalist",
+      "desc": "Complete a Daily Challenge.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "collapse",
+      "title": "???",
+      "desc": "Hidden achievement.",
+      "rarity": "epic",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "eternal",
+      "title": "Eternal Garden",
+      "desc": "Keep an ecosystem alive for 8 minutes in one session.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

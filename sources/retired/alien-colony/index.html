@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xeno Frontier</title>
+<link rel="stylesheet" href="../../shared/arcade-kernel.css">
+<style>
+  #hud{flex-wrap:wrap}
+  #hud .hudRight{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  #hud button{pointer-events:auto}
+  #status{max-width:min(46vw,560px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #stats{font-variant-numeric:tabular-nums}
+  #stats b{color:var(--text);font-weight:700}
+  #stats b.warn{color:var(--gold)}
+  #stats b.bad{color:var(--bad)}
+  #buildbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:6;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+    background:rgba(9,14,25,.9);border:1px solid var(--line);border-radius:12px;padding:8px}
+  #buildbar button{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:78px;padding:6px 8px;font-size:13px;line-height:1.15}
+  #buildbar button small{color:var(--muted);font-size:11px;font-weight:600}
+  #buildbar button.active{border-color:var(--gold);color:var(--gold)}
+  #buildbar button:disabled{opacity:.42;cursor:not-allowed}
+  #buildbar button .swatch{width:34px;height:4px;border-radius:2px}
+  #logPanel{position:fixed;right:12px;top:74px;z-index:4;width:min(310px,36vw);background:rgba(9,14,25,.8);
+    border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--muted);pointer-events:none}
+  #logList div{margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #logList div.good{color:#8ce9a8}#logList div.bad{color:var(--bad)}#logList div.warn{color:var(--gold)}#logList div.tech{color:var(--accent)}
+  #techPanel{position:fixed;left:50%;transform:translateX(-50%);top:74px;z-index:9;width:min(560px,94vw);max-height:64vh;overflow:auto;
+    background:rgba(11,17,30,.97);border:1px solid var(--line);border-radius:14px;padding:14px}
+  #techPanel h3{margin:0 0 4px}
+  #techPanel .hint{color:var(--muted);font-size:12px;margin:0 0 10px}
+  #techList{display:grid;gap:6px}
+  #techList button{display:block;width:100%;text-align:left;padding:8px 10px}
+  #techList button small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+  #techList button.done{border-color:#3f8f5f;color:#8ce9a8}
+  #techList button:disabled{opacity:.5;cursor:not-allowed}
+  #toast{position:fixed;left:50%;transform:translateX(-50%);top:16px;z-index:12;padding:10px 16px;border-radius:12px;
+    background:linear-gradient(135deg,#2a2140,#123044);border:1px solid var(--gold);color:var(--gold);font-weight:800;box-shadow:0 12px 40px #000a}
+  .overlay p.small{font-size:13px}
+  .field{display:inline-flex;align-items:center;gap:8px;margin:10px 0 2px;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.05em}
+  select{font:inherit;color:var(--text);background:#18243a;border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+  .keys{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;text-align:left;font-size:13px;color:var(--muted);margin:10px 0}
+  .keys b{color:var(--text);white-space:nowrap}
+  #resultStats{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;color:var(--muted);margin:12px 0;text-align:left}
+  #resultStats b{color:var(--text)}
+  @media(max-width:900px){#logPanel{display:none}#buildbar button{min-width:66px;font-size:12px}}
+</style>
+</head>
+<body data-game="alien-colony" data-title="Xeno Frontier" data-subtitle="Build a colony, hold off xeno raids, and launch the escape ship.">
+
+<canvas id="game" tabindex="0" aria-label="Xeno Frontier colony map"></canvas>
+
+<div id="hud" class="hidden">
+  <div><b id="status"></b><span id="stats"></span></div>
+  <div class="hudRight">
+    <button id="launchBtn" class="hidden">Launch Ship</button>
+    <button id="researchBtn">Research</button>
+    <button id="pause">Pause</button>
+  </div>
+</div>
+
+<div id="buildbar" class="hidden"></div>
+
+<div id="logPanel" class="hidden"><div id="logList"></div></div>
+
+<div id="techPanel" class="hidden">
+  <h3>Research</h3>
+  <p class="hint">Labs generate research points. Spend them here to unlock new structures and upgrades.</p>
+  <div id="techList"></div>
+  <button id="techClose">Close</button>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<div id="menu" class="overlay"><section>
+  <span class="eyebrow">COLONY SURVIVAL</span>
+  <h1>Xeno Frontier</h1>
+  <p>Your pod is down on a hostile world. Mine ore, grow food, keep the oxygen flowing and the lights on, then research the escape blueprint and get your survivors home before the xenos overrun you.</p>
+  <label class="field" for="diff">DIFFICULTY <select id="diff"></select></label>
+  <p id="diffDesc" class="small"></p>
+  <div>
+    <button id="play" class="primary">New Colony</button>
+    <button id="continueBtn" class="hidden">Continue Colony</button>
+    <button id="how">How to Play</button>
+  </div>
+</section></div>
+
+<div id="help" class="overlay hidden"><section>
+  <h2>How to Play</h2>
+  <p>Pick a structure from the bottom bar, then click the ground to queue it. Colonists walk over and build it, then staff it automatically. Everything costs materials, and most things cost power.</p>
+  <p><b>Survive:</b> keep oxygen generation above consumption, food above zero, and at least one colonist alive. <b>Win:</b> research <i>Escape Blueprint</i>, build the Escape Ship, and launch with three or more survivors.</p>
+  <div class="keys">
+    <b>WASD / Arrows</b><span>Pan the camera</span>
+    <b>Mouse wheel, Q / E</b><span>Zoom out / in</span>
+    <b>Left click</b><span>Place the selected structure</span>
+    <b>Space</b><span>Place at cursor (or launch when ready)</span>
+    <b>Right click</b><span>Clear the current selection</span>
+    <b>Middle / right drag</b><span>Drag the map</span>
+    <b>1 - 9, 0</b><span>Quick-select a structure</span>
+    <b>R</b><span>Toggle the research panel</span>
+    <b>Esc or P</b><span>Pause</span>
+  </div>
+  <p class="small">Ore Extractors must sit on rocky ground (the pale ore patches). Solar output collapses during dust storms, so back it up with geothermal.</p>
+  <button id="helpClose">Back</button>
+</section></div>
+
+<div id="pauseOverlay" class="overlay hidden"><section>
+  <h2>Paused</h2>
+  <p id="pauseText">The colony is holding its breath.</p>
+  <div>
+    <button id="resumeBtn" class="primary">Resume</button>
+    <button id="restartBtn">Restart Colony</button>
+    <button id="quitBtn">Main Menu</button>
+  </div>
+</section></div>
+
+<div id="result" class="overlay hidden"><section>
+  <h2 id="resultTitle"></h2>
+  <p id="resultText"></p>
+  <div id="resultStats"></div>
+  <button id="again" class="primary">Play Again</button>
+  <button id="home">Main Menu</button>
+</section></div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "id": "gravity-lander",
+  "title": "Gravity Lander",
+  "category": "arcade",
+  "tags": [
+    "space",
+    "physics",
+    "3d",
+    "precision",
+    "arcade"
+  ],
+  "stack": "three.js + cannon-es",
+  "entry": "games/gravity-lander/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "3D precision lunar lander: manage thrust, rotation, fuel and wind to soft-land on 20 handcrafted and seeded pads for medals, plus a daily seeded challenge.",
+  "achievements": [
+    {
+      "id": "first_liftoff",
+      "title": "First Liftoff",
+      "desc": "Fire the main engine for the first time."
+    },
+    {
+      "id": "first_landing",
+      "title": "Touchdown",
+      "desc": "Land safely on a pad for the first time."
+    },
+    {
+      "id": "bronze_medal",
+      "title": "Bronze Standard",
+      "desc": "Earn a Bronze medal."
+    },
+    {
+      "id": "silver_medal",
+      "title": "Silver Lining",
+      "desc": "Earn a Silver medal."
+    },
+    {
+      "id": "gold_medal",
+      "title": "Gold Standard",
+      "desc": "Earn a Gold medal."
+    },
+    {
+      "id": "gold_sweep_5",
+      "title": "Golden Touch",
+      "desc": "Earn Gold medals on 5 different pads."
+    },
+    {
+      "id": "perfect_landing",
+      "title": "Feather Landing",
+      "desc": "Land dead-flat with near-zero velocity."
+    },
+    {
+      "id": "no_fuel_landing",
+      "title": "Fumes",
+      "desc": "Land safely with under 5% fuel remaining."
+    },
+    {
+      "id": "fuel_saver",
+      "title": "Efficient Pilot",
+      "desc": "Land using less than 20% of your fuel budget."
+    },
+    {
+      "id": "crash_first",
+      "title": "Lithobraking",
+      "desc": "Crash into the surface for the first time."
+    },
+    {
+      "id": "wind_master",
+      "title": "Storm Rider",
+      "desc": "Land safely in high-wind conditions."
+    },
+    {
+      "id": "all_20_cleared",
+      "title": "Grand Tour",
+      "desc": "Successfully land on all 20 pads."
+    },
+    {
+      "id": "daily_complete",
+      "title": "Daily Grind",
+      "desc": "Complete a Daily Challenge landing."
+    },
+    {
+      "id": "daily_streak_3",
+      "title": "On A Roll",
+      "desc": "Complete the Daily Challenge 3 days in a row."
+    }
+  ]
+}

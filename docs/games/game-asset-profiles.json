@@ -1,0 +1,2646 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "games/registry.json",
+  "totalGames": 91,
+  "entries": [
+    {
+      "id": "solitaire-suite",
+      "title": "Solitaire Suite",
+      "category": "cards",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.03,
+      "accentHue": 274,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "asteroid-drift",
+      "title": "Asteroid Drift",
+      "category": "arcade",
+      "archetype": "orbital",
+      "playerPrimitive": "spacecraft",
+      "obstaclePrimitive": "asteroid",
+      "environmentSet": "nebula",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "scale": 1.08,
+      "accentHue": 6,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "dungeon-rpg",
+      "title": "Depths of the Warden",
+      "category": "flagship",
+      "archetype": "dungeon-crawl",
+      "playerPrimitive": "hero",
+      "obstaclePrimitive": "monster",
+      "environmentSet": "dungeon",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "scale": 1.11,
+      "accentHue": 159,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero"
+    },
+    {
+      "id": "civ-god-sim",
+      "title": "Civilization God Simulator",
+      "category": "flagship",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.11,
+      "accentHue": 42,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "deep-ocean-survival",
+      "title": "Deep Ocean Survival",
+      "category": "flagship",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.95,
+      "accentHue": 215,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ecosystem-sandbox",
+      "title": "Gaia: Ecosystem Sandbox",
+      "category": "flagship",
+      "archetype": "living-sandbox",
+      "playerPrimitive": "creature",
+      "obstaclePrimitive": "resource-node",
+      "environmentSet": "biome",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "scale": 0.99,
+      "accentHue": 123,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "gravity-lander",
+      "title": "Gravity Lander",
+      "category": "arcade",
+      "archetype": "orbital",
+      "playerPrimitive": "spacecraft",
+      "obstaclePrimitive": "asteroid",
+      "environmentSet": "nebula",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "scale": 0.86,
+      "accentHue": 302,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "hex-tactics",
+      "title": "Hex Tactics",
+      "category": "arcade",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.13,
+      "accentHue": 50,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "physics-destruction",
+      "title": "Physics Destruction Arena",
+      "category": "flagship",
+      "archetype": "flagship-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.15,
+      "accentHue": 13,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ragdoll-toss",
+      "title": "Ragdoll Toss",
+      "category": "arcade",
+      "archetype": "arcade-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.07,
+      "accentHue": 164,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "spaceflight-explorer",
+      "title": "Spaceflight & Planet Exploration",
+      "category": "flagship",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.99,
+      "accentHue": 117,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "sudoku-master",
+      "title": "Sudoku Master",
+      "category": "puzzle",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.97,
+      "accentHue": 49,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "tunnel-runner",
+      "title": "Neon Tunnel Runner",
+      "category": "arcade",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.04,
+      "accentHue": 134,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "soccer-penalty-pro",
+      "title": "Penalty Pro",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 0.99,
+      "accentHue": 108,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "street-hoops",
+      "title": "Street Hoops",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 0.84,
+      "accentHue": 336,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "gridiron-drive",
+      "title": "Gridiron Drive",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.03,
+      "accentHue": 322,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "tennis-rally",
+      "title": "Tennis Rally",
+      "category": "sports",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.1,
+      "accentHue": 23,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "neon-breach-fps",
+      "title": "Neon Breach",
+      "category": "action",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 0.99,
+      "accentHue": 69,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "emberfall-story",
+      "title": "Emberfall",
+      "category": "adventure",
+      "archetype": "platform-adventure",
+      "playerPrimitive": "runner",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "landscape",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "scale": 1,
+      "accentHue": 235,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "turbo-apex-racer",
+      "title": "Turbo Apex",
+      "category": "racing",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.11,
+      "accentHue": 204,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "skybound-platformer",
+      "title": "Skybound",
+      "category": "platformer",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.14,
+      "accentHue": 9,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "home-run-derby",
+      "title": "Home Run Derby",
+      "category": "sports",
+      "archetype": "sports-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.91,
+      "accentHue": 31,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ice-hockey-showdown",
+      "title": "Ice Hockey Showdown",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.14,
+      "accentHue": 312,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "championship-bowling",
+      "title": "Championship Bowling",
+      "category": "sports",
+      "archetype": "sports-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.9,
+      "accentHue": 135,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "skatepark-legends",
+      "title": "Skatepark Legends",
+      "category": "sports",
+      "archetype": "sports-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.85,
+      "accentHue": 214,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "shadow-protocol",
+      "title": "Shadow Protocol",
+      "category": "stealth",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.15,
+      "accentHue": 166,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "dead-signal",
+      "title": "Dead Signal",
+      "category": "horror",
+      "archetype": "survival-horror",
+      "playerPrimitive": "survivor",
+      "obstaclePrimitive": "stalker",
+      "environmentSet": "haunted-room",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "scale": 1.16,
+      "accentHue": 2,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "whispered-survivor"
+    },
+    {
+      "id": "ironfront-arena",
+      "title": "Ironfront Arena",
+      "category": "action",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 0.9,
+      "accentHue": 36,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "frontier-odyssey",
+      "title": "Frontier Odyssey",
+      "category": "adventure",
+      "archetype": "platform-adventure",
+      "playerPrimitive": "runner",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "landscape",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "scale": 0.92,
+      "accentHue": 239,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "world-cup-soccer",
+      "title": "World Cup Soccer",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.06,
+      "accentHue": 10,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "mini-golf-tour",
+      "title": "Mini Golf Tour",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.13,
+      "accentHue": 68,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "beach-volleyball",
+      "title": "Beach Volleyball",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.15,
+      "accentHue": 157,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ping-pong-champion",
+      "title": "Ping Pong Champion",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 0.99,
+      "accentHue": 66,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "orbital-command",
+      "title": "Orbital Command",
+      "category": "strategy",
+      "archetype": "orbital",
+      "playerPrimitive": "spacecraft",
+      "obstaclePrimitive": "asteroid",
+      "environmentSet": "nebula",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "scale": 1.16,
+      "accentHue": 44,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "kingdom-chess",
+      "title": "Kingdom Chess",
+      "category": "strategy",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.98,
+      "accentHue": 239,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "circuit-forge",
+      "title": "Circuit Forge",
+      "category": "puzzle",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.08,
+      "accentHue": 276,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "metro-tycoon",
+      "title": "Metro Tycoon",
+      "category": "simulation",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.02,
+      "accentHue": 147,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "cafe-empire",
+      "title": "Cafe Empire",
+      "category": "simulation",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.98,
+      "accentHue": 221,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "farmstead-seasons",
+      "title": "Farmstead Seasons",
+      "category": "simulation",
+      "archetype": "living-sandbox",
+      "playerPrimitive": "creature",
+      "obstaclePrimitive": "resource-node",
+      "environmentSet": "biome",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "scale": 0.9,
+      "accentHue": 69,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "fishing-legends",
+      "title": "Fishing Legends",
+      "category": "sports",
+      "archetype": "deep-ocean",
+      "playerPrimitive": "diver",
+      "obstaclePrimitive": "sea-mine",
+      "environmentSet": "reef",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "scale": 1.13,
+      "accentHue": 188,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "pet-rescue-clinic",
+      "title": "Pet Rescue Clinic",
+      "category": "simulation",
+      "archetype": "simulation-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1,
+      "accentHue": 205,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "breachpoint-ops",
+      "title": "Breachpoint Ops",
+      "category": "action",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.86,
+      "accentHue": 341,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "crypt-raiders",
+      "title": "Crypt Raiders",
+      "category": "adventure",
+      "archetype": "dungeon-crawl",
+      "playerPrimitive": "hero",
+      "obstaclePrimitive": "monster",
+      "environmentSet": "dungeon",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "scale": 0.94,
+      "accentHue": 94,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero"
+    },
+    {
+      "id": "mech-arena",
+      "title": "Mech Arena: Steel Reign",
+      "category": "action",
+      "archetype": "action-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.02,
+      "accentHue": 6,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "samurai-odyssey",
+      "title": "Samurai Odyssey",
+      "category": "adventure",
+      "archetype": "adventure-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.95,
+      "accentHue": 320,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "rally-legends",
+      "title": "Rally Legends",
+      "category": "racing",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 0.91,
+      "accentHue": 124,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "superbike-circuit",
+      "title": "Superbike Circuit",
+      "category": "racing",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.02,
+      "accentHue": 33,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ocean-regatta",
+      "title": "Ocean Regatta",
+      "category": "sports",
+      "archetype": "deep-ocean",
+      "playerPrimitive": "diver",
+      "obstaclePrimitive": "sea-mine",
+      "environmentSet": "reef",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "scale": 1.04,
+      "accentHue": 110,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "sky-aces",
+      "title": "Sky Aces",
+      "category": "action",
+      "archetype": "aviation-training",
+      "playerPrimitive": "aircraft",
+      "obstaclePrimitive": "cargo-crate",
+      "environmentSet": "runway",
+      "cameraMode": "cockpit",
+      "physicsShape": "box",
+      "scale": 1.04,
+      "accentHue": 323,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "flight-instructor"
+    },
+    {
+      "id": "midnight-detective",
+      "title": "Midnight Detective",
+      "category": "story",
+      "archetype": "story-scene",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.84,
+      "accentHue": 39,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "starship-echoes",
+      "title": "Starship Echoes",
+      "category": "story",
+      "archetype": "orbital",
+      "playerPrimitive": "spacecraft",
+      "obstaclePrimitive": "asteroid",
+      "environmentSet": "nebula",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "scale": 1.12,
+      "accentHue": 283,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "pirate-chronicles",
+      "title": "Pirate Chronicles",
+      "category": "adventure",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 1.14,
+      "accentHue": 201,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "dragonbound-legacy",
+      "title": "Dragonbound Legacy",
+      "category": "adventure",
+      "archetype": "dungeon-crawl",
+      "playerPrimitive": "hero",
+      "obstaclePrimitive": "monster",
+      "environmentSet": "dungeon",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "scale": 0.97,
+      "accentHue": 346,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero"
+    },
+    {
+      "id": "beat-forge",
+      "title": "Beat Forge",
+      "category": "rhythm",
+      "archetype": "rhythm-stage",
+      "playerPrimitive": "performer",
+      "obstaclePrimitive": "note-bar",
+      "environmentSet": "stage",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "scale": 1.08,
+      "accentHue": 303,
+      "gameplayVerb": "time-and-chain",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "deckbound-rogue",
+      "title": "Deckbound Rogue",
+      "category": "strategy",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.09,
+      "accentHue": 115,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "neon-pinball",
+      "title": "Neon Pinball Circuit",
+      "category": "arcade",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 0.94,
+      "accentHue": 124,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "blast-maze",
+      "title": "Blast Maze",
+      "category": "action",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.93,
+      "accentHue": 267,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "street-drift-underground",
+      "title": "Street Drift Underground",
+      "category": "racing",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 0.86,
+      "accentHue": 56,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "motocross-mayhem",
+      "title": "Motocross Mayhem",
+      "category": "racing",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.07,
+      "accentHue": 164,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "hover-league-zero",
+      "title": "Hover League Zero",
+      "category": "racing",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.85,
+      "accentHue": 190,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "alpine-rush",
+      "title": "Alpine Rush",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 0.96,
+      "accentHue": 267,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "knockout-club",
+      "title": "Knockout Club",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.15,
+      "accentHue": 202,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "pro-wrestling-empire",
+      "title": "Pro Wrestling Empire",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.08,
+      "accentHue": 111,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "cricket-championship",
+      "title": "Cricket Championship",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 1.06,
+      "accentHue": 112,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "billiards-master",
+      "title": "Billiards Master",
+      "category": "sports",
+      "archetype": "competitive-sport",
+      "playerPrimitive": "athlete",
+      "obstaclePrimitive": "goal",
+      "environmentSet": "stadium",
+      "cameraMode": "broadcast",
+      "physicsShape": "capsule",
+      "scale": 0.95,
+      "accentHue": 92,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "neon-shmup",
+      "title": "Neon Starfighter",
+      "category": "arcade",
+      "archetype": "orbital",
+      "playerPrimitive": "spacecraft",
+      "obstaclePrimitive": "asteroid",
+      "environmentSet": "nebula",
+      "cameraMode": "chase",
+      "physicsShape": "sphere",
+      "scale": 1.05,
+      "accentHue": 99,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "shadow-metroid",
+      "title": "Shadow Circuit",
+      "category": "platformer",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 1.16,
+      "accentHue": 38,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "rune-match-quest",
+      "title": "Rune Match Quest",
+      "category": "puzzle",
+      "archetype": "dungeon-crawl",
+      "playerPrimitive": "hero",
+      "obstaclePrimitive": "monster",
+      "environmentSet": "dungeon",
+      "cameraMode": "isometric",
+      "physicsShape": "capsule",
+      "scale": 1.08,
+      "accentHue": 150,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "warden-hero"
+    },
+    {
+      "id": "fortress-defense",
+      "title": "Fortress Defense",
+      "category": "strategy",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.02,
+      "accentHue": 240,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "typing-overdrive",
+      "title": "Typing Overdrive",
+      "category": "arcade",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 1.15,
+      "accentHue": 343,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "twin-stick-onslaught",
+      "title": "Twin-Stick Onslaught",
+      "category": "action",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 0.86,
+      "accentHue": 284,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "rogue-mines",
+      "title": "Rogue Mines",
+      "category": "adventure",
+      "archetype": "adventure-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.02,
+      "accentHue": 102,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "synth-rider",
+      "title": "Synth Rider",
+      "category": "rhythm",
+      "archetype": "rhythm-stage",
+      "playerPrimitive": "performer",
+      "obstaclePrimitive": "note-bar",
+      "environmentSet": "stage",
+      "cameraMode": "side-on",
+      "physicsShape": "capsule",
+      "scale": 1.01,
+      "accentHue": 242,
+      "gameplayVerb": "time-and-chain",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "cyber-noir-2088",
+      "title": "Cyber Noir 2088",
+      "category": "story",
+      "archetype": "story-scene",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.87,
+      "accentHue": 246,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "europa-survivor",
+      "title": "Europa Survivor",
+      "category": "adventure",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.95,
+      "accentHue": 158,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "tombs-of-atlantis",
+      "title": "Tombs of Atlantis",
+      "category": "adventure",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.05,
+      "accentHue": 333,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "silent-embassy",
+      "title": "Silent Embassy",
+      "category": "stealth",
+      "archetype": "stealth-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.11,
+      "accentHue": 201,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "blackwood-manor",
+      "title": "Blackwood Manor",
+      "category": "horror",
+      "archetype": "survival-horror",
+      "playerPrimitive": "survivor",
+      "obstaclePrimitive": "stalker",
+      "environmentSet": "haunted-room",
+      "cameraMode": "over-shoulder",
+      "physicsShape": "capsule",
+      "scale": 1.09,
+      "accentHue": 349,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "whispered-survivor"
+    },
+    {
+      "id": "timekeepers-paradox",
+      "title": "Timekeeper's Paradox",
+      "category": "story",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.04,
+      "accentHue": 29,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "wildlands-expedition",
+      "title": "Wildlands Expedition",
+      "category": "adventure",
+      "archetype": "living-sandbox",
+      "playerPrimitive": "creature",
+      "obstaclePrimitive": "resource-node",
+      "environmentSet": "biome",
+      "cameraMode": "top-down",
+      "physicsShape": "capsule",
+      "scale": 1.11,
+      "accentHue": 135,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "crown-and-dagger",
+      "title": "Crown & Dagger",
+      "category": "story",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.95,
+      "accentHue": 29,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "pilot-fuel-tanker-training",
+      "title": "Pilot Fuel Tanker Training",
+      "category": "simulation",
+      "archetype": "aviation-training",
+      "playerPrimitive": "aircraft",
+      "obstaclePrimitive": "cargo-crate",
+      "environmentSet": "runway",
+      "cameraMode": "cockpit",
+      "physicsShape": "box",
+      "scale": 0.86,
+      "accentHue": 293,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "flight-instructor"
+    },
+    {
+      "id": "voxhaven",
+      "title": "Voxhaven — A Survival Sandbox",
+      "category": "adventure",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.85,
+      "accentHue": 22,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "word-weaver",
+      "title": "Word Weaver",
+      "category": "puzzle",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.16,
+      "accentHue": 332,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "minefield-classic",
+      "title": "Minefield Classic",
+      "category": "puzzle",
+      "archetype": "vehicle-racing",
+      "playerPrimitive": "vehicle",
+      "obstaclePrimitive": "barrier",
+      "environmentSet": "track",
+      "cameraMode": "chase",
+      "physicsShape": "box",
+      "scale": 0.93,
+      "accentHue": 189,
+      "gameplayVerb": "steer-and-drift",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "snake-reactor",
+      "title": "Snake Reactor",
+      "category": "arcade",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.11,
+      "accentHue": 342,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "tetro-stack",
+      "title": "Tetro Stack",
+      "category": "arcade",
+      "archetype": "voxel-expedition",
+      "playerPrimitive": "block-avatar",
+      "obstaclePrimitive": "crystal-cluster",
+      "environmentSet": "island-chunk",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 0.9,
+      "accentHue": 84,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "flappy-ascent",
+      "title": "Flappy Ascent",
+      "category": "arcade",
+      "archetype": "arcade-showcase",
+      "playerPrimitive": "avatar",
+      "obstaclePrimitive": "hazard",
+      "environmentSet": "set-piece",
+      "cameraMode": "third-person",
+      "physicsShape": "capsule",
+      "scale": 1.03,
+      "accentHue": 226,
+      "gameplayVerb": "move-and-interact",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "neon-breakout",
+      "title": "Neon Breakout",
+      "category": "arcade",
+      "archetype": "tactical-combat",
+      "playerPrimitive": "operative",
+      "obstaclePrimitive": "enemy-drone",
+      "environmentSet": "combat-zone",
+      "cameraMode": "first-person",
+      "physicsShape": "capsule",
+      "scale": 1.09,
+      "accentHue": 175,
+      "gameplayVerb": "aim-and-clear",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "field-operator"
+    },
+    {
+      "id": "boids-sanctuary",
+      "title": "Boids Sanctuary",
+      "category": "simulation",
+      "archetype": "puzzle-room",
+      "playerPrimitive": "cursor",
+      "obstaclePrimitive": "hazard-tile",
+      "environmentSet": "puzzle-room",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 0.87,
+      "accentHue": 27,
+      "gameplayVerb": "read-and-solve",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    },
+    {
+      "id": "ant-colony",
+      "title": "Ant Colony",
+      "category": "simulation",
+      "archetype": "tactical-board",
+      "playerPrimitive": "commander",
+      "obstaclePrimitive": "token-stack",
+      "environmentSet": "battlefield",
+      "cameraMode": "top-down",
+      "physicsShape": "box",
+      "scale": 1.07,
+      "accentHue": 239,
+      "gameplayVerb": "place-and-plan",
+      "animationStates": [
+        "idle",
+        "move",
+        "interact",
+        "damage",
+        "defeat"
+      ],
+      "audioCues": [
+        "ui-confirm",
+        "step",
+        "interact",
+        "impact",
+        "success"
+      ],
+      "voiceTone": "expedition-guide"
+    }
+  ]
+}

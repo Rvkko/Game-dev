@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Word Weaver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg0: #0b0d17;
+    --bg1: #131627;
+    --bg2: #1b2036;
+    --line: #2c3350;
+    --line2: #3c4570;
+    --ink: #e6ecff;
+    --ink-dim: #93a0c4;
+    --ink-faint: #6b779b;
+    --gold: #ffc766;
+    --gold-dim: #b98f3c;
+    --accent: #7fd4ff;
+    --c-correct: #2f9e5e;
+    --c-present: #c8a327;
+    --c-absent: #333a52;
+    --c-correct-edge: #4fd487;
+    --c-present-edge: #f0cd5a;
+    --tile-empty-edge: #333c5c;
+    --danger: #e0574f;
+  }
+  html.cb {
+    --c-correct: #e06a1f;
+    --c-present: #3d8bd6;
+    --c-correct-edge: #ff9a4d;
+    --c-present-edge: #79baf5;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: var(--bg0); color: var(--ink); overflow: hidden;
+    font-family: 'Segoe UI', 'Trebuchet MS', system-ui, sans-serif;
+    user-select: none;
+  }
+  #app {
+    position: fixed; inset: 0; display: flex; flex-direction: column;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(90,120,220,0.16), transparent 60%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.014) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.014) 0 1px, transparent 1px 26px),
+      linear-gradient(180deg, #0d1020 0%, #080a13 100%);
+  }
+
+  /* ---------------- HUD ---------------- */
+  #hud {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(20,24,44,0.92), rgba(10,12,22,0.8));
+    min-height: 46px; flex-wrap: wrap;
+  }
+  #hudLogo {
+    font-size: 15px; letter-spacing: 3px; color: var(--gold); font-weight: 700;
+    text-shadow: 0 0 12px rgba(255,175,60,0.35); white-space: nowrap;
+  }
+  .hud-chip {
+    font-size: 11px; letter-spacing: 1px; color: var(--ink-dim);
+    background: rgba(30,36,64,0.7); border: 1px solid var(--line);
+    padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+  }
+  .hud-chip b { color: var(--ink); font-weight: 600; }
+  .hud-chip.warn { border-color: var(--danger); color: #ffc9c5; }
+  #hudSpacer { flex: 1 1 auto; }
+  .icon-btn {
+    background: rgba(30,36,64,0.8); border: 1px solid var(--line2); color: var(--ink-dim);
+    border-radius: 6px; padding: 5px 10px; font-size: 11px; letter-spacing: 1px;
+    cursor: pointer; font-family: inherit; transition: 0.12s; white-space: nowrap;
+  }
+  .icon-btn:hover:not(:disabled) { color: #fff; border-color: var(--accent); background: rgba(50,66,110,0.85); }
+  .icon-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .icon-btn.hot { border-color: var(--gold-dim); color: var(--gold); }
+
+  /* ---------------- Play area ---------------- */
+  #playRoot {
+    flex: 1 1 auto; position: relative; display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between; min-height: 0; padding: 6px 10px 8px;
+  }
+  #fx { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+  #boardWrap {
+    flex: 1 1 auto; display: flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 0; position: relative; z-index: 2;
+  }
+  #board { display: grid; gap: 6px; }
+  .brow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .brow.shake { animation: shakeRow 0.42s cubic-bezier(.36,.07,.19,.97); }
+  .tile {
+    width: var(--tile); height: var(--tile);
+    display: flex; align-items: center; justify-content: center;
+    font-size: calc(var(--tile) * 0.52); font-weight: 700; line-height: 1;
+    border: 2px solid var(--tile-empty-edge); border-radius: 6px;
+    background: rgba(14,17,32,0.55); color: var(--ink);
+    text-transform: uppercase; transition: border-color 0.12s, transform 0.1s;
+    position: relative; overflow: hidden;
+  }
+  .tile.filled { border-color: #5a679c; animation: popIn 0.11s ease-out; }
+  .tile.flip { animation: flipTile 0.5s ease forwards; }
+  .tile.win { animation: winBounce 0.6s ease; }
+  .tile.correct { background: var(--c-correct); border-color: var(--c-correct-edge); color: #fff; }
+  .tile.present { background: var(--c-present); border-color: var(--c-present-edge); color: #1a1400; }
+  .tile.absent  { background: var(--c-absent);  border-color: #262c42; color: #98a1bd; }
+  .tile.hintlock::after {
+    content: ''; position: absolute; inset: 0;
+    box-shadow: inset 0 0 0 2px var(--gold); border-radius: 4px; pointer-events: none;
+  }
+  @keyframes popIn { 0% { transform: scale(0.9); } 60% { transform: scale(1.07); } 100% { transform: scale(1); } }
+  @keyframes flipTile {
+    0%   { transform: rotateX(0deg); }
+    45%  { transform: rotateX(90deg); }
+    55%  { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+  }
+  @keyframes winBounce {
+    0%,100% { transform: translateY(0); }
+    25% { transform: translateY(-16px); }
+    45% { transform: translateY(4px); }
+    65% { transform: translateY(-6px); }
+  }
+  @keyframes shakeRow {
+    10%,90% { transform: translateX(-2px); }
+    20%,80% { transform: translateX(4px); }
+    30%,50%,70% { transform: translateX(-7px); }
+    40%,60% { transform: translateX(7px); }
+  }
+
+  /* ---------------- Keyboard ---------------- */
+  #kbWrap { flex: 0 0 auto; width: 100%; max-width: 560px; z-index: 3; }
+  .krow { display: flex; justify-content: center; gap: 5px; margin-bottom: 5px; }
+  .key {
+    flex: 1 1 auto; min-width: 0; height: 46px; border-radius: 5px;
+    background: #4a5375; border: 1px solid #5f6a94; color: var(--ink);
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer; transition: background 0.12s, transform 0.06s;
+    display: flex; align-items: center; justify-content: center; padding: 0 2px;
+  }
+  .key:hover { background: #5b678f; }
+  .key:active, .key.press { transform: translateY(2px); background: #6b78a5; }
+  .key.wide { flex: 1.6 1 auto; font-size: 11px; }
+  .key.correct { background: var(--c-correct); border-color: var(--c-correct-edge); color: #fff; }
+  .key.present { background: var(--c-present); border-color: var(--c-present-edge); color: #1a1400; }
+  .key.absent  { background: #262c42; border-color: #1c2135; color: #6d7699; }
+  .kspacer { flex: 0.5 1 auto; }
+
+  /* ---------------- Legend / controls strip ---------------- */
+  #legend {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+    gap: 14px; flex-wrap: wrap; padding: 6px 10px 2px;
+    font-size: 10.5px; color: var(--ink-faint); letter-spacing: 0.4px; z-index: 3;
+  }
+  .lg { display: inline-flex; align-items: center; gap: 5px; }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.18); display: inline-block; }
+  .swatch.c { background: var(--c-correct); }
+  .swatch.p { background: var(--c-present); }
+  .swatch.a { background: var(--c-absent); }
+  kbd {
+    background: #232a44; border: 1px solid var(--line2); border-bottom-width: 2px;
+    border-radius: 4px; padding: 1px 5px; font-family: inherit; font-size: 10px; color: var(--ink-dim);
+  }
+
+  /* ---------------- Toasts ---------------- */
+  #toastWrap {
+    position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+    z-index: 20; pointer-events: none; width: max-content; max-width: 92%;
+  }
+  .toast {
+    background: rgba(16,20,38,0.96); border: 1px solid var(--line2); color: var(--ink);
+    padding: 7px 15px; border-radius: 6px; font-size: 12.5px; letter-spacing: 0.5px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.55); text-align: center;
+  }
+  .toast.good { border-color: var(--c-correct-edge); color: #d6ffe6; }
+  .toast.bad { border-color: var(--danger); color: #ffd9d6; }
+  .toast.gold { border-color: var(--gold); color: #ffeec9; }
+
+  /* ---------------- Overlays ---------------- */
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(10,13,26,0.94) 0%, rgba(3,4,10,0.985) 100%);
+    z-index: 60; overflow-y: auto; padding: 18px;
+  }
+  .hidden { display: none !important; }
+  .panel {
+    background: linear-gradient(180deg, rgba(22,27,50,0.97), rgba(9,11,22,0.98));
+    border: 1px solid var(--line2); border-radius: 12px; padding: 22px 26px;
+    width: 440px; max-width: 96vw; max-height: 92vh; overflow-y: auto; position: relative;
+    box-shadow: 0 0 46px rgba(90,120,240,0.13), inset 0 0 34px rgba(60,80,170,0.06);
+  }
+  .panel.wide { width: 520px; }
+  .ptitle {
+    font-size: 26px; letter-spacing: 5px; text-align: center; margin: 0 0 4px;
+    color: var(--gold); text-shadow: 0 0 16px rgba(255,150,40,0.4); font-weight: 800;
+  }
+  .ptitle.sm { font-size: 20px; letter-spacing: 3px; }
+  .psub { text-align: center; color: var(--ink-faint); font-size: 11.5px; letter-spacing: 1.4px; margin-bottom: 16px; }
+  h2.section {
+    color: var(--accent); font-size: 12px; letter-spacing: 2.4px; margin: 16px 0 8px;
+    border-bottom: 1px solid var(--line); padding-bottom: 5px; font-weight: 600;
+  }
+  .btn {
+    display: block; width: 100%; margin: 7px 0; padding: 11px 14px;
+    background: linear-gradient(180deg, #242c50, #131829);
+    border: 1px solid #45538c; color: #cfdcff; font-size: 13px; letter-spacing: 1.2px;
+    border-radius: 7px; cursor: pointer; font-family: inherit; text-align: left; transition: 0.12s;
+  }
+  .btn:hover:not(:disabled) { background: linear-gradient(180deg, #35437a, #1c2445); border-color: var(--accent); color: #fff; transform: translateX(2px); }
+  .btn:disabled { opacity: 0.34; cursor: not-allowed; transform: none; }
+  .btn small { display: block; color: var(--ink-faint); letter-spacing: 0.4px; font-size: 10.5px; margin-top: 3px; }
+  .btn:hover:not(:disabled) small { color: #9fb0d8; }
+  .btn.primary { border-color: var(--gold-dim); color: #ffe7c2; }
+  .btn.primary:hover:not(:disabled) { border-color: var(--gold); background: linear-gradient(180deg, #4a3517, #26190a); }
+  .btn.danger { border-color: #8e3a35; color: #ffd0cc; }
+  .btn.danger:hover:not(:disabled) { border-color: var(--danger); background: linear-gradient(180deg, #4a1c19, #260d0b); }
+  .btn.center { text-align: center; }
+  .brow2 { display: flex; gap: 8px; }
+  .brow2 .btn { flex: 1; text-align: center; }
+  .close-x {
+    position: absolute; top: 8px; right: 14px; cursor: pointer; color: var(--ink-faint);
+    font-size: 22px; line-height: 1; padding: 2px 6px; border-radius: 4px;
+  }
+  .close-x:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .field { margin: 10px 0; font-size: 12.5px; color: var(--ink-dim); }
+  .field label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .field input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--gold); cursor: pointer; }
+  .field .hint { display: block; font-size: 10.5px; color: var(--ink-faint); margin: 3px 0 0 24px; }
+  input[type=range] { width: 100%; accent-color: var(--gold); }
+  .body-text { font-size: 12.5px; line-height: 1.75; color: #b6c3e2; }
+  .body-text b { color: var(--gold); }
+  .example-row { display: flex; gap: 4px; margin: 8px 0 4px; }
+  .ex-tile {
+    width: 30px; height: 30px; border-radius: 4px; border: 2px solid var(--tile-empty-edge);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;
+    text-transform: uppercase; background: rgba(14,17,32,0.6);
+  }
+  .ex-tile.correct { background: var(--c-correct); border-color: var(--c-correct-edge); color: #fff; }
+  .ex-tile.present { background: var(--c-present); border-color: var(--c-present-edge); color: #1a1400; }
+  .ex-tile.absent { background: var(--c-absent); border-color: #262c42; color: #98a1bd; }
+
+  /* ---------------- Stats ---------------- */
+  .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .tab {
+    flex: 1; padding: 7px 4px; text-align: center; font-size: 11px; letter-spacing: 1.4px;
+    border: 1px solid var(--line); border-radius: 6px; cursor: pointer; color: var(--ink-faint);
+    background: rgba(20,25,46,0.7); font-family: inherit; transition: 0.12s;
+  }
+  .tab:hover { color: var(--ink); border-color: var(--line2); }
+  .tab.active { color: var(--gold); border-color: var(--gold-dim); background: rgba(60,44,18,0.5); }
+  .statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+  .statbox { text-align: center; background: rgba(18,22,42,0.65); border: 1px solid var(--line); border-radius: 7px; padding: 8px 4px; }
+  .statbox .n { font-size: 21px; font-weight: 800; color: var(--ink); }
+  .statbox .l { font-size: 9.5px; letter-spacing: 0.6px; color: var(--ink-faint); margin-top: 2px; line-height: 1.25; }
+  .distrow { display: flex; align-items: center; gap: 7px; margin: 4px 0; font-size: 11.5px; }
+  .distrow .lbl { width: 12px; color: var(--ink-dim); text-align: right; }
+  .distrow .barbg { flex: 1; background: rgba(255,255,255,0.045); border-radius: 3px; overflow: hidden; height: 19px; }
+  .distrow .bar {
+    height: 100%; background: #3a4470; display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 6px; color: var(--ink); font-size: 11px; font-weight: 700; min-width: 22px;
+    border-radius: 3px; transition: width 0.35s ease;
+  }
+  .distrow .bar.hi { background: var(--c-correct); }
+  .kv { display: flex; justify-content: space-between; font-size: 12px; color: #b6c3e2; padding: 3px 0; }
+  .kv span:last-child { color: var(--ink); font-weight: 600; }
+
+  /* ---------------- Result ---------------- */
+  #resWord {
+    text-align: center; font-size: 32px; letter-spacing: 9px; font-weight: 800;
+    color: var(--gold); margin: 6px 0 2px; text-transform: uppercase;
+  }
+  #resGrid { display: flex; flex-direction: column; align-items: center; gap: 3px; margin: 12px 0; }
+  .mini-row { display: flex; gap: 3px; }
+  .mini {
+    width: 15px; height: 15px; border-radius: 3px; background: var(--c-absent);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .mini.correct { background: var(--c-correct); }
+  .mini.present { background: var(--c-present); }
+
+  #menuBadge {
+    display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px;
+    background: rgba(60,44,18,0.6); border: 1px solid var(--gold-dim); color: var(--gold);
+    letter-spacing: 1px; margin-left: 6px; vertical-align: middle;
+  }
+  .menu-foot { text-align: center; font-size: 10.5px; color: var(--ink-faint); margin-top: 14px; line-height: 1.6; }
+
+  /* reduced motion */
+  html.no-motion .tile.flip,
+  html.no-motion .tile.win,
+  html.no-motion .tile.filled,
+  html.no-motion .brow.shake { animation: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    html:not(.motion-ok) .tile.flip,
+    html:not(.motion-ok) .tile.win,
+    html:not(.motion-ok) .tile.filled,
+    html:not(.motion-ok) .brow.shake { animation: none !important; }
+  }
+
+  @media (max-width: 620px) {
+    #hudLogo { font-size: 13px; letter-spacing: 2px; }
+    .key { height: 40px; font-size: 12px; }
+    .panel { padding: 18px 16px; }
+  }
+  @media (max-height: 660px) {
+    .key { height: 38px; }
+    #legend { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ HUD ============ -->
+  <div id="hud">
+    <div id="hudLogo">WORD&nbsp;WEAVER</div>
+    <div class="hud-chip" id="hudMode">MODE</div>
+    <div class="hud-chip" id="hudStage">STAGE</div>
+    <div class="hud-chip" id="hudGuesses">GUESSES</div>
+    <div class="hud-chip" id="hudTimer">0:00</div>
+    <div class="hud-chip" id="hudStreak">STREAK</div>
+    <div id="hudSpacer"></div>
+    <button class="icon-btn hot" id="btnHint" title="Spend a hint to reveal one letter">HINT</button>
+    <button class="icon-btn" id="btnHudHow" title="How to play">?</button>
+    <button class="icon-btn" id="btnHudStats" title="Statistics">STATS</button>
+    <button class="icon-btn" id="btnPause" title="Pause (Esc)">PAUSE</button>
+  </div>
+
+  <!-- ============ PLAY AREA ============ -->
+  <div id="playRoot">
+    <canvas id="fx"></canvas>
+    <div id="toastWrap"></div>
+    <div id="boardWrap"><div id="board"></div></div>
+    <div id="legend">
+      <span class="lg"><i class="swatch c"></i>right letter, right spot</span>
+      <span class="lg"><i class="swatch p"></i>right letter, wrong spot</span>
+      <span class="lg"><i class="swatch a"></i>not in the word</span>
+      <span class="lg"><kbd>Enter</kbd> submit</span>
+      <span class="lg"><kbd>Backspace</kbd> delete</span>
+      <span class="lg"><kbd>Esc</kbd>/<kbd>P</kbd> pause</span>
+      <span class="lg"><kbd>Space</kbd> hint</span>
+      <span class="lg"><kbd>R</kbd> restart</span>
+    </div>
+    <div id="kbWrap"></div>
+  </div>
+
+  <!-- ============ MENU ============ -->
+  <div class="overlay" id="menuScreen">
+    <div class="panel">
+      <div class="ptitle">WORD WEAVER</div>
+      <div class="psub">FIVE LETTERS &middot; SIX THREADS &middot; ONE ANSWER</div>
+      <button class="btn primary" id="btnDaily">
+        DAILY WEAVE <span id="menuBadge" class="hidden"></span>
+        <small id="dailyStatus">One seeded puzzle for everyone, every day.</small>
+      </button>
+      <button class="btn" id="btnUnlimited">
+        UNLIMITED
+        <small>Endless random puzzles. Play as many as you like.</small>
+      </button>
+      <button class="btn" id="btnGauntlet">
+        GAUNTLET
+        <small id="gauntletSub">Eight stages, rising difficulty, three lives.</small>
+      </button>
+      <div class="brow2" style="margin-top:12px;">
+        <button class="btn" id="btnHowTo">HOW TO PLAY</button>
+        <button class="btn" id="btnStats">STATS</button>
+        <button class="btn" id="btnSettings">SETTINGS</button>
+      </div>
+      <div class="menu-foot" id="menuFoot">Hard Mode: off &middot; Fully offline</div>
+    </div>
+  </div>
+
+  <!-- ============ HOW TO PLAY ============ -->
+  <div class="overlay hidden" id="howToPanel">
+    <div class="panel wide">
+      <span class="close-x" id="howToClose">&times;</span>
+      <div class="ptitle sm">HOW TO PLAY</div>
+      <div class="psub">GUESS THE HIDDEN FIVE-LETTER WORD</div>
+      <div class="body-text">
+        Type a real five-letter word and press <b>Enter</b>. Every tile changes colour to tell you
+        how close that letter is. Weave the clues together until the word is yours.
+      </div>
+      <h2 class="section">READING THE COLOURS</h2>
+      <div class="example-row">
+        <div class="ex-tile correct">c</div><div class="ex-tile">r</div><div class="ex-tile">a</div><div class="ex-tile">n</div><div class="ex-tile">e</div>
+      </div>
+      <div class="body-text"><b>C</b> is in the word and in the right spot.</div>
+      <div class="example-row">
+        <div class="ex-tile">s</div><div class="ex-tile present">l</div><div class="ex-tile">a</div><div class="ex-tile">t</div><div class="ex-tile">e</div>
+      </div>
+      <div class="body-text"><b>L</b> is in the word, but somewhere else.</div>
+      <div class="example-row">
+        <div class="ex-tile">p</div><div class="ex-tile">o</div><div class="ex-tile">u</div><div class="ex-tile absent">n</div><div class="ex-tile">d</div>
+      </div>
+      <div class="body-text"><b>N</b> is not in the word at all. Repeated letters are counted exactly: two of a letter only both light up if the answer really has two.</div>
+      <h2 class="section">MODES</h2>
+      <div class="body-text">
+        <b>Daily Weave</b> — one seeded puzzle a day, the same for every run of the game. Solve it to
+        extend your daily streak. Hints are disabled here.<br>
+        <b>Unlimited</b> — endless random puzzles with one hint available per puzzle.<br>
+        <b>Gauntlet</b> — eight stages of steadily rarer words. Stages 1&ndash;3 give six guesses,
+        4&ndash;6 give five, 7&ndash;8 give four. You have three lives and a shared pool of three hints
+        for the whole run. Clear all eight to bank the run bonus.
+      </div>
+      <h2 class="section">HARD MODE</h2>
+      <div class="body-text">
+        With Hard Mode on, every clue you have already revealed must be used: green letters stay
+        locked to their column and yellow letters must appear somewhere in each later guess. It can be
+        toggled from Settings between puzzles.
+      </div>
+      <h2 class="section">CONTROLS</h2>
+      <div class="body-text">
+        <kbd>A</kbd>&ndash;<kbd>Z</kbd> type a letter &middot; <kbd>Enter</kbd> submit &middot;
+        <kbd>Backspace</kbd> delete &middot; <kbd>Space</kbd> spend a hint &middot;
+        <kbd>R</kbd> restart the puzzle &middot; <kbd>Esc</kbd> or <kbd>P</kbd> pause.
+        The on-screen keyboard does everything the physical one does &mdash; tap or click any key.
+      </div>
+      <button class="btn primary center" id="howToDone" style="margin-top:16px;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ============ STATS ============ -->
+  <div class="overlay hidden" id="statsPanel">
+    <div class="panel">
+      <span class="close-x" id="statsClose">&times;</span>
+      <div class="ptitle sm">STATISTICS</div>
+      <div class="psub" id="statsSub">YOUR WEAVING RECORD</div>
+      <div class="tabs">
+        <button class="tab active" id="tabDaily" data-tab="daily">DAILY</button>
+        <button class="tab" id="tabUnlimited" data-tab="unlimited">UNLIMITED</button>
+        <button class="tab" id="tabGauntlet" data-tab="gauntlet">GAUNTLET</button>
+      </div>
+      <div class="statgrid">
+        <div class="statbox"><div class="n" id="stPlayed">0</div><div class="l">PLAYED</div></div>
+        <div class="statbox"><div class="n" id="stWinPct">0</div><div class="l">WIN %</div></div>
+        <div class="statbox"><div class="n" id="stStreak">0</div><div class="l">CURRENT<br>STREAK</div></div>
+        <div class="statbox"><div class="n" id="stMax">0</div><div class="l">MAX<br>STREAK</div></div>
+      </div>
+      <h2 class="section">GUESS DISTRIBUTION</h2>
+      <div id="distRows"></div>
+      <div id="extraStats" style="margin-top:12px;"></div>
+      <button class="btn center" id="statsDone" style="margin-top:14px;">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- ============ SETTINGS ============ -->
+  <div class="overlay hidden" id="settingsPanel">
+    <div class="panel">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <div class="ptitle sm">SETTINGS</div>
+      <div class="psub">TUNE THE LOOM</div>
+      <div class="field">
+        <label><input type="checkbox" id="optHard"> Hard Mode</label>
+        <span class="hint">Revealed clues must be reused in every later guess. Cannot be changed mid-puzzle.</span>
+      </div>
+      <div class="field">
+        <label><input type="checkbox" id="optColorBlind"> High-contrast colours</label>
+        <span class="hint">Orange / blue palette instead of green / yellow.</span>
+      </div>
+      <div class="field">
+        <label><input type="checkbox" id="optSound"> Sound effects</label>
+        <span class="hint">Synthesised in-browser. No files are ever downloaded.</span>
+      </div>
+      <div class="field">
+        <label>Volume <span id="volVal" style="color:var(--ink)"></span></label>
+        <input type="range" id="volSlider" min="0" max="1" step="0.05">
+      </div>
+      <div class="field">
+        <label><input type="checkbox" id="optMotion"> Reduce motion</label>
+        <span class="hint">Turns off tile flips, bounces, shakes and confetti.</span>
+      </div>
+      <h2 class="section">DANGER ZONE</h2>
+      <button class="btn danger center" id="btnResetStats">RESET ALL STATISTICS</button>
+      <button class="btn primary center" id="settingsDone" style="margin-top:12px;">DONE</button>
+    </div>
+  </div>
+
+  <!-- ============ PAUSE ============ -->
+  <div class="overlay hidden" id="pausePanel">
+    <div class="panel">
+      <div class="ptitle sm">PAUSED</div>
+      <div class="psub" id="pauseSub">THE LOOM IS STILL</div>
+      <button class="btn primary center" id="btnResume">RESUME</button>
+      <button class="btn center" id="btnRestart">RESTART PUZZLE</button>
+      <button class="btn center" id="btnPauseHowTo">HOW TO PLAY</button>
+      <button class="btn center" id="btnPauseStats">STATISTICS</button>
+      <button class="btn center" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn danger center" id="btnQuit">QUIT TO MENU</button>
+    </div>
+  </div>
+
+  <!-- ============ RESULT ============ -->
+  <div class="overlay hidden" id="resultPanel">
+    <div class="panel">
+      <div class="ptitle sm" id="resTitle">WOVEN</div>
+      <div id="resWord">crane</div>
+      <div class="psub" id="resSub">SOLVED IN 3 GUESSES</div>
+      <div id="resGrid"></div>
+      <div id="resStatsLine"></div>
+      <button class="btn primary center" id="btnResultNext">NEXT PUZZLE</button>
+      <button class="btn center" id="btnResultStats">VIEW STATS</button>
+      <button class="btn center" id="btnResultMenu">MAIN MENU</button>
+    </div>
+  </div>
+
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boids Sanctuary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --mint: #5fe3b0;
+    --sky: #7fd4ff;
+    --amber: #ffc46b;
+    --rose: #ff7d7d;
+    --ink: #06100f;
+    --panel-a: rgba(14, 30, 30, 0.96);
+    --panel-b: rgba(5, 14, 15, 0.98);
+    --line: #1f4a45;
+    --line-hi: #2f7a6e;
+    --text: #d3f2e8;
+    --dim: #7ea89f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #04100f; overflow: hidden;
+    font-family: 'Segoe UI', 'Trebuchet MS', Consolas, monospace;
+    color: var(--text);
+    -webkit-user-select: none; user-select: none;
+    touch-action: none;
+  }
+  #app { position: fixed; inset: 0; }
+  canvas#cv { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  .hidden { display: none !important; }
+
+  /* ---------------- overlays ---------------- */
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(6,22,22,0.90) 0%, rgba(2,8,9,0.97) 100%);
+    z-index: 60; overflow-y: auto; padding: 18px;
+  }
+  .panel {
+    position: relative;
+    background: linear-gradient(180deg, var(--panel-a), var(--panel-b));
+    border: 1px solid var(--line); border-radius: 12px; padding: 22px 26px;
+    min-width: 340px; max-width: min(94vw, 620px); max-height: 92vh; overflow-y: auto;
+    box-shadow: 0 0 50px rgba(60,220,180,0.10), inset 0 0 40px rgba(30,110,95,0.06);
+  }
+  .title {
+    font-size: 30px; letter-spacing: 5px; text-align: center; margin: 0 0 2px;
+    color: var(--mint); text-shadow: 0 0 18px rgba(95,227,176,0.45);
+  }
+  .subtitle { text-align: center; color: var(--dim); font-size: 11px; letter-spacing: 3px; margin-bottom: 18px; text-transform: uppercase; }
+  h2.section { color: var(--sky); font-size: 12px; letter-spacing: 2px; border-bottom: 1px solid var(--line); padding-bottom: 5px; margin: 16px 0 9px; text-transform: uppercase; }
+  .btn {
+    display: block; width: 100%; margin: 6px 0; padding: 10px 14px;
+    background: linear-gradient(180deg, #133533, #08201f);
+    border: 1px solid var(--line-hi); color: var(--text); font-size: 13px; letter-spacing: 1.4px;
+    border-radius: 7px; cursor: pointer; font-family: inherit; text-align: left; transition: 0.12s;
+  }
+  .btn:hover:not(:disabled) { background: linear-gradient(180deg, #1c514c, #0d302e); border-color: var(--mint); color: #fff; transform: translateX(2px); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+  .btn.primary { border-color: var(--mint); color: #dcfff2; background: linear-gradient(180deg,#154843,#092724); }
+  .btn.primary:hover:not(:disabled) { background: linear-gradient(180deg,#1d6d63,#0e3b36); }
+  .btn.danger { border-color: #a34848; color: #ffd8d8; }
+  .btn.danger:hover:not(:disabled) { background: linear-gradient(180deg,#4a1c1c,#2a0e0e); border-color: var(--rose); }
+  .btn.sm { padding: 6px 9px; font-size: 11px; letter-spacing: 0.6px; text-align: center; margin: 3px 0; }
+  .row { display: flex; gap: 7px; }
+  .row > * { flex: 1; }
+  .close-x { position: absolute; top: 8px; right: 14px; cursor: pointer; color: var(--sky); font-size: 22px; line-height: 1; }
+  .close-x:hover { color: #fff; }
+  .small { font-size: 11px; color: var(--dim); line-height: 1.65; }
+  .kbd { display: inline-block; background: #0d2b29; border: 1px solid var(--line-hi); border-radius: 4px; padding: 0 5px; font-size: 10px; color: var(--mint); margin: 0 1px; }
+
+  /* ---------------- scenario list ---------------- */
+  #scenarioList { display: flex; flex-direction: column; gap: 6px; }
+  .srow {
+    display: flex; align-items: center; gap: 10px; padding: 9px 11px; border-radius: 7px;
+    border: 1px solid var(--line); background: rgba(10,32,30,0.6); cursor: pointer; transition: 0.12s;
+  }
+  .srow:hover:not(.locked) { border-color: var(--mint); background: rgba(20,64,58,0.7); transform: translateX(2px); }
+  .srow.locked { opacity: 0.38; cursor: not-allowed; }
+  .srow .idx { width: 22px; text-align: center; color: var(--dim); font-size: 12px; }
+  .srow .nm { flex: 1; }
+  .srow .nm b { font-size: 13px; letter-spacing: 0.8px; color: #e4fff5; }
+  .srow .nm div { font-size: 10.5px; color: var(--dim); margin-top: 2px; }
+  .srow .medal { font-size: 19px; width: 26px; text-align: center; }
+  .srow .best { font-size: 10px; color: var(--amber); width: 70px; text-align: right; }
+
+  /* ---------------- achievements ---------------- */
+  .arow { display: flex; gap: 10px; align-items: flex-start; padding: 7px 9px; border-radius: 6px; border: 1px solid var(--line); margin-bottom: 5px; background: rgba(10,30,29,0.5); }
+  .arow.locked { opacity: 0.45; }
+  .arow .aic { font-size: 18px; width: 24px; text-align: center; }
+  .arow .atx b { font-size: 12px; color: #e4fff5; letter-spacing: 0.6px; }
+  .arow .atx div { font-size: 10.5px; color: var(--dim); margin-top: 2px; }
+  .rar { font-size: 9px; padding: 1px 6px; border-radius: 8px; margin-left: 6px; vertical-align: middle; }
+  .rar.common { background:#14332f; color:#7fd8bd; }
+  .rar.rare { background:#132c44; color:#8fc8ff; }
+  .rar.epic { background:#2c1740; color:#cba0ff; }
+  .rar.legendary { background:#402a10; color:#ffcb7a; }
+  .pbar { height: 4px; background: #0c2523; border-radius: 3px; margin-top: 4px; overflow: hidden; }
+  .pbar > i { display: block; height: 100%; background: linear-gradient(90deg,var(--mint),var(--sky)); }
+
+  /* ---------------- HUD ---------------- */
+  #hud { position: absolute; inset: 0; pointer-events: none; z-index: 20; font-size: 12px; }
+  #hudTop {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 14px; align-items: center;
+    background: rgba(5,20,20,0.68); border: 1px solid var(--line); border-radius: 9px;
+    padding: 6px 14px; backdrop-filter: blur(3px); white-space: nowrap;
+  }
+  #hudTop .stat { text-align: center; min-width: 56px; }
+  #hudTop .stat span { display: block; font-size: 9px; letter-spacing: 1.4px; color: var(--dim); }
+  #hudTop .stat b { font-size: 16px; color: #eafff8; font-weight: 600; }
+  #hudTop .stat b.warn { color: var(--rose); }
+  #hudObjWrap {
+    position: absolute; top: 10px; left: 12px; max-width: 300px;
+    background: rgba(5,20,20,0.68); border: 1px solid var(--line); border-radius: 9px; padding: 7px 11px;
+  }
+  #hudObjName { font-size: 12px; color: var(--mint); letter-spacing: 1.4px; }
+  #hudObjective { font-size: 11px; color: #cdeee3; margin-top: 3px; line-height: 1.45; }
+  #hudProgWrap { margin-top: 6px; }
+  #hudProgBar { height: 7px; background: #0b2422; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  #hudProgFill { height: 100%; width: 0%; background: linear-gradient(90deg,#2f9e7c,var(--mint)); transition: width 0.12s linear; }
+  #hudProgLabel { font-size: 10px; color: var(--dim); margin-top: 2px; }
+
+  #hudRight { position: absolute; top: 10px; right: 12px; text-align: right; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .chip {
+    background: rgba(5,20,20,0.68); border: 1px solid var(--line); border-radius: 8px;
+    padding: 5px 10px; font-size: 11px; color: #cdeee3; letter-spacing: 0.6px; min-width: 116px; text-align: right;
+  }
+  .chip b { color: var(--mint); }
+  .chip.hot { border-color: var(--amber); }
+  .chip.cold { opacity: 0.5; }
+  #modeChip.scare { border-color: var(--rose); }
+  #modeChip.scare b { color: var(--rose); }
+  #pulseMeter { height: 4px; background:#0b2422; border-radius:3px; margin-top:4px; overflow:hidden; }
+  #pulseMeterFill { display:block; height:100%; width:100%; background: linear-gradient(90deg,var(--sky),var(--mint)); }
+
+  #btnHudPause {
+    pointer-events: auto; cursor: pointer;
+    background: rgba(5,20,20,0.75); border: 1px solid var(--line); border-radius: 8px;
+    padding: 4px 11px; color: var(--sky); font-size: 14px;
+  }
+  #btnHudPause:hover { color: #fff; border-color: var(--mint); }
+
+  #controlsBar {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    background: rgba(5,20,20,0.6); border: 1px solid var(--line); border-radius: 8px;
+    padding: 4px 12px; font-size: 10px; color: var(--dim); letter-spacing: 0.4px; white-space: nowrap;
+    max-width: 96vw; overflow: hidden; text-overflow: ellipsis;
+  }
+  #fpsMeter { position: absolute; bottom: 8px; left: 12px; font-size: 10px; color: var(--dim); }
+  #toastWrap { position: absolute; top: 92px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 5px; align-items: center; }
+  .toast {
+    background: rgba(8,28,26,0.92); border: 1px solid var(--mint); color: #dcfff2;
+    padding: 6px 15px; border-radius: 7px; font-size: 12px; letter-spacing: 1px;
+    opacity: 0; animation: tIn 0.28s ease forwards, tOut 0.5s ease 2.4s forwards;
+  }
+  .toast.bad { border-color: var(--rose); color: #ffdada; }
+  .toast.gold { border-color: var(--amber); color: #ffeecd; }
+  @keyframes tIn { from { opacity: 0; transform: translateY(-9px); } to { opacity: 1; transform: none; } }
+  @keyframes tOut { from { opacity: 1; } to { opacity: 0; } }
+
+  /* ---------------- tuning drawer ---------------- */
+  #tunePanel {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 292px; z-index: 40;
+    background: linear-gradient(180deg, rgba(8,26,25,0.96), rgba(4,14,14,0.98));
+    border-left: 1px solid var(--line); padding: 12px 14px 20px; overflow-y: auto;
+    transform: translateX(100%); transition: transform 0.22s ease; pointer-events: auto;
+  }
+  #tunePanel.open { transform: none; }
+  #tunePanel h3 { margin: 0 0 2px; font-size: 14px; letter-spacing: 2px; color: var(--mint); }
+  #tunePanel .hintline { font-size: 10px; color: var(--dim); margin-bottom: 10px; }
+  .sl { margin: 7px 0; }
+  .sl label { display: flex; justify-content: space-between; font-size: 10.5px; color: #b6dcd2; margin-bottom: 3px; letter-spacing: 0.5px; }
+  .sl label i { font-style: normal; color: var(--amber); }
+  .sl input[type=range] { width: 100%; height: 4px; -webkit-appearance: none; appearance: none; background: #0d2f2c; border-radius: 3px; outline: none; }
+  .sl input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--mint); cursor: pointer; border: 0; }
+  .sl input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border-radius: 50%; background: var(--mint); cursor: pointer; border: 0; }
+  select {
+    width: 100%; background: #0c2b29; color: var(--text); border: 1px solid var(--line-hi);
+    border-radius: 5px; padding: 5px; font-family: inherit; font-size: 11px;
+  }
+  .chk { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #b6dcd2; margin: 6px 0; cursor: pointer; }
+  .chk input { accent-color: #35c99b; }
+  #tuneToggle {
+    position: absolute; top: 50%; right: 0; transform: translateY(-50%); z-index: 41;
+    pointer-events: auto; cursor: pointer; writing-mode: vertical-rl;
+    background: rgba(8,28,26,0.9); border: 1px solid var(--line); border-right: none;
+    border-radius: 8px 0 0 8px; padding: 12px 5px; font-size: 10px; letter-spacing: 2px; color: var(--sky);
+  }
+  #tuneToggle:hover { color: #fff; border-color: var(--mint); }
+  .toolgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .toolgrid .btn { margin: 0; }
+  .btn.act { border-color: var(--amber); color: #ffeecd; background: linear-gradient(180deg,#3a2a10,#20170a); }
+
+  /* ---------------- result ---------------- */
+  #resultIcon { font-size: 52px; text-align: center; margin: 2px 0 4px; }
+  .statline { display: flex; justify-content: space-between; font-size: 12px; color: #c4e8dd; padding: 3px 0; border-bottom: 1px solid rgba(31,74,69,0.5); }
+  .statline b { color: #eafff8; }
+  .howgrid { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; font-size: 11.5px; align-items: baseline; }
+  .howgrid > div:nth-child(odd) { color: var(--mint); white-space: nowrap; }
+  .howgrid > div:nth-child(even) { color: #bfe0d7; }
+
+  @media (max-width: 760px) {
+    #tunePanel { width: 250px; }
+    #hudObjWrap { max-width: 210px; }
+    .title { font-size: 24px; letter-spacing: 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .srow, #tunePanel { transition: none !important; }
+    .toast { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="cv"></canvas>
+
+  <!-- ============ HUD ============ -->
+  <div id="hud" class="hidden">
+    <div id="hudObjWrap">
+      <div id="hudObjName">SANDBOX</div>
+      <div id="hudObjective">Free flight.</div>
+      <div id="hudProgWrap" class="hidden">
+        <div id="hudProgBar"><div id="hudProgFill"></div></div>
+        <div id="hudProgLabel">0 / 0</div>
+      </div>
+    </div>
+
+    <div id="hudTop">
+      <div class="stat"><span>TIME</span><b id="hudTime">0:00</b></div>
+      <div class="stat"><span>FLOCK</span><b id="hudFlock">0</b></div>
+      <div class="stat"><span>LOST</span><b id="hudLost">0</b></div>
+      <div id="btnHudPause">| |</div>
+    </div>
+
+    <div id="hudRight">
+      <div class="chip" id="modeChip">MODE <b id="modeVal">LURE</b></div>
+      <div class="chip" id="pulseChip">PULSE <b id="pulseVal">READY</b><div id="pulseMeter"><i id="pulseMeterFill"></i></div></div>
+      <div class="chip" id="pelletChip">SEED <b id="pelletVal">0</b></div>
+    </div>
+
+    <div id="toastWrap"></div>
+    <div id="fpsMeter"></div>
+    <div id="controlsBar">
+      <span class="kbd">WASD</span> move drone ·
+      <span class="kbd">LMB</span> fly to cursor ·
+      <span class="kbd">SHIFT</span>/<span class="kbd">RMB</span> scare ·
+      <span class="kbd">Q</span> toggle mode ·
+      <span class="kbd">SPACE</span> pulse ·
+      <span class="kbd">E</span> drop seed ·
+      <span class="kbd">T</span> tuning ·
+      <span class="kbd">R</span> restart ·
+      <span class="kbd">ESC</span> pause
+    </div>
+  </div>
+
+  <!-- ============ TUNING DRAWER ============ -->
+  <div id="tuneToggle" class="hidden">TUNING</div>
+  <div id="tunePanel" class="hidden">
+    <h3>FLOCK TUNING</h3>
+    <div class="hintline">Live Reynolds weights — changes apply instantly.</div>
+
+    <div class="sl"><label>Preset</label><select id="presetSel">
+      <option value="classic">Classic Boids</option>
+      <option value="murmur">Murmuration</option>
+      <option value="nervous">Nervous Swarm</option>
+      <option value="lazy">Lazy Cloud</option>
+      <option value="vortex">Vortex</option>
+      <option value="chaos">Chaos</option>
+    </select></div>
+
+    <h2 class="section">Steering</h2>
+    <div class="sl"><label>Separation <i id="vSep">1.60</i></label><input type="range" id="tSep" min="0" max="4" step="0.05"></div>
+    <div class="sl"><label>Alignment <i id="vAli">1.00</i></label><input type="range" id="tAli" min="0" max="4" step="0.05"></div>
+    <div class="sl"><label>Cohesion <i id="vCoh">0.90</i></label><input type="range" id="tCoh" min="0" max="4" step="0.05"></div>
+    <div class="sl"><label>Perception radius <i id="vPer">55</i></label><input type="range" id="tPer" min="20" max="150" step="1"></div>
+    <div class="sl"><label>Personal space <i id="vSpc">22</i></label><input type="range" id="tSpc" min="6" max="80" step="1"></div>
+    <div class="sl"><label>Wander <i id="vWan">0.20</i></label><input type="range" id="tWan" min="0" max="1" step="0.02"></div>
+
+    <h2 class="section">Flight</h2>
+    <div class="sl"><label>Max speed <i id="vSpd">130</i></label><input type="range" id="tSpd" min="40" max="260" step="2"></div>
+    <div class="sl"><label>Turn force <i id="vFrc">340</i></label><input type="range" id="tFrc" min="60" max="900" step="10"></div>
+    <div class="sl"><label>Fear of hawks <i id="vFea">3.00</i></label><input type="range" id="tFea" min="0" max="8" step="0.1"></div>
+    <div class="sl"><label>Seed attraction <i id="vFod">2.20</i></label><input type="range" id="tFod" min="0" max="6" step="0.1"></div>
+    <div class="sl"><label>Drone pull <i id="vDrn">1.40</i></label><input type="range" id="tDrn" min="0" max="5" step="0.1"></div>
+
+    <div id="sandboxOnly">
+      <h2 class="section">Sandbox</h2>
+      <div class="sl"><label>Flock size <i id="vCnt">200</i></label><input type="range" id="tCnt" min="20" max="900" step="10"></div>
+      <div class="sl"><label>Wind X <i id="vWx">0</i></label><input type="range" id="tWx" min="-80" max="80" step="2"></div>
+      <div class="sl"><label>Wind Y <i id="vWy">0</i></label><input type="range" id="tWy" min="-80" max="80" step="2"></div>
+      <div class="sl"><label>Edges</label><select id="edgeSel">
+        <option value="steer">Steer away</option>
+        <option value="wrap">Wrap around</option>
+        <option value="bounce">Bounce</option>
+      </select></div>
+      <div class="hintline" style="margin-top:8px;">Click a tool, then click the world to place. Right-click removes.</div>
+      <div class="toolgrid">
+        <button class="btn sm" id="toolNone">Drone</button>
+        <button class="btn sm" id="toolRock">+ Rock</button>
+        <button class="btn sm" id="toolSeed">+ Seed</button>
+        <button class="btn sm" id="toolHawk">+ Hawk</button>
+        <button class="btn sm" id="btnClearRocks">Clear rocks</button>
+        <button class="btn sm" id="btnClearHawks">Clear hawks</button>
+      </div>
+      <button class="btn sm" id="btnScatter" style="margin-top:6px;">Scatter flock</button>
+    </div>
+
+    <h2 class="section">Display</h2>
+    <label class="chk"><input type="checkbox" id="cbTrails"> Motion trails</label>
+    <label class="chk"><input type="checkbox" id="cbVectors"> Show perception radius</label>
+    <label class="chk"><input type="checkbox" id="cbFps"> Show FPS</label>
+    <button class="btn sm" id="btnResetWeights" style="margin-top:8px;">Reset to defaults</button>
+  </div>
+
+  <!-- ============ MAIN MENU ============ -->
+  <div class="overlay" id="mainMenu">
+    <div class="panel" style="max-width:430px;">
+      <div class="title">BOIDS SANCTUARY</div>
+      <div class="subtitle">Emergent flight · 8 challenges</div>
+      <button class="btn primary" id="btnContinue">CONTINUE</button>
+      <button class="btn primary" id="btnScenarios">CHALLENGES</button>
+      <button class="btn" id="btnSandbox">SANDBOX</button>
+      <button class="btn" id="btnHowTo">HOW TO PLAY</button>
+      <button class="btn" id="btnAch">ACHIEVEMENTS</button>
+      <button class="btn" id="btnSettings">SETTINGS</button>
+      <div class="small" style="text-align:center;margin-top:14px;">
+        Cleared <b id="menuCleared">0</b>/8 · Golds <b id="menuGolds">0</b> · Best flock <b id="menuBestFlock">0</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SCENARIO SELECT ============ -->
+  <div class="overlay hidden" id="scenarioMenu">
+    <div class="panel" style="max-width:600px;min-width:min(94vw,560px);">
+      <span class="close-x" id="scenarioClose">&times;</span>
+      <div class="title" style="font-size:22px;">CHALLENGES</div>
+      <div class="subtitle">Clear one to unlock the next</div>
+      <div id="scenarioList"></div>
+    </div>
+  </div>
+
+  <!-- ============ HOW TO PLAY ============ -->
+  <div class="overlay hidden" id="howToMenu">
+    <div class="panel" style="max-width:600px;">
+      <span class="close-x" id="howToClose">&times;</span>
+      <div class="title" style="font-size:22px;">HOW TO PLAY</div>
+      <div class="subtitle">Shepherd, don't command</div>
+      <div class="small" style="margin-bottom:12px;">
+        Boids have no leader. Each one only obeys three rules — <b style="color:var(--mint)">separation</b>,
+        <b style="color:var(--mint)">alignment</b> and <b style="color:var(--mint)">cohesion</b> — applied to the
+        neighbours it can see. The flock's whole personality lives in those three sliders, and you can move them
+        mid-flight from the TUNING drawer. That is the real control scheme.
+      </div>
+      <h2 class="section">Your drone</h2>
+      <div class="howgrid">
+        <div>W A S D / Arrows</div><div>Fly the shepherd drone.</div>
+        <div>Hold Left Mouse</div><div>Drone steers toward the cursor.</div>
+        <div>Hold Shift / Right Mouse</div><div>SCARE — the drone repels instead of attracts.</div>
+        <div>Q</div><div>Toggle LURE / SCARE permanently.</div>
+        <div>Space</div><div>Scatter Pulse: shockwave that blasts boids apart and stuns hawks.</div>
+        <div>E</div><div>Drop a seed pod. Boids swarm it — the best way to park a flock.</div>
+        <div>Mouse wheel</div><div>Zoom. Middle-click or Z resets zoom.</div>
+        <div>T</div><div>Open the tuning drawer.</div>
+        <div>R</div><div>Restart the challenge.</div>
+        <div>Esc / P</div><div>Pause.</div>
+      </div>
+      <h2 class="section">Winning</h2>
+      <div class="small">
+        Each challenge shows its objective top-left: hold N boids inside a green sanctuary ring, survive a hawk
+        hunt, or feed the flock. Watch the timer and the LOST counter — hawks eat stragglers and stone kills nobody
+        but wastes precious seconds. Faster clears with bigger surviving flocks earn Silver and Gold.
+      </div>
+      <h2 class="section">Pro tips</h2>
+      <div class="small">
+        · Lower <b>Cohesion</b> to split a flock in two; raise it to squeeze through a gap.<br>
+        · Raise <b>Alignment</b> for long straight migrations, drop it for tight turns.<br>
+        · High <b>Separation</b> makes the flock spread wide — great against hawks, terrible in canyons.<br>
+        · Seeds outrank everything: drop one inside the sanctuary and the flock parks itself.<br>
+        · A pulse fired inside a canyon will splatter your flock into the walls. Use it on hawks.
+      </div>
+      <button class="btn primary" id="howToDone" style="margin-top:14px;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ============ ACHIEVEMENTS ============ -->
+  <div class="overlay hidden" id="achMenu">
+    <div class="panel" style="max-width:560px;">
+      <span class="close-x" id="achClose">&times;</span>
+      <div class="title" style="font-size:22px;">ACHIEVEMENTS</div>
+      <div class="subtitle"><span id="achCount">0</span> unlocked</div>
+      <div id="achList"></div>
+      <button class="btn primary" id="achDone" style="margin-top:12px;">BACK</button>
+    </div>
+  </div>
+
+  <!-- ============ SETTINGS ============ -->
+  <div class="overlay hidden" id="settingsMenu">
+    <div class="panel">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <div class="title" style="font-size:22px;">SETTINGS</div>
+      <div class="subtitle">Comfort &amp; performance</div>
+      <div class="sl"><label>Master volume <i id="vVol">70%</i></label><input type="range" id="setVol" min="0" max="1" step="0.05"></div>
+      <label class="chk"><input type="checkbox" id="setShake"> Screen shake</label>
+      <label class="chk"><input type="checkbox" id="setTrails2"> Motion trails</label>
+      <label class="chk"><input type="checkbox" id="setParticles"> Particle effects</label>
+      <label class="chk"><input type="checkbox" id="setFps2"> Show FPS counter</label>
+      <div class="sl" style="margin-top:10px;"><label>Render quality</label><select id="setQuality">
+        <option value="high">High (crisp, glow)</option>
+        <option value="med">Medium</option>
+        <option value="low">Low (fastest)</option>
+      </select></div>
+      <div class="small" style="margin-top:10px;">Reduced-motion is respected automatically: trails, shake and particles start off if your system asks for it.</div>
+      <button class="btn primary" id="settingsDone" style="margin-top:12px;">DONE</button>
+    </div>
+  </div>
+
+  <!-- ============ PAUSE ============ -->
+  <div class="overlay hidden" id="pauseMenu">
+    <div class="panel">
+      <div class="title" style="font-size:22px;">PAUSED</div>
+      <div class="subtitle" id="pauseSub">Sandbox</div>
+      <button class="btn primary" id="btnResume">RESUME</button>
+      <button class="btn" id="btnRestart">RESTART</button>
+      <button class="btn" id="btnPauseTune">TUNING DRAWER</button>
+      <button class="btn" id="btnPauseHowTo">HOW TO PLAY</button>
+      <button class="btn" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn danger" id="btnQuit">QUIT TO MENU</button>
+    </div>
+  </div>
+
+  <!-- ============ RESULT ============ -->
+  <div class="overlay hidden" id="resultMenu">
+    <div class="panel" style="max-width:440px;">
+      <div id="resultIcon">🥇</div>
+      <div class="title" id="resultTitle" style="font-size:24px;">SANCTUARY REACHED</div>
+      <div class="subtitle" id="resultSub">Canyon Run</div>
+      <div id="resultStats"></div>
+      <div class="small" id="resultTip" style="margin-top:10px;"></div>
+      <button class="btn primary" id="btnNext" style="margin-top:12px;">NEXT CHALLENGE</button>
+      <button class="btn" id="btnRetry">RETRY</button>
+      <button class="btn" id="btnResultMenu">MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- ============ LOADING GUARD ============ -->
+  <div class="overlay" id="bootErr" style="z-index:99; display:none;">
+    <div class="panel"><div class="title" style="font-size:20px;">LOAD ERROR</div><div class="small" id="bootErrMsg"></div></div>
+  </div>
+</div>
+
+<script type="module" src="./game.js"></script>
+<script>
+  window.addEventListener('error', function (e) {
+    var el = document.getElementById('bootErr');
+    var msg = document.getElementById('bootErrMsg');
+    if (el && msg && el.style.display === 'none') {
+      msg.textContent = (e && e.message ? e.message : 'Unknown error') + (e && e.filename ? ' @ ' + e.filename + ':' + e.lineno : '');
+      el.style.display = 'flex';
+    }
+  });
+</script>
+</body>
+</html>

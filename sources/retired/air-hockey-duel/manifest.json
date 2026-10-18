@@ -1,0 +1,23 @@
+{
+  "id": "air-hockey-duel",
+  "title": "Air Hockey Duel",
+  "category": "sports",
+  "tags": ["sports", "arcade", "3d", "physics", "tournament", "versus-ai"],
+  "stack": "three.js + cannon-es (3D)",
+  "entry": "games/air-hockey-duel/index.html",
+  "thumbnail": null,
+  "saveVersion": 1,
+  "locked": false,
+  "description": "True 3D air hockey on a neon table: real cannon-es puck physics, pointer-dragged mallet with full velocity transfer, three trajectory-predicting AI difficulties, best-of-7 matches, an 8-opponent tournament ladder and a cinematic replay of every winning goal.",
+  "achievements": [
+    { "id": "first_goal", "title": "Opening Strike", "desc": "Score your first goal.", "rarity": "common", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "match_win", "title": "Duelist", "desc": "Win a best-of-7 match.", "rarity": "common", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "shutout", "title": "Clean Sheet", "desc": "Win a match 4-0 without conceding.", "rarity": "rare", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "speedster", "title": "Sonic Slap", "desc": "Score with a shot travelling over 20 km/h.", "rarity": "rare", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "bank_shot", "title": "Off The Boards", "desc": "Score a goal that banked off a side wall.", "rarity": "rare", "hidden": true, "progressive": false, "target": 1 },
+    { "id": "comeback", "title": "Ice Cold Comeback", "desc": "Win a match after trailing 0-3.", "rarity": "epic", "hidden": true, "progressive": false, "target": 1 },
+    { "id": "giant_slayer", "title": "Giant Slayer", "desc": "Beat a Legend-difficulty opponent in a quick match.", "rarity": "epic", "hidden": false, "progressive": false, "target": 1 },
+    { "id": "ladder_climber", "title": "Ladder Climber", "desc": "Defeat all 8 opponents on the tournament ladder.", "rarity": "rare", "hidden": false, "progressive": true, "target": 8 },
+    { "id": "champion", "title": "Empire Champion", "desc": "Win the 8-opponent tournament.", "rarity": "legendary", "hidden": false, "progressive": false, "target": 1 }
+  ]
+}

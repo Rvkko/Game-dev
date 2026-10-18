@@ -1,0 +1,111 @@
+{
+  "id": "flappy-ascent",
+  "title": "Flappy Ascent",
+  "category": "arcade",
+  "tags": [
+    "one-button",
+    "endless",
+    "arcade",
+    "daily",
+    "reflex",
+    "2d"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/flappy-ascent/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "One-button ascent through procedurally spaced gates across six parallax sky zones. Thread drifting, narrowing and shuttering gates for bronze, silver and gold medals, chase your personal-best ghost, and climb a seeded 80-gate Daily Ascent to the summit.",
+  "achievements": [
+    {
+      "id": "first_gate",
+      "title": "First Flight",
+      "desc": "Pass your very first gate.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "gates_10",
+      "title": "Rising Star",
+      "desc": "Pass 10 gates in a single run.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 10
+    },
+    {
+      "id": "gates_25",
+      "title": "Cloudbreaker",
+      "desc": "Pass 25 gates in a single run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "gates_50",
+      "title": "Stratosphere",
+      "desc": "Pass 50 gates in a single run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 50
+    },
+    {
+      "id": "medal_bronze",
+      "title": "Bronze Wings",
+      "desc": "Finish a run with a Bronze medal.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "medal_silver",
+      "title": "Silver Wings",
+      "desc": "Finish a run with a Silver medal.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "medal_gold",
+      "title": "Gold Wings",
+      "desc": "Finish a run with a Gold medal.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "perfect_5",
+      "title": "Threadneedle",
+      "desc": "Chain 5 dead-centre gate passes in one run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 5
+    },
+    {
+      "id": "feathers_100",
+      "title": "Featherweight",
+      "desc": "Collect 100 sky feathers in total.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 100
+    },
+    {
+      "id": "daily_summit",
+      "title": "Summit Seeker",
+      "desc": "Clear all 80 gates of a Daily Ascent.",
+      "rarity": "rare",
+      "hidden": true,
+      "progressive": true,
+      "target": 80
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "street-hoops",
+  "title": "Street Hoops",
+  "category": "sports",
+  "tags": [
+    "basketball",
+    "arcade",
+    "timed",
+    "skill"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/street-hoops/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A neon street-basketball shooting run with mouse or keyboard shot control, green releases, swish combos, moving hot zones and persistent highscores.",
+  "achievements": [
+    {
+      "id": "first_bucket",
+      "title": "On the Board",
+      "desc": "Make your first basket."
+    },
+    {
+      "id": "green_release",
+      "title": "Green Light",
+      "desc": "Hit a perfect release."
+    },
+    {
+      "id": "combo_five",
+      "title": "Heating Up",
+      "desc": "Reach a five-shot combo."
+    },
+    {
+      "id": "downtown",
+      "title": "From Downtown",
+      "desc": "Make a long-range shot."
+    },
+    {
+      "id": "court_king",
+      "title": "Court King",
+      "desc": "Beat the target score."
+    }
+  ]
+}

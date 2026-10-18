@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Neon Breakout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --cyan: #22e8ff;
+    --pink: #ff3df0;
+    --gold: #ffc44d;
+    --lime: #5cff9d;
+    --ink: #04060f;
+    --panel-a: rgba(14,18,38,0.96);
+    --panel-b: rgba(5,7,18,0.98);
+    --line: #2c3f74;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #04060f; overflow: hidden;
+    font-family: 'Segoe UI', 'Trebuchet MS', Consolas, monospace;
+    -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+  }
+  #app { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+         background: radial-gradient(ellipse at 50% 22%, #0d1330 0%, #04060f 70%); }
+  #stage { position: relative; touch-action: none; }
+  canvas#game { display: block; width: 100%; height: 100%; border-radius: 6px;
+                box-shadow: 0 0 60px rgba(34,232,255,0.10), 0 0 0 1px rgba(60,90,160,0.35); cursor: none; }
+  .hidden { display: none !important; }
+
+  /* ------------------------------ HUD ------------------------------ */
+  #hud { position: absolute; inset: 0; pointer-events: none; z-index: 12;
+         font-size: 15px; letter-spacing: 1px; color: #cfe4ff; text-shadow: 0 1px 4px #000; }
+  #hudTop { position: absolute; top: 0; left: 0; right: 0; height: 2.6em;
+            display: flex; align-items: center; gap: 1em; padding: 0 0.9em;
+            background: linear-gradient(180deg, rgba(4,6,15,0.85), rgba(4,6,15,0)); }
+  .hudBlock { display: flex; align-items: baseline; gap: 0.4em; white-space: nowrap; }
+  .hudLabel { font-size: 0.62em; color: #6f88b8; letter-spacing: 2px; }
+  .hudVal { font-size: 1.05em; font-weight: 700; color: #eaf4ff; }
+  #hudLevelName { color: var(--cyan); font-size: 0.78em; letter-spacing: 2px; }
+  #hudSpacer { flex: 1; }
+  #hudLives { color: var(--pink); font-size: 0.95em; letter-spacing: 2px; }
+  #btnPause { pointer-events: auto; cursor: pointer; border: 1px solid var(--line);
+              background: rgba(10,14,30,0.7); color: var(--cyan); border-radius: 5px;
+              padding: 0.15em 0.6em; font-size: 0.85em; font-family: inherit; }
+  #btnPause:hover { border-color: var(--cyan); color: #fff; }
+
+  #comboWrap { position: absolute; top: 3.1em; left: 0.9em; opacity: 0; transition: opacity 0.18s; }
+  #comboWrap.on { opacity: 1; }
+  #comboText { font-size: 0.8em; color: var(--gold); letter-spacing: 2px; }
+  #comboBar { width: 8.5em; height: 0.35em; background: rgba(255,255,255,0.12); border-radius: 3px; margin-top: 3px; overflow: hidden; }
+  #comboFill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--pink)); }
+
+  #powerChips { position: absolute; left: 0.9em; bottom: 0.8em; display: flex; flex-direction: column; gap: 4px; }
+  .chip { display: flex; align-items: center; gap: 6px; background: rgba(8,12,26,0.72);
+          border: 1px solid var(--line); border-radius: 5px; padding: 2px 7px; font-size: 0.66em; letter-spacing: 1px; }
+  .chip .cbar { width: 3.4em; height: 4px; background: rgba(255,255,255,0.14); border-radius: 2px; overflow: hidden; }
+  .chip .cfill { height: 100%; background: currentColor; }
+
+  #hintLine { position: absolute; right: 0.9em; bottom: 0.8em; font-size: 0.64em; color: #6a80ab; text-align: right; }
+  #bossBarWrap { position: absolute; top: 3.1em; left: 50%; transform: translateX(-50%); width: 46%; text-align: center; }
+  #bossName { font-size: 0.68em; letter-spacing: 3px; color: var(--pink); }
+  #bossBar { height: 0.5em; background: rgba(255,255,255,0.12); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-top: 3px; }
+  #bossFill { height: 100%; width: 100%; background: linear-gradient(90deg, #ff4fd8, #ffb0ec); transition: width 0.12s linear; }
+
+  #toasts { position: absolute; top: 22%; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .toast { background: rgba(10,14,30,0.9); border: 1px solid var(--gold); color: #ffe9c0;
+           padding: 6px 16px; border-radius: 6px; font-size: 0.78em; letter-spacing: 2px;
+           animation: tIn 0.28s ease both, tOut 0.5s ease 2.3s both; }
+  @keyframes tIn { from { opacity: 0; transform: translateY(-10px) scale(0.94);} to { opacity: 1; transform: none; } }
+  @keyframes tOut { to { opacity: 0; transform: translateY(-6px); } }
+
+  /* --------------------------- Overlays --------------------------- */
+  .overlay { position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center;
+             padding: 18px; overflow-y: auto;
+             background: radial-gradient(ellipse at center, rgba(6,9,22,0.90) 0%, rgba(2,3,9,0.97) 100%); }
+  .panel { position: relative; background: linear-gradient(180deg, var(--panel-a), var(--panel-b));
+           border: 1px solid var(--line); border-radius: 12px; padding: 22px 26px;
+           width: 460px; max-width: 96vw; max-height: 94vh; overflow-y: auto;
+           box-shadow: 0 0 50px rgba(34,232,255,0.13), inset 0 0 40px rgba(40,70,150,0.08); }
+  .panel.wide { width: 720px; }
+  .gtitle { font-size: 34px; letter-spacing: 8px; text-align: center; margin: 0 0 2px; font-weight: 800;
+            color: #eafcff; text-shadow: 0 0 10px var(--cyan), 0 0 28px rgba(34,232,255,0.5); }
+  .gsub { text-align: center; color: #7b93c4; font-size: 11px; letter-spacing: 4px; margin-bottom: 18px; }
+  h2.section { color: var(--cyan); font-size: 12px; letter-spacing: 3px; border-bottom: 1px solid #22315c;
+               padding-bottom: 5px; margin: 16px 0 10px; font-weight: 600; }
+  .btn { display: block; width: 100%; margin: 7px 0; padding: 10px 14px; cursor: pointer;
+         background: linear-gradient(180deg, #1b2547, #0d1226); border: 1px solid #3a55a0;
+         color: #cfe0ff; font-size: 13px; letter-spacing: 2px; border-radius: 7px;
+         font-family: inherit; text-align: left; transition: transform 0.1s, border-color 0.12s, background 0.12s; }
+  .btn:hover:not(:disabled) { background: linear-gradient(180deg, #27407a, #15203f); border-color: var(--cyan); color: #fff; transform: translateX(3px); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn.primary { border-color: var(--cyan); color: #dffaff; box-shadow: inset 0 0 18px rgba(34,232,255,0.10); }
+  .btn.primary:hover:not(:disabled) { background: linear-gradient(180deg, #0f3c4c, #08222c); }
+  .btn.danger { border-color: #c9424f; color: #ffd3d8; }
+  .row { display: flex; gap: 8px; }
+  .row .btn { flex: 1; }
+  .small { font-size: 11px; color: #6f86b3; line-height: 1.6; }
+  .closeX { position: absolute; top: 8px; right: 14px; cursor: pointer; color: var(--cyan); font-size: 22px; line-height: 1; }
+  .closeX:hover { color: #fff; }
+  .field { margin: 10px 0; font-size: 12px; color: #a8c0e6; }
+  .field label { display: block; margin-bottom: 5px; letter-spacing: 1px; }
+  input[type=range] { width: 100%; accent-color: #22e8ff; }
+  input[type=checkbox] { accent-color: #22e8ff; margin-right: 6px; }
+  .statline { display: flex; justify-content: space-between; font-size: 12px; color: #bcd0f0; padding: 3px 0; }
+  .statline span:last-child { color: #eaf4ff; font-weight: 700; }
+
+  #levelGrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-top: 6px; }
+  .lvBtn { position: relative; aspect-ratio: 1 / 1; border-radius: 8px; cursor: pointer;
+           background: linear-gradient(180deg, #16203f, #0b1024); border: 1px solid #344d92;
+           color: #cfe0ff; font-family: inherit; display: flex; flex-direction: column;
+           align-items: center; justify-content: center; gap: 2px; padding: 2px; transition: 0.12s; }
+  .lvBtn:hover:not(:disabled) { border-color: var(--cyan); transform: translateY(-2px); }
+  .lvBtn:disabled { opacity: 0.34; cursor: not-allowed; }
+  .lvBtn .n { font-size: 15px; font-weight: 800; }
+  .lvBtn .s { font-size: 9px; letter-spacing: 1px; color: var(--gold); height: 11px; }
+  .lvBtn.boss { border-color: var(--pink); background: linear-gradient(180deg, #2c1338, #140820); }
+  .lvBtn.boss .n { color: #ffb7f2; }
+  .lvBtn.done { box-shadow: inset 0 0 14px rgba(92,255,157,0.14); }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 11px; color: #93a9d2; margin-top: 4px; }
+  .legend i { display: inline-block; width: 20px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: middle; }
+  .puGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 11px; color: #a8c0e6; }
+  .puGrid b { display: inline-block; min-width: 74px; }
+  .keys { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 12px; color: #a8c0e6; align-items: center; }
+  .keys kbd { background: #131c3a; border: 1px solid #3a55a0; border-bottom-width: 2px; border-radius: 4px;
+              padding: 1px 7px; font-family: inherit; font-size: 11px; color: #dff; }
+  .starRow { text-align: center; font-size: 44px; letter-spacing: 8px; margin: 10px 0 4px; color: #2a3352; }
+  .starRow .lit { color: var(--gold); text-shadow: 0 0 14px rgba(255,196,77,0.8); }
+  .bigscore { text-align: center; font-size: 32px; font-weight: 800; color: #eafcff; text-shadow: 0 0 14px var(--cyan); margin: 4px 0 10px; }
+  .resultTitle { text-align: center; font-size: 22px; letter-spacing: 5px; margin-bottom: 2px; }
+  .win { color: var(--lime); text-shadow: 0 0 14px rgba(92,255,157,0.6); }
+  .lose { color: #ff6b7f; text-shadow: 0 0 14px rgba(255,107,127,0.5); }
+  .newbest { text-align: center; color: var(--lime); font-size: 11px; letter-spacing: 3px; height: 14px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="game" width="960" height="720"></canvas>
+
+    <div id="hud" class="hidden">
+      <div id="hudTop">
+        <div class="hudBlock"><span class="hudLabel">SCORE</span><span class="hudVal" id="hudScore">0</span></div>
+        <div class="hudBlock"><span class="hudLabel">LV</span><span class="hudVal" id="hudLevel">1</span><span id="hudLevelName">FIRST LIGHT</span></div>
+        <div id="hudSpacer"></div>
+        <div class="hudBlock"><span class="hudLabel">BALLS</span><span id="hudLives">●●●</span></div>
+        <button id="btnPause" type="button">II</button>
+      </div>
+      <div id="comboWrap">
+        <div id="comboText">COMBO x1.0</div>
+        <div id="comboBar"><div id="comboFill"></div></div>
+      </div>
+      <div id="bossBarWrap" class="hidden">
+        <div id="bossName">BOSS</div>
+        <div id="bossBar"><div id="bossFill"></div></div>
+      </div>
+      <div id="powerChips"></div>
+      <div id="hintLine">Move: mouse / A-D / ←→ &nbsp;·&nbsp; Space: launch &amp; fire &nbsp;·&nbsp; Esc: pause</div>
+      <div id="toasts"></div>
+    </div>
+  </div>
+
+  <!-- ============================ MAIN MENU ============================ -->
+  <div class="overlay" id="ovMenu">
+    <div class="panel">
+      <div class="gtitle">NEON BREAKOUT</div>
+      <div class="gsub">30 LEVELS · 6 POWER-UPS · 3 BOSSES</div>
+      <button class="btn primary" id="btnContinue" type="button">CONTINUE — LEVEL <span id="contLv">1</span></button>
+      <button class="btn" id="btnLevelSelect" type="button">LEVEL SELECT</button>
+      <button class="btn" id="btnHowTo" type="button">HOW TO PLAY</button>
+      <button class="btn" id="btnSettings" type="button">SETTINGS</button>
+      <div class="statline" style="margin-top:14px;"><span>Stars earned</span><span id="menuStars">0 / 90</span></div>
+      <div class="statline"><span>Levels cleared</span><span id="menuCleared">0 / 30</span></div>
+      <div class="statline"><span>Career score</span><span id="menuScore">0</span></div>
+      <div class="small" style="text-align:center;margin-top:12px;" id="menuMode">standalone save</div>
+    </div>
+  </div>
+
+  <!-- ============================ LEVEL SELECT ========================= -->
+  <div class="overlay hidden" id="ovLevels">
+    <div class="panel wide">
+      <span class="closeX" id="lvClose">&times;</span>
+      <div class="gtitle" style="font-size:22px;letter-spacing:5px;">LEVEL SELECT</div>
+      <div class="gsub" style="margin-bottom:10px;">CLEAR A LEVEL TO UNLOCK THE NEXT</div>
+      <div id="levelGrid"></div>
+      <h2 class="section">STARS</h2>
+      <div class="small">
+        ★ Clear the level &nbsp;·&nbsp; ★★ Clear without losing a ball &nbsp;·&nbsp; ★★★ …and beat the par score.
+      </div>
+      <div class="statline" style="margin-top:10px;"><span>Total stars</span><span id="lvTotalStars">0 / 90</span></div>
+    </div>
+  </div>
+
+  <!-- ============================== HOW TO ============================= -->
+  <div class="overlay hidden" id="ovHowTo">
+    <div class="panel wide">
+      <span class="closeX" id="howClose">&times;</span>
+      <div class="gtitle" style="font-size:22px;letter-spacing:5px;">HOW TO PLAY</div>
+      <div class="gsub" style="margin-bottom:10px;">BREAK EVERY DESTRUCTIBLE BRICK</div>
+      <h2 class="section">CONTROLS</h2>
+      <div class="keys">
+        <kbd>Mouse</kbd><span>Slide the paddle (most precise)</span>
+        <kbd>A</kbd><span>Move paddle left</span>
+        <kbd>D</kbd><span>Move paddle right</span>
+        <kbd>← →</kbd><span>Move paddle left / right</span>
+        <kbd>Space</kbd><span>Launch the ball · fire lasers</span>
+        <kbd>Click</kbd><span>Launch the ball · fire lasers</span>
+        <kbd>Esc</kbd><span>Pause / resume</span>
+        <kbd>P</kbd><span>Pause / resume</span>
+        <kbd>R</kbd><span>Restart the current level</span>
+      </div>
+      <h2 class="section">BRICKS</h2>
+      <div class="legend">
+        <div><i style="background:#22e8ff"></i>Standard — one hit</div>
+        <div><i style="background:#ff3df0"></i>Reinforced — two hits</div>
+        <div><i style="background:#ffc44d"></i>Armoured — three hits</div>
+        <div><i style="background:#ff5a2a"></i>Explosive — chain blast</div>
+        <div><i style="background:#8fa0b8"></i>Steel — indestructible</div>
+        <div><i style="background:#5cff9d"></i>Cache — always drops a power-up</div>
+      </div>
+      <h2 class="section">POWER-UPS</h2>
+      <div class="puGrid">
+        <div><b style="color:#5cff9d">MULTI</b>splits every ball in three</div>
+        <div><b style="color:#ff6b6b">LASER</b>paddle cannons — tap Space</div>
+        <div><b style="color:#22e8ff">WIDE</b>a much bigger paddle</div>
+        <div><b style="color:#9b6bff">SLOW</b>drops ball speed to a crawl</div>
+        <div><b style="color:#ffc44d">PIERCE</b>balls punch straight through</div>
+        <div><b style="color:#ff3df0">SHIELD</b>three free saves at the floor</div>
+      </div>
+      <h2 class="section">SCORING</h2>
+      <div class="small">
+        Every brick you break without touching the paddle raises the combo multiplier — up to <b>x3.4</b>.
+        Touching the paddle or losing a ball resets it. Clearing fast, keeping balls alive and chaining
+        explosions is how you beat par and take three stars. Bosses appear on levels 10, 20 and 30:
+        dodge their bombs, keep hitting the core, and clear the surrounding bricks to finish the stage.
+      </div>
+      <button class="btn primary" id="howClose2" type="button" style="margin-top:16px;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ============================= SETTINGS ============================ -->
+  <div class="overlay hidden" id="ovSettings">
+    <div class="panel">
+      <span class="closeX" id="setClose">&times;</span>
+      <div class="gtitle" style="font-size:22px;letter-spacing:5px;">SETTINGS</div>
+      <div class="gsub" style="margin-bottom:10px;">TUNE THE NEON</div>
+      <div class="field"><label>Master volume — <span id="volVal">70%</span></label>
+        <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.7"></div>
+      <div class="field"><label><input type="checkbox" id="cbShake" checked> Screen shake</label></div>
+      <div class="field"><label><input type="checkbox" id="cbGlow" checked> Neon glow &amp; particles</label></div>
+      <div class="field"><label><input type="checkbox" id="cbTrails" checked> Ball trails</label></div>
+      <h2 class="section">SAVE DATA</h2>
+      <button class="btn danger" id="btnReset" type="button">ERASE ALL PROGRESS</button>
+      <div class="small" id="resetNote">Stars, unlocks and career score. This cannot be undone.</div>
+      <button class="btn primary" id="setDone" type="button" style="margin-top:14px;">DONE</button>
+    </div>
+  </div>
+
+  <!-- ============================== PAUSE ============================== -->
+  <div class="overlay hidden" id="ovPause">
+    <div class="panel">
+      <div class="gtitle" style="font-size:24px;letter-spacing:6px;">PAUSED</div>
+      <div class="gsub" id="pauseSub">LEVEL 1 — FIRST LIGHT</div>
+      <button class="btn primary" id="btnResume" type="button">RESUME</button>
+      <button class="btn" id="btnRestart" type="button">RESTART LEVEL</button>
+      <button class="btn" id="btnPauseHow" type="button">HOW TO PLAY</button>
+      <button class="btn" id="btnPauseLevels" type="button">LEVEL SELECT</button>
+      <button class="btn" id="btnPauseMenu" type="button">MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- =========================== LEVEL COMPLETE ======================== -->
+  <div class="overlay hidden" id="ovComplete">
+    <div class="panel">
+      <div class="resultTitle win" id="compTitle">LEVEL CLEARED</div>
+      <div class="gsub" id="compSub">FIRST LIGHT</div>
+      <div class="starRow" id="compStars">☆☆☆</div>
+      <div class="newbest" id="compBest"></div>
+      <div class="bigscore" id="compScore">0</div>
+      <div class="statline"><span>Bricks destroyed</span><span id="compBricks">0</span></div>
+      <div class="statline"><span>Best combo</span><span id="compCombo">x1.0</span></div>
+      <div class="statline"><span>Balls remaining</span><span id="compLives">3</span></div>
+      <div class="statline"><span>Time</span><span id="compTime">0:00</span></div>
+      <div class="statline"><span>Clear bonus</span><span id="compBonus">0</span></div>
+      <div class="statline"><span>Par for ★★★</span><span id="compPar">0</span></div>
+      <button class="btn primary" id="btnNext" type="button" style="margin-top:14px;">NEXT LEVEL</button>
+      <button class="btn" id="btnReplay" type="button">REPLAY LEVEL</button>
+      <button class="btn" id="btnCompLevels" type="button">LEVEL SELECT</button>
+    </div>
+  </div>
+
+  <!-- ============================= GAME OVER =========================== -->
+  <div class="overlay hidden" id="ovOver">
+    <div class="panel">
+      <div class="resultTitle lose">OUT OF BALLS</div>
+      <div class="gsub" id="overSub">LEVEL 1 — FIRST LIGHT</div>
+      <div class="bigscore" id="overScore">0</div>
+      <div class="statline"><span>Bricks destroyed</span><span id="overBricks">0</span></div>
+      <div class="statline"><span>Bricks left standing</span><span id="overLeft">0</span></div>
+      <div class="statline"><span>Best combo</span><span id="overCombo">x1.0</span></div>
+      <button class="btn primary" id="btnOverRetry" type="button" style="margin-top:14px;">RETRY LEVEL</button>
+      <button class="btn" id="btnOverLevels" type="button">LEVEL SELECT</button>
+      <button class="btn" id="btnOverMenu" type="button">MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- ============================== VICTORY ============================ -->
+  <div class="overlay hidden" id="ovVictory">
+    <div class="panel">
+      <div class="resultTitle win">CAMPAIGN COMPLETE</div>
+      <div class="gsub">THE GRID IS CLEAR</div>
+      <div class="starRow"><span class="lit">★</span><span class="lit">★</span><span class="lit">★</span></div>
+      <div class="bigscore" id="vicScore">0</div>
+      <div class="statline"><span>Stars earned</span><span id="vicStars">0 / 90</span></div>
+      <div class="statline"><span>Bosses defeated</span><span id="vicBosses">0 / 3</span></div>
+      <div class="small" style="margin-top:10px;text-align:center;">
+        Go back and hunt the levels still missing stars — par scores reward long combos and clean clears.
+      </div>
+      <button class="btn primary" id="btnVicLevels" type="button" style="margin-top:14px;">LEVEL SELECT</button>
+      <button class="btn" id="btnVicMenu" type="button">MAIN MENU</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

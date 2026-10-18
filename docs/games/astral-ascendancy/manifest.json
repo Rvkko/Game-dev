@@ -1,0 +1,34 @@
+{
+  "id": "astral-ascendancy",
+  "title": "Astral Ascendancy",
+  "category": "action",
+  "tags": [
+    "3d",
+    "fighting",
+    "action-rpg",
+    "anime",
+    "flight"
+  ],
+  "stack": "three.js",
+  "entry": "games/astral-ascendancy/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Original 3D anime martial-arts action RPG: high-speed ground and aerial combat, energy beams, Ascendant State transformations, and a cinematic story in the fractured world of the Astral Lattice.",
+  "achievements": [
+    { "id": "first-lesson", "title": "Morning Discipline", "desc": "Complete the first training lesson." },
+    { "id": "first-victory", "title": "First Victory", "desc": "Win your first real battle." },
+    { "id": "combo-20", "title": "Relentless", "desc": "Land a 20-hit combo." },
+    { "id": "beam-clash-win", "title": "Riftbreaker", "desc": "Win a beam clash." },
+    { "id": "flawless-mission", "title": "Unbroken", "desc": "Complete a story mission without being defeated." },
+    { "id": "hidden-technique", "title": "Valley Secret", "desc": "Discover the hidden technique in Aurelis Valley.", "hidden": true },
+    { "id": "nyx-defeated", "title": "Heart of the Fracture", "desc": "Defeat Nyx-0." },
+    { "id": "tournament-champion", "title": "Valley Champion", "desc": "Win the Aurelis tournament." },
+    { "id": "ascendant-master", "title": "Awakened Master", "desc": "Reach full mastery of the Awakened Pulse state.", "progressive": true, "target": 100 },
+    { "id": "chapter-1-complete", "title": "Fracture at Dawn", "desc": "Complete Chapter 1." },
+    { "id": "no-transform-win", "title": "Mortal Limits", "desc": "Win a battle without transforming." },
+    { "id": "critical-survivor", "title": "Last Ember", "desc": "Win a battle with critical vitality." },
+    { "id": "sovereign-clear", "title": "Sovereign Trial", "desc": "Defeat an opponent on Sovereign difficulty.", "hidden": true },
+    { "id": "survival-10", "title": "Gauntlet Runner", "desc": "Survive 10 rounds of the Survival Gauntlet." }
+  ]
+}

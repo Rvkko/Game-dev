@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tunnel Runner 3D</title>
+<style>
+:root{
+  --bg:#05060b; --panel:#0f1220; --panel2:#171c30; --line:#2c3660;
+  --txt:#e8eefc; --dim:#8a97c0; --accent:#37f0ff; --accent2:#ff3ec8;
+  --good:#5aff8f; --bad:#ff5a6e; --gold:#ffd24a;
+  --ts:1;
+}
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
+  font-family:"Segoe UI",system-ui,sans-serif;font-size:calc(15px*var(--ts))}
+#game{position:absolute;inset:0;display:block;background:#05060b}
+button{font:inherit;color:var(--txt);background:var(--panel2);border:1px solid var(--line);
+  border-radius:8px;padding:.55em 1.2em;cursor:pointer;transition:background .12s,border-color .12s,transform .06s}
+button:hover{background:#232b4d;border-color:var(--accent)}
+button:active{transform:scale(.97)}
+button.primary{background:var(--accent);color:#03181c;border-color:var(--accent);font-weight:700}
+button.primary:hover{background:#7bf5ff}
+button:disabled{opacity:.45;cursor:default;border-color:var(--line)}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(4,5,10,.84);backdrop-filter:blur(6px);z-index:20}
+.hidden{display:none!important}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;
+  min-width:340px;max-width:min(760px,92vw);max-height:88vh;overflow-y:auto;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+h1{font-size:1.9em;letter-spacing:.04em}
+h2{font-size:1.25em;margin-bottom:.6em;color:var(--accent)}
+.sub{color:var(--dim);font-size:.85em}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.spread{justify-content:space-between}
+.col{display:flex;flex-direction:column;gap:10px}
+.menuTitle{font-size:2.5em;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.04em;text-shadow:0 0 30px rgba(55,240,255,.3)}
+.diffBtn{flex:1;min-width:100px;text-align:center}
+.diffBtn.sel{border-color:var(--accent2);background:#2c1630;color:var(--accent2);font-weight:700}
+.shopGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:12px 0}
+.shopCard{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center}
+.shopCard .t{font-weight:700}
+.shopCard .d{color:var(--dim);font-size:.78em;flex:1}
+.shopCard button{margin-top:6px;padding:.35em .8em;width:100%}
+.shopCard.owned{border-color:var(--good)}
+.shopCard.sel{border-color:var(--accent);box-shadow:0 0 12px rgba(55,240,255,.3)}
+.skinSwatch{width:46px;height:46px;border-radius:50%;margin-bottom:2px;border:2px solid var(--line)}
+.price{color:var(--gold);font-weight:700}
+.statLine{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line);font-size:.92em}
+.statLine span:last-child{font-weight:700;color:var(--accent)}
+.kbd{display:inline-block;background:#080a12;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;
+  padding:0 .45em;font-size:.85em;font-family:Consolas,monospace;color:var(--accent)}
+.ctrlGrid{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:.9em;margin-top:8px}
+.ctrlGrid .a{color:var(--dim);text-align:right}
+.achRow{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line);font-size:.85em}
+.achRow.locked{opacity:.4}
+#dmgVignette{position:absolute;inset:0;pointer-events:none;z-index:9;opacity:0;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(255,40,90,.5) 100%);transition:opacity .2s}
+#speedLines{position:absolute;inset:0;pointer-events:none;z-index:8;opacity:0;transition:opacity .15s;
+  background:repeating-conic-gradient(from 0deg,rgba(55,240,255,.05) 0deg 2deg,transparent 2deg 10deg)}
+/* ------- HUD ------- */
+#hud{position:absolute;inset:0;pointer-events:none;z-index:10}
+#hudTop{position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start}
+.hudBox{background:rgba(10,12,20,.7);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+#distLabel{font-weight:800;font-size:1.4em;color:var(--accent);text-shadow:0 0 10px rgba(55,240,255,.5)}
+#distSub{color:var(--dim);font-size:.75em}
+#coinLabel{color:var(--gold);font-weight:700}
+#comboLabel{color:var(--accent2);font-weight:700;font-size:.9em;min-height:1.2em;text-align:center}
+#speedLabel{color:var(--good);font-weight:700;text-align:center}
+#meterOuter{width:150px;height:10px;background:#0a0d13;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:4px}
+#meterBar{height:100%;width:0%;background:linear-gradient(90deg,#ff3ec8,#37f0ff);transition:width .1s}
+#center{position:absolute;top:14%;width:100%;text-align:center}
+#announcer{font-size:2.4em;font-weight:800;letter-spacing:.08em;text-shadow:0 0 18px rgba(55,240,255,.6);opacity:0;transition:opacity .25s}
+#toast{position:absolute;bottom:88px;left:50%;transform:translateX(-50%);background:rgba(10,12,20,.85);
+  border:1px solid var(--gold);color:var(--gold);padding:8px 18px;border-radius:10px;opacity:0;transition:opacity .3s;font-weight:600}
+#cooldowns{position:absolute;bottom:14px;left:14px;display:flex;gap:8px}
+.cdSlot{background:rgba(10,12,20,.72);border:1px solid var(--line);border-radius:10px;padding:6px 10px;min-width:80px;text-align:center}
+.cdSlot .cn{font-size:.72em;color:var(--dim)}
+.cdSlot .ck{font-size:.7em;color:var(--accent)}
+.cdSlot.ready{border-color:var(--good)}
+#lockHint{position:absolute;bottom:44px;width:100%;text-align:center;color:var(--dim);font-size:.85em;z-index:11;pointer-events:none;display:none}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="dmgVignette"></div>
+<div id="speedLines"></div>
+<div id="lockHint">Click to capture the mouse (look around)</div>
+
+<div id="hud" class="hidden">
+  <div id="hudTop">
+    <div class="hudBox">
+      <div id="distLabel">0m</div>
+      <div id="distSub">best: 0m</div>
+    </div>
+    <div class="hudBox" style="text-align:center">
+      <div id="speedLabel">SPEED x1.0</div>
+      <div id="meterOuter"><div id="meterBar"></div></div>
+      <div class="sub" style="font-size:.7em">overdrive</div>
+    </div>
+    <div class="hudBox" style="text-align:right"><div id="coinLabel">◆ 0</div><div class="sub" id="shieldLabel"></div></div>
+  </div>
+  <div id="center">
+    <div id="comboLabel"></div>
+    <div id="announcer"></div>
+  </div>
+  <div id="cooldowns">
+    <div class="cdSlot ready" id="cdFire"><div class="cn">BLASTER</div><div class="ck">LMB</div></div>
+    <div class="cdSlot ready" id="cdShock"><div class="cn">SHOCKWAVE</div><div class="ck">RMB</div></div>
+    <div class="cdSlot ready" id="cdOver"><div class="cn">OVERDRIVE</div><div class="ck">E</div></div>
+  </div>
+  <div id="toast"></div>
+</div>
+
+<!-- MAIN MENU -->
+<div id="menu" class="overlay">
+  <div class="panel col" style="text-align:center;min-width:440px">
+    <div class="menuTitle">TUNNEL RUNNER</div>
+    <div class="sub">Endless neon tunnel. Dodge. Jump. Slide. Don't look down.</div>
+    <div class="row" style="margin-top:14px">
+      <button class="diffBtn sel" data-diff="easy">EASY</button>
+      <button class="diffBtn" data-diff="normal">NORMAL</button>
+      <button class="diffBtn" data-diff="hard">HARD</button>
+    </div>
+    <button id="btnPlay" class="primary" style="font-size:1.15em;margin-top:6px">START RUN</button>
+    <button id="btnDaily">DAILY SEED CHALLENGE <span class="sub" id="dailyTag"></span></button>
+    <div class="row" style="justify-content:center">
+      <button id="btnGarage">◆ SHIP GARAGE</button>
+      <button id="btnAch">ACHIEVEMENTS</button>
+      <button id="btnHow">HOW TO PLAY</button>
+    </div>
+    <div class="sub" id="menuStats"></div>
+  </div>
+</div>
+
+<!-- GARAGE -->
+<div id="garage" class="overlay hidden">
+  <div class="panel">
+    <div class="row spread"><h2>SHIP GARAGE</h2><div>Coins: <span class="price" id="garageCoins">0</span></div></div>
+    <div class="sub" style="margin-bottom:6px">Unlock skins with coins earned running the tunnel. Equip one before you launch.</div>
+    <div class="shopGrid" id="garageGrid"></div>
+    <div class="row spread"><span></span><button id="garageBack">BACK</button></div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achMenu" class="overlay hidden">
+  <div class="panel">
+    <h2>ACHIEVEMENTS</h2>
+    <div id="achBody"></div>
+    <div class="row spread" style="margin-top:10px"><span></span><button id="achBack">BACK</button></div>
+  </div>
+</div>
+
+<!-- HOW TO PLAY -->
+<div id="howMenu" class="overlay hidden">
+  <div class="panel">
+    <h2>HOW TO PLAY</h2>
+    <p class="sub">Race down a procedural neon tunnel. Distance is your score. Obstacles need the right move — dodge sideways, jump low barriers, slide under overhead bars, or blast destructible crates. Collect coins for the garage, and energy orbs to fuel Overdrive. Speed ramps the further you go.</p>
+    <div class="ctrlGrid">
+      <span class="a">Steer</span><span><span class="kbd">A</span><span class="kbd">D</span> strafe left / right</span>
+      <span class="a">Forward thrust</span><span><span class="kbd">W</span> — small speed nudge</span>
+      <span class="a">Slide</span><span><span class="kbd">S</span> (hold) — duck under bars</span>
+      <span class="a">Jump</span><span class="a2"><span class="kbd">Space</span> — hop over barriers</span>
+      <span class="a">Sprint</span><span><span class="kbd">Shift</span> (hold) — big speed + score boost, riskier</span>
+      <span class="a">Look around</span><span>Mouse (non-inverted — mouse up looks up). Click to capture mouse.</span>
+      <span class="a">Blaster</span><span class="a2"><span class="kbd">Left Click</span> — destroy crates ahead</span>
+      <span class="a">Shockwave</span><span class="a2"><span class="kbd">Right Click</span> — clear obstacles + brief slow-mo</span>
+      <span class="a">Overdrive</span><span class="a2"><span class="kbd">E</span> — spend energy meter: brief invulnerability + boost</span>
+      <span class="a">Camera</span><span><span class="kbd">V</span> — 3rd / 1st person chase cam</span>
+      <span class="a">Pause</span><span class="a2"><span class="kbd">Esc</span></span>
+      <span class="a">Gamepad</span><span>LS strafe · RS look (non-inverted) · A jump · X slide · RT blaster · LT shockwave · Y overdrive · Start pause</span>
+    </div>
+    <div class="row spread" style="margin-top:14px"><span></span><button id="howBack">BACK</button></div>
+  </div>
+</div>
+
+<!-- PAUSE -->
+<div id="pause" class="overlay hidden">
+  <div class="panel col" style="text-align:center">
+    <h2>PAUSED</h2>
+    <button id="btnResume" class="primary">RESUME</button>
+    <div class="row" style="justify-content:center">
+      <button id="btnMusic">MUSIC: ON</button>
+      <button id="btnSfx">SFX: ON</button>
+      <button id="btnCam">CAMERA: 3RD</button>
+    </div>
+    <button id="btnRestart">RESTART RUN</button>
+    <button id="btnQuit">SAVE &amp; QUIT TO MENU</button>
+    <div class="sub" id="pauseStats"></div>
+  </div>
+</div>
+
+<!-- GAME OVER -->
+<div id="endScreen" class="overlay hidden">
+  <div class="panel col" style="text-align:center;min-width:420px">
+    <h1 id="endTitle">CRASHED</h1>
+    <div id="endBody"></div>
+    <button id="btnEndMenu" class="primary">BACK TO MENU</button>
+    <button id="btnEndRetry">RUN IT BACK</button>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script type="module">
+  (async () => {
+    const THREE = await import('../../vendor/three.module.js');
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script'); s.src = '../../vendor/three-r128/GLTFLoader.js';
+      s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+    });
+    await import('./game.js');
+  })().catch((error) => console.error('Tunnel Runner bootstrap failed:', error));
+</script>
+<noscript>This game requires JavaScript.</noscript>
+</body>
+</html>

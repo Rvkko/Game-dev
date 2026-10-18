@@ -1,0 +1,65 @@
+{
+  "id": "kingdom-chess",
+  "title": "Kingdom Chess",
+  "category": "strategy",
+  "tags": [
+    "chess",
+    "tactics",
+    "campaign",
+    "board",
+    "ai"
+  ],
+  "stack": "HTML + CSS + JavaScript",
+  "entry": "games/kingdom-chess/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Battle through a six-chapter chess tactics campaign with full legal move validation, castling, promotion, en passant and adaptive AI.",
+  "achievements": [
+    {
+      "id": "first-mate",
+      "title": "First Checkmate",
+      "desc": "Win a chapter",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "castle",
+      "title": "Secure the Crown",
+      "desc": "Castle successfully",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "promotion",
+      "title": "From Peasant to Power",
+      "desc": "Promote a pawn",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "clean-tactics",
+      "title": "Perfect Calculation",
+      "desc": "Win without using undo",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "campaign-victory",
+      "title": "High King",
+      "desc": "Complete all chapters",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

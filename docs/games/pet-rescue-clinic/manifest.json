@@ -1,0 +1,45 @@
+{
+  "id": "pet-rescue-clinic",
+  "title": "Pet Rescue Clinic",
+  "category": "simulation",
+  "tags": [
+    "animals",
+    "veterinary",
+    "diagnosis",
+    "care",
+    "campaign"
+  ],
+  "stack": "dom",
+  "entry": "games/pet-rescue-clinic/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Lead a ten-day rescue clinic campaign. Read symptoms, order useful tests, diagnose illnesses, perform treatment sequences, protect patient health, and upgrade the practice.",
+  "achievements": [
+    {
+      "id": "first-rescue",
+      "title": "Safe Paws",
+      "desc": "Treat your first patient."
+    },
+    {
+      "id": "perfect-diagnosis",
+      "title": "Sharp Eye",
+      "desc": "Diagnose a patient without ordering a test."
+    },
+    {
+      "id": "five-star-day",
+      "title": "Golden Stethoscope",
+      "desc": "Treat every patient correctly in one day."
+    },
+    {
+      "id": "clinic-upgraded",
+      "title": "Modern Medicine",
+      "desc": "Purchase every clinic upgrade."
+    },
+    {
+      "id": "rescue-hero",
+      "title": "Rescue Hero",
+      "desc": "Complete the ten-day campaign."
+    }
+  ]
+}

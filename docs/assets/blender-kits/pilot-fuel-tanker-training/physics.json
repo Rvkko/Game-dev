@@ -1,0 +1,13 @@
+{
+  "gameId": "pilot-fuel-tanker-training",
+  "archetype": "aviation-training",
+  "physicsShape": "box",
+  "physicsProfile": "bounded-simulation+collisions",
+  "ragdollProfile": "none-or-agents",
+  "playerCollider": {
+    "radius": 1.899999976158142,
+    "height": 0.5600000023841858,
+    "shape": "box"
+  },
+  "colliders": []
+}

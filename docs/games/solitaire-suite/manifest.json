@@ -1,0 +1,112 @@
+{
+  "id": "solitaire-suite",
+  "title": "Solitaire Suite",
+  "category": "cards",
+  "tags": [
+    "solitaire",
+    "klondike",
+    "spider",
+    "freecell",
+    "patience",
+    "cards",
+    "offline"
+  ],
+  "stack": "HTML + CSS + JavaScript",
+  "entry": "games/solitaire-suite/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Three classic patience games in one deck: Klondike (draw 1 or 3), Spider (1, 2 or 4 suits) and FreeCell. Seeded deals you can replay or share, unlimited undo, smart hints, one-press auto-finish, per-variant records and a twelve-stage Gauntlet of timed and undo-limited challenges.",
+  "achievements": [
+    {
+      "id": "klondike_win",
+      "title": "Klondike Solved",
+      "desc": "Win your first game of Klondike.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "freecell_win",
+      "title": "Cells Cleared",
+      "desc": "Win a game of FreeCell.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "spider_win",
+      "title": "Web Weaver",
+      "desc": "Win a game of Spider.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "deal_veteran",
+      "title": "Card Sharp",
+      "desc": "Play 25 deals across the suite.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "speed_demon",
+      "title": "Speed Demon",
+      "desc": "Win any deal in under four minutes.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "streak_three",
+      "title": "On a Heater",
+      "desc": "Win three deals in a row in the same game.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 3
+    },
+    {
+      "id": "iron_will",
+      "title": "Iron Will",
+      "desc": "Win a deal without using a single undo.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "suite_master",
+      "title": "Suite Master",
+      "desc": "Win all three variants: Klondike, Spider and FreeCell.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "spider_four",
+      "title": "Tarantula",
+      "desc": "Win a game of four-suit Spider.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "gauntlet_champ",
+      "title": "Gauntlet Champion",
+      "desc": "Clear all twelve Gauntlet stages.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 12
+    }
+  ]
+}

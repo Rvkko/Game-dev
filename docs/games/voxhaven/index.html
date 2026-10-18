@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: wss:; media-src 'self' data: blob:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'" />
+<title>Voxhaven — A Survival Sandbox</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- 3D canvas gets injected here by the renderer -->
+<div id="game" role="application" aria-label="Voxhaven 3D survival world"></div>
+
+<!-- Crosshair + targeted-block highlight live in 3D, crosshair is DOM -->
+<div id="crosshair" class="hidden">+</div>
+
+<!-- Damage / low-health red flash -->
+<div id="damageFlash"></div>
+<!-- Cold / freezing frost vignette (opacity driven by warmth) -->
+<div id="frostFlash"></div>
+<!-- Sleep / fade overlay -->
+<div id="fade"></div>
+
+<!-- ===================== HUD ===================== -->
+<div id="hud" class="hidden" aria-label="Voxhaven survival HUD">
+  <div id="topBar">
+    <div id="worldLabel">WORLD: Voxhaven</div>
+    <div id="coordLabel"></div>
+    <div id="biomeLabel">BIOMES: plains</div>
+  </div>
+  <div id="statBars" role="group" aria-label="Survival status">
+    <div id="breathRow" class="iconRow hidden" title="Air" role="meter" aria-label="Air"></div>
+    <div id="oxygenRow" class="iconRow hidden" title="Oxygen" role="meter" aria-label="Oxygen"></div>
+    <div id="warmthRow" class="iconRow hidden" title="Warmth" role="meter" aria-label="Warmth"></div>
+    <div id="heartRow" class="iconRow" title="Health" role="meter" aria-label="Health"></div>
+    <div id="staminaRow" class="iconRow hidden" title="Stamina" role="meter" aria-label="Stamina"></div>
+    <div id="hungerRow" class="iconRow" title="Food" role="meter" aria-label="Food"></div>
+  </div>
+  <div id="statusFx" class="hidden" aria-live="assertive"></div>
+  <div id="miningFeedback" class="miningFeedback hidden"><span></span><i></i></div>
+  <div id="objectivePanel" class="objectivePanel hidden" aria-live="polite">
+    <div class="objectiveKicker">Expedition Route</div>
+    <div id="objectiveText">Gather timber</div>
+    <div id="objectiveProgress" class="objectiveProgress hidden"><i></i></div>
+    <div id="objectiveCount" class="objectiveCount"></div>
+    <div id="objectiveHint">Break trees, then craft planks.</div>
+    <div class="objectiveTrail"><span>Next</span><b id="objectiveNext">Craft a workbench</b></div>
+    <div class="objectiveTrail long"><span>Horizon</span><b id="objectiveLong">Reach Aethon</b></div>
+  </div>
+  <div id="itemName"></div>
+  <div id="interactPrompt"></div>
+  <div id="hotbar"></div>
+  <div id="actionMenu">
+    <button id="btnActInv" class="actBtn"><span>Inventory</span><kbd id="kbInv">E</kbd></button>
+    <button id="btnActMap" class="actBtn"><span>Map</span><kbd id="kbMap">M</kbd></button>
+    <button id="btnStarMap" class="actBtn star"><span>Star Map</span><kbd id="kbStar">N</kbd></button>
+  </div>
+</div>
+
+<!-- ===================== STAR MAP ===================== -->
+<div id="starMapScreen" class="overlay hidden">
+  <div class="panel starPanel">
+    <div class="panelHead"><span>Star Map</span><span class="hint">[Esc] to close</span></div>
+    <div class="starBody">
+      <div class="starField">
+        <div class="planetAethon"><span class="ring"></span><span class="orb"></span></div>
+        <div class="planetName">AETHON</div>
+      </div>
+      <div class="starInfo">
+        <div class="rowLabel">Destination</div>
+        <p class="starHint">Build a fueled rocket on a <b>Launchpad</b>, equip a <b>Spacesuit Helmet</b>, then interact with the pad to <b>Launch to Aethon</b>.</p>
+        <div class="starStat">Dimension: <b id="starDim">Overworld</b></div>
+        <div class="starStat">Oxygen: <b id="starOxy">10 / 10</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHAT (bottom right) ===================== -->
+<div id="chat" class="chat hidden">
+  <div id="chatMessages"></div>
+  <input id="chatInput" type="text" placeholder="/gm creative or message" />
+</div>
+
+<!-- ===================== DEBUG OVERLAY ===================== -->
+<div id="debug" class="hidden"></div>
+
+<!-- ===================== INVENTORY / CRAFTING ===================== -->
+<div id="inventoryScreen" class="overlay hidden">
+  <div class="invEA">Expedition Loadout<br><span>Field Kit</span></div>
+  <div class="invWrap">
+    <div class="panel invMain"><i class="pc tl"></i><i class="pc tr"></i><i class="pc bl"></i><i class="pc br"></i>
+      <div class="invTabs">
+        <button id="tabEquip" class="invTab">Equipment</button>
+        <button id="tabCraft" class="invTab sel">Crafting</button>
+        <button id="tabSmith" class="invTab">Smithing</button>
+      </div>
+      <div class="invSub"><span id="invLeftTitle">Crafting Recipes</span><button id="invHelp" class="qbtn" title="Item guide">?</button></div>
+      <div id="armorSlots" class="grid armorRow hidden" style="grid-template-columns:repeat(4,48px)"></div>
+      <input id="guideSearch" class="hidden" type="text" placeholder="Search items..." />
+      <div id="recipeList"></div>
+      <div id="blocksList" class="grid blocksGrid hidden"></div>
+      <div id="guideList" class="hidden"></div>
+      <button id="invBack" class="backBtn">Back</button>
+    </div>
+    <div class="panel invSide"><i class="pc tl"></i><i class="pc tr"></i><i class="pc bl"></i><i class="pc br"></i>
+      <div class="invSub"><span id="invTitle">Backpack</span><span id="craftStation" class="hint"></span></div>
+      <div id="invHotbar" class="grid hotgrid"></div>
+      <div id="invGrid" class="grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAP ===================== -->
+<div id="mapScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Map</span><span id="mapCloseHint" class="hint">[M] / [Esc] to close</span></div>
+    <canvas id="mapCanvas" width="420" height="420"></canvas>
+    <div id="mapLegend" class="hint"></div>
+  </div>
+</div>
+
+<!-- ===================== CHEST STORAGE ===================== -->
+<div id="chestScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Storage</span><span class="hint">[Esc] to close</span></div>
+    <div class="chestBody">
+      <div><div class="rowLabel">Chest</div><div id="chestGrid" class="grid"></div></div>
+      <div><div class="rowLabel">Inventory</div><div id="chestInvGrid" class="grid"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FURNACE ===================== -->
+<div id="furnaceScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Kiln</span><span class="hint">[Esc] to close</span></div>
+    <div class="furnaceBody">
+      <div class="fcol">
+        <div class="rowLabel">Input</div><div id="furInput" class="grid"></div>
+        <div class="rowLabel">Fuel</div><div id="furFuel" class="grid"></div>
+      </div>
+      <div class="fmid"><div id="furFlame">🔥</div><div id="furArrow">▶</div></div>
+      <div class="fcol"><div class="rowLabel">Output</div><div id="furOutput" class="grid"></div></div>
+      <div class="fcol"><div class="rowLabel">Inventory</div><div id="furInvGrid" class="grid"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TRADE ===================== -->
+<div id="tradeScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Settler — Trade</span><span class="hint">[Esc] to close</span></div>
+    <div id="tradeList"></div>
+  </div>
+</div>
+
+<!-- ===================== PAUSE ===================== -->
+<div id="pauseScreen" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Paused">
+  <div class="menu">
+    <h1>Paused</h1>
+    <div class="quickRow">
+      <span>Mode: <b id="pauseModeLabel">Survival</b></span>
+    </div>
+    <div class="quickRow">
+      <span>View: <b id="pauseViewLabel">First-person</b></span><button id="btnToggleView" class="ghost small">Toggle</button>
+    </div>
+    <div class="quickRow hidden" id="timeRow">
+      <span>Time</span>
+      <div class="timeBtns">
+        <button class="ghost small" data-t="0.27">Dawn</button>
+        <button class="ghost small" data-t="0.5">Noon</button>
+        <button class="ghost small" data-t="0.73">Dusk</button>
+        <button class="ghost small" data-t="0.0">Midnight</button>
+      </div>
+    </div>
+    <button id="btnResume">Resume</button>
+    <button id="btnSave">Save World</button>
+    <button id="btnPauseSettings">Settings</button>
+    <button id="btnQuit">Quit to Menu</button>
+  </div>
+</div>
+
+<!-- ===================== DEATH ===================== -->
+<div id="deathScreen" class="overlay hidden" role="dialog" aria-modal="true" aria-label="You perished">
+  <div class="menu">
+    <h1 class="death">You Perished</h1>
+    <p id="deathMsg"></p>
+    <button id="btnRespawn">Respawn</button>
+  </div>
+</div>
+<pre id="runtimeError" class="runtimeError hidden" aria-live="assertive"></pre>
+
+<!-- ===================== START MENU ===================== -->
+<div id="startScreen" class="overlay">
+  <canvas id="menuBackdrop" aria-hidden="true"></canvas>
+  <div class="menu">
+    <h1 class="logo">VOXHAVEN</h1>
+    <p class="tag">Pioneers of the Void</p>
+    <p id="controlsCredit" class="credit">Controls — mouse look · <b>LMB</b> mine · <b>RMB</b> place/use · <b>Esc</b> pause · rebind controls in Options</p>
+    <div id="mainMenuButtons">
+      <button id="btnNew">New World</button>
+      <button id="btnWorlds">Load World</button>
+      <button id="btnSettings" class="ghost">Options</button>
+    </div>
+    <div id="newWorldPanel" class="hidden">
+      <h2 class="newWorldTitle">New World</h2>
+      <div class="seedRow">
+        <label>Name</label><input id="worldNameInput" type="text" placeholder="My World" />
+      </div>
+      <div class="seedRow">
+        <label>Seed</label><input id="seedInput" type="text" placeholder="random" />
+      </div>
+      <div class="modeRow" id="modeSelect">
+        <button class="modeBtn sel" data-mode="survival">Survival</button>
+        <button class="modeBtn" data-mode="creative">Creative</button>
+        <button class="modeBtn" data-mode="spectator">Spectator</button>
+      </div>
+      <label class="noItemsRow"><input id="noStartItems" type="checkbox" /> Start with no items</label>
+      <button id="btnStartNew">Start</button>
+      <button id="btnBackNew" class="ghost">Back</button>
+    </div>
+    <div id="settings" class="settings hidden">
+      <label>Render distance <span id="rdVal">6</span><input id="rdSlider" type="range" min="2" max="8" value="6"></label>
+      <label>Mouse sensitivity <span id="msVal">1.0</span><input id="msSlider" type="range" min="0.2" max="2.5" step="0.1" value="1.0"></label>
+      <label>Volume <span id="volVal">60</span><input id="volSlider" type="range" min="0" max="100" value="60"></label>
+      <label>Graphics
+        <select id="gfxSel"><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option></select>
+      </label>
+      <label>World effects
+        <select id="fxSel"><option value="off">Off</option><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option></select>
+      </label>
+      <label class="noItemsRow"><input id="autoJumpChk" type="checkbox" checked /> Auto-jump</label>
+      <label class="noItemsRow"><input id="adaptiveChk" type="checkbox" checked /> Adaptive performance</label>
+      <label class="noItemsRow"><input id="invertYChk" type="checkbox" /> Invert vertical look</label>
+      <label class="noItemsRow"><input id="reducedMotionChk" type="checkbox" /> Reduced motion</label>
+      <label class="noItemsRow"><input id="highContrastChk" type="checkbox" /> High contrast</label>
+      <label>UI text size
+        <select id="textScaleSel"><option value="normal">Normal</option><option value="large">Large</option></select>
+      </label>
+      <label>Colorblind palette
+        <select id="colorblindSel"><option value="none">Standard</option><option value="deuteranopia">Deuteranopia</option><option value="protanopia">Protanopia</option><option value="tritanopia">Tritanopia</option></select>
+      </label>
+      <div class="rowLabel">Controls</div>
+      <div id="keybindList"></div>
+      <button id="btnResetKeys" class="ghost small">Reset Controls</button>
+      <button id="btnSettingsBack" class="ghost">Back</button>
+    </div>
+    <p class="credit">original procedural world · not affiliated with any other game</p>
+  </div>
+</div>
+
+<!-- ===================== WORLD SELECT ===================== -->
+<div id="worldListScreen" class="overlay hidden">
+  <div class="menu worldListMenu">
+    <h1 class="logo small">Your Worlds</h1>
+    <div id="worldList"></div>
+    <p id="worldListEmpty" class="hint hidden">No worlds yet — go back and create one.</p>
+    <button id="btnWorldsBack" class="ghost">Back</button>
+  </div>
+</div>
+
+<!-- ===================== LOADING ===================== -->
+<div id="loadScreen" class="overlay hidden">
+  <div class="menu">
+    <h1 class="logo">VOXHAVEN</h1>
+    <div class="loadbar"><div id="loadfill"></div></div>
+    <p id="loadtext">Carving the world…</p>
+    <p id="loadhint">Preparing spawn.</p>
+    <div id="loadStages"></div>
+  </div>
+</div>
+
+<!-- floating tooltip -->
+<div id="tooltip" class="hidden"></div>
+<!-- drag ghost -->
+<div id="dragGhost" class="hidden"></div>
+
+<!-- Three.js r128 (global build, vendored locally — fully offline) then game scripts. Order matters. -->
+<script src="../../vendor/three-r128/three.min.js"></script>
+<script src="../../vendor/three-r128/GLTFLoader.js"></script>
+<!-- optional postprocessing (bloom) — same pinned three version; game degrades gracefully if these fail to load -->
+<script src="../../vendor/three-r128/shaders/CopyShader.js"></script>
+<script src="../../vendor/three-r128/shaders/LuminosityHighPassShader.js"></script>
+<script src="../../vendor/three-r128/postprocessing/EffectComposer.js"></script>
+<script src="../../vendor/three-r128/postprocessing/RenderPass.js"></script>
+<script src="../../vendor/three-r128/postprocessing/ShaderPass.js"></script>
+<script src="../../vendor/three-r128/postprocessing/UnrealBloomPass.js"></script>
+<script>
+  // dev cache-bust: local game scripts change constantly during development
+  // and python's http.server + browser disk-cache heuristics were serving
+  // stale engine.js/game.js/main.js even on a hard navigation — force a
+  // fresh fetch every load by versioning the URL with the current time.
+  const __v=Date.now();
+  document.write('<script src="js/engine.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/game.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/space.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/villages.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/rocket.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/lan.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/main.js?v='+__v+'"><\/script>');
+</script>
+<!-- Empire SDK bridge: module scripts run after the classic game scripts parse
+     but before DOMContentLoaded, so window.Empire exists by the time boot() runs. -->
+<script type="module">
+import { EmpireClient } from '../../shared/empire-sdk.js';
+const client = new EmpireClient({
+  gameId: 'voxhaven',
+  saveVersion: 1,
+  onInit: data => { if (data && window.__voxhavenApplyEmpireSettings) window.__voxhavenApplyEmpireSettings(data.settings); },
+  onSettings: settings => { if (window.__voxhavenApplyEmpireSettings) window.__voxhavenApplyEmpireSettings(settings); },
+  onLoadSlot: (slot, record) => { if (window.__voxhavenLoadEmpireSlot) window.__voxhavenLoadEmpireSlot(slot, record); },
+  onPause: () => { if (window.__voxhavenPause) window.__voxhavenPause(); },
+  onResume: () => { if (window.__voxhavenResume) window.__voxhavenResume(); }
+});
+client.connect();
+window.Empire = client;
+</script>
+</body>
+</html>

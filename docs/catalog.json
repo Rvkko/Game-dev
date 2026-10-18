@@ -1,0 +1,938 @@
+[
+  {
+    "id": "solitaire-suite",
+    "title": "Solitaire Suite",
+    "category": "cards",
+    "entry": "games/solitaire-suite/index.html",
+    "description": "Three classic patience games in one deck: Klondike (draw 1 or 3), Spider (1, 2 or 4 suits) and FreeCell. Seeded deals you can replay or share, unlimited undo, smart hints, one-press auto-finish, per-variant records and a twelve-stage Gauntlet of timed and undo-limited challenges.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "asteroid-drift",
+    "title": "Asteroid Drift",
+    "category": "arcade",
+    "entry": "games/asteroid-drift/index.html",
+    "description": "Pilot a drift fighter through escalating asteroid waves, salvage upgrades, and defeat the final boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "dungeon-rpg",
+    "title": "Depths of the Warden",
+    "category": "flagship",
+    "entry": "games/dungeon-rpg/index.html",
+    "description": "Descend 10 procedurally generated 3D dungeon floors in third person. Real-time melee and ranged combat with cannon-es physics ragdolls, loot, level-ups, two bosses, roguelite soul upgrades, and a daily seeded challenge.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "civ-god-sim",
+    "title": "Civilization God Simulator",
+    "category": "flagship",
+    "entry": "games/civ-god-sim/index.html",
+    "description": "A true-3D autonomous civilization sim rendered with a low-poly WebGL world and an orbit/RTS god-cam. A tribe wakes in the wild and lives on its own \u2014 gathering, building, raising families, aging, discovering tech, and enduring disasters, with 3D ragdoll physics on death. You are their god: bless, curse, feed, and unleash the storm. Full history log and timeline.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "deep-ocean-survival",
+    "title": "Deep Ocean Survival",
+    "category": "flagship",
+    "entry": "games/deep-ocean-survival/index.html",
+    "description": "Survive the crushing deep. Manage oxygen and pressure, harvest a seeded procedural seabed, upgrade your suit and habitat, and repair the Ascension Pod 1,600 meters down to escape.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ecosystem-sandbox",
+    "title": "Gaia: Ecosystem Sandbox",
+    "category": "flagship",
+    "entry": "games/ecosystem-sandbox/index.html",
+    "description": "Seed a living world with plants, prey and predators. Every creature carries a heritable genome (speed, size, sense, metabolism) that mutates each generation, so predation pressure really does breed faster herds. Paint life onto the field and watch a real food web self-balance through shifting climate seasons across five scenarios, including a daily seeded challenge.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "gravity-lander",
+    "title": "Gravity Lander",
+    "category": "arcade",
+    "entry": "games/gravity-lander/index.html",
+    "description": "3D precision lunar lander: manage thrust, rotation, fuel and wind to soft-land on 20 handcrafted and seeded pads for medals, plus a daily seeded challenge.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "hex-tactics",
+    "title": "Hex Tactics",
+    "category": "arcade",
+    "entry": "games/hex-tactics/index.html",
+    "description": "Command a squad on a procedurally generated 3D hex battlefield. Use height, cover and abilities to wipe out AI squads across an escalating wave campaign, level your soldiers, and beat the daily seeded skirmish.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "physics-destruction",
+    "title": "Physics Destruction Arena",
+    "category": "flagship",
+    "entry": "games/physics-destruction/index.html",
+    "description": "True-3D physics destruction arena: shatter destructible structures, ragdoll enemies with real 3D physics, upgrade between waves, topple the boss. Roguelite meta-upgrades, difficulty presets and a daily seeded challenge.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ragdoll-toss",
+    "title": "Ragdoll Toss",
+    "category": "arcade",
+    "entry": "games/ragdoll-toss/index.html",
+    "description": "Charge the cannon, pick your angle and fling a crash dummy down a 1,000-metre course. Steer in flight, chain bounce pads, spend collected coins on permanent cannon upgrades, and clear the Moon Gate.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "spaceflight-explorer",
+    "title": "Spaceflight & Planet Exploration",
+    "category": "flagship",
+    "entry": "games/spaceflight-explorer/index.html",
+    "description": "Newtonian 3D spaceflight: mine asteroids, upgrade your ship, and jump through a procedurally generated, seed-based galaxy before your fuel runs out.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "sudoku-master",
+    "title": "Sudoku Master",
+    "category": "puzzle",
+    "entry": "games/sudoku-master/index.html",
+    "description": "A full sudoku table with a uniqueness-guaranteed generator, four rated difficulties, a technique-aware hint engine that names the logic it used, pencil notes with auto-candidates, undo/redo, strict-mode error limits, a seeded daily puzzle and career streaks.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "tunnel-runner",
+    "title": "Neon Tunnel Runner",
+    "category": "arcade",
+    "entry": "games/tunnel-runner/index.html",
+    "description": "Race a neon tunnel, dodge barriers, destroy crates, unlock skins, and chase daily seeded runs.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "soccer-penalty-pro",
+    "title": "Penalty Pro",
+    "category": "sports",
+    "entry": "games/soccer-penalty-pro/index.html",
+    "description": "A tense five-round soccer shootout with precision aiming, goalkeeper reads, diving saves, sudden death and persistent career stats.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "street-hoops",
+    "title": "Street Hoops",
+    "category": "sports",
+    "entry": "games/street-hoops/index.html",
+    "description": "A neon street-basketball shooting run with mouse or keyboard shot control, green releases, swish combos, moving hot zones and persistent highscores.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "gridiron-drive",
+    "title": "Gridiron Drive",
+    "category": "sports",
+    "entry": "games/gridiron-drive/index.html",
+    "description": "Call runs and passes, evade reactive defenders, manage four downs and score two touchdowns in a fast top-down football drive.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "tennis-rally",
+    "title": "Tennis Rally",
+    "category": "sports",
+    "entry": "games/tennis-rally/index.html",
+    "description": "A responsive center-court tennis match with directional shots, timing-based returns, bounce rules, full deuce scoring and a first-to-three-games format.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "neon-breach-fps",
+    "title": "Neon Breach",
+    "category": "action",
+    "entry": "games/neon-breach-fps/index.html",
+    "description": "A five-sector first-person cyberpunk infiltration with tactical combat, pickups, and a final boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "emberfall-story",
+    "title": "Emberfall",
+    "category": "adventure",
+    "entry": "games/emberfall-story/index.html",
+    "description": "A branching fantasy journey across four hand-built regions, with exploration, moral choices, multiple endings, and persistent saves.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "turbo-apex-racer",
+    "title": "Turbo Apex",
+    "category": "racing",
+    "entry": "games/turbo-apex-racer/index.html",
+    "description": "A neon arcade racer with three unlockable circuits, rival AI, drafting, nitro, lap records, and championship progression.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "skybound-platformer",
+    "title": "Skybound",
+    "category": "platformer",
+    "entry": "games/skybound-platformer/index.html",
+    "description": "A four-island platform adventure with responsive movement, air-dashing, enemies, secrets, collectibles, checkpoints, and a storm escape finale.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "home-run-derby",
+    "title": "Home Run Derby",
+    "category": "sports",
+    "entry": "games/home-run-derby/index.html",
+    "description": "A pitch-reading baseball derby with timing, zone aiming, spray direction, flight distance, ten-out rounds and persistent career records.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ice-hockey-showdown",
+    "title": "Ice Hockey Showdown",
+    "category": "sports",
+    "entry": "games/ice-hockey-showdown/index.html",
+    "description": "A best-of-five ice hockey shootout with charge timing, targeted wrist shots, reactive goaltending and sudden death.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "championship-bowling",
+    "title": "Championship Bowling",
+    "category": "sports",
+    "entry": "games/championship-bowling/index.html",
+    "description": "Ten-frame bowling with true strike/spare scoring, aim, hook control, power timing, animated pin action and persistent career records.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "skatepark-legends",
+    "title": "Skatepark Legends",
+    "category": "sports",
+    "entry": "games/skatepark-legends/index.html",
+    "description": "A flowing skatepark run with ramps, rails, grabs, flips, spins, grinds, landing physics and escalating trick combos.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "shadow-protocol",
+    "title": "Shadow Protocol",
+    "category": "stealth",
+    "entry": "games/shadow-protocol/index.html",
+    "description": "A three-mission tactical stealth campaign with guard vision, alarms, hacking, optional intel, decoys, takedowns, and multiple mission grades.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "dead-signal",
+    "title": "Dead Signal",
+    "category": "horror",
+    "entry": "games/dead-signal/index.html",
+    "description": "A three-chapter survival-horror mystery with flashlight stealth, inventory puzzles, audio tapes, pursuit, and branching endings.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ironfront-arena",
+    "title": "Ironfront Arena",
+    "category": "action",
+    "entry": "games/ironfront-arena/index.html",
+    "description": "A responsive twin-stick arena shooter with ten machine waves, five upgrade drafts, multiple enemy roles, pickups, dashing, and a multi-attack final boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "frontier-odyssey",
+    "title": "Frontier Odyssey",
+    "category": "adventure",
+    "entry": "games/frontier-odyssey/index.html",
+    "description": "A three-act western adventure with explorable frontier towns, character quests, honor choices, quick-draw duels, and multiple endings.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "world-cup-soccer",
+    "title": "World Cup Soccer",
+    "category": "sports",
+    "entry": "games/world-cup-soccer/index.html",
+    "description": "A complete top-down team soccer tournament with passing lanes, shooting, player switching, defensive pressure, goalkeepers and four-stage cup progression.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "mini-golf-tour",
+    "title": "Mini Golf Tour",
+    "category": "sports",
+    "entry": "games/mini-golf-tour/index.html",
+    "description": "A complete nine-hole mini-golf tour with aim and power control, bank shots, walls, sand, water hazards, pars and persistent records.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "beach-volleyball",
+    "title": "Beach Volleyball",
+    "category": "sports",
+    "entry": "games/beach-volleyball/index.html",
+    "description": "A two-on-two beach volleyball match with teammate switching, three-touch rallies, bumps, spikes, jumping AI and best-of-three set scoring.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ping-pong-champion",
+    "title": "Ping Pong Champion",
+    "category": "sports",
+    "entry": "games/ping-pong-champion/index.html",
+    "description": "A four-round table tennis tour with rallies, paddle positioning, timed smashes, topspin, backspin and increasingly capable opponents.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "orbital-command",
+    "title": "Orbital Command",
+    "category": "strategy",
+    "entry": "games/orbital-command/index.html",
+    "description": "Command a carrier group through a five-mission real-time space campaign with fleet orders, relay capture, repairs and escalating enemy tactics.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "kingdom-chess",
+    "title": "Kingdom Chess",
+    "category": "strategy",
+    "entry": "games/kingdom-chess/index.html",
+    "description": "Battle through a six-chapter chess tactics campaign with full legal move validation, castling, promotion, en passant and adaptive AI.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "circuit-forge",
+    "title": "Circuit Forge",
+    "category": "puzzle",
+    "entry": "games/circuit-forge/index.html",
+    "description": "Rotate and energize components across ten handcrafted circuit puzzles with safe-routing rules, hints, par scores and star mastery.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "metro-tycoon",
+    "title": "Metro Tycoon",
+    "category": "simulation",
+    "entry": "games/metro-tycoon/index.html",
+    "description": "Build profitable transit networks through a six-city career with dynamic demand, station capacity, trains, upgrades, contracts and operating costs.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "cafe-empire",
+    "title": "Cafe Empire",
+    "category": "simulation",
+    "entry": "games/cafe-empire/index.html",
+    "description": "Run an eight-day neighborhood cafe campaign: read tickets, perform recipe steps, manage customer patience, meet daily targets, and reinvest profits into lasting upgrades.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "farmstead-seasons",
+    "title": "Farmstead Seasons",
+    "category": "simulation",
+    "entry": "games/farmstead-seasons/index.html",
+    "description": "Build a neglected farm across twenty days and four seasons. Plant, water and harvest crops, follow the weather, complete market orders, and buy permanent farm upgrades.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "fishing-legends",
+    "title": "Fishing Legends",
+    "category": "sports",
+    "entry": "games/fishing-legends/index.html",
+    "description": "Cast across three tournament lakes, react to bites, counter each fish's runs, manage line tension, build a species collection, and upgrade your tackle between rounds.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "pet-rescue-clinic",
+    "title": "Pet Rescue Clinic",
+    "category": "simulation",
+    "entry": "games/pet-rescue-clinic/index.html",
+    "description": "Lead a ten-day rescue clinic campaign. Read symptoms, order useful tests, diagnose illnesses, perform treatment sequences, protect patient health, and upgrade the practice.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "breachpoint-ops",
+    "title": "Breachpoint Ops",
+    "category": "action",
+    "entry": "games/breachpoint-ops/index.html",
+    "description": "Lead a five-mission tactical assault campaign with breaching, stealth, weapon switching, objectives, ranks, and a fortified command boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "crypt-raiders",
+    "title": "Crypt Raiders",
+    "category": "adventure",
+    "entry": "games/crypt-raiders/index.html",
+    "description": "Raid four hand-built crypts in a complete action-adventure campaign with sword combat, relic puzzles, loot, upgrades, potions, and ancient bosses.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "mech-arena",
+    "title": "Mech Arena: Steel Reign",
+    "category": "action",
+    "entry": "games/mech-arena/index.html",
+    "description": "Pilot three distinct war machines through a six-contract arena campaign with modular loadouts, upgrade drafts, rival aces, and colossal bosses.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "samurai-odyssey",
+    "title": "Samurai Odyssey",
+    "category": "adventure",
+    "entry": "games/samurai-odyssey/index.html",
+    "description": "Shape a ronin's fate across five cinematic chapters with exploration, precise sword duels, dialogue choices, honor, allies, and multiple endings.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "rally-legends",
+    "title": "Rally Legends",
+    "category": "racing",
+    "entry": "games/rally-legends/index.html",
+    "description": "A four-stage rally championship with changing surfaces, car damage, pace notes, repairs, and permanent performance upgrades.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "superbike-circuit",
+    "title": "Superbike Circuit",
+    "category": "racing",
+    "entry": "games/superbike-circuit/index.html",
+    "description": "A motorcycle racing career built around corner lean, precise braking, slipstream boost, rival riders, and bike development.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ocean-regatta",
+    "title": "Ocean Regatta",
+    "category": "sports",
+    "entry": "games/ocean-regatta/index.html",
+    "description": "A tactical sailing campaign where wind shifts, sail trim, tacking, currents, weather and route choice decide each regatta.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "sky-aces",
+    "title": "Sky Aces",
+    "category": "action",
+    "entry": "games/sky-aces/index.html",
+    "description": "A six-mission flight combat campaign with dogfights, bomber escorts, ground strikes, ace rivals, upgrades and a carrier boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "midnight-detective",
+    "title": "Midnight Detective",
+    "category": "story",
+    "entry": "games/midnight-detective/index.html",
+    "description": "Solve five connected noir cases by searching scenes, interviewing suspects, testing deductions, and deciding which truth the city deserves.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "starship-echoes",
+    "title": "Starship Echoes",
+    "category": "story",
+    "entry": "games/starship-echoes/index.html",
+    "description": "Explore a failing colony ship across five episodes, restore life-support systems, protect the crew, and decide what humanity carries into a new world.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "pirate-chronicles",
+    "title": "Pirate Chronicles",
+    "category": "adventure",
+    "entry": "games/pirate-chronicles/index.html",
+    "description": "Sail five handcrafted voyages, battle rival captains, recover legendary charts, make crew-defining choices, and claim one of several pirate endings.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "dragonbound-legacy",
+    "title": "Dragonbound Legacy",
+    "category": "adventure",
+    "entry": "games/dragonbound-legacy/index.html",
+    "description": "Fight through five fantasy realms, master sword and dragonfire, speak with allies, defeat evolving bosses, and shape the legacy of the last dragon bond.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "beat-forge",
+    "title": "Beat Forge",
+    "category": "rhythm",
+    "entry": "games/beat-forge/index.html",
+    "description": "Master four original neon tracks with precise timing grades, escalating note charts, overdrive, combos, and persistent high scores.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "deckbound-rogue",
+    "title": "Deckbound Rogue",
+    "category": "strategy",
+    "entry": "games/deckbound-rogue/index.html",
+    "description": "Climb a branching five-room spire by drafting cards, reading enemy intents, collecting relics, and defeating the Ash Tyrant boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "neon-pinball",
+    "title": "Neon Pinball Circuit",
+    "category": "arcade",
+    "entry": "games/neon-pinball/index.html",
+    "description": "Conquer three reactive neon tables with missions, skill shots, jackpots, multiball, realistic flippers, tilt control, and persistent high scores.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "blast-maze",
+    "title": "Blast Maze",
+    "category": "action",
+    "entry": "games/blast-maze/index.html",
+    "description": "Blast through a four-zone maze campaign with smart enemies, chain-reaction bombs, destructible walls, hidden powerups, lives, and escalating bosses.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "street-drift-underground",
+    "title": "Street Drift Underground",
+    "category": "racing",
+    "entry": "games/street-drift-underground/index.html",
+    "description": "A midnight street-drift career with linked corners, rival score battles, police heat, car damage and permanent tuning.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "motocross-mayhem",
+    "title": "Motocross Mayhem",
+    "category": "racing",
+    "entry": "games/motocross-mayhem/index.html",
+    "description": "A physics-driven motocross tour with jumps, flips, rough terrain, bike damage, stunt scoring and championship upgrades.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "hover-league-zero",
+    "title": "Hover League Zero",
+    "category": "racing",
+    "entry": "games/hover-league-zero/index.html",
+    "description": "A zero-friction hover racing league with vector thrust, energy gates, rival combat, shields and four orbital circuits.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "alpine-rush",
+    "title": "Alpine Rush",
+    "category": "sports",
+    "entry": "games/alpine-rush/index.html",
+    "description": "A downhill ski tour with precision slalom, carving, jumps, tricks, avalanches and four increasingly dangerous mountains.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "knockout-club",
+    "title": "Knockout Club",
+    "category": "sports",
+    "entry": "games/knockout-club/index.html",
+    "description": "A tactical boxing career with stamina, guard, dodges, body shots, knockdowns, judges and five distinct opponents.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "pro-wrestling-empire",
+    "title": "Pro Wrestling Empire",
+    "category": "sports",
+    "entry": "games/pro-wrestling-empire/index.html",
+    "description": "A pro-wrestling career with grapples, strikes, reversals, rope breaks, finishers, pins and a five-show title story.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "cricket-championship",
+    "title": "Cricket Championship",
+    "category": "sports",
+    "entry": "games/cricket-championship/index.html",
+    "description": "A compact cricket tournament with batting timing, shot direction, bowling line and pace, wickets, overs and three international rivals.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "billiards-master",
+    "title": "Billiards Master",
+    "category": "sports",
+    "entry": "games/billiards-master/index.html",
+    "description": "A physics-based nine-ball career with aiming, power control, cushions, fouls, strategic AI and five increasingly skilled opponents.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "neon-shmup",
+    "title": "Neon Starfighter",
+    "category": "arcade",
+    "entry": "games/neon-shmup/index.html",
+    "description": "Pilot an upgradeable starfighter through five enemy formations, weapon powerups, dangerous bullet patterns, and a multi-phase dreadnought boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "shadow-metroid",
+    "title": "Shadow Circuit",
+    "category": "platformer",
+    "entry": "games/shadow-metroid/index.html",
+    "description": "Explore four interconnected machine sectors, unlock double-jump and phase-dash abilities, defeat guardians, and restore the dying Shadow Circuit.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "rune-match-quest",
+    "title": "Rune Match Quest",
+    "category": "puzzle",
+    "entry": "games/rune-match-quest/index.html",
+    "description": "Battle four mythic foes through tactical match-three boards where swords attack, shields defend, hearts heal, and mana fuels devastating spells.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "fortress-defense",
+    "title": "Fortress Defense",
+    "category": "strategy",
+    "entry": "games/fortress-defense/index.html",
+    "description": "Build, upgrade, and command three tower classes across eight escalating siege waves culminating in the armored Titan Ram.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "typing-overdrive",
+    "title": "Typing Overdrive",
+    "category": "arcade",
+    "entry": "games/typing-overdrive/index.html",
+    "description": "Type incoming cyber threats across five speed stages, chain flawless words, activate Overdrive, and defeat the Firewall command phrase.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "twin-stick-onslaught",
+    "title": "Twin-Stick Onslaught",
+    "category": "action",
+    "entry": "games/twin-stick-onslaught/index.html",
+    "description": "Dash, aim, and blast through five arena rounds with enemy variants, weapon drops, score chains, and the relentless Omega Brute boss.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "rogue-mines",
+    "title": "Rogue Mines",
+    "category": "adventure",
+    "entry": "games/rogue-mines/index.html",
+    "description": "Descend five procedural mine floors, reveal fog, mine ore, manage health, battle cave creatures, choose upgrades, and recover the legendary Sunstone.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "synth-rider",
+    "title": "Synth Rider",
+    "category": "rhythm",
+    "entry": "games/synth-rider/index.html",
+    "description": "Ride four reactive synth highways, switch lanes, jump barriers, duck gates, collect beat crystals, and maintain the groove to headline the Neon Summit.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "cyber-noir-2088",
+    "title": "Cyber Noir 2088",
+    "category": "story",
+    "entry": "games/cyber-noir-2088/index.html",
+    "description": "Infiltrate five neon districts, hack secured memories, evade corporate sentries, and expose a conspiracy whose ending changes with every alliance.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "europa-survivor",
+    "title": "Europa Survivor",
+    "category": "adventure",
+    "entry": "games/europa-survivor/index.html",
+    "description": "Cross five lethal regions beneath Europa's ice, repair your habitat, gather alien samples, rescue crew, and choose humanity's first contact.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "tombs-of-atlantis",
+    "title": "Tombs of Atlantis",
+    "category": "adventure",
+    "entry": "games/tombs-of-atlantis/index.html",
+    "description": "Decode five drowned tombs, recover royal seals, battle ancient guardians, and choose whether Atlantis rises or remains a legend.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "silent-embassy",
+    "title": "Silent Embassy",
+    "category": "stealth",
+    "entry": "games/silent-embassy/index.html",
+    "description": "Infiltrate five diplomatic compounds, steal classified intel, maintain disguises, and prevent a war without ever being officially present.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "blackwood-manor",
+    "title": "Blackwood Manor",
+    "category": "horror",
+    "entry": "games/blackwood-manor/index.html",
+    "description": "Search five haunted wings of Blackwood Manor, keep your candle alive, uncover a buried family crime, and survive the thing walking between rooms.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "timekeepers-paradox",
+    "title": "Timekeeper's Paradox",
+    "category": "story",
+    "entry": "games/timekeepers-paradox/index.html",
+    "description": "Repair five broken eras by anchoring events in the right order, outrun paradox storms, and decide which version of history deserves to survive.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "wildlands-expedition",
+    "title": "Wildlands Expedition",
+    "category": "adventure",
+    "entry": "games/wildlands-expedition/index.html",
+    "description": "Lead five wilderness expeditions, document rare wildlife, rescue stranded researchers, survive changing weather, and protect a threatened ecosystem.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "crown-and-dagger",
+    "title": "Crown & Dagger",
+    "category": "story",
+    "entry": "games/crown-and-dagger/index.html",
+    "description": "Navigate five nights of royal intrigue, gather secrets, win allies, survive assassins, and determine who wears the crown at dawn.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "pilot-fuel-tanker-training",
+    "title": "Pilot Fuel Tanker Training",
+    "category": "simulation",
+    "entry": "games/pilot-fuel-tanker-training/index.html",
+    "description": "Explore a 3D fuel tanker, complete pre-trip and unloading walkthroughs, and try the delivery driving mission.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "voxhaven",
+    "title": "Voxhaven \u2014 A Survival Sandbox",
+    "category": "adventure",
+    "entry": "games/voxhaven/index.html",
+    "description": "Mine, build, explore caves and villages, grow stronger, and reach for the stars in a deeper original voxel survival sandbox.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "word-weaver",
+    "title": "Word Weaver",
+    "category": "puzzle",
+    "entry": "games/word-weaver/index.html",
+    "description": "A five-letter deduction word game with a seeded Daily puzzle, endless Unlimited play and an escalating eight-stage Gauntlet. Nearly 1,900 answers and a 3,700-word guess dictionary are embedded in the game \u2014 no network required. Hard mode, colour-blind palette, on-screen and physical keyboard, and a full share-free stats panel with streaks and guess distribution.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "minefield-classic",
+    "title": "Minefield Classic",
+    "category": "puzzle",
+    "entry": "games/minefield-classic/index.html",
+    "description": "Full-fat Minesweeper: guaranteed-safe first click, flood reveal, chording, question marks, three classic presets plus custom boards, a real no-guess board generator driven by a constraint solver, a seeded Daily Board, 3BV/efficiency scoring and best-time records per preset.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "snake-reactor",
+    "title": "Snake Reactor",
+    "category": "arcade",
+    "entry": "games/snake-reactor/index.html",
+    "description": "Neon snake reborn as a reactor core run: three modes (Classic, Maze with eight hand-built bulkhead layouts, Portal with wrapping walls and linked pads), slow-mo / shrink / magnet power-ups, a chaining combo multiplier and a progressive speed curve with per-mode high scores.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "tetro-stack",
+    "title": "Tetro Stack",
+    "category": "arcade",
+    "entry": "games/tetro-stack/index.html",
+    "description": "Falling-block stacker done properly: 7-bag randomiser, SRS rotation with wall kicks, hold and ghost pieces, lock delay, soft/hard drop, T-spins, combo and back-to-back scoring across Marathon, Sprint 40L and Ultra 2-minute modes with persistent records.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "flappy-ascent",
+    "title": "Flappy Ascent",
+    "category": "arcade",
+    "entry": "games/flappy-ascent/index.html",
+    "description": "One-button ascent through procedurally spaced gates across six parallax sky zones. Thread drifting, narrowing and shuttering gates for bronze, silver and gold medals, chase your personal-best ghost, and climb a seeded 80-gate Daily Ascent to the summit.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "neon-breakout",
+    "title": "Neon Breakout",
+    "category": "arcade",
+    "entry": "games/neon-breakout/index.html",
+    "description": "A neon-drenched brick breaker with 30 hand-authored layouts, six stacking power-ups, armoured and explosive bricks, a hulking boss every tenth level, and a star-rated level select that rewards flawless, high-combo runs.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "boids-sanctuary",
+    "title": "Boids Sanctuary",
+    "category": "simulation",
+    "entry": "games/boids-sanctuary/index.html",
+    "description": "A living flocking sandbox: tune separation, alignment and cohesion in real time, then shepherd 800+ boids past hawks, storms and stone canyons through 8 hand-built sanctuary challenges.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "ant-colony",
+    "title": "Ant Colony",
+    "category": "simulation",
+    "entry": "games/ant-colony/index.html",
+    "description": "Grow an ant colony on a living pheromone grid: ants lay and follow home and food trails, the queen turns food into brood, and tunnels, scouts and soldiers decide whether you outlast beetles, rain and a rival colony for 20 days.",
+    "status": "Load smoke passed \u00b7 gameplay review pending",
+    "source": "Gaming Empire"
+  },
+  {
+    "id": "shooter",
+    "title": "Galactic Shooter",
+    "category": "arcade",
+    "entry": "classics/?game=shooter",
+    "description": "Eight waves, shield and rapid-fire pickups, touch controls, and saved high scores.",
+    "status": "Core rules tested",
+    "source": "Python classics \u00b7 browser edition"
+  },
+  {
+    "id": "cards",
+    "title": "Color Clash",
+    "category": "strategy",
+    "entry": "classics/?game=cards",
+    "description": "A complete two-player color-matching card game against a computer.",
+    "status": "Core rules tested",
+    "source": "Python classics \u00b7 browser edition"
+  },
+  {
+    "id": "tictactoe",
+    "title": "Tic-Tac-Toe",
+    "category": "puzzle",
+    "entry": "classics/?game=tictactoe",
+    "description": "Play a perfect computer or a friend, with local score tracking.",
+    "status": "Core rules tested",
+    "source": "Python classics \u00b7 browser edition"
+  },
+  {
+    "id": "guess",
+    "title": "Number Hunt",
+    "category": "puzzle",
+    "entry": "classics/?game=guess",
+    "description": "Deduce a number in ten guesses with range hints and saved wins.",
+    "status": "Core rules tested",
+    "source": "Python classics \u00b7 browser edition"
+  },
+  {
+    "id": "heartwood-caravan",
+    "title": "Heartwood Caravan",
+    "category": "adventure",
+    "entry": "heartwood/",
+    "description": "Escort the Worldseed through a living woodland. Six simulation regressions pass.",
+    "status": "Build + simulation tested",
+    "source": "Heartwood Caravan"
+  },
+  {
+    "id": "voxhaven-original",
+    "title": "Voxhaven \u00b7 original edition",
+    "category": "prototype",
+    "entry": "prototypes/voxhaven-original/",
+    "description": "Earlier independent survival sandbox, preserved separately from the integrated edition.",
+    "status": "Prototype \u00b7 gameplay review pending",
+    "source": "Voxhaven-codex"
+  },
+  {
+    "id": "astral-ascendancy",
+    "title": "Astral Ascendancy",
+    "category": "prototype",
+    "entry": "archive/astral-ascendancy.html",
+    "description": "Unfinished martial-arts action RPG. Kept outside the main hub registry.",
+    "status": "Archived \u00b7 main source missing",
+    "source": "Gaming Empire work in progress"
+  },
+  {
+    "id": "retired-air-hockey-duel",
+    "title": "Air Hockey Duel",
+    "category": "prototype",
+    "entry": "archive/air-hockey-duel.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  },
+  {
+    "id": "retired-alien-colony",
+    "title": "Xeno Frontier",
+    "category": "prototype",
+    "entry": "archive/alien-colony.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  },
+  {
+    "id": "retired-jenga-tower",
+    "title": "Jenga Tower",
+    "category": "prototype",
+    "entry": "archive/jenga-tower.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  },
+  {
+    "id": "retired-tower-siege",
+    "title": "Tower Siege",
+    "category": "prototype",
+    "entry": "archive/tower-siege.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  },
+  {
+    "id": "retired-voxelcraft",
+    "title": "Voxelcraft",
+    "category": "prototype",
+    "entry": "archive/voxelcraft.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  },
+  {
+    "id": "retired-winter-outpost",
+    "title": "Winter Outpost",
+    "category": "prototype",
+    "entry": "archive/winter-outpost.html",
+    "description": "Retired project preserved separately; not advertised as a finished game.",
+    "status": "Archived \u00b7 gameplay review pending",
+    "source": "Gaming Empire retired collection"
+  }
+]

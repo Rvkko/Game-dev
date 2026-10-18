@@ -1,0 +1,39 @@
+{
+  "id": "skybound-platformer",
+  "title": "Skybound",
+  "category": "platformer",
+  "tags": [
+    "platformer",
+    "adventure",
+    "precision",
+    "campaign"
+  ],
+  "stack": "canvas",
+  "entry": "games/skybound-platformer/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A four-island platform adventure with responsive movement, air-dashing, enemies, secrets, collectibles, checkpoints, and a storm escape finale.",
+  "achievements": [
+    {
+      "id": "first-flight",
+      "title": "First Flight",
+      "desc": "Complete the first island."
+    },
+    {
+      "id": "star-sweeper",
+      "title": "Star Sweeper",
+      "desc": "Perfect-clear an island."
+    },
+    {
+      "id": "cloud-stomper",
+      "title": "Cloud Stomper",
+      "desc": "Defeat ten cloudlings."
+    },
+    {
+      "id": "sky-savior",
+      "title": "Sky Savior",
+      "desc": "Restore all four Aether Hearts."
+    }
+  ]
+}

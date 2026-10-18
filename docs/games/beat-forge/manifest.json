@@ -1,0 +1,39 @@
+{
+  "id": "beat-forge",
+  "title": "Beat Forge",
+  "category": "rhythm",
+  "tags": [
+    "rhythm",
+    "music",
+    "campaign",
+    "arcade"
+  ],
+  "stack": "canvas",
+  "entry": "games/beat-forge/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Master four original neon tracks with precise timing grades, escalating note charts, overdrive, combos, and persistent high scores.",
+  "achievements": [
+    {
+      "id": "first-perfect",
+      "title": "Perfect Strike",
+      "desc": "Hit your first Perfect note."
+    },
+    {
+      "id": "combo-50",
+      "title": "On Fire",
+      "desc": "Build a 50-note combo."
+    },
+    {
+      "id": "s-rank",
+      "title": "Forged in Rhythm",
+      "desc": "Earn an S rank on any track."
+    },
+    {
+      "id": "tour-complete",
+      "title": "Headliner",
+      "desc": "Complete the full Beat Forge tour."
+    }
+  ]
+}

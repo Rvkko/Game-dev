@@ -1,0 +1,281 @@
+<!-- Pilot Fuel Tanker Training Prototype — single-file build. Double-click to run; no server needed.
+     Educational prototype only. Not official Pilot/DOT/FMCSA/PHMSA/hazmat training. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14171c">
+<meta name="description" content="Pilot Fuel Tanker Training Prototype — an interactive 3D gasoline tanker learning simulator. Educational prototype only.">
+<title>Pilot Fuel Tanker Training Prototype</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛢️</text></svg>">
+<link rel="stylesheet" href="training.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="app-header">
+  <button class="brand" data-nav="/" aria-label="Home">
+    <span class="brand-mark" aria-hidden="true">🛢️</span>
+    <span class="brand-txt"><b>Fuel Tanker Training</b><span>Pilot · Prototype</span></span>
+  </button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a data-nav="/dashboard">Dashboard</a>
+    <a data-nav="/explorer">3D Explorer</a>
+    <a data-nav="/assessment">Assessment</a>
+    <a data-nav="/showcase">Showcase</a>
+    <a data-nav="/about">About</a>
+    <a data-nav="/help">Help</a>
+    <a data-nav="/sme">SME Review</a>
+  </nav>
+  <div class="hdr-progress" id="hdrProgress" title="Course completion">
+    <span id="hdrPct">0%</span>
+    <span class="bar"><i id="hdrBar"></i></span>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<main id="main">
+  <!-- LANDING -->
+  <section class="view" id="view-landing" aria-labelledby="heroTitle">
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="proto-badge">◆ Prototype — not official training</span>
+          <h1 id="heroTitle" style="margin-top:14px">Pilot Fuel Tanker<br><span class="hl">Training Prototype</span></h1>
+          <p class="lede">An interactive 3D learning simulator for the gasoline tanker rig — explore every system, run guided familiarization modules, and check your recognition of the equipment a fuel hauler works around every day.</p>
+          <div class="cta">
+            <button class="btn btn-primary" data-nav="/dashboard">▶ Start Training</button>
+            <button class="btn btn-accent" data-nav="/explorer">Explore the Model</button>
+            <button class="btn" id="btnResume" style="display:none" data-nav="/dashboard">Resume Training</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="tank"></div><div class="swoosh"></div><div class="cab"></div>
+          <div class="wheel" style="left:16%"></div><div class="wheel" style="left:40%"></div>
+          <div class="wheel" style="right:26%"></div><div class="wheel" style="right:10%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer-band"><div class="wrap"><span class="ico" aria-hidden="true">⚠️</span><span id="discLanding"></span></div></div>
+    <div class="wrap">
+      <div class="grid cols-3">
+        <div class="card"><h3>🧭 Guided Modules</h3><p class="muted">Ten familiarization modules progress from a whole-rig overview to the internal tanker systems, each with a hands-on 3D task.</p></div>
+        <div class="card"><h3>🔬 X-Ray &amp; Fluids</h3><p class="muted">See through the cab, engine, and tank shell. Overlay diesel, gasoline cargo, oil, coolant, and DEF systems.</p></div>
+        <div class="card"><h3>✅ Knowledge Check</h3><p class="muted">A self-assessment reinforces part recognition and safety awareness. Progress saves in your browser.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="view" id="view-dashboard" aria-labelledby="dashTitle">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Training Dashboard</span>
+        <h1 id="dashTitle">Your familiarization pathway</h1>
+        <p>Work through the modules in order, then take the assessment. Everything is awareness-level familiarization — not certified training.</p>
+      </div>
+      <div class="card pad-lg" style="margin-bottom:18px">
+        <div class="progress-wide">
+          <div><b id="dashPctBig" style="font-size:22px">0%</b> <span class="muted">complete</span></div>
+          <span class="pbar"><i id="dashBar"></i></span>
+          <span class="chip" id="chipModules">0 / 10 modules</span>
+          <span class="chip" id="chipQuiz">Assessment: not started</span>
+          <button class="btn btn-sm btn-ghost" id="btnResetProgress">↺ Reset progress</button>
+        </div>
+      </div>
+      <div class="grid modules" id="moduleGrid"></div>
+      <div class="grid cols-3" style="margin-top:18px">
+        <div class="card"><h3>🎓 Final Assessment</h3><p class="muted" id="assessSummary">18 questions covering the whole course.</p><button class="btn btn-primary btn-block" style="margin-top:10px" data-nav="/assessment">Go to Assessment</button></div>
+        <div class="card"><h3>🎥 Showcase Tour</h3><p class="muted">An auto-guided cinematic walkthrough — good for demoing the prototype.</p><button class="btn btn-block" style="margin-top:10px" data-nav="/showcase">Open Showcase</button></div>
+        <div class="card"><h3>🗂️ SME Review</h3><p class="muted">Reviewer notes, content status, and sign-off tracking for stakeholders.</p><button class="btn btn-block" style="margin-top:10px" data-nav="/sme">Open Review Panel</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE -->
+  <section class="view" id="view-module" aria-labelledby="modTitle">
+    <div class="wrap">
+      <button class="btn btn-sm btn-ghost" data-nav="/dashboard" style="margin-bottom:12px">‹ All modules</button>
+      <div class="module-grid">
+        <div>
+          <div class="stage-slot" id="slotModule" role="application" aria-label="Interactive 3D tanker viewer"></div>
+        </div>
+        <div class="mod-panel">
+          <div class="ph">
+            <span class="eyebrow" id="modKicker">Module</span>
+            <h2 id="modTitle">Module</h2>
+          </div>
+          <div class="pb" id="modBody"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORER (free) -->
+  <section class="view" id="view-explorer" aria-labelledby="explTitle">
+    <div class="wrap">
+      <div class="assess-head">
+        <div class="section-head" style="margin:0"><span class="eyebrow">Free Exploration</span><h1 id="explTitle">3D Tanker Explorer</h1></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-sm" data-vaction="reset">↺ Reset</button>
+          <button class="btn btn-sm" data-vaction="tank">X-Ray Tank</button>
+          <button class="btn btn-sm" data-vaction="engine">X-Ray Engine</button>
+          <button class="btn btn-sm" data-vaction="cutaway">Cutaway</button>
+          <button class="btn btn-sm" data-vaction="pretrip">Pre-Trip</button>
+        </div>
+      </div>
+      <p class="muted" style="margin-bottom:12px">Drag to orbit, scroll or pinch to zoom, and tap any part for its name and purpose. Full controls live inside the viewer’s <b>☰ Controls</b> menu.</p>
+      <div class="stage-slot" id="slotExplorer" style="aspect-ratio:16/9;min-height:420px" role="application" aria-label="Interactive 3D tanker viewer"></div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT -->
+  <section class="view" id="view-assessment" aria-labelledby="asTitle">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head"><span class="eyebrow">Knowledge Check</span><h1 id="asTitle">Final Assessment</h1>
+        <p>Self-assessment only — for your own review. It confers no certification. You need <b id="passNeed">80%</b> to pass.</p>
+      </div>
+      <div id="assessMount"></div>
+    </div>
+  </section>
+
+  <!-- SUMMARY / CERTIFICATE -->
+  <section class="view" id="view-summary" aria-labelledby="sumTitle">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head no-print"><span class="eyebrow">Completion Summary</span><h1 id="sumTitle">Your progress summary</h1></div>
+      <div id="summaryMount"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="view" id="view-about" aria-labelledby="abTitle">
+    <div class="wrap prose">
+      <div class="section-head"><span class="eyebrow">About &amp; Disclaimer</span><h1 id="abTitle">About this prototype</h1></div>
+      <p>The <b>Pilot Fuel Tanker Training Prototype</b> is an interactive, browser-based 3D simulator that familiarizes users with the components, layout, and systems of a gasoline tanker rig — from the tractor cab to the trailer’s cargo compartments. It is built to help people <b>recognize and understand</b> the equipment, not to operate it.</p>
+      <h3>Intended use</h3>
+      <ul>
+        <li>Recognize and name the major components of a tractor and gasoline tanker trailer.</li>
+        <li>Understand what each part is, why it matters, and what to look at during a visual review.</li>
+        <li>Build conceptual awareness of the cab, engine bay, coupling, and tanker systems.</li>
+      </ul>
+      <h3>What it is not</h3>
+      <p>This prototype does not train anyone to operate a tanker, couple a trailer, or perform any fuel transfer. All content is framed as awareness of equipment and systems, never as authoritative operating instruction.</p>
+      <div class="safety-note" style="max-width:none" id="discAbout"></div>
+      <h3>Review status</h3>
+      <p>Before any real-world use, this material requires sign-off from subject-matter experts, safety, legal, hazmat trainers, and compliance. Track that in the <a href="#/sme">SME Review panel</a>. Full documentation is in <span class="kbd">TRAINING_PRODUCT_README.md</span> and <span class="kbd">TRAINING_QA_CHECKLIST.md</span>.</p>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section class="view" id="view-help" aria-labelledby="hpTitle">
+    <div class="wrap prose">
+      <div class="section-head"><span class="eyebrow">Help &amp; Controls</span><h1 id="hpTitle">How to use the simulator</h1></div>
+      <h3>Navigating the 3D model</h3>
+      <ul>
+        <li><b>Orbit:</b> drag with the mouse or one finger.</li>
+        <li><b>Zoom:</b> scroll wheel, or pinch on touch.</li>
+        <li><b>Pan:</b> right-drag (desktop) or two-finger drag.</li>
+        <li><b>Inspect a part:</b> tap or click it to open its info panel. In a module, this checks it off your task list.</li>
+        <li><b>All controls:</b> open the <b>☰ Controls</b> menu inside the viewer for lights, doors, x-ray, fluids, modes, and more.</li>
+      </ul>
+      <h3>Keyboard (inside the viewer)</h3>
+      <p><span class="kbd">W A S D</span> / arrows drive or walk · <span class="kbd">E</span> engine · <span class="kbd">L</span> lights · <span class="kbd">H</span> horn.</p>
+      <h3>Pause &amp; restart</h3>
+      <p>Press <span class="kbd">Esc</span> or <span class="kbd">P</span> anywhere to pause. The pause panel can resume, restart the current module, assessment, or tour, or send you back to the dashboard.</p>
+      <h3>Training flow</h3>
+      <ul>
+        <li>Work the <a href="#/dashboard">modules</a> in order — each launches the 3D model in the right view and gives you a task and a checkpoint question.</li>
+        <li>Take the <a href="#/assessment">assessment</a> when you’re ready. Retake it any time.</li>
+        <li>Your progress saves automatically in this browser.</li>
+      </ul>
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Full keyboard navigation and visible focus outlines throughout the shell.</li>
+        <li>Every part and module has descriptive text — nothing is conveyed by the 3D visuals alone.</li>
+        <li>Module task steps can be completed with the on-screen checklist buttons if 3D clicking isn’t available to you.</li>
+        <li>Honors your system “reduce motion” setting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SME REVIEW -->
+  <section class="view" id="view-sme" aria-labelledby="smeTitle">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">SME / Compliance Review</span><h1 id="smeTitle">Review &amp; sign-off panel</h1>
+        <p>For stakeholders evaluating this prototype for possible internal use. Notes save locally in this browser.</p>
+      </div>
+      <div id="smeMount"></div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="view" id="view-showcase" aria-labelledby="scTitle">
+    <div class="wrap">
+      <h1 id="scTitle" class="no-print" style="position:absolute;left:-9999px">Showcase Tour</h1>
+      <div class="showcase-stage">
+        <div class="stage-slot" id="slotShowcase" style="position:absolute;inset:0;border-radius:0;border:0" role="application" aria-label="Showcase 3D tanker viewer"></div>
+        <div class="showcase-caption" id="scCaption">Showcase tour</div>
+        <div class="showcase-controls">
+          <button class="btn btn-sm btn-primary" id="scPlay">▶ Start Tour</button>
+          <button class="btn btn-sm" id="scNext">Next ▸</button>
+          <button class="btn btn-sm" data-vaction="reset">Reset Camera</button>
+          <button class="btn btn-sm btn-ghost" data-nav="/dashboard">✕ Exit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- persistent 3D stage (portal-positioned over the active slot) -->
+<div id="stageHost">
+  <iframe id="viewer" title="Interactive 3D fuel tanker model" allow="autoplay"></iframe>
+  <div class="viewer-fallback" id="viewerFallback">
+    <div><p style="font-weight:700;color:var(--text)">3D viewer unavailable</p>
+    <p>This experience needs a browser with WebGL enabled (recent Chrome, Edge, Firefox, or Safari) and hardware acceleration on.</p></div>
+  </div>
+</div>
+
+<footer class="app-footer">
+  <div class="wrap">
+    <p class="disc" id="discFooter"></p>
+    <p>v<span id="verTag">1.0</span> · <a href="#/about">About</a> · <a href="#/help">Help</a> · <a href="#/sme">SME Review</a></p>
+  </div>
+</footer>
+
+<!-- pause / restart overlay -->
+<div id="pauseScreen" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden>
+  <div class="pause-card">
+    <span class="eyebrow">Session paused</span>
+    <h2 id="pauseTitle">Training paused</h2>
+    <p class="muted" style="font-size:13.5px;margin-top:6px">The 3D simulator and the showcase tour are frozen. Your progress is already saved.</p>
+    <div class="pause-actions">
+      <button class="btn btn-primary btn-block" id="btnPauseResume">▶ Resume</button>
+      <button class="btn btn-block" id="btnPauseRestart">↺ Restart this activity</button>
+      <button class="btn btn-ghost btn-block" id="btnPauseDash">Back to dashboard</button>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:14px">Press <span class="kbd">Esc</span> or <span class="kbd">P</span> to pause or resume.</p>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="training-data.js"></script>
+
+<script src="training.js"></script>
+
+<!-- Empire SDK bridge (module scripts run after the classic shell script above) -->
+<script type="module">
+import { EmpireClient } from '../../../shared/empire-sdk.js';
+const client = new EmpireClient({
+  gameId: 'pilot-fuel-tanker-training',
+  saveVersion: 1,
+  onPause: () => { if (window.__trainerPause) window.__trainerPause(true); },
+  onResume: () => { if (window.__trainerPause) window.__trainerPause(false); }
+});
+client.connect();
+window.Empire = client;
+window.dispatchEvent(new Event('empire-ready'));
+</script>
+</body>
+</html>

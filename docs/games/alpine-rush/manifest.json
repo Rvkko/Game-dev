@@ -1,0 +1,39 @@
+{
+  "id": "alpine-rush",
+  "title": "Alpine Rush",
+  "category": "sports",
+  "tags": [
+    "skiing",
+    "sports",
+    "slalom",
+    "stunts"
+  ],
+  "stack": "canvas",
+  "entry": "games/alpine-rush/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A downhill ski tour with precision slalom, carving, jumps, tricks, avalanches and four increasingly dangerous mountains.",
+  "achievements": [
+    {
+      "id": "clean-slalom",
+      "title": "Gate Perfect",
+      "desc": "Clear every gate on a run."
+    },
+    {
+      "id": "trickster",
+      "title": "Alpine Trickster",
+      "desc": "Land a 720-degree trick."
+    },
+    {
+      "id": "avalanche",
+      "title": "White Escape",
+      "desc": "Survive the avalanche stage."
+    },
+    {
+      "id": "alpine-champion",
+      "title": "Alpine Champion",
+      "desc": "Win the mountain tour."
+    }
+  ]
+}

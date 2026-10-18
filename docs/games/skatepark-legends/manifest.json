@@ -1,0 +1,44 @@
+{
+  "id": "skatepark-legends",
+  "title": "Skatepark Legends",
+  "category": "sports",
+  "tags": [
+    "skateboarding",
+    "tricks",
+    "combo",
+    "arcade"
+  ],
+  "stack": "canvas 2d",
+  "entry": "games/skatepark-legends/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A flowing skatepark run with ramps, rails, grabs, flips, spins, grinds, landing physics and escalating trick combos.",
+  "achievements": [
+    {
+      "id": "first_trick",
+      "title": "First Stomp",
+      "desc": "Land your first trick."
+    },
+    {
+      "id": "combo_five",
+      "title": "Line Builder",
+      "desc": "Land a five-trick combo."
+    },
+    {
+      "id": "big_air",
+      "title": "Above the Coping",
+      "desc": "Reach major air height."
+    },
+    {
+      "id": "grind_master",
+      "title": "Locked In",
+      "desc": "Complete a long rail grind."
+    },
+    {
+      "id": "park_legend",
+      "title": "Park Legend",
+      "desc": "Win a session with 12,000 points."
+    }
+  ]
+}

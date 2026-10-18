@@ -1,0 +1,111 @@
+{
+  "id": "snake-reactor",
+  "title": "Snake Reactor",
+  "category": "arcade",
+  "tags": [
+    "snake",
+    "arcade",
+    "score-attack",
+    "maze",
+    "portals",
+    "2d"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/snake-reactor/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Neon snake reborn as a reactor core run: three modes (Classic, Maze with eight hand-built bulkhead layouts, Portal with wrapping walls and linked pads), slow-mo / shrink / magnet power-ups, a chaining combo multiplier and a progressive speed curve with per-mode high scores.",
+  "achievements": [
+    {
+      "id": "first_cell",
+      "title": "Cold Start",
+      "desc": "Collect your first fuel cell.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "combo_master",
+      "title": "Chain Reaction",
+      "desc": "Reach a x5 combo multiplier in a single run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "score_2500",
+      "title": "Critical Mass",
+      "desc": "Score 2,500 points in a single run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 2500
+    },
+    {
+      "id": "length_60",
+      "title": "Long Coil",
+      "desc": "Grow the reactor snake to 60 segments.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 60
+    },
+    {
+      "id": "maze_runner",
+      "title": "Bulkhead Runner",
+      "desc": "Clear 4 sectors in a single Maze run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 4
+    },
+    {
+      "id": "portal_hopper",
+      "title": "Fold Space",
+      "desc": "Make 40 portal jumps in a single Portal run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": true,
+      "target": 40
+    },
+    {
+      "id": "triple_charge",
+      "title": "Triple Charge",
+      "desc": "Collect all three power-up types in one run.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 3
+    },
+    {
+      "id": "reactor_overload",
+      "title": "Reactor Overload",
+      "desc": "Reach speed level 12 without dying.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 12
+    },
+    {
+      "id": "purist",
+      "title": "Unassisted",
+      "desc": "Score 1,200 in Classic without touching a single power-up.",
+      "rarity": "epic",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "grand_total",
+      "title": "Fuel Baron",
+      "desc": "Collect 500 fuel cells across all runs.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": true,
+      "target": 500
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "gameId": "ant-colony",
+  "archetype": "tactical-board",
+  "physicsShape": "box",
+  "physicsProfile": "bounded-simulation+collisions",
+  "ragdollProfile": "none-or-agents",
+  "playerCollider": {
+    "radius": 0.699999988079071,
+    "height": 1.100000023841858,
+    "shape": "box"
+  },
+  "colliders": []
+}

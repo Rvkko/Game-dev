@@ -1,0 +1,39 @@
+{
+  "id": "ocean-regatta",
+  "title": "Ocean Regatta",
+  "category": "sports",
+  "tags": [
+    "sailing",
+    "racing",
+    "strategy",
+    "ocean"
+  ],
+  "stack": "canvas",
+  "entry": "games/ocean-regatta/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A tactical sailing campaign where wind shifts, sail trim, tacking, currents, weather and route choice decide each regatta.",
+  "achievements": [
+    {
+      "id": "first-buoy",
+      "title": "Mark Rounder",
+      "desc": "Round your first buoy."
+    },
+    {
+      "id": "perfect-tack",
+      "title": "Perfect Tack",
+      "desc": "Complete a fast tack without stalling."
+    },
+    {
+      "id": "storm-sailor",
+      "title": "Storm Sailor",
+      "desc": "Win the storm regatta."
+    },
+    {
+      "id": "ocean-champion",
+      "title": "Ocean Champion",
+      "desc": "Win the entire campaign."
+    }
+  ]
+}

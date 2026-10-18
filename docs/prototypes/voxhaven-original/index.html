@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voxhaven — A Survival Sandbox</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- 3D canvas gets injected here by the renderer -->
+<div id="game"></div>
+
+<!-- Crosshair + targeted-block highlight live in 3D, crosshair is DOM -->
+<div id="crosshair" class="hidden">+</div>
+
+<!-- Damage / low-health red flash -->
+<div id="damageFlash"></div>
+<!-- Cold / freezing frost vignette (opacity driven by warmth) -->
+<div id="frostFlash"></div>
+<!-- Sleep / fade overlay -->
+<div id="fade"></div>
+
+<!-- ===================== HUD ===================== -->
+<div id="hud" class="hidden">
+  <div id="topBar">
+    <div id="worldLabel">WORLD: Voxhaven</div>
+    <div id="coordLabel"></div>
+    <div id="biomeLabel">BIOMES: plains</div>
+  </div>
+  <div id="statBars">
+    <div id="breathRow" class="iconRow hidden" title="Air"></div>
+    <div id="oxygenRow" class="iconRow hidden" title="Oxygen"></div>
+    <div id="warmthRow" class="iconRow hidden" title="Warmth"></div>
+    <div id="heartRow" class="iconRow" title="Health"></div>
+    <div id="staminaRow" class="iconRow hidden" title="Stamina"></div>
+    <div id="hungerRow" class="iconRow" title="Food"></div>
+  </div>
+  <div id="statusFx" class="hidden"></div>
+  <div id="itemName"></div>
+  <div id="interactPrompt"></div>
+  <div id="hotbar"></div>
+  <div id="actionMenu">
+    <button id="btnActInv" class="actBtn"><span>Inventory</span><kbd id="kbInv">E</kbd></button>
+    <button id="btnActMap" class="actBtn"><span>Map</span><kbd id="kbMap">M</kbd></button>
+    <button id="btnStarMap" class="actBtn star"><span>Star Map</span><kbd id="kbStar">N</kbd></button>
+  </div>
+</div>
+
+<!-- ===================== STAR MAP ===================== -->
+<div id="starMapScreen" class="overlay hidden">
+  <div class="panel starPanel">
+    <div class="panelHead"><span>Star Map</span><span class="hint">[Esc] to close</span></div>
+    <div class="starBody">
+      <div class="starField">
+        <div class="planetAethon"><span class="ring"></span><span class="orb"></span></div>
+        <div class="planetName">AETHON</div>
+      </div>
+      <div class="starInfo">
+        <div class="rowLabel">Destination</div>
+        <p class="starHint">Build a fueled rocket on a <b>Launchpad</b>, equip a <b>Spacesuit Helmet</b>, then interact with the pad to <b>Launch to Aethon</b>.</p>
+        <div class="starStat">Dimension: <b id="starDim">Overworld</b></div>
+        <div class="starStat">Oxygen: <b id="starOxy">10 / 10</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHAT (bottom right) ===================== -->
+<div id="chat" class="chat">
+  <div id="chatMessages"></div>
+  <input id="chatInput" type="text" placeholder="/gm creative or message" />
+</div>
+
+<!-- ===================== DEBUG OVERLAY ===================== -->
+<div id="debug" class="hidden"></div>
+
+<!-- ===================== INVENTORY / CRAFTING ===================== -->
+<div id="inventoryScreen" class="overlay hidden">
+  <div class="panel invPanel">
+    <div class="panelHead"><span id="invTitle">Inventory</span><span class="hint">[E] / [Esc] to close</span></div>
+    <div class="invTabs">
+      <button id="tabCraft" class="invTab sel">Craft</button>
+      <button id="tabBlocks" class="invTab hidden">Blocks</button>
+      <button id="tabGear" class="invTab">Gear</button>
+      <button id="tabFood" class="invTab hidden">Food</button>
+      <button id="tabGuide" class="invTab">Guide</button>
+    </div>
+    <div class="invBody">
+      <div class="invLeft">
+        <div class="rowLabel">Armor</div>
+        <div id="armorSlots" class="grid" style="grid-template-columns:repeat(4,48px)"></div>
+        <div id="invGrid" class="grid"></div>
+        <div class="rowLabel">Hotbar</div>
+        <div id="invHotbar" class="grid hotgrid"></div>
+      </div>
+      <div class="invRight">
+        <div class="rowLabel" id="invRightLabel">Crafting <span id="craftStation" class="hint"></span></div>
+        <input id="guideSearch" class="hidden" type="text" placeholder="Search items..." />
+        <div id="recipeList"></div>
+        <div id="blocksList" class="grid blocksGrid hidden"></div>
+        <div id="guideList" class="hidden"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAP ===================== -->
+<div id="mapScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Map</span><span class="hint">[M] / [Esc] to close</span></div>
+    <canvas id="mapCanvas" width="420" height="420"></canvas>
+    <div id="mapLegend" class="hint"></div>
+  </div>
+</div>
+
+<!-- ===================== CHEST STORAGE ===================== -->
+<div id="chestScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Storage</span><span class="hint">[Esc] to close</span></div>
+    <div class="chestBody">
+      <div><div class="rowLabel">Chest</div><div id="chestGrid" class="grid"></div></div>
+      <div><div class="rowLabel">Inventory</div><div id="chestInvGrid" class="grid"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FURNACE ===================== -->
+<div id="furnaceScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Kiln</span><span class="hint">[Esc] to close</span></div>
+    <div class="furnaceBody">
+      <div class="fcol">
+        <div class="rowLabel">Input</div><div id="furInput" class="grid"></div>
+        <div class="rowLabel">Fuel</div><div id="furFuel" class="grid"></div>
+      </div>
+      <div class="fmid"><div id="furFlame">🔥</div><div id="furArrow">▶</div></div>
+      <div class="fcol"><div class="rowLabel">Output</div><div id="furOutput" class="grid"></div></div>
+      <div class="fcol"><div class="rowLabel">Inventory</div><div id="furInvGrid" class="grid"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TRADE ===================== -->
+<div id="tradeScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="panelHead"><span>Settler — Trade</span><span class="hint">[Esc] to close</span></div>
+    <div id="tradeList"></div>
+  </div>
+</div>
+
+<!-- ===================== PAUSE ===================== -->
+<div id="pauseScreen" class="overlay hidden">
+  <div class="menu">
+    <h1>Paused</h1>
+    <div class="quickRow">
+      <span>Mode: <b id="pauseModeLabel">Survival</b></span>
+    </div>
+    <div class="quickRow">
+      <span>View: <b id="pauseViewLabel">First-person</b></span><button id="btnToggleView" class="ghost small">Toggle</button>
+    </div>
+    <div class="quickRow hidden" id="timeRow">
+      <span>Time</span>
+      <div class="timeBtns">
+        <button class="ghost small" data-t="0.27">Dawn</button>
+        <button class="ghost small" data-t="0.5">Noon</button>
+        <button class="ghost small" data-t="0.73">Dusk</button>
+        <button class="ghost small" data-t="0.0">Midnight</button>
+      </div>
+    </div>
+    <button id="btnResume">Resume</button>
+    <button id="btnSave">Save World</button>
+    <button id="btnPauseSettings">Settings</button>
+    <button id="btnQuit">Quit to Menu</button>
+  </div>
+</div>
+
+<!-- ===================== DEATH ===================== -->
+<div id="deathScreen" class="overlay hidden">
+  <div class="menu">
+    <h1 class="death">You Perished</h1>
+    <p id="deathMsg"></p>
+    <button id="btnRespawn">Respawn</button>
+  </div>
+</div>
+
+<!-- ===================== START MENU ===================== -->
+<div id="startScreen" class="overlay">
+  <div class="menu">
+    <h1 class="logo">VOXHAVEN</h1>
+    <p class="tag">a survival sandbox</p>
+    <div id="mainMenuButtons">
+      <button id="btnNew">New World</button>
+      <button id="btnWorlds">Play Worlds</button>
+      <button id="btnSettings" class="ghost">Settings</button>
+    </div>
+    <div id="newWorldPanel" class="hidden">
+      <div class="seedRow">
+        <label>Name</label><input id="worldNameInput" type="text" placeholder="My World" />
+      </div>
+      <div class="seedRow">
+        <label>Seed</label><input id="seedInput" type="text" placeholder="random" />
+      </div>
+      <div class="modeRow" id="modeSelect">
+        <button class="modeBtn sel" data-mode="survival">Survival</button>
+        <button class="modeBtn" data-mode="creative">Creative</button>
+        <button class="modeBtn" data-mode="spectator">Spectator</button>
+      </div>
+      <label class="noItemsRow"><input id="noStartItems" type="checkbox" /> Start with no items</label>
+      <button id="btnStartNew">Start</button>
+      <button id="btnBackNew" class="ghost">Back</button>
+    </div>
+    <div id="settings" class="settings hidden">
+      <label>Render distance <span id="rdVal">6</span><input id="rdSlider" type="range" min="2" max="8" value="6"></label>
+      <label>Mouse sensitivity <span id="msVal">1.0</span><input id="msSlider" type="range" min="0.2" max="2.5" step="0.1" value="1.0"></label>
+      <label>Volume <span id="volVal">60</span><input id="volSlider" type="range" min="0" max="100" value="60"></label>
+      <label>Graphics
+        <select id="gfxSel"><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option></select>
+      </label>
+      <label class="noItemsRow"><input id="autoJumpChk" type="checkbox" checked /> Auto-jump</label>
+      <div class="rowLabel">Controls</div>
+      <div id="keybindList"></div>
+      <button id="btnResetKeys" class="ghost small">Reset Controls</button>
+    </div>
+    <p class="credit">original procedural world · not affiliated with any other game</p>
+  </div>
+</div>
+
+<!-- ===================== WORLD SELECT ===================== -->
+<div id="worldListScreen" class="overlay hidden">
+  <div class="menu worldListMenu">
+    <h1 class="logo small">Your Worlds</h1>
+    <div id="worldList"></div>
+    <p id="worldListEmpty" class="hint hidden">No worlds yet — go back and create one.</p>
+    <button id="btnWorldsBack" class="ghost">Back</button>
+  </div>
+</div>
+
+<!-- ===================== LOADING ===================== -->
+<div id="loadScreen" class="overlay hidden">
+  <div class="menu">
+    <h1 class="logo">VOXHAVEN</h1>
+    <div class="loadbar"><div id="loadfill"></div></div>
+    <p id="loadtext">Carving the world…</p>
+  </div>
+</div>
+
+<!-- floating tooltip -->
+<div id="tooltip" class="hidden"></div>
+<!-- drag ghost -->
+<div id="dragGhost" class="hidden"></div>
+
+<!-- Three.js (global build) then game scripts. Order matters. -->
+<script src="../../vendor/three-r128/three.min.js"></script>
+<!-- optional postprocessing (bloom) — same pinned three version; game degrades gracefully if these fail to load -->
+<script src="../../vendor/three-r128/shaders/CopyShader.js"></script>
+<script src="../../vendor/three-r128/shaders/LuminosityHighPassShader.js"></script>
+<script src="../../vendor/three-r128/postprocessing/EffectComposer.js"></script>
+<script src="../../vendor/three-r128/postprocessing/RenderPass.js"></script>
+<script src="../../vendor/three-r128/postprocessing/ShaderPass.js"></script>
+<script src="../../vendor/three-r128/postprocessing/UnrealBloomPass.js"></script>
+<script>
+  // dev cache-bust: local game scripts change constantly during development
+  // and python's http.server + browser disk-cache heuristics were serving
+  // stale engine.js/game.js/main.js even on a hard navigation — force a
+  // fresh fetch every load by versioning the URL with the current time.
+  const __v=Date.now();
+  document.write('<script src="js/engine.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/game.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/space.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/villages.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/rocket.js?v='+__v+'"><\/script>');
+  document.write('<script src="js/main.js?v='+__v+'"><\/script>');
+</script>
+</body>
+</html>

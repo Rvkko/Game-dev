@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flappy Ascent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --ink: #e6f0ff;
+    --dim: #93a6c8;
+    --gold: #ffd27f;
+    --cyan: #7fe4ff;
+    --line: #3a4d78;
+    --panel-a: rgba(17,22,40,0.96);
+    --panel-b: rgba(7,9,20,0.98);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #05070f; overflow: hidden;
+    font-family: 'Segoe UI', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-user-select: none; user-select: none; touch-action: none;
+  }
+  #app { position: fixed; inset: 0; }
+  canvas#game { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+  .hidden { display: none !important; }
+
+  /* ---------------- HUD ---------------- */
+  #hud { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+  #hudTop {
+    position: absolute; top: 10px; left: 12px; right: 12px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+  }
+  .hudBox {
+    background: rgba(6,9,20,0.52); border: 1px solid rgba(120,150,220,0.28);
+    border-radius: 8px; padding: 6px 10px; backdrop-filter: blur(2px);
+    text-shadow: 0 1px 3px #000; line-height: 1.35;
+  }
+  .hudLabel { font-size: 10px; letter-spacing: 2px; color: var(--dim); }
+  .hudBig { font-size: clamp(22px, 3.4vh, 34px); font-weight: 700; color: #fff; letter-spacing: 1px; }
+  .hudMid { font-size: 13px; color: var(--gold); }
+  .hudSmall { font-size: 11px; color: var(--dim); }
+  #hudCenter { text-align: center; }
+  #hudRight { text-align: right; }
+  #comboWrap { margin-top: 4px; width: 132px; height: 6px; background: rgba(0,0,0,0.45); border-radius: 4px; overflow: hidden; border: 1px solid rgba(120,150,220,0.3); }
+  #comboFill { height: 100%; width: 0%; background: linear-gradient(90deg, #7fe4ff, #ffd27f); transition: width .12s linear; }
+  #btnPause {
+    pointer-events: auto; cursor: pointer; background: rgba(6,9,20,0.6);
+    border: 1px solid rgba(120,150,220,0.4); color: var(--cyan);
+    border-radius: 8px; padding: 5px 11px; font-size: 15px; font-family: inherit;
+  }
+  #btnPause:hover { border-color: var(--cyan); color: #fff; }
+  #hint {
+    position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: #9fb3d6;
+    text-shadow: 0 1px 3px #000; background: rgba(6,9,20,0.42); padding: 5px 9px;
+    border-radius: 7px; border: 1px solid rgba(120,150,220,0.2); line-height: 1.5;
+  }
+  #toasts {
+    position: absolute; top: 84px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; gap: 6px; align-items: center; width: max-content; max-width: 90%;
+  }
+  .toast {
+    background: rgba(10,14,28,0.9); border: 1px solid var(--gold); color: #ffeccb;
+    padding: 7px 16px; border-radius: 20px; font-size: 13px; letter-spacing: 1px;
+    opacity: 0; animation: tIn .28s ease forwards, tOut .5s ease 2.3s forwards; white-space: nowrap;
+  }
+  .toast.ach { border-color: var(--cyan); color: #d6f4ff; }
+  @keyframes tIn { from { opacity: 0; transform: translateY(-10px) scale(.94);} to { opacity: 1; transform: none; } }
+  @keyframes tOut { to { opacity: 0; transform: translateY(-6px); } }
+
+  /* ---------------- Overlays ---------------- */
+  .overlay {
+    position: absolute; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+    padding: 16px; overflow-y: auto;
+    background: radial-gradient(ellipse at 50% 40%, rgba(12,18,38,0.86) 0%, rgba(3,5,12,0.96) 100%);
+  }
+  .panel {
+    position: relative; width: min(560px, 96vw); max-height: 94vh; overflow-y: auto;
+    background: linear-gradient(180deg, var(--panel-a), var(--panel-b));
+    border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.6), inset 0 0 40px rgba(70,110,200,0.06);
+  }
+  .panel.narrow { width: min(420px, 94vw); }
+  .title { margin: 0; font-size: clamp(24px, 5vh, 38px); letter-spacing: 4px; text-align: center; color: var(--gold); text-shadow: 0 0 18px rgba(255,160,60,0.45); }
+  .subtitle { text-align: center; color: var(--dim); font-size: 11px; letter-spacing: 3px; margin: 6px 0 18px; }
+  h2.section { color: var(--cyan); font-size: 12px; letter-spacing: 2px; border-bottom: 1px solid #24314f; padding-bottom: 5px; margin: 18px 0 10px; }
+  .btn {
+    display: block; width: 100%; margin: 8px 0; padding: 11px 15px; cursor: pointer;
+    background: linear-gradient(180deg, #222d54, #131a30); border: 1px solid #47639f;
+    color: #cfe0ff; font-size: 13px; letter-spacing: 1.5px; border-radius: 8px;
+    font-family: inherit; text-align: left; transition: .12s;
+  }
+  .btn:hover { background: linear-gradient(180deg, #33487a, #1b2749); border-color: var(--cyan); color: #fff; transform: translateX(2px); }
+  .btn:active { transform: translateX(2px) scale(.99); }
+  .btn.primary { border-color: #ffb84f; color: #ffe9c8; background: linear-gradient(180deg, #3a2a12, #1b1408); }
+  .btn.primary:hover { border-color: var(--gold); background: linear-gradient(180deg, #563d18, #2a1c0b); }
+  .btn.danger { border-color: #b8494c; color: #ffd6d6; }
+  .btn.danger:hover { border-color: #ff7a7a; background: linear-gradient(180deg, #4a1b1e, #260d0f); }
+  .btn.sel { border-color: var(--gold); color: #fff; box-shadow: inset 0 0 0 1px rgba(255,210,127,0.35); }
+  .btn .k { float: right; color: #7f93b8; font-size: 11px; letter-spacing: 1px; }
+  .row { display: flex; gap: 8px; }
+  .row .btn { flex: 1; text-align: center; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .grid3 .btn { text-align: center; margin: 0; }
+  .small { font-size: 11px; color: #7f93b8; line-height: 1.6; }
+  .statline { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px dashed rgba(120,150,220,0.14); }
+  .statline span:last-child { color: #fff; font-weight: 600; }
+  .close-x { position: absolute; top: 10px; right: 14px; cursor: pointer; color: var(--cyan); font-size: 22px; line-height: 1; }
+  .close-x:hover { color: #fff; }
+  .field { margin: 12px 0; font-size: 12px; color: #a9c0e0; }
+  .field label { display: block; margin-bottom: 5px; }
+  input[type=range] { width: 100%; accent-color: #ffb84f; }
+  input[type=checkbox] { accent-color: #ffb84f; margin-right: 7px; transform: translateY(1px); }
+  .medalRow { display: flex; justify-content: center; gap: 22px; margin: 10px 0 4px; }
+  .medalRow div { text-align: center; font-size: 11px; color: var(--dim); }
+  .medalRow b { display: block; font-size: 26px; line-height: 1.2; }
+  .bigMedal { font-size: 62px; text-align: center; margin: 2px 0 4px; filter: drop-shadow(0 4px 14px rgba(255,190,90,0.35)); }
+  .howGrid { display: grid; grid-template-columns: auto 1fr; gap: 7px 14px; font-size: 12.5px; align-items: center; }
+  .key {
+    display: inline-block; min-width: 30px; text-align: center; padding: 3px 8px;
+    background: #101a33; border: 1px solid #47639f; border-bottom-width: 2px;
+    border-radius: 5px; font-size: 11px; color: #d7e6ff; letter-spacing: 1px;
+  }
+  ul.tips { margin: 8px 0 0; padding-left: 18px; font-size: 12px; color: #a9c0e0; line-height: 1.75; }
+  ul.tips b { color: var(--gold); }
+  .achList { max-height: 46vh; overflow-y: auto; border: 1px solid #24314f; border-radius: 8px; padding: 6px; }
+  .achItem { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 6px; }
+  .achItem + .achItem { border-top: 1px solid rgba(120,150,220,0.1); }
+  .achItem .ico { font-size: 20px; width: 26px; text-align: center; filter: grayscale(1); opacity: .45; }
+  .achItem.done .ico { filter: none; opacity: 1; }
+  .achItem .nm { font-size: 12.5px; color: #cfe0ff; }
+  .achItem.done .nm { color: var(--gold); }
+  .achItem .ds { font-size: 11px; color: #7f93b8; }
+  .achItem .pg { margin-left: auto; font-size: 11px; color: var(--cyan); white-space: nowrap; }
+  .bar { margin-top: 4px; height: 4px; background: rgba(0,0,0,0.5); border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: linear-gradient(90deg, #4a8fd6, #7fe4ff); }
+  .tag { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 9px; margin-left: 6px; letter-spacing: 1px; vertical-align: middle; }
+  .tag.daily { background: #3a2c14; color: #ffd27f; border: 1px solid #7a5a24; }
+  .tag.new { background: #14351f; color: #8effb0; border: 1px solid #2f7a4a; }
+  .tag.prac { background: #1c2740; color: #9fb3d6; border: 1px solid #3a4d78; }
+  .center { text-align: center; }
+  .flag { text-align: center; font-size: 15px; letter-spacing: 3px; color: #8effb0; margin: 4px 0 8px; text-shadow: 0 0 14px rgba(90,255,160,0.4); }
+  @media (max-width: 640px) {
+    .panel { padding: 18px 16px; }
+    #hint { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toast { animation-duration: .01ms, .01ms; animation-delay: 0s, 2.4s; }
+    .btn:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- ============ HUD ============ -->
+  <div id="hud" class="hidden">
+    <div id="hudTop">
+      <div class="hudBox" id="hudLeft">
+        <div class="hudLabel">GATES</div>
+        <div class="hudBig" id="hudGates">0</div>
+        <div class="hudSmall">BEST <span id="hudBest">0</span></div>
+      </div>
+      <div class="hudBox" id="hudCenter">
+        <div class="hudLabel" id="hudMode">ENDLESS · STANDARD</div>
+        <div class="hudMid"><span id="hudZone">Meadow Rise</span></div>
+        <div class="hudSmall">ALT <span id="hudAlt">0</span> m · <span id="hudFeathers">0</span> 🪶</div>
+        <div id="comboWrap"><div id="comboFill"></div></div>
+      </div>
+      <div class="hudBox" id="hudRight">
+        <div class="hudLabel">SCORE</div>
+        <div class="hudBig" id="hudScore">0</div>
+        <div class="hudSmall">x<span id="hudMult">1</span> · <span id="hudPerfect">0</span> perfect</div>
+        <div style="margin-top:6px"><button id="btnPause" title="Pause (Esc)">| |</button></div>
+      </div>
+    </div>
+    <div id="toasts"></div>
+    <div id="hint"><b>SPACE</b> / <b>W</b> / <b>↑</b> / click — flap &nbsp;·&nbsp; <b>Esc</b> or <b>P</b> — pause &nbsp;·&nbsp; <b>R</b> — restart</div>
+  </div>
+
+  <!-- ============ MAIN MENU ============ -->
+  <div class="overlay" id="mainMenu">
+    <div class="panel narrow">
+      <h1 class="title">FLAPPY ASCENT</h1>
+      <div class="subtitle">ONE BUTTON · SIX SKIES · NO CEILING</div>
+      <button class="btn primary" id="btnPlay">ENDLESS ASCENT <span class="k">SPACE</span></button>
+      <button class="btn" id="btnDaily">DAILY ASCENT <span class="tag daily">seeded</span></button>
+      <button class="btn" id="btnHow">HOW TO PLAY <span class="k">H</span></button>
+      <button class="btn" id="btnAch">ACHIEVEMENTS</button>
+      <button class="btn" id="btnSettings">SETTINGS</button>
+      <div class="medalRow" id="menuMedals">
+        <div><b>🥉</b><span id="menuBronze">0</span></div>
+        <div><b>🥈</b><span id="menuSilver">0</span></div>
+        <div><b>🥇</b><span id="menuGold">0</span></div>
+      </div>
+      <div class="small center" style="margin-top:8px">
+        Best run: <b style="color:#ffd27f" id="menuBest">0</b> gates ·
+        <span id="menuScore">0</span> pts<br>
+        <span id="menuDaily">Daily Ascent not attempted today.</span><br>
+        <span id="menuWho"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODE / DIFFICULTY ============ -->
+  <div class="overlay hidden" id="modeMenu">
+    <div class="panel narrow">
+      <span class="close-x" id="modeClose">&times;</span>
+      <h1 class="title" style="font-size:24px">ENDLESS ASCENT</h1>
+      <div class="subtitle">CHOOSE YOUR SKY</div>
+      <div class="grid3">
+        <button class="btn" data-diff="breezy">BREEZY</button>
+        <button class="btn" data-diff="standard">STANDARD</button>
+        <button class="btn" data-diff="storm">STORM</button>
+      </div>
+      <div class="small" id="modeDesc" style="margin:12px 0 4px"></div>
+      <div class="statline"><span>Best on this setting</span><span id="modeBest">0 gates</span></div>
+      <div class="statline"><span>Medal thresholds</span><span id="modeMedalReq">10 / 25 / 45</span></div>
+      <button class="btn primary" id="btnStartRun" style="margin-top:16px">LAUNCH <span class="k">SPACE</span></button>
+    </div>
+  </div>
+
+  <!-- ============ HOW TO PLAY ============ -->
+  <div class="overlay hidden" id="howMenu">
+    <div class="panel">
+      <span class="close-x" id="howClose">&times;</span>
+      <h1 class="title" style="font-size:24px">HOW TO PLAY</h1>
+      <div class="subtitle">ONE BUTTON, INFINITE SKY</div>
+      <h2 class="section">CONTROLS</h2>
+      <div class="howGrid">
+        <span><span class="key">SPACE</span></span><span>Flap — one press, one wingbeat. Also starts a run.</span>
+        <span><span class="key">W</span> <span class="key">↑</span></span><span>Flap (same as Space).</span>
+        <span><span class="key">CLICK</span></span><span>Flap. Tap anywhere on the sky — touch works too.</span>
+        <span><span class="key">ESC</span> <span class="key">P</span></span><span>Pause / resume. Esc backs out of any menu.</span>
+        <span><span class="key">R</span></span><span>Restart the run instantly.</span>
+        <span><span class="key">M</span></span><span>Mute / unmute the sound.</span>
+      </div>
+      <h2 class="section">THE CLIMB</h2>
+      <ul class="tips">
+        <li>Fly through the gap in every gate. Touch a pylon or the ground and the run ends.</li>
+        <li><b>Dead-centre passes</b> score a PERFECT: +50 and a rising chime. Chain them for the Threadneedle award.</li>
+        <li>Every 10 gates you break into a new <b>sky zone</b> — faster, tighter, prettier.</li>
+        <li><b>Drifting</b> gates sway, <b>narrow</b> gold gates are worth double, and <b>shutter</b> gates breathe open and shut. Time them.</li>
+        <li>Grab <b>🪶 feathers</b> for +75 and a small burst of lift.</li>
+        <li>Your score multiplier climbs to x5 the deeper you go — every gate is worth more than the last.</li>
+      </ul>
+      <h2 class="section">GHOST &amp; MEDALS</h2>
+      <ul class="tips">
+        <li>A translucent <b>ghost</b> flies your personal best beside you, and a glowing beacon marks exactly where that run ended. Pass it for a NEW RECORD.</li>
+        <li>Medals are awarded on gates cleared: <b>🥉 Bronze 10 · 🥈 Silver 25 · 🥇 Gold 45</b> (Storm needs 8 / 20 / 36).</li>
+        <li><b>Breezy</b> is practice: wider gaps, slower sky, no medals or awards.</li>
+        <li>The <b>Daily Ascent</b> is the same 80-gate course for everyone today. Clear all 80 to reach the summit.</li>
+      </ul>
+      <button class="btn primary" id="howClose2" style="margin-top:18px">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ============ ACHIEVEMENTS ============ -->
+  <div class="overlay hidden" id="achMenu">
+    <div class="panel">
+      <span class="close-x" id="achClose">&times;</span>
+      <h1 class="title" style="font-size:24px">AWARDS</h1>
+      <div class="subtitle"><span id="achCount">0</span> OF 10 EARNED</div>
+      <div class="achList" id="achList"></div>
+      <h2 class="section">LIFETIME</h2>
+      <div class="statline"><span>Runs flown</span><span id="lifeRuns">0</span></div>
+      <div class="statline"><span>Gates cleared</span><span id="lifeGates">0</span></div>
+      <div class="statline"><span>Feathers collected</span><span id="lifeFeathers">0</span></div>
+      <div class="statline"><span>Perfect passes</span><span id="lifePerfect">0</span></div>
+      <div class="statline"><span>Time in the sky</span><span id="lifeTime">0m</span></div>
+      <button class="btn primary" id="achClose2" style="margin-top:16px">BACK</button>
+    </div>
+  </div>
+
+  <!-- ============ SETTINGS ============ -->
+  <div class="overlay hidden" id="setMenu">
+    <div class="panel narrow">
+      <span class="close-x" id="setClose">&times;</span>
+      <h1 class="title" style="font-size:24px">SETTINGS</h1>
+      <div class="subtitle">TUNE THE SKY</div>
+      <div class="field"><label>Master volume — <span id="setVolVal">70%</span></label>
+        <input type="range" id="setVol" min="0" max="1" step="0.05" value="0.7"></div>
+      <div class="field"><label><input type="checkbox" id="setSfx" checked> Sound effects</label></div>
+      <div class="field"><label><input type="checkbox" id="setShake" checked> Screen shake</label></div>
+      <div class="field"><label><input type="checkbox" id="setParticles" checked> Particles &amp; trails</label></div>
+      <div class="field"><label><input type="checkbox" id="setGhost" checked> Show personal-best ghost</label></div>
+      <div class="field"><label><input type="checkbox" id="setContrast"> High-contrast gates</label></div>
+      <div class="small" id="setMotionNote"></div>
+      <button class="btn primary" id="setDone" style="margin-top:14px">DONE</button>
+      <button class="btn danger" id="btnWipe">ERASE SAVED PROGRESS</button>
+    </div>
+  </div>
+
+  <!-- ============ PAUSE ============ -->
+  <div class="overlay hidden" id="pauseMenu">
+    <div class="panel narrow">
+      <h1 class="title" style="font-size:26px">PAUSED</h1>
+      <div class="subtitle" id="pauseSub">THE SKY WAITS</div>
+      <button class="btn primary" id="btnResume">RESUME <span class="k">ESC</span></button>
+      <button class="btn" id="btnRestart">RESTART RUN <span class="k">R</span></button>
+      <button class="btn" id="btnPauseHow">HOW TO PLAY <span class="k">H</span></button>
+      <button class="btn" id="btnPauseSet">SETTINGS</button>
+      <button class="btn danger" id="btnPauseQuit">QUIT TO TITLE</button>
+    </div>
+  </div>
+
+  <!-- ============ RESULT ============ -->
+  <div class="overlay hidden" id="resultMenu">
+    <div class="panel narrow">
+      <div class="bigMedal" id="resMedal">🥉</div>
+      <h1 class="title" style="font-size:24px" id="resTitle">RUN COMPLETE</h1>
+      <div class="subtitle" id="resSub">ENDLESS · STANDARD</div>
+      <div class="flag hidden" id="resNew">★ NEW PERSONAL BEST ★</div>
+      <div class="statline"><span>Gates cleared</span><span id="resGates">0</span></div>
+      <div class="statline"><span>Score</span><span id="resScore">0</span></div>
+      <div class="statline"><span>Perfect passes</span><span id="resPerfect">0</span></div>
+      <div class="statline"><span>Feathers</span><span id="resFeathers">0</span></div>
+      <div class="statline"><span>Altitude reached</span><span id="resAlt">0 m</span></div>
+      <div class="statline"><span>Highest zone</span><span id="resZone">Meadow Rise</span></div>
+      <div class="statline"><span>Flight time</span><span id="resTime">0.0s</span></div>
+      <div class="statline"><span>Personal best</span><span id="resBest">0 gates</span></div>
+      <div class="small center" id="resNext" style="margin:10px 0 2px"></div>
+      <button class="btn primary" id="btnRetry" style="margin-top:12px">FLY AGAIN <span class="k">SPACE</span></button>
+      <button class="btn" id="btnResultMode">CHANGE SKY</button>
+      <button class="btn" id="btnResultMenu">MAIN MENU <span class="k">ESC</span></button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

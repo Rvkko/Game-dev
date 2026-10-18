@@ -1,0 +1,39 @@
+{
+  "id": "breachpoint-ops",
+  "title": "Breachpoint Ops",
+  "category": "action",
+  "tags": [
+    "fps",
+    "tactical",
+    "campaign",
+    "stealth"
+  ],
+  "stack": "canvas-raycaster",
+  "entry": "games/breachpoint-ops/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Lead a five-mission tactical assault campaign with breaching, stealth, weapon switching, objectives, ranks, and a fortified command boss.",
+  "achievements": [
+    {
+      "id": "clean-entry",
+      "title": "Clean Entry",
+      "desc": "Clear a mission without taking damage."
+    },
+    {
+      "id": "silent-professional",
+      "title": "Silent Professional",
+      "desc": "Finish a mission before the alarm is raised."
+    },
+    {
+      "id": "marksman",
+      "title": "Marksman",
+      "desc": "Finish with at least 70% accuracy."
+    },
+    {
+      "id": "operation-complete",
+      "title": "Operation Complete",
+      "desc": "Defeat the commander and complete the campaign."
+    }
+  ]
+}

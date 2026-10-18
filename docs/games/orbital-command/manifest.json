@@ -1,0 +1,56 @@
+{
+  "id": "orbital-command",
+  "title": "Orbital Command",
+  "category": "strategy",
+  "tags": [
+    "strategy",
+    "fleet",
+    "real-time",
+    "campaign",
+    "space"
+  ],
+  "stack": "Canvas 2D + WebAudio",
+  "entry": "games/orbital-command/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Command a carrier group through a five-mission real-time space campaign with fleet orders, relay capture, repairs and escalating enemy tactics.",
+  "achievements": [
+    {
+      "id": "first-command",
+      "title": "First Command",
+      "desc": "Complete mission one",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "relay-master",
+      "title": "Relay Master",
+      "desc": "Capture three relays",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 3
+    },
+    {
+      "id": "no-losses",
+      "title": "No Ship Left Behind",
+      "desc": "Win without losing a ship",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "campaign-victory",
+      "title": "Savior of Helios",
+      "desc": "Complete the campaign",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

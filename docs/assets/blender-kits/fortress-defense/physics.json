@@ -1,0 +1,13 @@
+{
+  "gameId": "fortress-defense",
+  "archetype": "tactical-board",
+  "physicsShape": "box",
+  "physicsProfile": "grid-or-hex-placement",
+  "ragdollProfile": "none",
+  "playerCollider": {
+    "radius": 0.550000011920929,
+    "height": 1.100000023841858,
+    "shape": "box"
+  },
+  "colliders": []
+}

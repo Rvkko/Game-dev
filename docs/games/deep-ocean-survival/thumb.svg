@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="w" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a4a6e"/><stop offset=".55" stop-color="#062c4a"/><stop offset="1" stop-color="#020817"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#bfe9ff" stop-opacity=".55"/><stop offset="1" stop-color="#bfe9ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="320" height="180" fill="url(#w)"/>
+  <polygon points="40,0 70,0 130,180 85,180" fill="#cfeeff" opacity=".06"/>
+  <polygon points="150,0 175,0 250,180 210,180" fill="#cfeeff" opacity=".05"/>
+  <circle cx="150" cy="95" r="70" fill="url(#lamp)"/>
+  <circle cx="40" cy="150" r="26" fill="#0e1d2e"/>
+  <circle cx="285" cy="165" r="34" fill="#0c1826"/>
+  <ellipse cx="150" cy="98" rx="9" ry="15" fill="#e8b06a"/>
+  <circle cx="150" cy="82" r="8" fill="#d8e8f0"/>
+  <circle cx="153" cy="82" r="4" fill="#112233"/>
+  <rect x="136" y="90" width="7" height="16" fill="#8a9aa5"/>
+  <rect x="158" y="96" width="22" height="4" fill="#5a6a75"/>
+  <path d="M232 60 q14 -18 28 0 q-14 12 -28 0" fill="#54626e"/>
+  <circle cx="262" cy="47" r="3.5" fill="#c8ffd8"/>
+  <path d="M246 47 q8 -10 16 0" stroke="#9fb" stroke-width="1.5" fill="none"/>
+  <circle cx="60" cy="60" r="3" fill="#7dffb2"/>
+  <circle cx="95" cy="130" r="3" fill="#9be8ff"/>
+  <circle cx="230" cy="130" r="3" fill="#c98bff"/>
+  <text x="160" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#39d7ff" letter-spacing="3">DEEP OCEAN SURVIVAL</text>
+</svg>

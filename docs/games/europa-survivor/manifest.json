@@ -1,0 +1,39 @@
+{
+  "id": "europa-survivor",
+  "title": "Europa Survivor",
+  "category": "adventure",
+  "tags": [
+    "survival",
+    "space",
+    "exploration",
+    "crafting"
+  ],
+  "stack": "canvas",
+  "entry": "games/europa-survivor/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Cross five lethal regions beneath Europa's ice, repair your habitat, gather alien samples, rescue crew, and choose humanity's first contact.",
+  "achievements": [
+    {
+      "id": "first-sample",
+      "title": "Life Below",
+      "desc": "Recover the first alien sample."
+    },
+    {
+      "id": "warm-blooded",
+      "title": "Warm Blooded",
+      "desc": "Finish a region above 70 heat."
+    },
+    {
+      "id": "crew-alive",
+      "title": "No One Frozen",
+      "desc": "Reach the finale with every survivor."
+    },
+    {
+      "id": "europa-home",
+      "title": "A Second Home",
+      "desc": "Complete the expedition."
+    }
+  ]
+}

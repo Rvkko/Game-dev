@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hex Tactics</title>
+<style>
+:root{ --ts:1; --acc:#3fd0ff; --bad:#ff5b5b; --good:#7dff9c; }
+*{box-sizing:border-box;margin:0;padding:0;user-select:none;}
+html,body{width:100%;height:100%;overflow:hidden;background:#060a10;font-family:'Segoe UI',system-ui,sans-serif;color:#d8ecf5;}
+#game{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.hidden{display:none !important;}
+#hud{position:absolute;inset:0;pointer-events:none;font-size:calc(14px*var(--ts));}
+#topbar{position:absolute;top:10px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:rgba(6,16,26,.7);border:1px solid rgba(90,190,255,.3);border-radius:10px;padding:6px 16px;}
+#topbar .stat{font-variant-numeric:tabular-nums;font-size:calc(13px*var(--ts));}
+#topbar .acc{color:var(--acc);font-weight:700;}
+#endturn{pointer-events:auto;background:linear-gradient(180deg,#0d3a57,#082537);border:1px solid var(--acc);border-radius:8px;color:#dff4ff;padding:6px 16px;font-weight:700;cursor:pointer;font-size:calc(13px*var(--ts));}
+#endturn:hover{background:linear-gradient(180deg,#14507a,#0b3450);}
+#squadbar{position:absolute;left:10px;bottom:10px;display:flex;gap:8px;pointer-events:auto;}
+.ucard{width:96px;background:rgba(6,16,26,.82);border:2px solid rgba(90,190,255,.3);border-radius:10px;padding:6px;cursor:pointer;transition:.12s;}
+.ucard:hover{border-color:var(--acc);}
+.ucard.sel{border-color:#ffd76b;box-shadow:0 0 10px rgba(255,215,107,.4);}
+.ucard.dead{opacity:.35;filter:grayscale(1);cursor:default;}
+.ucard.acted{opacity:.55;}
+.ucard .nm{font-size:calc(11px*var(--ts));font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ucard .cls{font-size:calc(9px*var(--ts));opacity:.7;}
+.hpbar{height:6px;background:#1a2732;border-radius:3px;overflow:hidden;margin-top:3px;}
+.hpbar>i{display:block;height:100%;background:linear-gradient(90deg,#c8384a,#ff7a6b);}
+#abilbar{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:6px;pointer-events:auto;align-items:flex-end;}
+.abtn{pointer-events:auto;background:rgba(6,16,26,.85);border:1px solid rgba(90,190,255,.4);border-radius:8px;color:#dff4ff;padding:8px 14px;cursor:pointer;font-size:calc(12px*var(--ts));min-width:150px;text-align:left;}
+.abtn:hover:not(:disabled){border-color:var(--acc);background:rgba(20,80,122,.6);}
+.abtn:disabled{opacity:.35;cursor:default;}
+.abtn b{display:block;font-size:calc(13px*var(--ts));}
+.abtn span{opacity:.7;font-size:calc(10px*var(--ts));}
+#unitinfo{position:absolute;left:10px;top:70px;background:rgba(6,16,26,.82);border:1px solid rgba(90,190,255,.3);border-radius:10px;padding:10px 14px;min-width:170px;font-size:calc(12px*var(--ts));}
+#unitinfo .nm{font-size:calc(15px*var(--ts));font-weight:700;color:var(--acc);}
+#msglog{position:absolute;left:50%;top:60px;transform:translateX(-50%);display:flex;flex-direction:column;gap:4px;align-items:center;}
+.msg{background:rgba(6,16,26,.85);border:1px solid rgba(90,190,255,.3);border-radius:8px;padding:4px 14px;font-size:calc(12px*var(--ts));animation:msgin .25s ease-out;}
+.msg.kill{border-color:var(--bad);color:#ffb3b3;}
+.msg.ach{border-color:#ffd76b;color:#ffe9ad;}
+@keyframes msgin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+#dmgpop{position:absolute;inset:0;pointer-events:none;}
+.dnum{position:absolute;font-weight:800;font-size:calc(20px*var(--ts));text-shadow:0 2px 6px #000;animation:popup 1s ease-out forwards;}
+.dnum.heal{color:var(--good);}
+.dnum.crit{color:#ffd76b;font-size:calc(28px*var(--ts));}
+.dnum.miss{color:#9fb3c0;font-size:calc(14px*var(--ts));}
+@keyframes popup{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-60px)}}
+#reticle{position:absolute;top:6px;left:50%;transform:translateX(-50%);font-size:11px;opacity:.6;}
+.panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(1,5,12,.82);backdrop-filter:blur(3px);z-index:20;pointer-events:auto;}
+.card{background:linear-gradient(180deg,#0a1c2c,#05121e);border:1px solid rgba(90,190,255,.35);border-radius:16px;padding:26px 34px;max-width:min(640px,92vw);max-height:88vh;overflow-y:auto;box-shadow:0 10px 50px rgba(0,0,0,.7);}
+.card h1{font-size:calc(30px*var(--ts));letter-spacing:2px;color:var(--acc);text-shadow:0 0 18px rgba(63,208,255,.4);margin-bottom:4px;}
+.card h2{font-size:calc(19px*var(--ts));color:var(--acc);margin:14px 0 10px;}
+.card .sub{opacity:.75;margin:4px 0 16px;font-size:calc(13px*var(--ts));}
+button.big{pointer-events:auto;cursor:pointer;font:inherit;font-size:calc(15px*var(--ts));color:#dff4ff;background:linear-gradient(180deg,#0d3a57,#082537);border:1px solid rgba(90,190,255,.5);border-radius:10px;padding:11px 20px;margin:5px 0;display:block;width:100%;transition:.12s;}
+button.big:hover{background:linear-gradient(180deg,#14507a,#0b3450);border-color:var(--acc);}
+button.small{pointer-events:auto;cursor:pointer;font:inherit;font-size:calc(12px*var(--ts));color:#dff4ff;background:rgba(20,60,90,.6);border:1px solid rgba(90,190,255,.4);border-radius:8px;padding:6px 12px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;}
+.row>button{flex:1;}
+.diffgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.diffgrid button.sel{border-color:#ffd76b;box-shadow:0 0 10px rgba(255,215,107,.3) inset;}
+.achrow{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(90,190,255,.12);padding:8px 2px;}
+.achrow.locked{opacity:.4;}
+.achrow .t{font-weight:700;font-size:calc(13px*var(--ts));}
+.achrow .d{font-size:calc(11px*var(--ts));opacity:.7;}
+.slider{width:100%;}
+.helpgrid{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:calc(13px*var(--ts));}
+.helpgrid kbd{background:#0b2c44;border:1px solid rgba(90,190,255,.4);border-radius:5px;padding:2px 8px;font-family:inherit;font-size:calc(12px*var(--ts));text-align:center;}
+#loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:#060a10;z-index:100;}
+#loading .sp{width:40px;height:40px;border:4px solid rgba(90,190,255,.25);border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+#waveinfo{position:absolute;top:10px;right:10px;background:rgba(6,16,26,.7);border:1px solid rgba(90,190,255,.3);border-radius:10px;padding:6px 14px;font-size:calc(12px*var(--ts));text-align:right;}
+#fps{position:absolute;bottom:4px;left:4px;font-size:10px;opacity:.5;}
+#err{z-index:200;}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="loading"><div class="sp"></div><div>Loading Hex Tactics…</div></div>
+
+<div id="hud" class="hidden">
+  <div id="topbar">
+    <div class="stat">Wave <b id="waveNum" class="acc">1</b></div>
+    <div class="stat">Turn <b id="turnNum" class="acc">1</b></div>
+    <div class="stat" id="phaseLbl">Your Turn</div>
+    <button id="endturn">End Turn (Space)</button>
+  </div>
+  <div id="waveinfo">
+    <div id="diffLbl">Normal</div>
+    <div id="enemiesLeft">Enemies: 0</div>
+  </div>
+  <div id="msglog"></div>
+  <div id="unitinfo" class="hidden"></div>
+  <div id="squadbar"></div>
+  <div id="abilbar"></div>
+  <div id="dmgpop"></div>
+  <div id="reticle">Drag = orbit · Wheel = zoom · WASD = pan · Click unit/tile · E = ability · Esc = pause</div>
+  <div id="fps"></div>
+</div>
+
+<!-- MAIN MENU -->
+<div id="menu" class="panel">
+  <div class="card">
+    <h1>HEX TACTICS</h1>
+    <div class="sub">Command a squad across a procedural 3D hex battlefield. Height, cover and grit decide who walks away.</div>
+    <h2>Difficulty</h2>
+    <div class="diffgrid" id="diffPick">
+      <button class="big small" data-d="easy">Easy</button>
+      <button class="big small sel" data-d="normal">Normal</button>
+      <button class="big small" data-d="hard">Hard</button>
+      <button class="big small" data-d="nightmare">Nightmare</button>
+    </div>
+    <button class="big" id="btnNewRun">New Campaign</button>
+    <button class="big" id="btnContinue">Continue Campaign</button>
+    <button class="big" id="btnDaily">Daily Challenge (Seed: <span id="dailySeedLbl"></span>)</button>
+    <button class="big" id="btnAch">Achievements</button>
+    <button class="big" id="btnHelp">Controls / Help</button>
+    <div class="sub" id="menuFoot" style="margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- PAUSE -->
+<div id="pause" class="panel hidden">
+  <div class="card">
+    <h1>PAUSED</h1>
+    <button class="big" id="btnResume">Resume</button>
+    <button class="big" id="btnPauseHelp">Controls / Help</button>
+    <button class="big" id="btnPauseAch">Achievements</button>
+    <h2>Audio</h2>
+    <label>Music <input type="range" class="slider" id="volMusic" min="0" max="100" value="50"></label>
+    <label>SFX <input type="range" class="slider" id="volSfx" min="0" max="100" value="70"></label>
+    <button class="big" id="btnQuit">Quit to Menu</button>
+  </div>
+</div>
+
+<!-- HELP -->
+<div id="help" class="panel hidden">
+  <div class="card">
+    <h1>CONTROLS</h1>
+    <div class="helpgrid">
+      <kbd>Mouse Drag</kbd><div>Orbit camera</div>
+      <kbd>Wheel</kbd><div>Zoom camera</div>
+      <kbd>W A S D</kbd><div>Pan camera (W = forward, non-inverted)</div>
+      <kbd>Shift</kbd><div>Fast camera pan</div>
+      <kbd>Left Click</kbd><div>Select unit / move to tile / confirm target</div>
+      <kbd>Right Click</kbd><div>Cancel selection / secondary orbit</div>
+      <kbd>E</kbd><div>Open ability / interact with selected unit</div>
+      <kbd>1-4</kbd><div>Quick-select ability slot</div>
+      <kbd>Space</kbd><div>End turn</div>
+      <kbd>Esc</kbd><div>Pause</div>
+      <kbd>Gamepad</kbd><div>Left stick pan camera, A confirm, B cancel</div>
+    </div>
+    <h2>Combat</h2>
+    <div class="sub">Move then act (attack / ability). High ground gives an accuracy edge; cover reduces enemy accuracy against you. Watch for Overwatch — moving through an enemy's watched tiles draws free fire.</div>
+    <button class="big" id="btnHelpClose">Close</button>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achPanel" class="panel hidden">
+  <div class="card">
+    <h1>ACHIEVEMENTS</h1>
+    <div id="achList"></div>
+    <button class="big" id="btnAchClose">Close</button>
+  </div>
+</div>
+
+<!-- MISSION END -->
+<div id="missionEnd" class="panel hidden">
+  <div class="card">
+    <h1 id="meTitle">VICTORY</h1>
+    <div class="sub" id="meSub"></div>
+    <div id="meStats" style="margin-bottom:14px;"></div>
+    <button class="big" id="btnMeContinue">Continue to Next Wave</button>
+    <button class="big" id="btnMeRetry">Retry Skirmish</button>
+    <button class="big" id="btnMeMenu">Return to Menu</button>
+  </div>
+</div>
+
+<div id="err" class="panel hidden"><div class="card"><h2>Engine failed to load</h2><div class="sub">Hex Tactics could not load its local Three.js / cannon-es engine files. Reload to try again.</div></div></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script>window.addEventListener('error', e => { if (/three|cannon/.test(String(e.message)) || /vendor/.test(String(e.filename||''))) document.getElementById('err').classList.remove('hidden'); }, true);</script>
+<script type="module">
+  (async () => {
+    const THREE = await import('../../vendor/three.module.js');
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script'); s.src = '../../vendor/three-r128/GLTFLoader.js';
+      s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+    });
+    await import('./game.js');
+  })().catch((error) => console.error('Hex Tactics bootstrap failed:', error));
+</script>
+</body>
+</html>

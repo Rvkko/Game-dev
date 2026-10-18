@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ant Colony</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root {
+    color-scheme: dark;
+    --soil:#1b1408; --soil2:#0d0a04;
+    --amber:#ffb04a; --amber-dim:#c98a36;
+    --leaf:#8fd14f; --leaf-dim:#5c8f33;
+    --rival:#9a7cff; --danger:#ff6b5a;
+    --ink:#f2e6d0; --ink-dim:#a8977c;
+    --line:#4a3a1e; --panel:rgba(22,16,7,0.92);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin:0; padding:0; width:100%; height:100%; overflow:hidden;
+    background:#0a0703; color:var(--ink);
+    font-family:'Segoe UI', 'Trebuchet MS', system-ui, sans-serif;
+    -webkit-user-select:none; user-select:none; touch-action:none;
+  }
+  #app { position:fixed; inset:0; }
+  canvas#game { position:absolute; inset:0; display:block; width:100%; height:100%; cursor:crosshair; }
+
+  /* ============ HUD ============ */
+  #hud { position:absolute; left:0; right:0; top:0; height:46px; z-index:20;
+    display:flex; align-items:center; gap:10px; padding:0 10px;
+    background:linear-gradient(180deg, rgba(14,10,4,0.95), rgba(14,10,4,0.62) 70%, rgba(14,10,4,0));
+    pointer-events:none; font-size:12px; }
+  #hud > * { pointer-events:auto; }
+  .hudbox { display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .hudlabel { font-size:9px; letter-spacing:1.4px; color:var(--ink-dim); text-transform:uppercase; white-space:nowrap; }
+  .hudval { font-size:13px; font-weight:700; color:var(--ink); white-space:nowrap; line-height:1; }
+  .meter { width:100%; height:6px; border-radius:3px; background:rgba(0,0,0,0.55); border:1px solid var(--line); overflow:hidden; }
+  .meter > i { display:block; height:100%; width:0%; transition:width .18s linear; }
+  #dayFill { background:linear-gradient(90deg,#ffd88a,#ff9b2f); }
+  #foodFill { background:linear-gradient(90deg,#a7e05a,#5c8f33); }
+  #queenFill { background:linear-gradient(90deg,#ffcf6b,#e0603d); }
+  #rivalFill { background:linear-gradient(90deg,#b7a2ff,#6b46d6); }
+  #hud .sep { width:1px; height:26px; background:var(--line); flex:0 0 auto; }
+  .hud-day { min-width:96px; } .hud-food { min-width:120px; } .hud-pop { min-width:150px; }
+  .hud-queen { min-width:86px; } .hud-rival { min-width:86px; }
+  .spacer { flex:1 1 auto; }
+  .ibtn { background:rgba(40,29,12,0.9); border:1px solid var(--line); color:var(--ink);
+    border-radius:5px; padding:5px 9px; font:inherit; font-size:11px; cursor:pointer; line-height:1; }
+  .ibtn:hover { border-color:var(--amber); color:#fff; background:rgba(70,50,18,0.95); }
+  .ibtn.on { border-color:var(--amber); color:#1a1204; background:var(--amber); font-weight:700; }
+  .ibtn:disabled { opacity:.35; cursor:not-allowed; }
+  .btngroup { display:flex; gap:3px; }
+  .pop-w { color:var(--amber); } .pop-s { color:#7fe0d0; } .pop-so { color:#ff8f6b; }
+
+  /* ============ SIDE PANELS ============ */
+  .panel-side { position:absolute; z-index:18; width:214px; background:var(--panel);
+    border:1px solid var(--line); border-radius:8px; padding:9px 10px;
+    box-shadow:0 6px 22px rgba(0,0,0,0.55); font-size:11px; max-height:calc(100% - 130px); overflow-y:auto; }
+  #panelLeft { left:10px; top:54px; }
+  #panelRight { right:10px; top:54px; width:236px; }
+  .panel-side h3 { margin:0 0 7px; font-size:10px; letter-spacing:2px; color:var(--amber);
+    text-transform:uppercase; border-bottom:1px solid var(--line); padding-bottom:5px; }
+  .casteRow { display:flex; align-items:center; gap:6px; margin:5px 0; }
+  .casteRow .cname { flex:1; display:flex; flex-direction:column; gap:1px; }
+  .casteRow .cname b { font-size:11px; font-weight:600; }
+  .casteRow .cname span { font-size:9px; color:var(--ink-dim); }
+  .stepper { display:flex; align-items:center; gap:2px; }
+  .stepper button { width:19px; height:19px; padding:0; font-size:12px; line-height:1;
+    background:rgba(40,29,12,0.9); border:1px solid var(--line); color:var(--ink); border-radius:4px; cursor:pointer; }
+  .stepper button:hover:not(:disabled) { border-color:var(--amber); color:#fff; }
+  .stepper button:disabled { opacity:.3; cursor:not-allowed; }
+  .stepper .num { min-width:26px; text-align:center; font-weight:700; font-size:12px; }
+  .locked { opacity:.42; }
+  #broodBar { display:flex; flex-wrap:wrap; gap:3px; margin-top:6px; min-height:12px; }
+  .pip { width:12px; height:12px; border-radius:50%; border:1px solid var(--line); background:rgba(0,0,0,.4);
+    position:relative; overflow:hidden; }
+  .pip i { position:absolute; left:0; bottom:0; width:100%; background:var(--amber); }
+  .pip.s i { background:#7fe0d0; } .pip.so i { background:#ff8f6b; }
+  .pip.empty { opacity:.28; }
+  .noteline { color:var(--ink-dim); font-size:10px; margin-top:6px; line-height:1.45; }
+  .kv { display:flex; justify-content:space-between; gap:6px; padding:2px 0; font-size:10px; color:var(--ink-dim); }
+  .kv b { color:var(--ink); font-weight:600; }
+
+  .upg { border:1px solid var(--line); border-radius:6px; padding:6px 7px; margin-bottom:6px;
+    background:rgba(0,0,0,0.25); cursor:pointer; transition:border-color .12s, background .12s; }
+  .upg:hover { border-color:var(--amber-dim); background:rgba(60,42,14,0.35); }
+  .upg.maxed { opacity:.55; cursor:default; }
+  .upg.poor { opacity:.72; }
+  .upg .top { display:flex; align-items:center; gap:6px; }
+  .upg .ico { font-size:14px; }
+  .upg .nm { flex:1; font-weight:700; font-size:11px; }
+  .upg .cost { font-size:10px; color:var(--leaf); font-weight:700; }
+  .upg.poor .cost { color:var(--danger); }
+  .upg .lv { display:flex; gap:2px; margin:4px 0 3px; }
+  .upg .lv i { flex:1; height:3px; border-radius:2px; background:rgba(255,255,255,.13); }
+  .upg .lv i.on { background:var(--amber); }
+  .upg .ds { font-size:9px; color:var(--ink-dim); line-height:1.4; }
+
+  /* ============ BOTTOM ============ */
+  #bottomBar { position:absolute; left:10px; bottom:10px; z-index:18; display:flex; gap:8px; align-items:flex-end; }
+  #actionBox { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:7px 9px; font-size:10px; min-width:210px; }
+  #actionBox .arow { display:flex; align-items:center; gap:6px; margin:3px 0; }
+  #actionBox .key { display:inline-block; min-width:34px; text-align:center; padding:1px 4px; border-radius:3px;
+    background:rgba(255,255,255,.09); border:1px solid var(--line); font-size:9px; font-weight:700; color:var(--ink); }
+  #actionBox .txt { color:var(--ink-dim); }
+  #beaconMeter { height:4px; border-radius:2px; background:rgba(0,0,0,.5); margin-top:4px; overflow:hidden; border:1px solid var(--line); }
+  #beaconFill { display:block; height:100%; width:100%; background:var(--leaf); }
+  #minimapWrap { position:absolute; right:10px; bottom:10px; z-index:18; background:var(--panel);
+    border:1px solid var(--line); border-radius:8px; padding:5px; }
+  canvas#minimap { display:block; width:196px; height:123px; border-radius:4px; cursor:pointer; background:#120d05; }
+  #mmLabel { font-size:8px; letter-spacing:1.5px; color:var(--ink-dim); text-align:center; margin-top:3px; text-transform:uppercase; }
+
+  /* ============ FLOATING FEEDBACK ============ */
+  #toastWrap { position:absolute; top:56px; left:50%; transform:translateX(-50%); z-index:30;
+    display:flex; flex-direction:column; gap:5px; align-items:center; pointer-events:none; }
+  .toast { background:rgba(20,14,5,0.94); border:1px solid var(--amber-dim); color:var(--ink);
+    padding:6px 14px; border-radius:14px; font-size:12px; letter-spacing:.4px; white-space:nowrap;
+    animation:tIn .28s ease both, tOut .5s ease 2.7s both; box-shadow:0 4px 14px rgba(0,0,0,.5); }
+  .toast.good { border-color:var(--leaf); color:#dcffb8; }
+  .toast.bad { border-color:var(--danger); color:#ffd3cc; }
+  .toast.ach { border-color:#ffd88a; color:#fff0cd; background:rgba(50,33,6,0.96); }
+  @keyframes tIn { from{opacity:0; transform:translateY(-10px) scale(.94);} to{opacity:1; transform:none;} }
+  @keyframes tOut { from{opacity:1;} to{opacity:0; transform:translateY(-6px);} }
+  #eventBanner { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:29;
+    font-size:34px; font-weight:800; letter-spacing:6px; text-transform:uppercase; color:var(--ink);
+    text-shadow:0 0 24px rgba(0,0,0,.9); pointer-events:none; opacity:0; text-align:center; }
+  #eventBanner.show { animation:bannerFx 2.4s ease both; }
+  #eventBanner small { display:block; font-size:13px; letter-spacing:3px; font-weight:600; color:var(--ink-dim); margin-top:6px; }
+  @keyframes bannerFx { 0%{opacity:0; transform:translate(-50%,-50%) scale(1.3);} 14%{opacity:1; transform:translate(-50%,-50%) scale(1);} 78%{opacity:1;} 100%{opacity:0;} }
+
+  /* ============ OVERLAYS ============ */
+  .overlay { position:absolute; inset:0; z-index:40; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at center, rgba(18,12,4,0.88) 0%, rgba(5,3,1,0.97) 100%);
+    padding:18px; overflow-y:auto; }
+  .hidden { display:none !important; }
+  .panel { background:linear-gradient(180deg, rgba(30,21,9,0.97), rgba(12,8,3,0.98));
+    border:1px solid var(--line); border-radius:12px; padding:22px 26px; width:min(560px, 94vw);
+    box-shadow:0 0 50px rgba(255,150,40,0.09), inset 0 0 40px rgba(120,80,20,0.06);
+    max-height:92vh; overflow-y:auto; position:relative; }
+  .panel.narrow { width:min(420px,94vw); }
+  .gtitle { font-size:34px; letter-spacing:8px; text-align:center; margin:0; color:var(--amber);
+    text-shadow:0 0 22px rgba(255,140,40,.45); font-weight:800; }
+  .gsub { text-align:center; color:var(--ink-dim); font-size:11px; letter-spacing:3px; margin:6px 0 18px; text-transform:uppercase; }
+  h2.sec { color:var(--leaf); font-size:11px; letter-spacing:2.4px; text-transform:uppercase;
+    border-bottom:1px solid var(--line); padding-bottom:5px; margin:16px 0 9px; }
+  .btn { display:block; width:100%; margin:7px 0; padding:11px 14px; border-radius:7px; cursor:pointer;
+    background:linear-gradient(180deg, rgba(64,45,16,.95), rgba(30,21,8,.95));
+    border:1px solid var(--line); color:var(--ink); font:inherit; font-size:13px; letter-spacing:1.6px; text-align:left;
+    transition:.12s; }
+  .btn:hover:not(:disabled) { border-color:var(--amber); color:#fff; transform:translateX(3px);
+    background:linear-gradient(180deg, rgba(96,66,20,.95), rgba(46,31,10,.95)); }
+  .btn:disabled { opacity:.32; cursor:not-allowed; }
+  .btn.primary { border-color:var(--amber-dim); color:#ffe6bb; font-weight:700; }
+  .btn.danger { border-color:#8c3a30; color:#ffcfc7; }
+  .row { display:flex; gap:8px; } .row .btn { flex:1; text-align:center; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .grid3 .btn { margin:0; text-align:center; }
+  .small { font-size:11px; color:var(--ink-dim); line-height:1.65; }
+  .close-x { position:absolute; top:9px; right:14px; cursor:pointer; color:var(--ink-dim); font-size:22px; line-height:1; }
+  .close-x:hover { color:var(--amber); }
+  .htp { display:grid; grid-template-columns:26px 1fr; gap:6px 10px; font-size:11.5px; line-height:1.5; align-items:start; }
+  .htp b { color:var(--amber); }
+  .htp .ic { font-size:16px; text-align:center; }
+  .keycap { display:inline-block; padding:1px 6px; border-radius:4px; background:rgba(255,255,255,.1);
+    border:1px solid var(--line); font-size:10px; font-weight:700; margin:0 1px; }
+  .field { margin:11px 0; font-size:12px; color:var(--ink-dim); }
+  .field label { display:block; margin-bottom:5px; }
+  input[type=range] { width:100%; accent-color:#ffb04a; }
+  .statline { display:flex; justify-content:space-between; font-size:12px; padding:3px 0; border-bottom:1px dashed rgba(255,255,255,.07); }
+  .statline b { color:var(--ink); }
+  #resultRating { font-size:60px; text-align:center; font-weight:800; letter-spacing:4px; margin:2px 0 4px; }
+  #resultIcon { font-size:44px; text-align:center; }
+  .achlist { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+  .achpill { font-size:10px; padding:3px 9px; border-radius:11px; border:1px solid #ffd88a; color:#ffefcd; background:rgba(60,40,8,.6); }
+  .diffnote { font-size:10px; color:var(--ink-dim); text-align:center; margin-top:6px; min-height:26px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1120px) {
+    .panel-side { width:186px; font-size:10px; padding:7px 8px; }
+    #panelRight { width:198px; }
+    canvas#minimap { width:150px; height:94px; }
+  }
+  @media (max-width: 960px), (max-height: 620px) {
+    #hud { height:40px; font-size:11px; gap:7px; }
+    .hud-pop { min-width:120px; }
+    .panel-side { max-height:calc(100% - 108px); }
+    #actionBox { min-width:0; }
+    .gtitle { font-size:26px; letter-spacing:5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toast, #eventBanner.show { animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+    .toast { opacity:1; } .btn:hover { transform:none; }
+  }
+  .panelsHidden #panelLeft, .panelsHidden #panelRight, .panelsHidden #bottomBar, .panelsHidden #minimapWrap { display:none; }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- ===================== HUD ===================== -->
+  <div id="hud" class="hidden">
+    <div class="hudbox hud-day">
+      <div class="hudlabel">Day <span id="hudDay">1</span> / 20 · <span id="hudPhase">Dawn</span></div>
+      <div class="hudval" id="hudWeather">Clear</div>
+      <div class="meter"><i id="dayFill"></i></div>
+    </div>
+    <div class="sep"></div>
+    <div class="hudbox hud-food">
+      <div class="hudlabel">Food Store</div>
+      <div class="hudval"><span id="hudFood">0</span><span style="color:var(--ink-dim);font-weight:400"> / <span id="hudFoodCap">400</span></span> <span id="hudFoodRate" style="font-size:10px;color:var(--leaf)"></span></div>
+      <div class="meter"><i id="foodFill"></i></div>
+    </div>
+    <div class="sep"></div>
+    <div class="hudbox hud-pop">
+      <div class="hudlabel">Colony (<span id="hudPop">0</span>)</div>
+      <div class="hudval"><span class="pop-w">🐜 <span id="hudWorkers">0</span></span> &nbsp;<span class="pop-s">◇ <span id="hudScouts">0</span></span> &nbsp;<span class="pop-so">⚔ <span id="hudSoldiers">0</span></span></div>
+      <div class="hudlabel" id="hudBrood">Brood 0/4</div>
+    </div>
+    <div class="sep"></div>
+    <div class="hudbox hud-queen">
+      <div class="hudlabel">Queen</div>
+      <div class="hudval" id="hudQueen">100%</div>
+      <div class="meter"><i id="queenFill"></i></div>
+    </div>
+    <div class="sep"></div>
+    <div class="hudbox hud-rival">
+      <div class="hudlabel">Rival Nest</div>
+      <div class="hudval" id="hudRival">100%</div>
+      <div class="meter"><i id="rivalFill"></i></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="btngroup">
+      <button class="ibtn" id="spd1">1×</button>
+      <button class="ibtn" id="spd2">2×</button>
+      <button class="ibtn" id="spd3">3×</button>
+    </div>
+    <button class="ibtn" id="btnHelpHud">? Help</button>
+    <button class="ibtn" id="btnPauseHud">❚❚ Pause</button>
+  </div>
+
+  <!-- ===================== LEFT PANEL ===================== -->
+  <div class="panel-side hidden" id="panelLeft">
+    <h3>Caste Targets</h3>
+    <div class="casteRow" id="rowWorker">
+      <div class="cname"><b class="pop-w">🐜 Workers</b><span>Forage &amp; haul food</span></div>
+      <div class="stepper"><button id="wMinus">−</button><span class="num" id="tgtWorker">25</span><button id="wPlus">+</button></div>
+    </div>
+    <div class="casteRow locked" id="rowScout">
+      <div class="cname"><b class="pop-s">◇ Scouts</b><span id="scoutSub">Locked — buy Scout Corps</span></div>
+      <div class="stepper"><button id="sMinus">−</button><span class="num" id="tgtScout">0</span><button id="sPlus">+</button></div>
+    </div>
+    <div class="casteRow locked" id="rowSoldier">
+      <div class="cname"><b class="pop-so">⚔ Soldiers</b><span id="soldierSub">Locked — buy Soldier Caste</span></div>
+      <div class="stepper"><button id="oMinus">−</button><span class="num" id="tgtSoldier">0</span><button id="oPlus">+</button></div>
+    </div>
+    <div id="broodBar"></div>
+    <div class="noteline">The queen lays eggs automatically to reach your targets while food allows.</div>
+    <h3 style="margin-top:11px;">Colony Report</h3>
+    <div class="kv"><span>Food gathered</span><b id="stGathered">0</b></div>
+    <div class="kv"><span>Upkeep</span><b id="stUpkeep">0/day</b></div>
+    <div class="kv"><span>Income</span><b id="stIncome">0/day</b></div>
+    <div class="kv"><span>Known food piles</span><b id="stPiles">0</b></div>
+    <div class="kv"><span>Rivals slain</span><b id="stKills">0</b></div>
+    <button class="ibtn" id="btnRecall" style="width:100%;margin-top:8px;">Recall Soldiers Home (H)</button>
+  </div>
+
+  <!-- ===================== RIGHT PANEL ===================== -->
+  <div class="panel-side hidden" id="panelRight">
+    <h3>Colony Upgrades</h3>
+    <div id="upgradeList"></div>
+  </div>
+
+  <!-- ===================== BOTTOM ===================== -->
+  <div id="bottomBar" class="hidden">
+    <div id="actionBox">
+      <div class="arow"><span class="key">SPACE</span><span class="txt">Scent beacon at cursor — <span id="beaconCost">8</span> food</span></div>
+      <div class="arow"><span class="key">R</span><span class="txt">Rally soldiers to cursor</span></div>
+      <div class="arow"><span class="key">WASD</span><span class="txt">Pan · wheel zoom · Tab hides panels</span></div>
+      <div id="beaconMeter"><i id="beaconFill"></i></div>
+    </div>
+  </div>
+  <div id="minimapWrap" class="hidden">
+    <canvas id="minimap" width="392" height="246"></canvas>
+    <div id="mmLabel">Territory — click to jump</div>
+  </div>
+
+  <div id="toastWrap"></div>
+  <div id="eventBanner"></div>
+
+  <!-- ===================== MAIN MENU ===================== -->
+  <div class="overlay" id="mainMenu">
+    <div class="panel narrow">
+      <h1 class="gtitle">ANT&nbsp;COLONY</h1>
+      <div class="gsub">Pheromone Foraging Simulator</div>
+      <button class="btn primary" id="btnContinue" disabled>CONTINUE COLONY</button>
+      <button class="btn primary" id="btnNew">NEW COLONY</button>
+      <button class="btn" id="btnHowTo">HOW TO PLAY</button>
+      <button class="btn" id="btnSettings">SETTINGS</button>
+      <div class="small" style="text-align:center;margin-top:14px;">
+        Best run: <b id="menuBest">—</b> · Longest survival: <b id="menuDays">0</b> days
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== NEW GAME ===================== -->
+  <div class="overlay hidden" id="newMenu">
+    <div class="panel narrow">
+      <span class="close-x" id="newClose">&times;</span>
+      <h1 class="gtitle" style="font-size:22px;letter-spacing:4px;">FOUND A COLONY</h1>
+      <div class="gsub">Survive 20 days</div>
+      <h2 class="sec">Difficulty</h2>
+      <div class="grid3">
+        <button class="btn" data-diff="easy">MEADOW</button>
+        <button class="btn" data-diff="normal">WOODLAND</button>
+        <button class="btn" data-diff="hard">DROUGHT</button>
+      </div>
+      <div class="diffnote" id="diffNote">Meadow — plentiful food, a timid rival colony. Good for learning trails.</div>
+      <button class="btn primary" id="btnBegin" style="margin-top:6px;">DIG THE NEST →</button>
+    </div>
+  </div>
+
+  <!-- ===================== HOW TO PLAY ===================== -->
+  <div class="overlay hidden" id="howTo">
+    <div class="panel">
+      <span class="close-x" id="howToClose">&times;</span>
+      <h1 class="gtitle" style="font-size:22px;letter-spacing:4px;">HOW TO PLAY</h1>
+      <div class="gsub">Trails, brood and war</div>
+      <div class="htp">
+        <div class="ic">🐜</div><div><b>Trails do the work.</b> Ants searching for food leave a blue <b>home</b> trail behind them. Ants carrying food home leave a green <b>food</b> trail. Other ants smell those trails and follow them, so a lucky find quickly becomes a highway.</div>
+        <div class="ic">🍯</div><div><b>Food is everything.</b> Every ant eats from the store each day. Run dry and ants starve and the queen weakens. Seeds and sugar run out; aphid herds slowly regrow.</div>
+        <div class="ic">🥚</div><div><b>Set caste targets</b> on the left. The queen automatically lays eggs toward those numbers while food allows and a brood slot is free.</div>
+        <div class="ic">⛏</div><div><b>Spend food on upgrades</b> (right panel): tunnels for storage and brood slots, antennae for scent range, mandibles for bigger loads, and the scout and soldier castes.</div>
+        <div class="ic">👑</div><div><b>Protect the queen.</b> Rival raiders and beetles that reach your nest wound her. She dies, the colony dies.</div>
+        <div class="ic">⚔</div><div><b>Rally soldiers</b> with <span class="keycap">R</span> at the cursor — park them on a trail choke point, or on the rival nest to tear it down.</div>
+        <div class="ic">🌧</div><div><b>Weather matters.</b> Rain washes trails away and slows the colony. Cold snaps raise upkeep. Check the forecast each dawn.</div>
+        <div class="ic">🏁</div><div><b>Objective:</b> keep the queen alive for <b>20 days</b>. Score rewards food gathered, colony size, upgrades and razing the rival nest.</div>
+      </div>
+      <h2 class="sec">Controls</h2>
+      <div class="small">
+        <span class="keycap">W A S D</span> / <span class="keycap">↑ ← ↓ →</span> pan camera &nbsp;·&nbsp;
+        <span class="keycap">Wheel</span> or <span class="keycap">Q</span>/<span class="keycap">E</span> zoom &nbsp;·&nbsp;
+        <span class="keycap">Right-drag</span> pan<br>
+        <span class="keycap">Space</span> or <span class="keycap">Left click</span> drop scent beacon &nbsp;·&nbsp;
+        <span class="keycap">R</span> rally soldiers &nbsp;·&nbsp; <span class="keycap">H</span> recall soldiers<br>
+        <span class="keycap">1</span><span class="keycap">2</span><span class="keycap">3</span> game speed &nbsp;·&nbsp;
+        <span class="keycap">F</span> centre on nest &nbsp;·&nbsp; <span class="keycap">Tab</span> hide panels &nbsp;·&nbsp;
+        <span class="keycap">Esc</span> / <span class="keycap">P</span> pause
+      </div>
+      <button class="btn primary" id="howToDone" style="margin-top:14px;text-align:center;">GOT IT</button>
+    </div>
+  </div>
+
+  <!-- ===================== SETTINGS ===================== -->
+  <div class="overlay hidden" id="settings">
+    <div class="panel narrow">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <h1 class="gtitle" style="font-size:22px;letter-spacing:4px;">SETTINGS</h1>
+      <div class="field"><label>Master volume — <span id="volVal">60%</span></label><input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.6"></div>
+      <div class="field"><label><input type="checkbox" id="optMute"> Mute all sound</label></div>
+      <div class="field"><label><input type="checkbox" id="optFx"> Reduce visual effects (shake, particles, rain)</label></div>
+      <div class="field"><label><input type="checkbox" id="optTrails" checked> Show pheromone trails</label></div>
+      <div class="field"><label><input type="checkbox" id="optFog" checked> Fog of war (undiscovered ground is dark)</label></div>
+      <button class="btn primary" id="settingsDone" style="text-align:center;">DONE</button>
+    </div>
+  </div>
+
+  <!-- ===================== PAUSE ===================== -->
+  <div class="overlay hidden" id="pauseMenu">
+    <div class="panel narrow">
+      <h1 class="gtitle" style="font-size:24px;letter-spacing:5px;">PAUSED</h1>
+      <div class="gsub" id="pauseSub">Day 1 · 0 ants</div>
+      <button class="btn primary" id="btnResume">RESUME</button>
+      <button class="btn" id="btnSaveNow">SAVE COLONY</button>
+      <button class="btn" id="btnPauseHowTo">HOW TO PLAY</button>
+      <button class="btn" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn" id="btnRestart">RESTART COLONY</button>
+      <button class="btn danger" id="btnQuit">QUIT TO MENU</button>
+    </div>
+  </div>
+
+  <!-- ===================== RESULT ===================== -->
+  <div class="overlay hidden" id="resultMenu">
+    <div class="panel">
+      <div id="resultIcon">🏆</div>
+      <div id="resultRating">A</div>
+      <h1 class="gtitle" id="resultTitle" style="font-size:22px;letter-spacing:4px;">COLONY ENDURES</h1>
+      <div class="gsub" id="resultSub">20 days survived</div>
+      <div class="statline"><span>Days survived</span><b id="rsDays">0</b></div>
+      <div class="statline"><span>Food gathered</span><b id="rsFood">0</b></div>
+      <div class="statline"><span>Peak population</span><b id="rsPeak">0</b></div>
+      <div class="statline"><span>Ants raised</span><b id="rsRaised">0</b></div>
+      <div class="statline"><span>Rivals slain</span><b id="rsKills">0</b></div>
+      <div class="statline"><span>Beetles driven off</span><b id="rsBeetles">0</b></div>
+      <div class="statline"><span>Upgrade levels</span><b id="rsUpg">0</b></div>
+      <div class="statline"><span>Rival nest</span><b id="rsRival">Standing</b></div>
+      <div class="statline" style="border:none;margin-top:4px;"><span style="font-size:15px;">FINAL SCORE</span><b id="rsScore" style="font-size:19px;color:var(--amber)">0</b></div>
+      <div class="achlist" id="rsAch"></div>
+      <div class="row" style="margin-top:14px;">
+        <button class="btn primary" id="btnPlayAgain">PLAY AGAIN</button>
+        <button class="btn" id="btnResultMenu">MAIN MENU</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./game.js"></script>
+</body>
+</html>

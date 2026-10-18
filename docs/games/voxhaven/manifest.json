@@ -1,0 +1,75 @@
+{
+  "id": "voxhaven",
+  "title": "Voxhaven — A Survival Sandbox",
+  "category": "adventure",
+  "tags": [
+    "voxel",
+    "survival",
+    "crafting",
+    "planet",
+    "exploration",
+    "3d"
+  ],
+  "stack": "Three.js + vanilla JavaScript",
+  "entry": "games/voxhaven/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Mine, build, explore caves and villages, grow stronger, and reach for the stars in a deeper original voxel survival sandbox.",
+  "achievements": [
+    {
+      "id": "first-world",
+      "title": "First World",
+      "desc": "Start a Voxhaven survival world.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "reach-for-stars",
+      "title": "Reach for the Stars",
+      "desc": "Begin the journey beyond Voxhaven.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-night",
+      "title": "Dawn Survivor",
+      "desc": "Survive your first night in Voxhaven.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "gravemaw-slayer",
+      "title": "The Caves Breathe",
+      "desc": "Defeat the Gravemaw beneath Voxhaven.",
+      "rarity": "rare",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "find-aetheria",
+      "title": "City Below",
+      "desc": "Discover the sunken city of Aetheria.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "aethon-alliance",
+      "title": "Friend of Aethon",
+      "desc": "Earn the trust of Aethon's ruler.",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

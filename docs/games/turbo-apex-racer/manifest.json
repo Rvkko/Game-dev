@@ -1,0 +1,39 @@
+{
+  "id": "turbo-apex-racer",
+  "title": "Turbo Apex",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "cars",
+    "arcade",
+    "championship"
+  ],
+  "stack": "canvas",
+  "entry": "games/turbo-apex-racer/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A neon arcade racer with three unlockable circuits, rival AI, drafting, nitro, lap records, and championship progression.",
+  "achievements": [
+    {
+      "id": "first-podium",
+      "title": "First Podium",
+      "desc": "Finish a race in the top three."
+    },
+    {
+      "id": "apex-winner",
+      "title": "Apex Winner",
+      "desc": "Win a circuit."
+    },
+    {
+      "id": "speed-demon",
+      "title": "Speed Demon",
+      "desc": "Reach 300 km/h."
+    },
+    {
+      "id": "champion",
+      "title": "Night Champion",
+      "desc": "Win all three circuits."
+    }
+  ]
+}

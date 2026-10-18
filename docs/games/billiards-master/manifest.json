@@ -1,0 +1,39 @@
+{
+  "id": "billiards-master",
+  "title": "Billiards Master",
+  "category": "sports",
+  "tags": [
+    "billiards",
+    "pool",
+    "sports",
+    "physics"
+  ],
+  "stack": "canvas",
+  "entry": "games/billiards-master/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A physics-based nine-ball career with aiming, power control, cushions, fouls, strategic AI and five increasingly skilled opponents.",
+  "achievements": [
+    {
+      "id": "first-pot",
+      "title": "First Pot",
+      "desc": "Pocket your first legal ball."
+    },
+    {
+      "id": "bank-shot",
+      "title": "Bank On It",
+      "desc": "Pocket a ball after a cushion contact."
+    },
+    {
+      "id": "run-three",
+      "title": "On A Run",
+      "desc": "Pocket three legal balls in one visit."
+    },
+    {
+      "id": "pool-master",
+      "title": "Billiards Master",
+      "desc": "Defeat the grand champion."
+    }
+  ]
+}

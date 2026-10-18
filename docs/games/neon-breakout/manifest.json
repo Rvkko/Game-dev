@@ -1,0 +1,112 @@
+{
+  "id": "neon-breakout",
+  "title": "Neon Breakout",
+  "category": "arcade",
+  "tags": [
+    "arcade",
+    "breakout",
+    "brick-breaker",
+    "power-ups",
+    "boss-fight",
+    "levels",
+    "2d"
+  ],
+  "stack": "canvas2d",
+  "entry": "games/neon-breakout/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A neon-drenched brick breaker with 30 hand-authored layouts, six stacking power-ups, armoured and explosive bricks, a hulking boss every tenth level, and a star-rated level select that rewards flawless, high-combo runs.",
+  "achievements": [
+    {
+      "id": "first_clear",
+      "title": "Neon Ignition",
+      "desc": "Clear your first level.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "combo_master",
+      "title": "Chain Reaction",
+      "desc": "Smash 12 bricks in a single combo without touching the paddle.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "powerup_hoard",
+      "title": "Fully Loaded",
+      "desc": "Collect 60 power-ups across all runs.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 60
+    },
+    {
+      "id": "laser_gunner",
+      "title": "Trigger Discipline",
+      "desc": "Destroy 40 bricks with the laser cannon.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 40
+    },
+    {
+      "id": "demolition",
+      "title": "Demolition Expert",
+      "desc": "Detonate 25 explosive bricks.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": true,
+      "target": 25
+    },
+    {
+      "id": "flawless_level",
+      "title": "Untouchable",
+      "desc": "Clear any level without losing a single ball.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "boss_slayer",
+      "title": "Sentinel Down",
+      "desc": "Defeat your first boss.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "all_bosses",
+      "title": "Overlord's Bane",
+      "desc": "Defeat all three bosses.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 3
+    },
+    {
+      "id": "star_collector",
+      "title": "Constellation",
+      "desc": "Earn 60 stars across the campaign.",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": true,
+      "target": 60
+    },
+    {
+      "id": "campaign_complete",
+      "title": "Neon Legend",
+      "desc": "Clear all 30 levels.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": true,
+      "target": 30
+    }
+  ]
+}

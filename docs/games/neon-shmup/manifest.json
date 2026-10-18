@@ -1,0 +1,39 @@
+{
+  "id": "neon-shmup",
+  "title": "Neon Starfighter",
+  "category": "arcade",
+  "tags": [
+    "shmup",
+    "space",
+    "boss",
+    "campaign"
+  ],
+  "stack": "canvas",
+  "entry": "games/neon-shmup/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Pilot an upgradeable starfighter through five enemy formations, weapon powerups, dangerous bullet patterns, and a multi-phase dreadnought boss.",
+  "achievements": [
+    {
+      "id": "ace-combo",
+      "title": "Ace Combo",
+      "desc": "Reach a 25-enemy combo."
+    },
+    {
+      "id": "full-power",
+      "title": "Full Power",
+      "desc": "Upgrade the blaster to level four."
+    },
+    {
+      "id": "untouched-wave",
+      "title": "Untouchable",
+      "desc": "Clear a wave without taking damage."
+    },
+    {
+      "id": "dreadnought-down",
+      "title": "Star Savior",
+      "desc": "Destroy the dreadnought."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "twin-stick-onslaught",
+  "title": "Twin-Stick Onslaught",
+  "category": "action",
+  "tags": [
+    "arena",
+    "shooter",
+    "survival",
+    "boss"
+  ],
+  "stack": "canvas",
+  "entry": "games/twin-stick-onslaught/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Dash, aim, and blast through five arena rounds with enemy variants, weapon drops, score chains, and the relentless Omega Brute boss.",
+  "achievements": [
+    {
+      "id": "chain-30",
+      "title": "Onslaught",
+      "desc": "Reach a 30-kill chain."
+    },
+    {
+      "id": "dash-kill",
+      "title": "Drive-By",
+      "desc": "Defeat an enemy while dashing."
+    },
+    {
+      "id": "arsenal",
+      "title": "Arsenal",
+      "desc": "Use all three weapons."
+    },
+    {
+      "id": "omega-down",
+      "title": "Omega Down",
+      "desc": "Win the arena campaign."
+    }
+  ]
+}

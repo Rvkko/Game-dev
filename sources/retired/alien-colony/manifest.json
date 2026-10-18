@@ -1,0 +1,92 @@
+{
+  "id": "alien-colony",
+  "title": "Xeno Frontier",
+  "category": "flagship",
+  "tags": [
+    "colony-sim",
+    "rts",
+    "base-building",
+    "survival",
+    "strategy"
+  ],
+  "stack": "canvas 2d (shared arcade kernel)",
+  "entry": "games/alien-colony/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Build a self-sufficient colony on a hostile alien frontier, balance food, materials and power, and survive ten escalating raids before evacuation.",
+  "achievements": [
+    {
+      "id": "touchdown",
+      "title": "Touchdown",
+      "desc": "Land your colony pod on the alien world.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "first-build",
+      "title": "Groundbreaking",
+      "desc": "Complete your first constructed building.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "green-thumb",
+      "title": "Green Thumb",
+      "desc": "Build a hydroponics farm to feed the colony.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "power-up",
+      "title": "Power Up",
+      "desc": "Build a solar array to power the base.",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "pop-ten",
+      "title": "Frontier Town",
+      "desc": "Grow the colony to 10 colonists.",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "repel-raid",
+      "title": "Hold the Line",
+      "desc": "Defeat an alien raid.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "victory",
+      "title": "Frontier Victory",
+      "desc": "Complete a colony run.",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "liftoff",
+      "title": "Liftoff",
+      "desc": "Survive all ten raids and evacuate the colony.",
+      "rarity": "legendary",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

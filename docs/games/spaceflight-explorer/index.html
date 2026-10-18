@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spaceflight Explorer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; font-family: 'Segoe UI', Consolas, monospace; }
+  #app { position: fixed; inset: 0; }
+  canvas#gl { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  canvas#hud { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(6,10,24,0.92) 0%, rgba(2,4,10,0.98) 100%);
+    color: #cfe8ff; z-index: 50;
+  }
+  .hidden { display: none !important; }
+  .panel {
+    background: linear-gradient(180deg, rgba(14,22,42,0.95), rgba(6,10,20,0.97));
+    border: 1px solid #2b5a8c; border-radius: 10px; padding: 28px 34px; min-width: 340px; max-width: 92vw;
+    box-shadow: 0 0 40px rgba(60,140,255,0.15), inset 0 0 30px rgba(30,80,160,0.08); max-height: 88vh; overflow-y: auto;
+  }
+  .title { font-size: 30px; letter-spacing: 3px; text-align: center; color: #7fd4ff; text-shadow: 0 0 12px #2a8cff; margin: 0 0 6px; }
+  .subtitle { text-align: center; color: #6c93b8; font-size: 13px; margin-bottom: 22px; letter-spacing: 1px; }
+  h2.section { color: #7fd4ff; font-size: 15px; letter-spacing: 2px; border-bottom: 1px solid #234; padding-bottom: 6px; margin: 18px 0 10px; }
+  .btn {
+    display: block; width: 100%; margin: 8px 0; padding: 11px 16px; background: linear-gradient(180deg,#123456,#0b2038);
+    border: 1px solid #3a7cbf; color: #bfe3ff; font-size: 14px; letter-spacing: 1px; border-radius: 6px; cursor: pointer;
+    font-family: inherit; text-align: left; transition: 0.12s;
+  }
+  .btn:hover { background: linear-gradient(180deg,#1c4d78,#123049); border-color: #7fd4ff; color: #fff; transform: translateX(2px); }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+  .btn.primary { border-color: #4fd67a; color: #d4ffe0; }
+  .btn.primary:hover { border-color: #7fffa0; background: linear-gradient(180deg,#123a22,#0b2213); }
+  .btn.danger { border-color: #d65050; color: #ffd4d4; }
+  .row { display: flex; gap: 10px; }
+  .row .btn { flex: 1; }
+  select, input[type=range] { width: 100%; }
+  .field { margin: 10px 0; font-size: 13px; color: #a9c8e0; }
+  .field label { display: block; margin-bottom: 4px; }
+  .small { font-size: 11px; color: #8fb6d6; opacity: 0.9; line-height: 1.6; }
+  .diffgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .close-x { position: absolute; top: 10px; right: 14px; cursor: pointer; color: #7fd4ff; font-size: 20px; }
+
+  #hudRoot { position: absolute; inset: 0; pointer-events: none; z-index: 10; font-size: 12px; }
+  .bar-wrap { position: absolute; }
+  .bar-label { color: #9fd; font-size: 10px; letter-spacing: 1px; margin-bottom: 2px; }
+  .bar { width: 180px; height: 12px; background: rgba(10,20,30,0.6); border: 1px solid #2a5a80; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; transition: width 0.15s; }
+  #fuelWrap { left: 18px; bottom: 70px; }
+  #hullWrap { left: 18px; bottom: 44px; }
+  #boostWrap { left: 18px; bottom: 18px; }
+  #cargoWrap { right: 18px; bottom: 44px; text-align: right; }
+  #cargoWrap .bar { float: right; }
+  #topHud { top: 14px; left: 50%; transform: translateX(-50%); text-align: center; color: #bfe3ff; }
+  #objective { top: 14px; left: 18px; color: #9fd; max-width: 320px; background: rgba(6,12,22,0.5); padding: 6px 10px; border-radius: 6px; border: 1px solid #234; }
+  #speedo { top: 14px; right: 18px; color: #bfe3ff; text-align: right; }
+  #crosshair { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; }
+  #targetInfo { top: 60px; right: 18px; color: #ffcf7f; text-align: right; max-width: 260px; }
+  #toastWrap { top: 60px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .toast { background: rgba(10,20,10,0.85); border: 1px solid #4fd67a; color: #c4ffd6; padding: 8px 16px; border-radius: 6px; font-size: 13px; letter-spacing: 1px; opacity: 0; animation: toastIn 0.4s ease-out forwards, toastOut 0.5s ease-in 3.2s forwards; }
+  @keyframes toastIn { from { opacity:0; transform: translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes toastOut { to { opacity: 0; transform: translateY(-8px); } }
+  #minimapWrap { right: 18px; top: 100px; }
+  #minimap { width: 150px; height: 150px; border: 1px solid #2a5a80; border-radius: 75px; background: rgba(4,10,18,0.55); }
+  #dockPrompt { bottom: 100px; left: 50%; transform: translateX(-50%); color: #ffe27f; text-align:center; background: rgba(20,16,4,0.55); padding: 6px 14px; border-radius: 6px; border: 1px solid #665; }
+  #pointerLockHint { bottom: 18px; left: 50%; transform: translateX(-50%); color: #789; font-size: 11px; }
+
+  .stat-line { display: flex; justify-content: space-between; font-size: 13px; margin: 4px 0; color: #bcd; }
+  .stat-line b { color: #fff; }
+  ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-thumb { background: #234; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="gl"></canvas>
+  <canvas id="hud"></canvas>
+
+  <div id="hudRoot" class="hidden">
+    <div id="objective" class="bar-wrap"></div>
+    <div id="speedo" class="bar-wrap"></div>
+    <div id="topHud" class="bar-wrap"></div>
+    <div id="targetInfo" class="bar-wrap"></div>
+    <div id="fuelWrap" class="bar-wrap"><div class="bar-label">FUEL</div><div class="bar"><div id="fuelFill" class="bar-fill" style="background:#4fd6ff;width:100%"></div></div></div>
+    <div id="hullWrap" class="bar-wrap"><div class="bar-label">HULL</div><div class="bar"><div id="hullFill" class="bar-fill" style="background:#4fd67a;width:100%"></div></div></div>
+    <div id="boostWrap" class="bar-wrap"><div class="bar-label">AFTERBURNER</div><div class="bar"><div id="boostFill" class="bar-fill" style="background:#ff9f4f;width:100%"></div></div></div>
+    <div id="cargoWrap" class="bar-wrap"><div class="bar-label">CARGO</div><div class="bar"><div id="cargoFill" class="bar-fill" style="background:#d0a4ff;width:0%"></div></div></div>
+    <svg id="crosshair" class="bar-wrap" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" fill="none" stroke="#7fd4ff" stroke-width="1" opacity="0.7"/><circle cx="13" cy="13" r="1.6" fill="#7fd4ff"/></svg>
+    <div id="minimapWrap" class="bar-wrap"><canvas id="minimap" width="150" height="150"></canvas></div>
+    <div id="dockPrompt" class="bar-wrap hidden"></div>
+    <div id="pointerLockHint" class="bar-wrap">Click to capture mouse look</div>
+    <div id="toastWrap" class="bar-wrap"></div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div id="mainMenu" class="overlay">
+    <div class="panel" style="width:440px">
+      <div class="title">SPACEFLIGHT EXPLORER</div>
+      <div class="subtitle">Newtonian flight &middot; procedural sectors &middot; mine, upgrade, survive</div>
+      <button class="btn primary" id="btnNewGame">NEW EXPEDITION</button>
+      <button class="btn" id="btnContinue">CONTINUE (Autosave)</button>
+      <button class="btn" id="btnLoadMenu">LOAD SAVE SLOT</button>
+      <button class="btn" id="btnSettingsMenu">SETTINGS</button>
+      <div class="small" style="text-align:center;margin-top:14px">WASD move &middot; Mouse look (up = look up) &middot; Space / Ctrl vertical &middot; Shift boost &middot; LMB mine &amp; fire &middot; RMB precision aim<br>F dock at station &middot; E scan anomaly &middot; R cycle target &middot; I cargo hold &middot; M sector chart &middot; Esc pause</div>
+    </div>
+  </div>
+
+  <!-- NEW GAME SETUP -->
+  <div id="newGameMenu" class="overlay hidden">
+    <div class="panel" style="width:460px">
+      <span class="close-x" data-back="mainMenu">&times;</span>
+      <div class="title" style="font-size:22px">NEW EXPEDITION</div>
+      <h2 class="section">DIFFICULTY</h2>
+      <div class="diffgrid" id="diffGrid"></div>
+      <h2 class="section">GALAXY SEED</h2>
+      <div class="field">
+        <label>Seed (leave blank for random)</label>
+        <input type="text" id="seedInput" placeholder="e.g. 4471" style="width:100%;padding:6px;background:#0a1522;border:1px solid #2a5a80;color:#bfe3ff;border-radius:4px">
+      </div>
+      <button class="btn" id="btnUseTodaySeed">Use Today's Seeded Challenge (Fuel-Limited, No Refuel)</button>
+      <button class="btn primary" id="btnStartGame" style="margin-top:14px">LAUNCH</button>
+    </div>
+  </div>
+
+  <!-- LOAD MENU -->
+  <div id="loadMenu" class="overlay hidden">
+    <div class="panel" style="width:460px">
+      <span class="close-x" data-back="mainMenu">&times;</span>
+      <div class="title" style="font-size:22px">LOAD GAME</div>
+      <div id="slotList"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settingsMenu" class="overlay hidden">
+    <div class="panel" style="width:420px">
+      <span class="close-x" id="settingsClose">&times;</span>
+      <div class="title" style="font-size:22px">SETTINGS</div>
+      <div class="field"><label>Mouse Sensitivity: <span id="sensVal"></span></label><input type="range" id="sensSlider" min="0.2" max="3" step="0.05"></div>
+      <div class="field"><label>Master Volume: <span id="volVal"></span></label><input type="range" id="volSlider" min="0" max="1" step="0.05"></div>
+      <div class="field"><label><input type="checkbox" id="invertY"> Invert Mouse Y (off = mouse up looks up)</label></div>
+      <button class="btn primary" id="btnSettingsDone">DONE</button>
+    </div>
+  </div>
+
+  <!-- PAUSE MENU -->
+  <div id="pauseMenu" class="overlay hidden">
+    <div class="panel" style="width:400px">
+      <div class="title" style="font-size:22px">PAUSED</div>
+      <button class="btn primary" id="btnResume">RESUME</button>
+      <button class="btn" id="btnSaveGame">SAVE GAME</button>
+      <button class="btn" id="btnPauseSettings">SETTINGS</button>
+      <button class="btn danger" id="btnQuitToMenu">QUIT TO MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- STATION / UPGRADE MENU -->
+  <div id="stationMenu" class="overlay hidden">
+    <div class="panel" style="width:520px">
+      <span class="close-x" id="stationClose">&times;</span>
+      <div class="title" style="font-size:22px">DOCKED: TRADE STATION</div>
+      <div id="stationStats"></div>
+      <h2 class="section">UPGRADES</h2>
+      <div id="upgradeList"></div>
+      <h2 class="section">JUMP</h2>
+      <div class="stat-line">Requires <b id="jumpCost"></b> fuel &middot; Sector Depth <b id="sectorDepth"></b></div>
+      <button class="btn primary" id="btnJump">JUMP TO NEXT SECTOR</button>
+    </div>
+  </div>
+
+  <!-- INVENTORY -->
+  <div id="invMenu" class="overlay hidden">
+    <div class="panel" style="width:420px">
+      <span class="close-x" id="invClose">&times;</span>
+      <div class="title" style="font-size:22px">CARGO HOLD</div>
+      <div id="invList"></div>
+    </div>
+  </div>
+
+  <!-- SECTOR MAP -->
+  <div id="mapMenu" class="overlay hidden">
+    <div class="panel" style="width:460px">
+      <span class="close-x" id="mapClose">&times;</span>
+      <div class="title" style="font-size:22px">SECTOR CHART</div>
+      <div id="mapList"></div>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="gameOverMenu" class="overlay hidden">
+    <div class="panel" style="width:420px;text-align:center">
+      <div class="title" style="font-size:26px;color:#ff7f7f">HULL BREACH</div>
+      <div id="gameOverStats" class="subtitle"></div>
+      <button class="btn primary" id="btnRestart">RETURN TO MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENT / SAVE TOAST handled in hud toastWrap -->
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../../vendor/three.module.js",
+    "cannon-es": "../../vendor/cannon-es.js"
+  }
+}
+</script>
+<script type="module">
+  import * as THREE from '../../vendor/three.module.js';
+  (async () => {
+    window.THREE = { ...THREE };
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '../../vendor/three-r128/GLTFLoader.js';
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    await import('./game.js');
+  })().catch((error) => console.error('Spaceflight 3D bootstrap failed', error));
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "id": "knockout-club",
+  "title": "Knockout Club",
+  "category": "sports",
+  "tags": [
+    "boxing",
+    "sports",
+    "career",
+    "fighting"
+  ],
+  "stack": "canvas",
+  "entry": "games/knockout-club/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A tactical boxing career with stamina, guard, dodges, body shots, knockdowns, judges and five distinct opponents.",
+  "achievements": [
+    {
+      "id": "first-ko",
+      "title": "Lights Out",
+      "desc": "Win by knockout."
+    },
+    {
+      "id": "counter-puncher",
+      "title": "Counter Puncher",
+      "desc": "Land ten clean counters."
+    },
+    {
+      "id": "iron-chin",
+      "title": "Iron Chin",
+      "desc": "Rise from a knockdown and win."
+    },
+    {
+      "id": "club-champion",
+      "title": "Club Champion",
+      "desc": "Claim the championship belt."
+    }
+  ]
+}

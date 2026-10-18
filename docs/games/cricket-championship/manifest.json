@@ -1,0 +1,39 @@
+{
+  "id": "cricket-championship",
+  "title": "Cricket Championship",
+  "category": "sports",
+  "tags": [
+    "cricket",
+    "sports",
+    "tournament",
+    "batting"
+  ],
+  "stack": "canvas",
+  "entry": "games/cricket-championship/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A compact cricket tournament with batting timing, shot direction, bowling line and pace, wickets, overs and three international rivals.",
+  "achievements": [
+    {
+      "id": "boundary",
+      "title": "First Boundary",
+      "desc": "Score a four or six."
+    },
+    {
+      "id": "hat-trick",
+      "title": "Hat Trick",
+      "desc": "Take three wickets in three balls."
+    },
+    {
+      "id": "century-pace",
+      "title": "Run Machine",
+      "desc": "Score 50 runs in an innings."
+    },
+    {
+      "id": "cricket-champion",
+      "title": "World Champion",
+      "desc": "Win the tournament final."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "gameId": "rune-match-quest",
+  "archetype": "dungeon-crawl",
+  "physicsShape": "capsule",
+  "physicsProfile": "grid-snap+constraint",
+  "ragdollProfile": "none",
+  "playerCollider": {
+    "radius": 0.550000011920929,
+    "height": 1.100000023841858,
+    "shape": "capsule"
+  },
+  "colliders": []
+}

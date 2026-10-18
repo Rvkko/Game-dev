@@ -1,0 +1,39 @@
+{
+  "id": "neon-breach-fps",
+  "title": "Neon Breach",
+  "category": "action",
+  "tags": [
+    "fps",
+    "shooter",
+    "cyberpunk",
+    "campaign"
+  ],
+  "stack": "canvas-raycaster",
+  "entry": "games/neon-breach-fps/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A five-sector first-person cyberpunk infiltration with tactical combat, pickups, and a final boss.",
+  "achievements": [
+    {
+      "id": "first-breach",
+      "title": "First Breach",
+      "desc": "Clear sector one."
+    },
+    {
+      "id": "deadeye",
+      "title": "Deadeye",
+      "desc": "Reach 70% accuracy in a sector."
+    },
+    {
+      "id": "untouched",
+      "title": "Ghost Protocol",
+      "desc": "Clear a sector without taking damage."
+    },
+    {
+      "id": "overseer",
+      "title": "System Liberated",
+      "desc": "Defeat the Overseer."
+    }
+  ]
+}

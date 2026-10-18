@@ -1,0 +1,39 @@
+{
+  "id": "motocross-mayhem",
+  "title": "Motocross Mayhem",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "motorcycle",
+    "stunts",
+    "physics"
+  ],
+  "stack": "canvas",
+  "entry": "games/motocross-mayhem/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A physics-driven motocross tour with jumps, flips, rough terrain, bike damage, stunt scoring and championship upgrades.",
+  "achievements": [
+    {
+      "id": "air-time",
+      "title": "Big Air",
+      "desc": "Stay airborne for two seconds."
+    },
+    {
+      "id": "backflip",
+      "title": "Backflip Hero",
+      "desc": "Land a complete backflip."
+    },
+    {
+      "id": "no-crash",
+      "title": "Iron Rider",
+      "desc": "Win a race without crashing."
+    },
+    {
+      "id": "moto-champion",
+      "title": "Mayhem Champion",
+      "desc": "Win the full tour."
+    }
+  ]
+}

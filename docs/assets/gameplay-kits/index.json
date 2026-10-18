@@ -1,0 +1,2738 @@
+{
+    "status":  "prototype",
+    "schemaVersion":  1,
+    "totalAssets":  455,
+    "totalGames":  91,
+    "assets":  [
+                   {
+                       "game":  "solitaire-suite",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/solitaire-suite/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "solitaire-suite",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/solitaire-suite/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "solitaire-suite",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/solitaire-suite/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "solitaire-suite",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/solitaire-suite/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "solitaire-suite",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/solitaire-suite/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "asteroid-drift",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/asteroid-drift/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "asteroid-drift",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/asteroid-drift/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "asteroid-drift",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/asteroid-drift/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "asteroid-drift",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/asteroid-drift/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "asteroid-drift",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/asteroid-drift/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/dungeon-rpg/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/dungeon-rpg/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/dungeon-rpg/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/dungeon-rpg/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "dungeon-rpg",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/dungeon-rpg/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "civ-god-sim",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/civ-god-sim/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "civ-god-sim",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/civ-god-sim/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "civ-god-sim",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/civ-god-sim/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "civ-god-sim",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/civ-god-sim/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "civ-god-sim",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/civ-god-sim/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "deep-ocean-survival",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/deep-ocean-survival/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "deep-ocean-survival",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/deep-ocean-survival/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "deep-ocean-survival",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/deep-ocean-survival/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "deep-ocean-survival",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/deep-ocean-survival/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "deep-ocean-survival",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/deep-ocean-survival/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "ecosystem-sandbox",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ecosystem-sandbox/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ecosystem-sandbox",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ecosystem-sandbox/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ecosystem-sandbox",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ecosystem-sandbox/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ecosystem-sandbox",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ecosystem-sandbox/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ecosystem-sandbox",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ecosystem-sandbox/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gravity-lander",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/gravity-lander/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "gravity-lander",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/gravity-lander/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "gravity-lander",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/gravity-lander/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "gravity-lander",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/gravity-lander/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "gravity-lander",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/gravity-lander/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "hex-tactics",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/hex-tactics/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "hex-tactics",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/hex-tactics/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "hex-tactics",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/hex-tactics/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "hex-tactics",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/hex-tactics/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "hex-tactics",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/hex-tactics/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "physics-destruction",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/physics-destruction/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "physics-destruction",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/physics-destruction/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "physics-destruction",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/physics-destruction/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "physics-destruction",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/physics-destruction/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "physics-destruction",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/physics-destruction/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "ragdoll-toss",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ragdoll-toss/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ragdoll-toss",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ragdoll-toss/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ragdoll-toss",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ragdoll-toss/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ragdoll-toss",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ragdoll-toss/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ragdoll-toss",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ragdoll-toss/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "spaceflight-explorer",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/spaceflight-explorer/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "spaceflight-explorer",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/spaceflight-explorer/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "spaceflight-explorer",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/spaceflight-explorer/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "spaceflight-explorer",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/spaceflight-explorer/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "spaceflight-explorer",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/spaceflight-explorer/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "sudoku-master",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/sudoku-master/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sudoku-master",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/sudoku-master/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sudoku-master",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/sudoku-master/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sudoku-master",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/sudoku-master/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sudoku-master",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/sudoku-master/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tunnel-runner",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/tunnel-runner/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "tunnel-runner",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/tunnel-runner/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "tunnel-runner",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/tunnel-runner/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "tunnel-runner",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/tunnel-runner/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "tunnel-runner",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/tunnel-runner/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "soccer-penalty-pro",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/soccer-penalty-pro/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "soccer-penalty-pro",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/soccer-penalty-pro/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "soccer-penalty-pro",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/soccer-penalty-pro/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "soccer-penalty-pro",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/soccer-penalty-pro/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "soccer-penalty-pro",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/soccer-penalty-pro/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-hoops",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/street-hoops/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-hoops",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/street-hoops/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-hoops",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/street-hoops/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-hoops",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/street-hoops/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-hoops",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/street-hoops/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gridiron-drive",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/gridiron-drive/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gridiron-drive",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/gridiron-drive/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gridiron-drive",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/gridiron-drive/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gridiron-drive",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/gridiron-drive/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "gridiron-drive",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/gridiron-drive/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tennis-rally",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/tennis-rally/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tennis-rally",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/tennis-rally/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tennis-rally",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/tennis-rally/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tennis-rally",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/tennis-rally/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tennis-rally",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/tennis-rally/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/neon-breach-fps/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/neon-breach-fps/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/neon-breach-fps/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/neon-breach-fps/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breach-fps",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/neon-breach-fps/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "emberfall-story",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/emberfall-story/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "emberfall-story",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/emberfall-story/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "emberfall-story",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/emberfall-story/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "emberfall-story",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/emberfall-story/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "emberfall-story",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/emberfall-story/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "turbo-apex-racer",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/turbo-apex-racer/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "turbo-apex-racer",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/turbo-apex-racer/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "turbo-apex-racer",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/turbo-apex-racer/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "turbo-apex-racer",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/turbo-apex-racer/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "turbo-apex-racer",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/turbo-apex-racer/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skybound-platformer",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/skybound-platformer/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skybound-platformer",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/skybound-platformer/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skybound-platformer",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/skybound-platformer/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skybound-platformer",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/skybound-platformer/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skybound-platformer",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/skybound-platformer/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "home-run-derby",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/home-run-derby/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "home-run-derby",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/home-run-derby/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "home-run-derby",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/home-run-derby/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "home-run-derby",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/home-run-derby/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "home-run-derby",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/home-run-derby/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ice-hockey-showdown",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ice-hockey-showdown/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ice-hockey-showdown",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ice-hockey-showdown/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ice-hockey-showdown",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ice-hockey-showdown/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ice-hockey-showdown",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ice-hockey-showdown/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ice-hockey-showdown",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ice-hockey-showdown/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "championship-bowling",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/championship-bowling/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "championship-bowling",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/championship-bowling/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "championship-bowling",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/championship-bowling/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "championship-bowling",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/championship-bowling/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "championship-bowling",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/championship-bowling/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skatepark-legends",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/skatepark-legends/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skatepark-legends",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/skatepark-legends/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skatepark-legends",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/skatepark-legends/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skatepark-legends",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/skatepark-legends/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "skatepark-legends",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/skatepark-legends/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-protocol",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/shadow-protocol/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-protocol",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/shadow-protocol/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-protocol",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/shadow-protocol/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-protocol",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/shadow-protocol/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-protocol",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/shadow-protocol/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dead-signal",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/dead-signal/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dead-signal",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/dead-signal/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dead-signal",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/dead-signal/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dead-signal",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/dead-signal/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dead-signal",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/dead-signal/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ironfront-arena",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ironfront-arena/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ironfront-arena",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ironfront-arena/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ironfront-arena",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ironfront-arena/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ironfront-arena",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ironfront-arena/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ironfront-arena",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ironfront-arena/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "frontier-odyssey",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/frontier-odyssey/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "frontier-odyssey",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/frontier-odyssey/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "frontier-odyssey",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/frontier-odyssey/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "frontier-odyssey",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/frontier-odyssey/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "frontier-odyssey",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/frontier-odyssey/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "world-cup-soccer",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/world-cup-soccer/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "world-cup-soccer",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/world-cup-soccer/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "world-cup-soccer",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/world-cup-soccer/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "world-cup-soccer",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/world-cup-soccer/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "world-cup-soccer",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/world-cup-soccer/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mini-golf-tour",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/mini-golf-tour/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mini-golf-tour",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/mini-golf-tour/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mini-golf-tour",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/mini-golf-tour/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mini-golf-tour",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/mini-golf-tour/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mini-golf-tour",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/mini-golf-tour/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beach-volleyball",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/beach-volleyball/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beach-volleyball",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/beach-volleyball/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beach-volleyball",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/beach-volleyball/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beach-volleyball",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/beach-volleyball/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beach-volleyball",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/beach-volleyball/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ping-pong-champion",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ping-pong-champion/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ping-pong-champion",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ping-pong-champion/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ping-pong-champion",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ping-pong-champion/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ping-pong-champion",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ping-pong-champion/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ping-pong-champion",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ping-pong-champion/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "orbital-command",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/orbital-command/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "orbital-command",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/orbital-command/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "orbital-command",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/orbital-command/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "orbital-command",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/orbital-command/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "orbital-command",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/orbital-command/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "kingdom-chess",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/kingdom-chess/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "kingdom-chess",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/kingdom-chess/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "kingdom-chess",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/kingdom-chess/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "kingdom-chess",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/kingdom-chess/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "kingdom-chess",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/kingdom-chess/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "circuit-forge",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/circuit-forge/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "circuit-forge",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/circuit-forge/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "circuit-forge",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/circuit-forge/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "circuit-forge",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/circuit-forge/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "circuit-forge",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/circuit-forge/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "metro-tycoon",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/metro-tycoon/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "metro-tycoon",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/metro-tycoon/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "metro-tycoon",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/metro-tycoon/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "metro-tycoon",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/metro-tycoon/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "metro-tycoon",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/metro-tycoon/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cafe-empire",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/cafe-empire/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cafe-empire",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/cafe-empire/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cafe-empire",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/cafe-empire/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cafe-empire",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/cafe-empire/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cafe-empire",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/cafe-empire/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "farmstead-seasons",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/farmstead-seasons/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "farmstead-seasons",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/farmstead-seasons/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "farmstead-seasons",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/farmstead-seasons/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "farmstead-seasons",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/farmstead-seasons/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "farmstead-seasons",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/farmstead-seasons/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fishing-legends",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/fishing-legends/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fishing-legends",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/fishing-legends/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fishing-legends",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/fishing-legends/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fishing-legends",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/fishing-legends/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fishing-legends",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/fishing-legends/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pet-rescue-clinic",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/pet-rescue-clinic/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pet-rescue-clinic",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/pet-rescue-clinic/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pet-rescue-clinic",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/pet-rescue-clinic/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pet-rescue-clinic",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/pet-rescue-clinic/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pet-rescue-clinic",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/pet-rescue-clinic/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "breachpoint-ops",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/breachpoint-ops/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "breachpoint-ops",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/breachpoint-ops/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "breachpoint-ops",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/breachpoint-ops/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "breachpoint-ops",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/breachpoint-ops/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "breachpoint-ops",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/breachpoint-ops/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crypt-raiders",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/crypt-raiders/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crypt-raiders",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/crypt-raiders/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crypt-raiders",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/crypt-raiders/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crypt-raiders",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/crypt-raiders/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crypt-raiders",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/crypt-raiders/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mech-arena",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/mech-arena/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mech-arena",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/mech-arena/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mech-arena",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/mech-arena/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mech-arena",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/mech-arena/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "mech-arena",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/mech-arena/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "samurai-odyssey",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/samurai-odyssey/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "samurai-odyssey",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/samurai-odyssey/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "samurai-odyssey",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/samurai-odyssey/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "samurai-odyssey",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/samurai-odyssey/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "samurai-odyssey",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/samurai-odyssey/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rally-legends",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/rally-legends/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rally-legends",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/rally-legends/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rally-legends",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/rally-legends/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rally-legends",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/rally-legends/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rally-legends",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/rally-legends/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "superbike-circuit",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/superbike-circuit/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "superbike-circuit",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/superbike-circuit/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "superbike-circuit",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/superbike-circuit/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "superbike-circuit",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/superbike-circuit/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "superbike-circuit",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/superbike-circuit/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ocean-regatta",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ocean-regatta/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ocean-regatta",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ocean-regatta/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ocean-regatta",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ocean-regatta/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ocean-regatta",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ocean-regatta/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ocean-regatta",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ocean-regatta/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sky-aces",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/sky-aces/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sky-aces",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/sky-aces/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sky-aces",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/sky-aces/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sky-aces",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/sky-aces/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "sky-aces",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/sky-aces/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "midnight-detective",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/midnight-detective/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "midnight-detective",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/midnight-detective/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "midnight-detective",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/midnight-detective/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "midnight-detective",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/midnight-detective/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "midnight-detective",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/midnight-detective/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "starship-echoes",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/starship-echoes/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "starship-echoes",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/starship-echoes/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "starship-echoes",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/starship-echoes/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "starship-echoes",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/starship-echoes/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "starship-echoes",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/starship-echoes/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pirate-chronicles",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/pirate-chronicles/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pirate-chronicles",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/pirate-chronicles/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pirate-chronicles",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/pirate-chronicles/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pirate-chronicles",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/pirate-chronicles/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pirate-chronicles",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/pirate-chronicles/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dragonbound-legacy",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/dragonbound-legacy/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dragonbound-legacy",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/dragonbound-legacy/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dragonbound-legacy",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/dragonbound-legacy/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dragonbound-legacy",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/dragonbound-legacy/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "dragonbound-legacy",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/dragonbound-legacy/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beat-forge",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/beat-forge/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beat-forge",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/beat-forge/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beat-forge",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/beat-forge/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beat-forge",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/beat-forge/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "beat-forge",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/beat-forge/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "deckbound-rogue",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/deckbound-rogue/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "deckbound-rogue",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/deckbound-rogue/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "deckbound-rogue",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/deckbound-rogue/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "deckbound-rogue",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/deckbound-rogue/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "deckbound-rogue",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/deckbound-rogue/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-pinball",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/neon-pinball/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-pinball",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/neon-pinball/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-pinball",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/neon-pinball/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-pinball",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/neon-pinball/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-pinball",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/neon-pinball/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blast-maze",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/blast-maze/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blast-maze",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/blast-maze/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blast-maze",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/blast-maze/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blast-maze",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/blast-maze/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blast-maze",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/blast-maze/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-drift-underground",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/street-drift-underground/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-drift-underground",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/street-drift-underground/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-drift-underground",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/street-drift-underground/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-drift-underground",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/street-drift-underground/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "street-drift-underground",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/street-drift-underground/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "motocross-mayhem",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/motocross-mayhem/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "motocross-mayhem",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/motocross-mayhem/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "motocross-mayhem",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/motocross-mayhem/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "motocross-mayhem",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/motocross-mayhem/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "motocross-mayhem",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/motocross-mayhem/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "hover-league-zero",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/hover-league-zero/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "hover-league-zero",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/hover-league-zero/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "hover-league-zero",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/hover-league-zero/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "hover-league-zero",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/hover-league-zero/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "hover-league-zero",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/hover-league-zero/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/alpine-rush/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/alpine-rush/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/alpine-rush/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/alpine-rush/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "alpine-rush",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/alpine-rush/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "knockout-club",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/knockout-club/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "knockout-club",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/knockout-club/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "knockout-club",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/knockout-club/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "knockout-club",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/knockout-club/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "knockout-club",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/knockout-club/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pro-wrestling-empire",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/pro-wrestling-empire/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pro-wrestling-empire",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/pro-wrestling-empire/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pro-wrestling-empire",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/pro-wrestling-empire/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pro-wrestling-empire",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/pro-wrestling-empire/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pro-wrestling-empire",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/pro-wrestling-empire/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cricket-championship",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/cricket-championship/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cricket-championship",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/cricket-championship/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cricket-championship",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/cricket-championship/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cricket-championship",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/cricket-championship/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cricket-championship",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/cricket-championship/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "billiards-master",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/billiards-master/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "billiards-master",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/billiards-master/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "billiards-master",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/billiards-master/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "billiards-master",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/billiards-master/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "billiards-master",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/billiards-master/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-shmup",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/neon-shmup/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-shmup",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/neon-shmup/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-shmup",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/neon-shmup/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-shmup",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/neon-shmup/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-shmup",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/neon-shmup/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-metroid",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/shadow-metroid/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-metroid",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/shadow-metroid/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-metroid",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/shadow-metroid/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-metroid",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/shadow-metroid/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "shadow-metroid",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/shadow-metroid/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rune-match-quest",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/rune-match-quest/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rune-match-quest",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/rune-match-quest/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rune-match-quest",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/rune-match-quest/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rune-match-quest",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/rune-match-quest/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rune-match-quest",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/rune-match-quest/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fortress-defense",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/fortress-defense/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fortress-defense",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/fortress-defense/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fortress-defense",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/fortress-defense/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fortress-defense",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/fortress-defense/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "fortress-defense",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/fortress-defense/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "typing-overdrive",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/typing-overdrive/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "typing-overdrive",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/typing-overdrive/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "typing-overdrive",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/typing-overdrive/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "typing-overdrive",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/typing-overdrive/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "typing-overdrive",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/typing-overdrive/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "twin-stick-onslaught",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/twin-stick-onslaught/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "twin-stick-onslaught",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/twin-stick-onslaught/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "twin-stick-onslaught",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/twin-stick-onslaught/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "twin-stick-onslaught",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/twin-stick-onslaught/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "twin-stick-onslaught",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/twin-stick-onslaught/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rogue-mines",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/rogue-mines/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rogue-mines",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/rogue-mines/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rogue-mines",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/rogue-mines/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rogue-mines",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/rogue-mines/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "rogue-mines",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/rogue-mines/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "synth-rider",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/synth-rider/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "synth-rider",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/synth-rider/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "synth-rider",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/synth-rider/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "synth-rider",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/synth-rider/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "synth-rider",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/synth-rider/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cyber-noir-2088",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/cyber-noir-2088/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cyber-noir-2088",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/cyber-noir-2088/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cyber-noir-2088",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/cyber-noir-2088/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cyber-noir-2088",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/cyber-noir-2088/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "cyber-noir-2088",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/cyber-noir-2088/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "europa-survivor",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/europa-survivor/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "europa-survivor",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/europa-survivor/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "europa-survivor",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/europa-survivor/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "europa-survivor",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/europa-survivor/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "europa-survivor",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/europa-survivor/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tombs-of-atlantis",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/tombs-of-atlantis/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tombs-of-atlantis",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/tombs-of-atlantis/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tombs-of-atlantis",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/tombs-of-atlantis/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tombs-of-atlantis",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/tombs-of-atlantis/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tombs-of-atlantis",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/tombs-of-atlantis/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "silent-embassy",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/silent-embassy/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "silent-embassy",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/silent-embassy/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "silent-embassy",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/silent-embassy/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "silent-embassy",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/silent-embassy/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "silent-embassy",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/silent-embassy/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blackwood-manor",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/blackwood-manor/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blackwood-manor",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/blackwood-manor/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blackwood-manor",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/blackwood-manor/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blackwood-manor",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/blackwood-manor/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "blackwood-manor",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/blackwood-manor/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "timekeepers-paradox",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/timekeepers-paradox/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "timekeepers-paradox",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/timekeepers-paradox/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "timekeepers-paradox",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/timekeepers-paradox/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "timekeepers-paradox",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/timekeepers-paradox/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "timekeepers-paradox",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/timekeepers-paradox/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "wildlands-expedition",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/wildlands-expedition/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "wildlands-expedition",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/wildlands-expedition/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "wildlands-expedition",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/wildlands-expedition/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "wildlands-expedition",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/wildlands-expedition/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "wildlands-expedition",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/wildlands-expedition/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crown-and-dagger",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/crown-and-dagger/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crown-and-dagger",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/crown-and-dagger/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crown-and-dagger",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/crown-and-dagger/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crown-and-dagger",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/crown-and-dagger/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "crown-and-dagger",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/crown-and-dagger/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/pilot-fuel-tanker-training/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/pilot-fuel-tanker-training/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/pilot-fuel-tanker-training/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/pilot-fuel-tanker-training/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "pilot-fuel-tanker-training",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/pilot-fuel-tanker-training/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/voxhaven/player.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/voxhaven/obstacle.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/voxhaven/environment.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/voxhaven/effect.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "voxhaven",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/voxhaven/ui.svg",
+                       "track":  "3d-reference"
+                   },
+                   {
+                       "game":  "word-weaver",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/word-weaver/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "word-weaver",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/word-weaver/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "word-weaver",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/word-weaver/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "word-weaver",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/word-weaver/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "word-weaver",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/word-weaver/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "minefield-classic",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/minefield-classic/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "minefield-classic",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/minefield-classic/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "minefield-classic",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/minefield-classic/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "minefield-classic",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/minefield-classic/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "minefield-classic",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/minefield-classic/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "snake-reactor",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/snake-reactor/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "snake-reactor",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/snake-reactor/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "snake-reactor",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/snake-reactor/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "snake-reactor",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/snake-reactor/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "snake-reactor",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/snake-reactor/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tetro-stack",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/tetro-stack/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tetro-stack",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/tetro-stack/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tetro-stack",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/tetro-stack/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tetro-stack",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/tetro-stack/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "tetro-stack",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/tetro-stack/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "flappy-ascent",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/flappy-ascent/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "flappy-ascent",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/flappy-ascent/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "flappy-ascent",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/flappy-ascent/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "flappy-ascent",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/flappy-ascent/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "flappy-ascent",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/flappy-ascent/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breakout",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/neon-breakout/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breakout",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/neon-breakout/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breakout",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/neon-breakout/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breakout",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/neon-breakout/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "neon-breakout",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/neon-breakout/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "boids-sanctuary",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/boids-sanctuary/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "boids-sanctuary",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/boids-sanctuary/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "boids-sanctuary",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/boids-sanctuary/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "boids-sanctuary",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/boids-sanctuary/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "boids-sanctuary",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/boids-sanctuary/ui.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ant-colony",
+                       "kind":  "player",
+                       "path":  "assets/gameplay-kits/ant-colony/player.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ant-colony",
+                       "kind":  "obstacle",
+                       "path":  "assets/gameplay-kits/ant-colony/obstacle.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ant-colony",
+                       "kind":  "environment",
+                       "path":  "assets/gameplay-kits/ant-colony/environment.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ant-colony",
+                       "kind":  "effect",
+                       "path":  "assets/gameplay-kits/ant-colony/effect.svg",
+                       "track":  "2d-prototype"
+                   },
+                   {
+                       "game":  "ant-colony",
+                       "kind":  "ui",
+                       "path":  "assets/gameplay-kits/ant-colony/ui.svg",
+                       "track":  "2d-prototype"
+                   }
+               ]
+}

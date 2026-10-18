@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RVKKO 3D Kit Preview</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,Segoe UI,sans-serif}*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#081018}canvas{display:block;width:100%;height:100%}#hud{position:fixed;top:14px;left:14px;z-index:2;max-width:420px;padding:14px 16px;border:1px solid #385363;border-radius:10px;background:#101920dd;box-shadow:0 12px 30px #0008}#title{font-size:20px;font-weight:700}#meta{color:#a8bbc5;font-size:12px;margin-top:4px}#help{margin-top:10px;color:#dfecef;font-size:12px;line-height:1.5}#status{margin-top:8px;color:#68ebd0;font-size:12px}#back{position:fixed;right:14px;top:14px;z-index:2;border:1px solid #486474;border-radius:8px;padding:8px 12px;background:#101920e8;color:#f0f4f6;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div id="hud"><div id="title">Loading 3D kit…</div><div id="meta"></div><div id="help">WASD / arrows: move · Space: jump · R: ragdoll proxy · V: voice cue · Esc: return</div><div id="status"></div></div>
+  <button id="back">Back to library</button>
+  <script src="../vendor/three-r128/three.min.js"></script>
+  <script src="../vendor/three-r128/GLTFLoader.js"></script>
+  <script src="../shared/audio-bank.js"></script>
+  <script src="kit-preview.js"></script>
+</body>
+</html>

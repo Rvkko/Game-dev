@@ -1,0 +1,39 @@
+{
+  "id": "pro-wrestling-empire",
+  "title": "Pro Wrestling Empire",
+  "category": "sports",
+  "tags": [
+    "wrestling",
+    "sports",
+    "career",
+    "fighting"
+  ],
+  "stack": "canvas",
+  "entry": "games/pro-wrestling-empire/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A pro-wrestling career with grapples, strikes, reversals, rope breaks, finishers, pins and a five-show title story.",
+  "achievements": [
+    {
+      "id": "first-pin",
+      "title": "Three Count",
+      "desc": "Win a match by pinfall."
+    },
+    {
+      "id": "reversal-master",
+      "title": "Reversal Master",
+      "desc": "Reverse five attacks in one match."
+    },
+    {
+      "id": "finisher",
+      "title": "Main Event Moment",
+      "desc": "Land a signature finisher."
+    },
+    {
+      "id": "world-champion",
+      "title": "World Champion",
+      "desc": "Win the Empire title."
+    }
+  ]
+}

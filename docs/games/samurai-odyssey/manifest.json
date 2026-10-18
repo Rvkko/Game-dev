@@ -1,0 +1,39 @@
+{
+  "id": "samurai-odyssey",
+  "title": "Samurai Odyssey",
+  "category": "adventure",
+  "tags": [
+    "story",
+    "samurai",
+    "duels",
+    "choices"
+  ],
+  "stack": "canvas",
+  "entry": "games/samurai-odyssey/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Shape a ronin's fate across five cinematic chapters with exploration, precise sword duels, dialogue choices, honor, allies, and multiple endings.",
+  "achievements": [
+    {
+      "id": "first-duel",
+      "title": "First Duel",
+      "desc": "Win your first duel."
+    },
+    {
+      "id": "merciful-blade",
+      "title": "Merciful Blade",
+      "desc": "Show mercy twice."
+    },
+    {
+      "id": "perfect-parry",
+      "title": "Perfect Parry",
+      "desc": "Parry three attacks in a single duel."
+    },
+    {
+      "id": "legend-of-kaede",
+      "title": "Legend of Kaede",
+      "desc": "Complete the odyssey."
+    }
+  ]
+}

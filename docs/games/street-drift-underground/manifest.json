@@ -1,0 +1,39 @@
+{
+  "id": "street-drift-underground",
+  "title": "Street Drift Underground",
+  "category": "racing",
+  "tags": [
+    "racing",
+    "drift",
+    "cars",
+    "career"
+  ],
+  "stack": "canvas",
+  "entry": "games/street-drift-underground/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "A midnight street-drift career with linked corners, rival score battles, police heat, car damage and permanent tuning.",
+  "achievements": [
+    {
+      "id": "first-chain",
+      "title": "Drift Initiate",
+      "desc": "Complete a 3x drift chain."
+    },
+    {
+      "id": "heat-five",
+      "title": "Most Wanted",
+      "desc": "Reach maximum police heat."
+    },
+    {
+      "id": "perfect-run",
+      "title": "Clean Streets",
+      "desc": "Win without taking damage."
+    },
+    {
+      "id": "drift-king",
+      "title": "Drift King",
+      "desc": "Win the underground championship."
+    }
+  ]
+}

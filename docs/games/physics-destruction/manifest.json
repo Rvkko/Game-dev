@@ -1,0 +1,129 @@
+{
+  "id": "physics-destruction",
+  "title": "Physics Destruction Arena",
+  "category": "flagship",
+  "tags": [
+    "physics",
+    "destruction",
+    "ragdoll",
+    "arena",
+    "roguelite",
+    "3d"
+  ],
+  "stack": "three.js + cannon-es",
+  "entry": "games/physics-destruction/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "True-3D physics destruction arena: shatter destructible structures, ragdoll enemies with real 3D physics, upgrade between waves, topple the boss. Roguelite meta-upgrades, difficulty presets and a daily seeded challenge.",
+  "achievements": [
+    {
+      "id": "first-blood",
+      "title": "First Blood",
+      "desc": "Defeat your first enemy",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "wrecking-ball",
+      "title": "Wrecking Ball",
+      "desc": "Destroy 50 blocks",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": true,
+      "target": 50
+    },
+    {
+      "id": "wave-5",
+      "title": "Storm Survivor",
+      "desc": "Clear wave 5",
+      "rarity": "common",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "airborne",
+      "title": "Air Mail",
+      "desc": "Launch an enemy into a lethal high-speed ragdoll",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "untouchable",
+      "title": "Untouchable",
+      "desc": "Clear a wave without taking damage",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "big-spender",
+      "title": "Big Spender",
+      "desc": "Spend 500 scrap in a single run",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hoarder",
+      "title": "Scrap Magnate",
+      "desc": "Hold 1000 scrap at once",
+      "rarity": "uncommon",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "grenadier",
+      "title": "Triple Threat",
+      "desc": "Kill 3 enemies with one explosion",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "arsenal",
+      "title": "Full Arsenal",
+      "desc": "Own all 4 weapons in one run",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "boss-slayer",
+      "title": "Demolition Complete",
+      "desc": "Defeat the Demolition King",
+      "rarity": "rare",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "daily-driver",
+      "title": "Daily Demolisher",
+      "desc": "Complete a daily seeded challenge",
+      "rarity": "epic",
+      "hidden": false,
+      "progressive": false,
+      "target": 1
+    },
+    {
+      "id": "hard-boiled",
+      "title": "Hardcore Demolition",
+      "desc": "Beat the boss on Hard",
+      "rarity": "legendary",
+      "hidden": true,
+      "progressive": false,
+      "target": 1
+    }
+  ]
+}

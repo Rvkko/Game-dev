@@ -1,0 +1,39 @@
+{
+  "id": "blast-maze",
+  "title": "Blast Maze",
+  "category": "action",
+  "tags": [
+    "maze",
+    "bombs",
+    "campaign",
+    "arcade"
+  ],
+  "stack": "canvas",
+  "entry": "games/blast-maze/index.html",
+  "thumbnail": "thumb.jpg",
+  "saveVersion": 1,
+  "locked": false,
+  "description": "Blast through a four-zone maze campaign with smart enemies, chain-reaction bombs, destructible walls, hidden powerups, lives, and escalating bosses.",
+  "achievements": [
+    {
+      "id": "chain-three",
+      "title": "Chain Reaction",
+      "desc": "Detonate three bombs in one chain."
+    },
+    {
+      "id": "power-max",
+      "title": "Fully Charged",
+      "desc": "Reach blast power five."
+    },
+    {
+      "id": "boss-buster",
+      "title": "Boss Buster",
+      "desc": "Defeat a zone guardian."
+    },
+    {
+      "id": "maze-master",
+      "title": "Maze Master",
+      "desc": "Clear all four zones."
+    }
+  ]
+}
