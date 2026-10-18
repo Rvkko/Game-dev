@@ -2850,12 +2850,17 @@ function resize() {
 }
 window.addEventListener('resize', resize);
 
+function advanceFrame(now) {
+  const elapsed = Math.max(0, (now - last) / 1000);
+  last = now;
+  // UI/hose transitions use wall time even on a slow GPU. Only physics is capped.
+  stepTweens(elapsed);
+  return Math.min(0.05, elapsed);
+}
 function animate(now) {
   requestAnimationFrame(animate);
-  const dt = Math.min(0.05, (now - last) / 1000);
-  last = now;
   resize();
-  stepTweens(dt);
+  const dt = advanceFrame(now);
   ctrlUpdate(dt);
   const t = now / 1000;
 
